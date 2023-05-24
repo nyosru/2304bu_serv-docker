@@ -1,4 +1,4 @@
-localhost, a1.dev.php-cat.com, mm.local, beta.nostaticfive.com {
+bu72.ru {
 	# Set this path to your site's directory.
 	root * /srv/public
 	# root * /srv/data-www/public

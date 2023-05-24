@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   caddy:
-  
+
     container_name: caddy
 
     image: caddy:2.6.4
@@ -24,7 +24,7 @@ services:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
       - './caddy/config:/config/caddy/'
       # - './../data-www:/srv'
-      - '${FOLDER}:/srv'
+      - '${BU_PHP_FOLDER}:/srv'
       # - www47:/srv
     depends_on:
       - app
@@ -49,7 +49,7 @@ services:
       # - 9001
     volumes:
       # - './data-www:/srv'
-      - '${FOLDER}:/srv'
+      - '${BU_PHP_FOLDER}:/srv'
       # - www47:/srv
     depends_on:
       - mysql2
@@ -71,11 +71,11 @@ services:
     environment:
 
       MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
 
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${BU_DB_DATABASE}
+      MYSQL_USER: ${BU_DB_USERNAME}
+      MYSQL_PASSWORD: ${BU_DB_PASSWORD}
 
     # expose:
     #   - '3306'
@@ -85,7 +85,7 @@ services:
     volumes:
       # - './data-mysql:/var/lib/mysql'
       # - v_mysql:/var/lib/mysql
-      - '${FOLDER_DB}:/var/lib/mysql'
+      - '${BU_FOLDER_DB}:/var/lib/mysql'
     restart: unless-stopped
 
   #++
@@ -96,7 +96,7 @@ services:
     ports:
       - 6060:80
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
       UPLOAD_LIMIT: 300M
     depends_on:
       - mysql2

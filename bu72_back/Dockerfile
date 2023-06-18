@@ -7,7 +7,8 @@ ENV PHPGROUP=${PHPGROUP}
 ENV PHPUSER=${PHPUSER}
 
 # RUN mkdir -p /srv
-# WORKDIR /srv
+WORKDIR /srv
+# WORKDIR /var/www/html
 # RUN mkdir -p /srv/data-www/storage && chmod -R 755 /srv/data-www/storage
 
 USER ${PHPUSER}

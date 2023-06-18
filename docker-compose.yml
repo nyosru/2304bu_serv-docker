@@ -27,16 +27,19 @@ services:
       - '${BU_PHP_FOLDER}:/srv'
       # - www47:/srv
     depends_on:
-      - app
+      # - app
+      - bu72_back
 
-  app:
-    container_name: app
+  # app:
+  bu72_back:
+    # container_name: app
+    container_name: bu72_back
 
     networks:
       - laravel
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: bu72_back/Dockerfile
       # args:
       #   - PHPUSER=${PHPUSER:-www-data}
       #   - PHPGROUP=${PHPGROUP:-www-data}
@@ -50,19 +53,79 @@ services:
     volumes:
       # - './data-www:/srv'
       - '${BU_PHP_FOLDER}:/srv'
+      # - '${BU_PHP_FOLDER}:/var/www/html'
       # - www47:/srv
     depends_on:
-      - mysql2
+      - bu72_mysql2
       # - redis_db
       # - mailhog
 
-  mysql2:
+
+  # bu72_front:
+
+  #   container_name: bu72_front
+
+  #   build:
+  #     context: .
+  #     dockerfile: bu72_front/Dockerfile
+  #     # args:
+  #     #   - PHPUSER=${PHPUSER:-www-data}
+  #     #   - PHPGROUP=${PHPGROUP:-www-data}
+  #     # environment:
+  #     #   DB_HOST: mysql
+  #   # command:
+  #   #   - /npm install
+  #   #   - /npm run build
+  #   #   - /node .output/server/index.mjs   
+  #   # restart: unless-stopped
+  #   # tty: true
+  #   # expose:
+  #   # #   # - 9000
+  #   # #   - 9005
+  #   # #   # - 9001
+  #   #   # - 3000
+  #   #   - 8080
+  #   # volumes:
+  #   # #   # - './data-www:/srv'
+  #   # #   - '${BU_PHP_FOLDER}:/srv'
+  #   # #   # - www47:/srv
+  #   #   # - '${BU_FRONT_FOLDER}:/app'
+  #   #   - '${BU_FRONT_FOLDER}:/usr/src/app'
+  #   # ports:
+  #   # - 8080:8080
+  #   # working_dir: /var/www/html/avantage
+  #   # volumes:
+  #   # # #   # - ./avantage:/var/www/html/avantage
+  #   # # #   # - ${BU_FRONT_FOLDER}:/var/www/html/avantage
+  #   # # #   # - '${BU_FRONT_FOLDER}:/usr/src/app'
+  #   # # #   # - '${BU_FRONT_FOLDER}:/app'
+  #   # # #   - '/bu72_front/code:/usr/src/app'
+  #   # #   - /bu72_front/code:/usr/src/app
+  #   #   - './bu72_front/code:/app'
+  #   # user: node
+
+  #   # payloadExtraction: false
+
+  #   # command: sh -c "node .output/server/index.mjs"
+  #   # stdin_open: true
+
+  #   # depends_on:
+  #   #   # - mysql2
+  #   #   # - bu72_mysql2
+  #   #   # - redis_db
+  #   #   # - mailhog
+  #   #   - bu72_back
+  #   networks:
+  #     - laravel
+
+  bu72_mysql2:
 
     # build:
     #   context: .
     #   dockerfile: Mysql.Dockerfile
 
-    container_name: mysql2
+    # container_name: mysql2
+    container_name: bu72_mysql2
     networks:
       - laravel
     # image: yobasystems/alpine-mariadb
@@ -89,17 +152,19 @@ services:
     restart: unless-stopped
 
   #++
-  phpmyadmin:
+  bu72_phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
-      - mysql2:db
+      # - mysql2:db
+      - bu72_mysql2:db
     ports:
       - 6060:80
     environment:
       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
       UPLOAD_LIMIT: 300M
     depends_on:
-      - mysql2
+      # - mysql2
+      - bu72_mysql2
     networks:
       - laravel
 
@@ -128,6 +193,7 @@ volumes:
   data-www:
   www47:
   config:
+  bu72_front:
 
 networks:
   laravel: null

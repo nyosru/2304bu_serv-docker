@@ -104,3 +104,32 @@ api.bu72.local {
 	# Or serve a PHP site through php-fpm:
 	php_fastcgi bu72_back:9000
 }
+
+api.bu72.ru {
+
+	 # Формируем самоподписной сертификат для работы https
+    #  tls internal
+
+   # Включаем логгирование для удобной отладки
+    # log {
+    #     format json
+    # }
+
+	# Set this path to your site's directory.
+	root * /srv/public
+	# root * /var/www/html/public
+	# root * /var/www/html
+	# root * /public
+	# root * /srv/data-www/public
+
+	# Enable the static file server.
+	file_server
+
+	# GZIP
+	encode gzip
+
+    #log
+
+	# Or serve a PHP site through php-fpm:
+	php_fastcgi bu72_back:9000
+}

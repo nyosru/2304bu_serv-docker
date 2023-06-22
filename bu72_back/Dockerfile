@@ -3,15 +3,24 @@ FROM php:8.2.0-fpm
 ARG PHPGROUP
 ARG PHPUSER
 
-ENV PHPGROUP=${PHPGROUP}
-ENV PHPUSER=${PHPUSER}
+# ENV PHPGROUP=${PHPGROUP}
+# ENV PHPUSER=${PHPUSER}
+# ENV PHPUSER=phpcat
+
+# RUN mkdir -p /srv/storage && chmod -R 755 /srv/storage
 
 # RUN mkdir -p /srv
 WORKDIR /srv
 # WORKDIR /var/www/html
 # RUN mkdir -p /srv/data-www/storage && chmod -R 755 /srv/data-www/storage
+# RUN mkdir -p /srv/storage && chmod -R 755 /srv/storages
+# RUN chmod -R 755 /srv/data-www/storage
+# RUN chmod -R 755 /srv/storage
 
-USER ${PHPUSER}
+# RUN chown -R ${PHPUSER}:${PHPGROUP} /srv/storage
+# RUN chmod -R 777 /srv/storage
+
+# USER ${PHPUSER}
 
 RUN apt-get update -y && docker-php-ext-install pdo_mysql
 

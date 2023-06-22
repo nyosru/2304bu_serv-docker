@@ -2,17 +2,26 @@
   <div>
 
     <div class="container mt-3">
-      <div class="row">
+      <div class="row" v-if="1==2">
+
         <div class="col-12">
-          <a href="#" @click.prevent="loadingData" >загрузить данные</a>
-          </div>
+          <a href="#" @click.prevent="loadingData">загрузить данные</a>
+          <br />
+          <br />
+          <NuxtLink to="/cat/12">12</NuxtLink> /
+          <NuxtLink to="/cat/15">15</NuxtLink> /
+          <NuxtLink to="/cat/151">151</NuxtLink> /
+          <NuxtLink to="/cat/35">35</NuxtLink> /
+          <NuxtLink to="/cat/17">17</NuxtLink>
+        </div>
+
         <div class="col-12">
           <!-- catNow: {{ catNow ?? 'x'}} -->
           <br />
           <br />
           <div style="max-height: 50px; font-size:10px; font-family:arial;overflow:auto;">
             CatsAr: {{ CatsAr ?? 'x' }}
-            </div>
+          </div>
           <div style="max-height: 50px; font-size:10px; font-family:arial;overflow:auto;">
             <!-- showListCats1: {{ showListCats.pending ?? 'x' }}          <br/> -->
             <!-- showListCats2: {{ showListCats.data ?? 'x' }}          <br/> -->
@@ -28,16 +37,14 @@
           <!-- catsData1: {{ catsData1 ?? 'x' }} -->
         </div>
 
-        
+
       </div>
 
       <div class="row">
-          <div class="col-md-12">
-
-            <breadcrumb-component xlinks="catNow" :cat_id="(cat_id ?? '')" />
-
-          </div>
+        <div class="col-md-12">
+          <breadcrumb-component />
         </div>
+      </div>
     </div>
 
 
@@ -119,8 +126,8 @@
 </template>
 
 <script setup>
-// import { useRoute } from 'vue-router'
 
+// import { useRoute } from 'vue-router'
 // import { setMaxIdleHTTPParsers } from 'http';
 
 const route = useRoute()
@@ -141,7 +148,7 @@ showListCats.value = await loadCats()
 
 const loadingData = async () => {
   showListCats.value = await loadCats()
-  console.log('showListCats.value',showListCats.value);
+  // console.log('showListCats.value', showListCats.value);
 }
 
 // showListCats.value = await loadCats()

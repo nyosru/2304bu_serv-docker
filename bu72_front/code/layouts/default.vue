@@ -18,6 +18,9 @@
                             <NuxtLink class="nav-link active" aria-current="page" to="/posts">Продают</NuxtLink>
                         </li> -->
                         <!-- <li class="nav-item">
+                            <a href="#" class="nav-link" style="color:red;">123 777 999 000</a>
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <NuxtLink class="nav-link active" aria-current="page" to="/posts">Хотят купить</NuxtLink>
                         </li> -->
                         <!-- <li class="nav-item">
@@ -45,8 +48,9 @@
 
 <script setup>
 
-console.log('старт default layout template' );
+console.log('старт default layout template');
 
+// await loadCats()
 // await getCats()
 
 </script>
@@ -75,4 +79,5 @@ body {
 .type-color-need_renta {
     background-color: #dd00ff;
     color: white;
-}</style>
+}
+</style>

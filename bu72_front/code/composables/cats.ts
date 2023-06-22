@@ -12,6 +12,7 @@ export const loadCats = async () => {
   try {
     if (Object.keys(CatsAr.value).length > 0) {
       console.log("вернули каты что загружены ранее");
+      // console.log("77",CatsAr.value);
       return CatsAr.value;
     } else {
       console.log("грузим новые каталоги 0");
@@ -25,13 +26,14 @@ export const loadCats = async () => {
 export const loadCats1 = async () => {
   try {
     const config = useRuntimeConfig();
-    console.log("");
-    console.log("comp cats.js > loadCats1");
-    console.log(`${config.public.apiBase}/api/cats`);
+    // console.log("");
+    // console.log("comp cats.js > loadCats1");
+    // console.log(`${config.public.apiBase}/api/cats`);
 
     const { data } = await useFetch(`${config.public.apiBase}/api/cats`);
 
-    console.log("data loadiing cat", data.value);
+    // console.log("data loadiing cat", data.value);
+    // console.log("data loadiing cat", data);
 
     // if (data.length == 0) {
     //   const { data, error } = await useLazyFetch(
@@ -49,10 +51,10 @@ export const loadCats1 = async () => {
     // }
 
     // CatsAr.value = data.value;
-    CatsAr.value = data;
+    CatsAr.value = await data;
 
-    // return await CatsAr.value;
-    return await data.value;
+    // return CatsAr.value;
+    return data;
   } catch (error) {
     return { status: "error", error };
   }
@@ -131,3 +133,6 @@ export const loadCats1 = async () => {
 // // // export default function () {
 // // //   return useState('foo', () => 'bar')
 // // // }
+
+await loadCats();
+await loadCats();

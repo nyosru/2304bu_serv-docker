@@ -40,7 +40,7 @@ EXPOSE 3000
 # ENV NUXT_PORT=80
 # # EXPOSE 80
 
-ENTRYPOINT ["node", "${APP_ROOT}.output/server/index.mjs"]
+ENTRYPOINT ["node", ".output/server/index.mjs"]
 # ENTRYPOINT ["npm", "run","dev"]
 
 # EXPOSE 80

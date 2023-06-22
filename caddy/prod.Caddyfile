@@ -1,8 +1,8 @@
 bu72.ru {
 
 	 # Формируем самоподписной сертификат для работы https
-     tls internal
-	 # tls 1@php-cat.com
+    #  tls internal
+	 tls 1@php-cat.com
 
    # Включаем логгирование для удобной отладки
     log {
@@ -17,7 +17,8 @@ bu72.ru {
 api.bu72.ru {
 
 	# Формируем самоподписной сертификат для работы https
-	tls internal
+	# tls internal
+	tls 1@php-cat.com
 
    # Включаем логгирование для удобной отладки
     log {

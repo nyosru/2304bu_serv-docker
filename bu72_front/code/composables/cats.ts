@@ -134,5 +134,5 @@ export const loadCats1 = async () => {
 // // //   return useState('foo', () => 'bar')
 // // // }
 
-await loadCats();
-await loadCats();
+// await loadCats();
+let rr = await loadCats();

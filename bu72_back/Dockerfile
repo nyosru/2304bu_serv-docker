@@ -20,7 +20,7 @@ WORKDIR /srv
 # RUN chown -R ${PHPUSER}:${PHPGROUP} /srv/storage
 # RUN chmod -R 777 /srv/storage
 
-# USER ${PHPUSER}
+USER ${PHPUSER}
 
 RUN apt-get update -y && docker-php-ext-install pdo_mysql
 

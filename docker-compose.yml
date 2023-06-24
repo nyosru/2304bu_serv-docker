@@ -38,6 +38,9 @@ services:
   bu72_back:
     container_name: bu72_back
 
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
     networks:
       - laravel
     build:

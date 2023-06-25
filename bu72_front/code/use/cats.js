@@ -12,7 +12,8 @@ const config = useRuntimeConfig()
 // //fetch data from API with "useAsyncData"
 const catsLoading = async() => {
     const { data: cats } = await useAsyncData('posts', () =>
-        $fetch(`${config.public.apiBase}/api/posts`),
+        // $fetch(`${config.public.apiBase}/api/posts`),
+        $fetch(`https://api.${document.location.host}/api/posts`),
     )
 }
 

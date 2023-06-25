@@ -30,7 +30,8 @@ export const loadCats1 = async () => {
     // console.log("comp cats.js > loadCats1");
     // console.log(`${config.public.apiBase}/api/cats`);
 
-    const { data } = await useFetch(`${config.public.apiBase}/api/cats`);
+    // const { data } = await useFetch(`${config.public.apiBase}/api/cats`);
+    const { data } = await useFetch(`https://api.${document.location.host}/api/posts`);
 
     // console.log("data loadiing cat", data.value);
     // console.log("data loadiing cat", data);

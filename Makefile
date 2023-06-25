@@ -1,11 +1,11 @@
 dev:
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml	
-	make dev
+	docker-compose up --build
 
 prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
-	make prod
+	docker-compose up --build -d
 	php composer.phar i
 	php artisan migrate

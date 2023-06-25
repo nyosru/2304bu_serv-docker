@@ -27,8 +27,8 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql
 RUN apt-get update && apt-get install -y git
 RUN  apt-get install -y \
     libzip-dev \
-    && docker-php-ext-install zip  && docker-php-ext-enable zip \
-    && chmod -R 0777 storage/
+    && docker-php-ext-install zip  && docker-php-ext-enable zip
+RUN chmod -R 0777 storage/
 
 # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

@@ -28,10 +28,12 @@ RUN apt-get update && apt-get install -y git
 RUN  apt-get install -y \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
-RUN chmod -R 0777 storage/
 
 # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # RUN php composer.phar i \
 #     php artisan migrate
+
+RUN cd /srv \
+    chmod -R 0777 storage/

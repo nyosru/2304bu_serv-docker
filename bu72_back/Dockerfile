@@ -20,12 +20,11 @@ WORKDIR /srv
 # RUN chown -R ${PHPUSER}:${PHPGROUP} /srv/storage
 # RUN chmod -R 777 /srv/storage
 
+# RUN useradd -G www-data,root -u $uid -d /home/${PHPUSER} ${PHPUSER}
 USER ${PHPUSER}
 
 RUN apt-get update -y && docker-php-ext-install pdo_mysql
-
 RUN apt-get update && apt-get install -y git
-
 RUN  apt-get install -y \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip

@@ -4,7 +4,8 @@ export default defineNuxtConfig({
     public: {
       //   apiBase: 'http://localhost:8000'
       // apiBase: 'http://localhost',
-      apiBase: "https://api.bu72.local",
+      // apiBase: document.location.host == 'bu72.ru' ? "https://api.bu72.local",
+      apiBase: 'https://api.'+document.location.host,
       // apiBase: 'https://bu72_back',
       // apiBase: 'http://api.bu72.local',
     },

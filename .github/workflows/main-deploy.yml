@@ -110,7 +110,7 @@ jobs:
           # 5152088168, serhio
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🥇🥇🥇 OK 🥇🥇🥇 в репу bu72-docker
+            🥇🥇🥇 OK 🥇🥇🥇
             👨🏻‍💻 ${{github.actor}} в репозиторий ${{ github.repository }}
             сделал ${{ github.event_name }}. задание ${{github.job}}.
             
@@ -127,7 +127,7 @@ jobs:
           # 5152088168, serhio
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🏄‍♂🏄‍♂🏄‍♂ старт 🏄‍♂🏄‍♂🏄‍♂  в репу bu72-docker
+            🏄‍♂🏄‍♂🏄‍♂ старт 🏄‍♂🏄‍♂🏄‍♂
             👨🏻‍💻 ${{github.actor}} в репозиторий ${{ github.repository }}
             сделал ${{ github.event_name }}. задание ${{github.job}}.
             

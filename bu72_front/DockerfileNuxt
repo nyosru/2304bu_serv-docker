@@ -21,6 +21,7 @@ ADD ${BU_FRONT_FOLDER} ${APP_ROOT}
 # RUN npm run dev
 # CMD npm run dev
 # RUN npm run generate
+RUN npm run build
 # # ARG RES_DIR=../2304bu_nuxt3
 
 # ENV NUXT_HOST=0.0.0.0

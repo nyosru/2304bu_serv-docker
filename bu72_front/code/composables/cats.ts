@@ -25,14 +25,16 @@ export const loadCats = async () => {
 
 export const loadCats1 = async () => {
   try {
-    // const config = useRuntimeConfig();
-    // console.log("");
-    // console.log("comp cats.js > loadCats1");
-    // console.log(`${config.public.apiBase}/api/cats`);
+    // // const config = useRuntimeConfig();
+    // // console.log("");
+    // // console.log("comp cats.js > loadCats1");
+    // // console.log(`${config.public.apiBase}/api/cats`);
 
-    // const { data } = await useFetch(`${config.public.apiBase}/api/cats`);
-    console.log('useFetch',`https://api.${document.location.host}/api/posts`);
-    const { data } = await useFetch(`https://api.${document.location.host}/api/posts`);
+    // // const { data } = await useFetch(`${config.public.apiBase}/api/cats`);
+    // console.log('useFetch',`https://api.${document.location.host}/api/posts`);
+    // const { data } = await useFetch(`https://api.${document.location.host}/api/posts`);
+    console.log('useFetch',`https://api.${document.location.host}/api/cats`);
+    const { data } = await useFetch(`https://api.${document.location.host}/api/cats`);
 
     // console.log("data loadiing cat", data.value);
     // console.log("data loadiing cat", data);

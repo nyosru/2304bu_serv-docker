@@ -74,26 +74,26 @@ jobs:
           # /opt/php74/bin/php composer.phar i
           # /opt/php74/bin/php artisan migrate
 
-  deploy_npm:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      #      - name: start
-      ##        uses: actions/checkout@master
-      #        run: ls -la
+#   deploy_npm:
+#     runs-on: ubuntu-latest
+#     needs: deploy
+#     steps:
+#       #      - name: start
+#       ##        uses: actions/checkout@master
+#       #        run: ls -la
 
-      - name: "deploy_npm"
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ env.VPS_IP }}
-#          host: ${{ secrets.SERVER_IP }}
-#          username: ${{ secrets.SERVER_USERNAME }}
-          username: ${{ env.VPS_USERNAME }}
-          #          key: ${{ secrets.SSH_KEY }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            cd ${{ env.DIR }}
-            npm run prod
+#       - name: "deploy_npm"
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ env.VPS_IP }}
+# #          host: ${{ secrets.SERVER_IP }}
+# #          username: ${{ secrets.SERVER_USERNAME }}
+#           username: ${{ env.VPS_USERNAME }}
+#           #          key: ${{ secrets.SSH_KEY }}
+#           key: ${{ secrets.DEPLOY_KEY }}
+#           script: |
+#             cd ${{ env.DIR }}
+#             npm run prod
 
 
   #  deploy:
@@ -171,7 +171,8 @@ jobs:
 
   sms_end:
     runs-on: ubuntu-latest
-    needs: [deploy_composer, deploy_npm]
+    # needs: [deploy_composer, deploy_npm]
+    needs: deploy_composer
     steps:
       - name: send telega
         uses: appleboy/telegram-action@master

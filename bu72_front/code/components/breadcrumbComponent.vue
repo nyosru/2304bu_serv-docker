@@ -1,7 +1,24 @@
 <template>
   <div class="container mb-2">
+
+    <div class="row">
+      <div class="col-12">
+
+        BreadCrumb Component
+        <Br />
+
+        <div style="max-height: 50px; font-size:10px; font-family:arial;overflow:auto;">
+          CatsAr: {{ CatsAr ?? 'x' }}
+        </div>
+
+<!--        <br/> loadCatsLoading: {{loadCatsLoading}}-->
+
+      </div>
+    </div>
+
+    <div class="row" v-if="cats">
     <div class="row" v-if="cat_id == 0">
-      <div class="col-12 text-center" v-if="cat_id == 0">
+      <div class="col-12 text-center">
         <template v-for="c in cats0" :key="c.id">
           <NuxtLink :to="'/cat/' + c.id" class="linkDown">
             {{ c.name ?? 'x' }}
@@ -9,6 +26,7 @@
         </template>
       </div>
     </div>
+
     <div class="row" v-else>
       <div class="col-12">
         <nav aria-label="breadcrumb">
@@ -31,6 +49,7 @@
         </template>
       </div>
     </div>
+    </div>
 
   </div>
 </template>
@@ -43,11 +62,16 @@
 
 <script setup>
 
-// const props = defineProps({
+import {watchEffect} from "vue";
+
+const props = defineProps({
 //   cat_id: {
 //     type: String
 //   }
-// })
+  cats: {
+    type: Object
+  }
+})
 
 // const route = useRoute()
 // const cat_id = route.params.id
@@ -62,30 +86,116 @@ const cat_id = route.params.id
 
 const dataCats = ref({})
 
-dataCats.value = await loadCats()
+// dataCats.value = await loadCats()
+dataCats.value = CatsAr.value
 
-const createTreeCat0 = async (cat_id) => {
+const createTreeCat0 = async (CatsAr, cat_id) => {
 
   // dataCats.value = await loadCats()
   // createListCatDown(dataCats.value['_value']['data'], cat_id)
   // createListCatDown(dataCats.value['_value']['data'], cat_id)
-  await createTreeCat(cat_id)
-  await createTreeCatStart()
+  await createTreeCat(CatsAr, cat_id)
+  // await createTreeCatStart()
+  cats0.value = await createTreeCatStart()
   await createListCatDown(cat_id)
   // return  
   // return {}
 }
 
-const createTreeCat = async (cat_id) => {
+const createTreeCat0aaa = (CatsAr = {}, cat_id) => {
 
-  dataCats.value = await loadCats()
+  if( CatsAr === {} )
+    return;
+
+  // dataCats.value = await loadCats()
+  // createListCatDown(dataCats.value['_value']['data'], cat_id)
+  // createListCatDown(dataCats.value['_value']['data'], cat_id)
+  createTreeCat(CatsAr, cat_id)
+  // await createTreeCatStart()
+  cats0.value = createTreeCatStart()
+  createListCatDown(cat_id)
+  // return
+  // return {}
+}
+
+const createTreeCat = async (CatsAr, cat_id) => {
+
+  // dataCats.value = await loadCats()
+  dataCats.value = CatsAr.value
 
   // console.log('dataCats.value', dataCats.value);
 
   let return1 = {}
   // return return1
 
-  console.log('dataCats',dataCats.value['_value']);
+  console.log('dataCats', dataCats.value['_value']);
+
+  // if ( typeof(dataCats.value['_value']['data']) !== 'undefined' && Object.keys(dataCats.value['_value']['data']).length > 0) {
+  if (dataCats.value['_value'] != null && Object.keys(dataCats.value['_value']['data']).length > 0) {
+    try {
+
+      const a5 = dataCats.value['_value']['data'].find((element) => element.id == cat_id);
+      // console.log('a5', a5); // { id: 5, name: 'Mike' }
+      return1[5] = a5
+
+      if (typeof (a5) !== 'undefined' && a5.cat_up_id != null) {
+
+        const a4 = dataCats.value['_value']['data'].find((element) => element.id == a5.cat_up_id);
+        // console.log('a4', a4); // { id: 5, name: 'Mike' }
+        return1[4] = a4
+
+
+        if (typeof (a4) !== 'undefined' && a4.cat_up_id != null) {
+
+          const a3 = dataCats.value['_value']['data'].find((element) => element.id == a4.cat_up_id);
+          // console.log('a3', a3); // { id: 5, name: 'Mike' }
+          return1[3] = a3
+
+
+          if (typeof (a3) !== 'undefined' && a3.cat_up_id != null) {
+
+            const a2 = dataCats.value['_value']['data'].find((element) => element.id == a3.cat_up_id);
+            // console.log('a2', a2); // { id: 5, name: 'Mike' }
+            return1[2] = a2
+
+
+            if (typeof (a2) !== 'undefined' && a2.cat_up_id != null) {
+
+              const a1 = dataCats.value['_value']['data'].find((element) => element.id == a2.cat_up_id);
+              // console.log('a1', a1); // { id: 5, name: 'Mike' }
+              return1[1] = a1
+
+            }
+
+          }
+
+        }
+
+      }
+
+    } catch (error) {
+      console.error('breadCrumb error', 789, error);
+      // return false;
+    }
+  }
+
+  cats.value = return1
+  return {}
+  // return await return1
+
+}
+
+const createTreeCataaa = (CatsAr, cat_id) => {
+
+  // dataCats.value = await loadCats()
+  dataCats.value = CatsAr.value
+
+  // console.log('dataCats.value', dataCats.value);
+
+  let return1 = {}
+  // return return1
+
+  console.log('dataCats', dataCats.value['_value']);
 
   // if ( typeof(dataCats.value['_value']['data']) !== 'undefined' && Object.keys(dataCats.value['_value']['data']).length > 0) {
   if (dataCats.value['_value'] != null && Object.keys(dataCats.value['_value']['data']).length > 0) {
@@ -144,35 +254,7 @@ const createTreeCat = async (cat_id) => {
 
 const cats0 = ref([])
 
-const createTreeCatStart = async (cat_id) => {
-
-  dataCats.value = await loadCats()
-
-  // console.log('dataCats.value',dataCats.value);
-
-  let return1 = []
-  // return return1
-
-  // if ( typeof(dataCats.value['_value']['data']) !== 'undefined' && Object.keys(dataCats.value['_value']['data']).length > 0) {
-  if (Object.keys(dataCats.value['_value']['data']).length > 0) {
-    try {
-
-      // const a5 = dataCats.value['_value']['data'].find((element) => element.cat_up_id === null );
-      return1 = dataCats.value['_value']['data'].filter((element) => element.cat_up_id === null);
-      // console.log('a5', a5); // { id: 5, name: 'Mike' }
-      // return1.push(a5)
-
-    } catch (error) {
-      console.error('breadCrumb error', 789, error);
-      // return false;
-    }
-  }
-
-  cats0.value = return1
-  return {}
-  // return await return1
-
-}
+// cats0.value = return1
 
 
 const createListCatDown = async (show_cat_id = 0) => {
@@ -213,7 +295,8 @@ const createListCatDown = async (show_cat_id = 0) => {
 
 
 
-  dataCats.value = await loadCats()
+  // dataCats.value = await loadCats()
+  dataCats.value = CatsAr.value
 
   // console.log('dataCats.value',dataCats.value);
 
@@ -243,16 +326,40 @@ const createListCatDown = async (show_cat_id = 0) => {
 }
 
 
+const createListCatDownaaa = (show_cat_id = 0) => {
+
+  dataCats.value = CatsAr.value
+
+  let return1 = []
+
+  if (Object.keys(dataCats.value['_value']['data']).length > 0) {
+    try {
+
+      catsDown.value = dataCats.value['_value']['data'].filter((element) => element.cat_up_id == show_cat_id);
+
+    } catch (error) {
+      console.error('breadCrumb error', 789, error);
+    }
+  }
+
+}
+
+
 
 // createTreeCat0(props.cat_id)
-createTreeCat0(cat_id)
+// if( CatsAr.value['_value']['data'] ) {
+  createTreeCat0(CatsAr , cat_id)
+// }
 
 // createListCatDown(props.cat_id)
 
 watchEffect(() => {
-  // createTreeCat0(props.cat_id)
-  createTreeCat0(cat_id)
-  // createListCatDown(props.cat_id)
+  // if( CatsAr.value['_value']['data'] )
+  // {
+  //   createTreeCat0(props.cat_id)
+    createTreeCat0(CatsAr , cat_id)
+    // createListCatDown(props.cat_id)
+  // }
 })
 
 </script>

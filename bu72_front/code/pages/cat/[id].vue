@@ -2,26 +2,31 @@
   <div>
 
     <div class="container mt-3">
-      <div class="row" v-if="1==2">
+      <div class="row" v-if="1 == 1">
 
         <div class="col-12">
           <a href="#" @click.prevent="loadingData">загрузить данные</a>
+
           <br />
           <br />
+
           <NuxtLink to="/cat/12">12</NuxtLink> /
           <NuxtLink to="/cat/15">15</NuxtLink> /
           <NuxtLink to="/cat/151">151</NuxtLink> /
           <NuxtLink to="/cat/35">35</NuxtLink> /
           <NuxtLink to="/cat/17">17</NuxtLink>
+          
         </div>
 
-        <div class="col-12">
+        <div class="col-12" v-if="1==2">
           <!-- catNow: {{ catNow ?? 'x'}} -->
           <br />
           <br />
+
           <div style="max-height: 50px; font-size:10px; font-family:arial;overflow:auto;">
             CatsAr: {{ CatsAr ?? 'x' }}
           </div>
+
           <div style="max-height: 50px; font-size:10px; font-family:arial;overflow:auto;">
             <!-- showListCats1: {{ showListCats.pending ?? 'x' }}          <br/> -->
             <!-- showListCats2: {{ showListCats.data ?? 'x' }}          <br/> -->
@@ -45,10 +50,12 @@
           <breadcrumb-component />
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+goods: {{ goods ?? 'x'}}
+        </div>
+      </div>
     </div>
-
-
-
 
     <template v-if="1 == 2">
       <div class="container mt-3">
@@ -122,6 +129,7 @@
         </div>
       </div>
     </template>
+
   </div>
 </template>
 
@@ -134,20 +142,21 @@ const route = useRoute()
 const cat_id = route.params.id
 
 // const config = useRuntimeConfig()
-
 // // console.log('config',config);
 
 // // const filter = ref({ sell: false, buy: false, renta: false, need_renta: false })
 // const filter = ref({})
 
-
 const showListCats = ref({})
 // showListCats.value = await getCats()
-showListCats.value = await loadCats()
+// showListCats.value = await loadCats()
+showListCats.value = loadCats()
 // await loadCats()
 
-const loadingData = async () => {
-  showListCats.value = await loadCats()
+// const loadingData = async () => {
+const loadingData = () => {
+  // showListCats.value = await loadCats()
+  showListCats.value = loadCats()
   // console.log('showListCats.value', showListCats.value);
 }
 

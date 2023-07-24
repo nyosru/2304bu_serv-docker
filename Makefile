@@ -3,7 +3,8 @@ dev:
 	cp docker-compose.local.yml docker-compose.yml	
 	cp bu72_front/code/nuxt.config.local.ts bu72_front/code/nuxt.config.ts
 
-	make start
+	#make start
+	docker-compose up --build
 	
 prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile

@@ -70,7 +70,9 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd ${{ env.DIR }}
-            make prod
+            docker-compose down
+            docker-compose up --build -d            
+          # make prod
           # /opt/php74/bin/php composer.phar i
           # /opt/php74/bin/php artisan migrate
 

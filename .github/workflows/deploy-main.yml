@@ -84,6 +84,8 @@ jobs:
           script: |
             cd ${{ env.DIR }}            
             docker-compose up -d
+            docker-compose exec bu72_back php composer.phar i
+            docker-compose exec bu72_back php artisan migrate
           # docker-compose up --build  
           # docker-compose up --build -d            
 

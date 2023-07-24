@@ -5,6 +5,9 @@ WORKDIR /app
 COPY ./bu72_front/code .
 # VOLUME "./bu72_front/code:/app"
 
+# npm install -g npm@9.8.1
+RUN npm install -g npm@latest
+
 RUN npm install
 # # CMD [ "npm install" ]
 RUN npm run build

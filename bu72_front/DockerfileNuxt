@@ -15,6 +15,8 @@ WORKDIR ${APP_ROOT}
 ADD ${BU_FRONT_FOLDER} ${APP_ROOT}
 # COPY ./bu72_front/code ${APP_ROOT}
 
+RUN npm install -g npm@latest
+
 # RUN npm install
 # RUN npm ci
 # RUN npm run build

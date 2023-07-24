@@ -85,17 +85,7 @@ jobs:
 
           script: |
             cd ${{ env.DIR }}            
-            docker-compose up -d
-            
-      - uses: appleboy/ssh-action@master
-        with:
-
-          host: ${{ env.VPS_IP }}
-          username: ${{ env.VPS_USERNAME }}
-          key: ${{ secrets.DEPLOY_KEY }}
-
-          script: |
-            cd ${{ env.DIR }}            
+            docker-compose up -d              
             docker-compose exec bu72_back php composer.phar i --no-dev
             docker-compose exec bu72_back php artisan migrate
 

@@ -48,8 +48,8 @@ jobs:
             cd ${{ env.DIR }}
             git fetch --all
             git reset --hard ${{ env.GIT_BRANCH }}
-            docker-compose down
-            docker-compose up --build -d
+          # docker-compose down
+          # docker-compose up --build -d
 
 #            git pull
           #      /opt/php74/bin/php composer.phar i
@@ -70,8 +70,9 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd ${{ env.DIR }}
-            /opt/php74/bin/php composer.phar i
-            /opt/php74/bin/php artisan migrate
+            make prod
+          # /opt/php74/bin/php composer.phar i
+          # /opt/php74/bin/php artisan migrate
 
   deploy_npm:
     runs-on: ubuntu-latest

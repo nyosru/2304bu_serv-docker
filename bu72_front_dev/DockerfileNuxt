@@ -1,0 +1,62 @@
+# FROM node:alpine as front
+FROM node:19.2.0 as front
+
+ENV APP_ROOT /nuxt_app
+# ENV BU_FRONT_FOLDER ./../2304bu_nuxt3
+ENV BU_FRONT_FOLDER ./bu72_front/code
+
+# # # делаем каталог 'app' текущим рабочим каталогом
+# WORKDIR /nuxt_app
+WORKDIR ${APP_ROOT}
+
+# ADD ./bu72_front/code ${APP_ROOT}
+# ADD ${BU_FRONT_FOLDER} ${APP_ROOT}
+# VOLUME ${BU_FRONT_FOLDER} ${APP_ROOT}
+ADD ${BU_FRONT_FOLDER} ${APP_ROOT}
+# COPY ./bu72_front/code ${APP_ROOT}
+
+RUN npm install -g npm@latest
+
+# RUN npm install
+# RUN npm ci
+# RUN npm run build
+# RUN npm run dev
+# CMD npm run dev
+# RUN npm run generate
+
+# RUN npm run build
+
+# # ARG RES_DIR=../2304bu_nuxt3
+
+# ENV NUXT_HOST=0.0.0.0
+
+# ENV NUXT_PORT=3000
+# EXPOSE 3000 
+
+ENV NITRO_HOST=0.0.0.0
+# ENV NITRO_HOST=localhost
+# ENV NITRO_PORT=3005
+# EXPOSE 3005
+ENV NITRO_PORT=3000
+# ENV NITRO_PORT=80
+EXPOSE 3000
+# EXPOSE 3030
+
+# ENV NUXT_PORT=80
+# # EXPOSE 80
+
+ENTRYPOINT ["node", ".output/server/index.mjs"]
+# ENTRYPOINT ["npm", "run","dev"]
+
+# EXPOSE 80
+# CMD ["sh", "-c", "NITRO_PORT=80 node .output/server/index.mjs"]
+
+
+# # EXPOSE 8080
+# # # CMD [ "http-server", "dist" ]
+# # # CMD [ "npm", "install" ]
+# # # CMD [ "npm", "run" , "generate" ]
+# # # CMD [ "npm", "run" , "build" ]
+# # # CMD [ "npm", "run" , "build", "&&", "node .output/server/index.mjs" ]
+# # # CMD [ "npm", "run" , "build" ]
+# # CMD ["node .output/server/index.mjs"]

@@ -35,6 +35,21 @@ services:
       networks:
         - laravel
 
+  nuxt_dev:
+      container_name: nuxt_dev
+      # environment:
+      #   - APP_ROOT:/nuxt_app
+      #   # - BU_FRONT_FOLDER:./../2304bu_nuxt3
+      #   - BU_FRONT_FOLDER2:/bu72_front/code
+      volumes: 
+        # - '${BU_FRONT_FOLDER2}:${APP_ROOT}'
+        - './bu72_front_dev/code:/nuxt_app'
+      build:
+        context: .
+        dockerfile: bu72_front_dev/DockerfileNuxt        
+      networks:
+        - laravel
+
   bu72_back:
     container_name: bu72_back
 
@@ -52,6 +67,26 @@ services:
       - 9000
     volumes:
       - '${BU_PHP_FOLDER}:/srv'
+    depends_on:
+      - bu72_mysql2
+
+  bu72_back_dev:
+    container_name: bu72_back_dev
+
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: bu72_back_dev/Dockerfile
+    restart: unless-stopped
+    tty: true
+    expose:
+      - 9000
+    volumes:
+      - '${BU_PHP_FOLDER_DEV}:/srv'
     depends_on:
       - bu72_mysql2
 

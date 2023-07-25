@@ -15,7 +15,7 @@ prod:
 
 start:
 
-	docker-compose up --build -d
+	docker-compose up --build -d --remove-orphans
 
 	docker-compose exec bu72_back composer i
 	docker-compose exec bu72_back php artisan migrate

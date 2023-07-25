@@ -14,6 +14,22 @@ bu72.ru {
 
 }
 
+bu.dev.php-cat.com {
+
+	 # Формируем самоподписной сертификат для работы https
+    #  tls internal
+	 tls 1@php-cat.com
+
+   # Включаем логгирование для удобной отладки
+    log {
+        format json
+    }
+
+	file_server
+	reverse_proxy nuxt_dev:3000
+
+}
+
 api.bu72.ru {
 
 	# Формируем самоподписной сертификат для работы https
@@ -38,6 +54,34 @@ api.bu72.ru {
 
 	# Or serve a PHP site through php-fpm:
 	php_fastcgi bu72_back:9000
+}
+
+
+
+bu-api.dev.php-cat.com {
+
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+	tls 1@php-cat.com
+
+   # Включаем логгирование для удобной отладки
+    log {
+        format json
+    }
+
+	# Set this path to your site's directory.
+	root * /srv/public
+
+	# Enable the static file server.
+	file_server
+
+	# GZIP
+	encode gzip
+
+    #log
+
+	# Or serve a PHP site through php-fpm:
+	php_fastcgi bu72_back_dev:9000
 }
 
 

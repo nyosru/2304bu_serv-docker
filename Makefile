@@ -40,3 +40,4 @@ start:
 	# docker-compose exec ttt72_laravel ls 
 	docker-compose exec ttt72_laravel php composer.phar i
 	docker-compose exec ttt72_laravel php artisan migrate
+	docker-compose exec ttt72_laravel php artisan storage:link

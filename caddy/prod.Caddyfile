@@ -1,8 +1,8 @@
 ttt72.ru, ttt72.dev.php-cat.com {
 	
 	# Формируем самоподписной сертификат для работы https
-	tls internal
-    # tls 1@php-cat.com
+	# tls internal
+    tls 1@php-cat.com
 
     root * /srv/public
     encode gzip

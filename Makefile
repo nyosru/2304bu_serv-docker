@@ -1,10 +1,20 @@
 dev:
+
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml	
+
+	# bu72	
 	cp bu72_front/code/nuxt.config.local.ts bu72_front/code/nuxt.config.ts
 
-	#make start
-	docker-compose up --build
+	# make start
+	# docker-compose up --build
+
+	# docker-compose down
+	docker-compose up --build -d --remove-orphans
+
+	# # docker-compose exec ttt72_laravel ./vendor/bin/sail up
+	# docker-compose exec ttt72_laravel composer i
+	# docker-compose exec ttt72_laravel php artisan migrate
 	
 prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile

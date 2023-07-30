@@ -1,4 +1,4 @@
-import {useAsyncData} from "nuxt/app";
+// import {useAsyncData} from "nuxt/app";
 
 export const goodsInCatId = ref(0)
 export const { data: goods } = await useAsyncData(

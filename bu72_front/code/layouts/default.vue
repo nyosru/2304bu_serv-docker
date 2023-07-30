@@ -14,6 +14,10 @@
                             <!-- <NuxtLink class="nav-link active" aria-current="page" to="/cats">Каталог</NuxtLink> -->
                             <NuxtLink class="nav-link active" aria-current="page" to="/cat/0">Каталог</NuxtLink>
                         </li>
+                        <li class="nav-item">
+                            <!-- <NuxtLink class="nav-link active" aria-current="page" to="/posts">Продают</NuxtLink> -->
+                            <MenuCatalogsComponent />
+                        </li>
                         <!-- <li class="nav-item">
                             <NuxtLink class="nav-link active" aria-current="page" to="/posts">Продают</NuxtLink>
                         </li> -->

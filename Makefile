@@ -27,8 +27,8 @@ prod:
 
 start:
 
-	docker stop $(docker ps -a -q)
-	docker rm $(docker ps -a -q)
+	# docker stop $(docker ps -a -q)
+	# docker rm $(docker ps -a -q)
 
 	docker-compose up --build -d --remove-orphans
 

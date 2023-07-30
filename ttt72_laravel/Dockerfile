@@ -9,11 +9,7 @@ ENV PHPUSER=${PHPUSER}
 
 WORKDIR /srv
 
-
-
 USER ${PHPUSER}
-
-
 
 
 RUN apt-get update -y && docker-php-ext-install pdo_mysql

@@ -3,9 +3,18 @@ FROM php:8.2.0-fpm
 ARG PHPGROUP
 ARG PHPUSER
 
+ENV PHPGROUP=${PHPGROUP}
+ENV PHPUSER=${PHPUSER}
+# ENV PHPUSER=phpcat
+
 WORKDIR /srv
 
+
+
 USER ${PHPUSER}
+
+
+
 
 RUN apt-get update -y && docker-php-ext-install pdo_mysql
 RUN apt-get update && apt-get install -y git

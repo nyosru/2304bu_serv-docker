@@ -97,8 +97,8 @@ jobs:
 
           script: |
             cd ${{ env.DIR }}            
-          # docker-compose exec ttt72_laravel php composer.phar i --no-dev
-          # docker-compose exec ttt72_laravel php artisan migrate
+            docker-compose exec ttt72_laravel php composer.phar i --no-dev
+            docker-compose exec ttt72_laravel php artisan migrate
           # docker-compose exec bu72_back php composer.phar i --no-dev
           # docker-compose exec bu72_back php artisan migrate
 

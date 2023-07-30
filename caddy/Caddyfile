@@ -1,7 +1,8 @@
-ttt72.local  {
+ttt72.ru, ttt72.dev.php-cat.com {
 	
 	# Формируем самоподписной сертификат для работы https
-	tls internal
+	# tls internal
+    tls 1@php-cat.com
 
     root * /srv/public
     encode gzip
@@ -9,158 +10,154 @@ ttt72.local  {
     file_server
 }
 
-# # {
-# #     email 1@php-cat.com
-# # }
+ttt72.local  {
+	
+	# Формируем самоподписной сертификат для работы https
+	tls internal    
 
-# # /
+    root * /srv/public
+    encode gzip
+    php_fastcgi ttt72_laravel:9000
+    file_server
+}
 
-# # bu72.local {
+# bu72.ru {
 
-# # 	 # Формируем самоподписной сертификат для работы https
-# #      tls internal
-# # 	 # tls 1@php-cat.com
+# 	 # Формируем самоподписной сертификат для работы https
+#     #  tls internal
+# 	 tls 1@php-cat.com
 
-# #    # Включаем логгирование для удобной отладки
-# #     log {
-# #         format json
-# #     }
-
-# # 	file_server
-# # 	reverse_proxy nuxt:3000
-
-# # }
-
-# # :8080 {
-# # 	respond "I am 8080"
-# # }
-
-# # :8081 {
-# # 	respond "I am 8081"
-# # }
-
-
-# # ttt72.local {
-# # 	respond "It works!"
-# # }
-
-# ttt72.local {
-# # api.bu72.local {
-
-# # 	# Формируем самоподписной сертификат для работы https
-# 	tls internal
-
-# #    # Включаем логгирование для удобной отладки
+#    # Включаем логгирование для удобной отладки
 #     log {
 #         format json
 #     }
 
-#     # handle /* {
-#     #     file_server
-#     #     root * /var/www/html/ttt72/public
-#     # }
+# 	file_server
+# 	reverse_proxy nuxt:3000
 
-# # 	# Set this path to your site's directory.
+# }
+
+# bu.dev.php-cat.com {
+
+# 	 # Формируем самоподписной сертификат для работы https
+#     #  tls internal
+# 	 tls 1@php-cat.com
+
+#    # Включаем логгирование для удобной отладки
+#     log {
+#         format json
+#     }
+
+# 	file_server
+# 	reverse_proxy nuxt_dev:3000
+
+# }
+
+# api.bu72.ru {
+
+# 	# Формируем самоподписной сертификат для работы https
+# 	# tls internal
+# 	tls 1@php-cat.com
+
+#    # Включаем логгирование для удобной отладки
+#     log {
+#         format json
+#     }
+
+# 	# Set this path to your site's directory.
 # 	root * /srv/public
 
-# # 	# Enable the static file server.
+# 	# Enable the static file server.
 # 	file_server
 
 # 	# GZIP
 # 	encode gzip
-# 	# encode zstd gzip
 
-# #     #log
-#   handle {
-# # 	# Or serve a PHP site through php-fpm:
-# # 	php_fastcgi bu72_back:9000
-# 	# php_fastcgi ttt72_laravel:9061
-# 	# reverse_proxy ttt72_laravel:6080
-# 	# php_fastcgi ttt72_laravel:9900
-# 	reverse_proxy ttt72_laravel:9000
-# 	}
+#     #log
+
+# 	# Or serve a PHP site through php-fpm:
+# 	php_fastcgi bu72_back:9000
 # }
 
 
 
-# # ttt72.local {
+# bu-api.dev.php-cat.com {
 
-# # 	# Формируем самоподписной сертификат для работы https
-# # 	tls internal
+# 	# Формируем самоподписной сертификат для работы https
+# 	# tls internal
+# 	tls 1@php-cat.com
 
-# # 	# Resolve the root directory for the app
-# #     root * /var/www/ttt72/public
+#    # Включаем логгирование для удобной отладки
+#     log {
+#         format json
+#     }
 
-# #     # Provide Zstd and Gzip compression
-# #     encode zstd gzip
+# 	# Set this path to your site's directory.
+# 	root * /srv/public
 
-# #     # Allow caddy to serve static files
-# #     file_server
+# 	# Enable the static file server.
+# 	file_server
 
-# #     # Enable PHP-FPM
-# #     php_fastcgi unix//run/php/php8.2-fpm.sock
-# # }
+# 	# GZIP
+# 	encode gzip
 
-# # ttt72.local {
-# # 	root /var/www/html/ttt72/public
-# # 	gzip
+#     #log
 
-# # 	# Point to the upstream PHP-FPM socket
-# # 	fastcgi / unix:/run/php/ttt72-fpm.sock php
-
-# # 	# This rewrite is to prevent access to dot files and folders such
-# # 	# as .htaccess, .git, etc.
-# # 	rewrite {
-# # 		# This regex catches everything that contains "/." in the URL
-# # 		r \/\.
-# # 		if {path} not_starts_with .well-known
-# # 		to /index.php{uri}
-# # 	}
-
-# # 	# Rewrite non-existent URLs to our index.php controller
-# # 	rewrite {
-# # 		if {file} not favicon.ico
-# # 		to {path} {path}/ /index.php?{query}
-# # 	}
-
-# # 	header / {
-# # 		Strict-Transport-Security	"max-age=30758400"
-# # 		X-Content-Type-Options		"nosniff"
-# # 		X-Frame-Options			"deny"
-# # 		X-XSS-Protection		"1; mode=block"
-# # 		Referrer-Policy			"same-origin"
-# # 	}
-
-# # 	# Access logging in the combined format
-# # 	log / /var/www/html/ttt72/logs/access.log "{combined}" {
-# # 		rotate_size 50
-# # 		rotate_age 14
-# # 		rotate_keep 14
-# # 		rotate_compress
-# # 	}
-
-# # 	# Error logs in a separate file
-# # 	errors /var/www/html/ttt72/logs/error.log {
-# # 		rotate_size 50
-# # 		rotate_age 14
-# # 		rotate_keep 14
-# # 		rotate_compress
-# # 	}
-# # }
+# 	# Or serve a PHP site through php-fpm:
+# 	php_fastcgi bu72_back_dev:9000
+# }
 
 
 
-# # ttt72.local {
 
-# # # 	# Формируем самоподписной сертификат для работы https
-# # # 	tls internal
 
-# # # 	auto_https off
-# # # 	respond "Hello, world!"
+
+# # # localhost {
+
+
+# # # 	 # Формируем самоподписной сертификат для работы https
+# # #     # tls internal
+
+
+# # #     # Отдаем картинки напрямую из файловой системы минуя приложение
+# # #     # Картинки в нашем проекте хранятся в /app/public внутри образа с Caddy
+# # #     # Выше в Dockerfile мы туда их копируем
+# # #     # /images/app.png => /app/public/images/app.png
+# # # #    handle /images/* {
+# # # #        file_server
+# # # #        root * /app/public
+# # # #    }
+
+# # #     # Все остальные запросы передаются в приложение
+# # #  #   handle {
+# # #         # app - имя домена во внутренней сети Docker
+# # #         # В девелопменте совпадает с именем сервиса в docker-compose.yml
+# # #         # Для продакшена надо будет создать общую сеть
+# # #  #       reverse_proxy app:3000
+# # #  #   }
+
+# # #    # Включаем логгирование для удобной отладки
+# # #     log {
+# # #         format json
+# # #     }
+
+# # # 	# Set this path to your site's directory.
+# # # 	root * /srv/public
+# # # 	# root * /srv/data-www/public
+
+# # # 	# Enable the static file server.
+# # # 	file_server
+
+# # # 	# GZIP
+# # # 	encode gzip
+
+# # #     #log
+
+# # # 	# Or serve a PHP site through php-fpm:
+# # # 	php_fastcgi app:9000
 # # # }
 
-# # # ttt72.local2 {
-
+# # localhost, bu72.local {
 
 # # 	 # Формируем самоподписной сертификат для работы https
 # #      tls internal
@@ -171,15 +168,119 @@ ttt72.local  {
 # #         format json
 # #     }
 
-# # 	# gzip
-	
+# # 	# Set this path to your site's directory.
 # # 	# root * /srv/public
-# # 	# root * /public
-# # 	# root * /var/www/html/ttt72s
-# # 	# root * /var/www/html/ttt72/public
-# # 	root * /sites/ttt72/public
+# # 	# root * /usr/src/app
+# # 	root * /app
+# # 	# root * /srv/data-www/public
 
+# # 	# Enable the static file server.
 # # 	file_server
-# # 	reverse_proxy ttt72_laravel:9061
 
+# # 	# GZIP
+# # 	encode gzip
+
+# #     #log
+
+# # 	# Or serve a PHP site through php-fpm:
+# # 	# php_fastcgi app:9000
+# # 	# reverse_proxy bu72_node:9005
+# # 	reverse_proxy bu72_front:3000
+# # 	# reverse_proxy bu72_front:8080
+# # }
+
+
+# # bu72.ru {
+
+# # 	 # Формируем самоподписной сертификат для работы https
+# #     #  tls internal
+# # 	 # tls 1@php-cat.com
+
+# #    # Включаем логгирование для удобной отладки
+# #     log {
+# #         format json
+# #     }
+
+# # 	# Set this path to your site's directory.
+# # 	# root * /srv/public
+# # 	# root * /usr/src/app
+# # 	root * /app
+# # 	# root * /srv/data-www/public
+
+# # 	# Enable the static file server.
+# # 	file_server
+
+# # 	# GZIP
+# # 	encode gzip
+
+# #     #log
+
+# # 	# Or serve a PHP site through php-fpm:
+# # 	# php_fastcgi app:9000
+# # 	# reverse_proxy bu72_node:9005
+# # 	reverse_proxy bu72_front:3000
+# # 	# reverse_proxy bu72_front:8080
+# # }
+
+
+
+
+
+
+# # # api.bu72.local {
+
+# # # 	 # Формируем самоподписной сертификат для работы https
+# # #      tls internal
+
+# # #    # Включаем логгирование для удобной отладки
+# # #     log {
+# # #         format json
+# # #     }
+
+# # # 	# Set this path to your site's directory.
+# # # 	root * /srv/public
+# # # 	# root * /var/www/html/public
+# # # 	# root * /var/www/html
+# # # 	# root * /public
+# # # 	# root * /srv/data-www/public
+
+# # # 	# Enable the static file server.
+# # # 	file_server
+
+# # # 	# GZIP
+# # # 	encode gzip
+
+# # #     #log
+
+# # # 	# Or serve a PHP site through php-fpm:
+# # # 	php_fastcgi bu72_back:9000
+# # # }
+
+# # api.bu72.ru {
+
+# # 	 # Формируем самоподписной сертификат для работы https
+# #     #  tls internal
+
+# #    # Включаем логгирование для удобной отладки
+# #     # log {
+# #     #     format json
+# #     # }
+
+# # 	# Set this path to your site's directory.
+# # 	root * /srv/public
+# # 	# root * /var/www/html/public
+# # 	# root * /var/www/html
+# # 	# root * /public
+# # 	# root * /srv/data-www/public
+
+# # 	# Enable the static file server.
+# # 	file_server
+
+# # 	# GZIP
+# # 	encode gzip
+
+# #     #log
+
+# # 	# Or serve a PHP site through php-fpm:
+# # 	php_fastcgi bu72_back:9000
 # # }

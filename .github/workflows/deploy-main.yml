@@ -85,7 +85,8 @@ jobs:
 
           script: |
             cd ${{ env.DIR }}            
-            docker-compose up -d              
+            make prod
+          # docker-compose up -d              
 
       - uses: appleboy/ssh-action@master
         with:
@@ -96,8 +97,10 @@ jobs:
 
           script: |
             cd ${{ env.DIR }}            
-            docker-compose exec bu72_back php composer.phar i --no-dev
-            docker-compose exec bu72_back php artisan migrate
+            docker-compose exec ttt72_laravel php composer.phar i --no-dev
+            docker-compose exec ttt72_laravel php artisan migrate
+          # docker-compose exec bu72_back php composer.phar i --no-dev
+          # docker-compose exec bu72_back php artisan migrate
 
           # docker-compose up --build  
           # docker-compose up --build -d            

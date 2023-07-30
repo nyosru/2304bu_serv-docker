@@ -1,5 +1,37 @@
 FROM php:8.2.0-fpm
 
+ARG PHPGROUP
+ARG PHPUSER
+
+WORKDIR /srv
+
+USER ${PHPUSER}
+
+RUN apt-get update -y && docker-php-ext-install pdo_mysql
+RUN apt-get update && apt-get install -y git
+RUN  apt-get install -y \
+    libzip-dev \
+    && docker-php-ext-install zip  && docker-php-ext-enable zip
+
+# # Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+
+# update 
+RUN apt-get update 
+RUN  curl -sL https://deb.nodesource.com/setup_18.x | bash 
+RUN apt-get install nodejs 
+
+RUN cd /srv \
+    chmod -R 0777 storage/
+
+EXPOSE 9000
+
+CMD ["php-fpm"]
+
+
+
+
 
 # # Arguments defined in docker-compose.yml
 # ARG user
@@ -38,12 +70,6 @@ FROM php:8.2.0-fpm
 
 
 
-
-
-
-ARG PHPGROUP
-ARG PHPUSER
-
 # ENV PHPGROUP=${PHPGROUP}
 # ENV PHPUSER=${PHPUSER}
 # ENV PHPUSER=phpcat
@@ -53,7 +79,7 @@ ARG PHPUSER
 # RUN mkdir -p /srv
 # WORKDIR /srv
 # WORKDIR /var/www/html/ttt72
-WORKDIR /srv
+
 # WORKDIR /var/www/html
 # RUN mkdir -p /srv/data-www/storage && chmod -R 755 /srv/data-www/storage
 # RUN mkdir -p /srv/storage && chmod -R 755 /srv/storages
@@ -64,41 +90,17 @@ WORKDIR /srv
 # RUN chmod -R 777 /srv/storage
 
 # RUN useradd -G www-data,root -u $uid -d /home/${PHPUSER} ${PHPUSER}
-USER ${PHPUSER}
-
-RUN apt-get update -y && docker-php-ext-install pdo_mysql
-RUN apt-get update && apt-get install -y git
-RUN  apt-get install -y \
-    libzip-dev \
-    && docker-php-ext-install zip  && docker-php-ext-enable zip
-
-# # Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # RUN php composer.phar i \
 #     php artisan migrate
 
 
-# update 
-RUN apt-get update 
-# install curl 
-# RUN apt-get install curl 
-# get install script and pass it to execute: 
-RUN  curl -sL https://deb.nodesource.com/setup_18.x | bash 
-# and install node 
-RUN apt-get install nodejs 
 # confirm that it was successful 
-RUN node -v
-# npm installs automatically 
-RUN npm -v
+# RUN node -v
+# # npm installs automatically 
+# RUN npm -v
 
 # RUN cd /srv \
     # chmod -R 0777 storage/
 # RUN cd /var/www/html/ttt72 \
 #     chmod -R 0777 storage/
-RUN cd /srv \
-    chmod -R 0777 storage/
-
-EXPOSE 9000
-
-CMD ["php-fpm"]

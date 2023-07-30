@@ -4,8 +4,14 @@ services:
 
   caddy:
     container_name: caddy
-    image: caddy:2.6.4
+    # image: caddy:2.6.4
+    # image: caddy:2.6
     restart: unless-stopped
+
+    build:
+      context: .
+      dockerfile: caddy/Dockerfile
+
     ports:
       - "80:80"
       - "443:443"
@@ -14,48 +20,65 @@ services:
     volumes:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
       - './caddy/config:/config/caddy/'
-      - '${BU_PHP_FOLDER}:/srv'
+      - caddy_certs:/root/.caddy
+      # - '${BU_PHP_FOLDER}:/srv'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      - '${TTT72_PHP_FOLDER}:/srv'
     depends_on:
-      - bu72_back
+      - ttt72_laravel
+    #   - bu72_back
+    networks:
+      - laravel
+    #   # - ttt72_net
+
+
+
+  ttt72_laravel:
+    container_name: ttt72_laravel
+
+    # depends_on:
+    #   - ttt72_mysql
     networks:
       - laravel
 
-  nuxt:
-      container_name: nuxt
-      # environment:
-      #   - APP_ROOT:/nuxt_app
-      #   # - BU_FRONT_FOLDER:./../2304bu_nuxt3
-      #   - BU_FRONT_FOLDER2:/bu72_front/code
-      volumes: 
-        # - '${BU_FRONT_FOLDER2}:${APP_ROOT}'
-        - './bu72_front/code:/nuxt_app'
-      build:
-        context: .
-        dockerfile: bu72_front/DockerfileNuxt        
-      networks:
-        - laravel
+    build:
+      context: .
+      dockerfile: ttt72_laravel/Dockerfile
 
-  bu72_back:
-    container_name: bu72_back
+    working_dir: /srv/
+
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: bu72_back/Dockerfile
+
     restart: unless-stopped
     tty: true
-    expose:
-      - 9000
+    # ports:
+    # # #   # - 80:6080    
+    #   - 9000:9000
+    #   - 81:80
+      # - "9900:80"
+    # expose:
+    # # # #   # - 9061
+    #   - 9000    
     volumes:
-      - '${BU_PHP_FOLDER}:/srv'
-    depends_on:
-      - bu72_mysql2
+      # - '${TTT72_PHP_FOLDER}:/srv'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      - '${TTT72_PHP_FOLDER}:/srv'
+    
 
-  bu72_mysql2:
-    container_name: bu72_mysql2
+  # nodejs:
+  #   image: node:alpine
+  #   networks:
+  #     - laravel
+  #   # build: .
+  #   volumes:
+  #     - .:/usr/app
+  #   tty: true
+
+  ttt72_mysql:
+    container_name: ttt72_mysql
     networks:
       - laravel
     image: mariadb:10.7.8
@@ -63,53 +86,41 @@ services:
     environment:
 
       MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
 
-      MYSQL_DATABASE: ${BU_DB_DATABASE}
-      MYSQL_USER: ${BU_DB_USERNAME}
-      MYSQL_PASSWORD: ${BU_DB_PASSWORD}
+      MYSQL_DATABASE: ${TTT72_DB_DATABASE}
+      MYSQL_USER: ${TTT72_DB_USERNAME}
+      MYSQL_PASSWORD: ${TTT72_DB_PASSWORD}
     ports:
-      - '3306:3306'
+      - 3361:3306
     volumes:
-      - '${BU_FOLDER_DB}:/var/lib/mysql'
+      - '${TTT72_FOLDER_DB}:/var/lib/mysql'
     restart: unless-stopped
 
-  #++
-  bu72_phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - bu72_mysql2:db
-    ports:
-      - 6060:80
-    environment:
-      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
+
+  # #++
+  ttt72_phpmyadmin:
     depends_on:
-      - bu72_mysql2
+      - ttt72_mysql
     networks:
       - laravel
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 6061:80
+    links:
+      - ttt72_mysql:db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
 
-# volumes:
-#   # scr:
-#   Caddyfile:
-#   # dataredis:
-#   v_mysql:
-#   data-www:
-#   www47:
-#   config:
-#   bu72_front:
 
-networks:
-  laravel: null
 
 # version: '3.8'
 
 # services:
 
 #   caddy:
-
 #     container_name: caddy
-
 #     image: caddy:2.6.4
 #     restart: unless-stopped
 #     ports:
@@ -117,143 +128,53 @@ networks:
 #       - "443:443"
 #       - "443:443/udp"
 
-#     networks:
-#       - laravel
-#     # image: 'caddy:2-alpine'
-#     # restart: unless-stopped
-#     # ports:
-#     #   - '8200:80'
-#     #   - '9001:9001'
 #     volumes:
 #       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
 #       - './caddy/config:/config/caddy/'
-#       # - './../data-www:/srv'
 #       - '${BU_PHP_FOLDER}:/srv'
-#       # - www47:/srv
 #     depends_on:
-#       # - app
 #       - bu72_back
+#     networks:
+#       - laravel
 
+#   nuxt:
+#       container_name: nuxt
+#       # environment:
+#       #   - APP_ROOT:/nuxt_app
+#       #   # - BU_FRONT_FOLDER:./../2304bu_nuxt3
+#       #   - BU_FRONT_FOLDER2:/bu72_front/code
+#       volumes: 
+#         # - '${BU_FRONT_FOLDER2}:${APP_ROOT}'
+#         - './bu72_front/code:/nuxt_app'
+#       build:
+#         context: .
+#         dockerfile: bu72_front/DockerfileNuxt        
+#       networks:
+#         - laravel
 
-#   web-app:
-#       image: node:17-alpine
-#       container_name: web-app
-#       command: [sh, -c, "npm i && npm run dev"]
-#       ports:
-#         - "3001:3000"
-#       working_dir: '/webapp'
-#       tty: true
-#       volumes:
-#         - './bu72_front/code:/webapp/'
-#       environment:
-#         HOST: 0.0.0.0
-#         PORT: 3000
-
-
-
-
-#   # app:
 #   bu72_back:
-#     # container_name: app
 #     container_name: bu72_back
-
+#     environment:
+#       - PHPGROUP=www-data
+#       - PHPUSER=www-data
 #     networks:
 #       - laravel
 #     build:
 #       context: .
 #       dockerfile: bu72_back/Dockerfile
-#       # args:
-#       #   - PHPUSER=${PHPUSER:-www-data}
-#       #   - PHPGROUP=${PHPGROUP:-www-data}
-#       # environment:
-#       #   DB_HOST: mysql
 #     restart: unless-stopped
 #     tty: true
 #     expose:
 #       - 9000
-#       # - 9001
 #     volumes:
-#       # - './data-www:/srv'
 #       - '${BU_PHP_FOLDER}:/srv'
-#       # - '${BU_PHP_FOLDER}:/var/www/html'
-#       # - www47:/srv
 #     depends_on:
 #       - bu72_mysql2
-#       # - redis_db
-#       # - mailhog
-
-
-#   # bu72_front:
-
-#   #   container_name: bu72_front
-
-#   #   build:
-#   #     context: .
-#   #     dockerfile: bu72_front/Dockerfile
-#   #     # args:
-#   #     #   - PHPUSER=${PHPUSER:-www-data}
-#   #     #   - PHPGROUP=${PHPGROUP:-www-data}
-#   #     # environment:
-#   #     #   DB_HOST: mysql
-#   #   # command:
-#   #   #   - /npm install
-#   #   #   - /npm run build
-#   #   #   - /node .output/server/index.mjs   
-#   #   # restart: unless-stopped
-#   #   # tty: true
-#   #   # expose:
-#   #   # #   # - 9000
-#   #   # #   - 9005
-#   #   # #   # - 9001
-#   #   #   # - 3000
-#   #   #   - 8080
-#   #   # volumes:
-#   #   # #   # - './data-www:/srv'
-#   #   # #   - '${BU_PHP_FOLDER}:/srv'
-#   #   # #   # - www47:/srv
-#   #   #   # - '${BU_FRONT_FOLDER}:/app'
-#   #   #   - '${BU_FRONT_FOLDER}:/usr/src/app'
-#   #   # ports:
-#   #   # - 8080:8080
-#   #   # working_dir: /var/www/html/avantage
-#   #   # volumes:
-#   #   # # #   # - ./avantage:/var/www/html/avantage
-#   #   # # #   # - ${BU_FRONT_FOLDER}:/var/www/html/avantage
-#   #   # # #   # - '${BU_FRONT_FOLDER}:/usr/src/app'
-#   #   # # #   # - '${BU_FRONT_FOLDER}:/app'
-#   #   # # #   - '/bu72_front/code:/usr/src/app'
-#   #   # #   - /bu72_front/code:/usr/src/app
-#   #   #   - './bu72_front/code:/app'
-#   #   # user: node
-
-#   #   # payloadExtraction: false
-
-#   #   # command: sh -c "node .output/server/index.mjs"
-#   #   # stdin_open: true
-
-#   #   # depends_on:
-#   #   #   # - mysql2
-#   #   #   # - bu72_mysql2
-#   #   #   # - redis_db
-#   #   #   # - mailhog
-#   #   #   - bu72_back
-#   #   networks:
-#   #     - laravel
-
-
-
 
 #   bu72_mysql2:
-
-#     # build:
-#     #   context: .
-#     #   dockerfile: Mysql.Dockerfile
-
-#     # container_name: mysql2
 #     container_name: bu72_mysql2
 #     networks:
 #       - laravel
-#     # image: yobasystems/alpine-mariadb
 #     image: mariadb:10.7.8
 
 #     environment:
@@ -264,15 +185,9 @@ networks:
 #       MYSQL_DATABASE: ${BU_DB_DATABASE}
 #       MYSQL_USER: ${BU_DB_USERNAME}
 #       MYSQL_PASSWORD: ${BU_DB_PASSWORD}
-
-#     # expose:
-#     #   - '3306'
 #     ports:
-#       # - '3600:3306'
 #       - '3306:3306'
 #     volumes:
-#       # - './data-mysql:/var/lib/mysql'
-#       # - v_mysql:/var/lib/mysql
 #       - '${BU_FOLDER_DB}:/var/lib/mysql'
 #     restart: unless-stopped
 
@@ -280,7 +195,6 @@ networks:
 #   bu72_phpmyadmin:
 #     image: phpmyadmin/phpmyadmin
 #     links:
-#       # - mysql2:db
 #       - bu72_mysql2:db
 #     ports:
 #       - 6060:80
@@ -288,77 +202,280 @@ networks:
 #       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
 #       UPLOAD_LIMIT: 300M
 #     depends_on:
-#       # - mysql2
 #       - bu72_mysql2
 #     networks:
 #       - laravel
 
+# # volumes:
+# #   # scr:
+# #   Caddyfile:
+# #   # dataredis:
+# #   v_mysql:
+# #   data-www:
+# #   www47:
+# #   config:
+# #   bu72_front:
 
-#   # redis:
-#   #     container_name: redis
-#   #     image: redis:latest
-#   #     command: redis-server --appendonly yes --replica-read-only no
-#   #     ports:
-#   #         - "6379:6379"
-#   #     volumes:
-#   #         - dataredis:/var/lib/redis
-#   #     environment:
-#   #         - REDIS_REPLICATION_MODE=master
-#   #     restart: unless-stopped
-#   #     networks:
-#   #         - laravel
+# networks:
+#   laravel: null
+
+# # version: '3.8'
+
+# # services:
+
+# #   caddy:
+
+# #     container_name: caddy
+
+# #     image: caddy:2.6.4
+# #     restart: unless-stopped
+# #     ports:
+# #       - "80:80"
+# #       - "443:443"
+# #       - "443:443/udp"
+
+# #     networks:
+# #       - laravel
+# #     # image: 'caddy:2-alpine'
+# #     # restart: unless-stopped
+# #     # ports:
+# #     #   - '8200:80'
+# #     #   - '9001:9001'
+# #     volumes:
+# #       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
+# #       - './caddy/config:/config/caddy/'
+# #       # - './../data-www:/srv'
+# #       - '${BU_PHP_FOLDER}:/srv'
+# #       # - www47:/srv
+# #     depends_on:
+# #       # - app
+# #       - bu72_back
+
+
+# #   web-app:
+# #       image: node:17-alpine
+# #       container_name: web-app
+# #       command: [sh, -c, "npm i && npm run dev"]
+# #       ports:
+# #         - "3001:3000"
+# #       working_dir: '/webapp'
+# #       tty: true
+# #       volumes:
+# #         - './bu72_front/code:/webapp/'
+# #       environment:
+# #         HOST: 0.0.0.0
+# #         PORT: 3000
 
 
 
-# volumes:
-#   # scr:
-#   Caddyfile:
-#   # dataredis:
-#   v_mysql:
-#   data-www:
-#   www47:
-#   config:
-#   bu72_front:
+
+# #   # app:
+# #   bu72_back:
+# #     # container_name: app
+# #     container_name: bu72_back
+
+# #     networks:
+# #       - laravel
+# #     build:
+# #       context: .
+# #       dockerfile: bu72_back/Dockerfile
+# #       # args:
+# #       #   - PHPUSER=${PHPUSER:-www-data}
+# #       #   - PHPGROUP=${PHPGROUP:-www-data}
+# #       # environment:
+# #       #   DB_HOST: mysql
+# #     restart: unless-stopped
+# #     tty: true
+# #     expose:
+# #       - 9000
+# #       # - 9001
+# #     volumes:
+# #       # - './data-www:/srv'
+# #       - '${BU_PHP_FOLDER}:/srv'
+# #       # - '${BU_PHP_FOLDER}:/var/www/html'
+# #       # - www47:/srv
+# #     depends_on:
+# #       - bu72_mysql2
+# #       # - redis_db
+# #       # - mailhog
+
+
+# #   # bu72_front:
+
+# #   #   container_name: bu72_front
+
+# #   #   build:
+# #   #     context: .
+# #   #     dockerfile: bu72_front/Dockerfile
+# #   #     # args:
+# #   #     #   - PHPUSER=${PHPUSER:-www-data}
+# #   #     #   - PHPGROUP=${PHPGROUP:-www-data}
+# #   #     # environment:
+# #   #     #   DB_HOST: mysql
+# #   #   # command:
+# #   #   #   - /npm install
+# #   #   #   - /npm run build
+# #   #   #   - /node .output/server/index.mjs   
+# #   #   # restart: unless-stopped
+# #   #   # tty: true
+# #   #   # expose:
+# #   #   # #   # - 9000
+# #   #   # #   - 9005
+# #   #   # #   # - 9001
+# #   #   #   # - 3000
+# #   #   #   - 8080
+# #   #   # volumes:
+# #   #   # #   # - './data-www:/srv'
+# #   #   # #   - '${BU_PHP_FOLDER}:/srv'
+# #   #   # #   # - www47:/srv
+# #   #   #   # - '${BU_FRONT_FOLDER}:/app'
+# #   #   #   - '${BU_FRONT_FOLDER}:/usr/src/app'
+# #   #   # ports:
+# #   #   # - 8080:8080
+# #   #   # working_dir: /var/www/html/avantage
+# #   #   # volumes:
+# #   #   # # #   # - ./avantage:/var/www/html/avantage
+# #   #   # # #   # - ${BU_FRONT_FOLDER}:/var/www/html/avantage
+# #   #   # # #   # - '${BU_FRONT_FOLDER}:/usr/src/app'
+# #   #   # # #   # - '${BU_FRONT_FOLDER}:/app'
+# #   #   # # #   - '/bu72_front/code:/usr/src/app'
+# #   #   # #   - /bu72_front/code:/usr/src/app
+# #   #   #   - './bu72_front/code:/app'
+# #   #   # user: node
+
+# #   #   # payloadExtraction: false
+
+# #   #   # command: sh -c "node .output/server/index.mjs"
+# #   #   # stdin_open: true
+
+# #   #   # depends_on:
+# #   #   #   # - mysql2
+# #   #   #   # - bu72_mysql2
+# #   #   #   # - redis_db
+# #   #   #   # - mailhog
+# #   #   #   - bu72_back
+# #   #   networks:
+# #   #     - laravel
 
 
 
-#   # redis_db:
-#   #   container_name: redis_db
-#   #   image: docker.io/bitnami/redis:6.2
-#   #   environment:
-#   #     - "ALLOW_EMPTY_PASSWORD=yes"
-#   #     - "REDIS_PORT_NUMBER=6379"
-#   #   expose: 
-#   #     - 6379
-#   #   # ports:
-#   #   #   - '6379:6379'
-#   #   volumes:
-#   #     - './data-redis:/bitnami/redis/datum'
-#   #   networks:
-#   #     - laravel
 
-#   # mailhog:
-#   #   container_name: mailhog
-#   #   image: mailhog/mailhog:latest
-#   #   ports:
-#   #     - "1025:1025"
-#   #     - "8025:8025"
-#   #   networks:
-#   #     - laravel
+# #   bu72_mysql2:
 
-#   # composer:
-#   #   build:
-#   #     context: .
-#   #     dockerfile: composer.dockerfile
-#   #     args:
-#   #       - PHPUSER=${PHPUSER:-www-data}
-#   #       - PHPGROUP=${PHPGROUP:-www-data}
-#   #   container_name: composer
-#   #   volumes:
-#   #     - ./src:/srv
-#   #   depends_on:
-#   #     - app
-#   #   user: ${PHPUSER:-www-data}
-#   #   entrypoint: [ 'composer', '--ignore-platform-reqs' ]
-#   #   networks:
-#   #     - laravel
+# #     # build:
+# #     #   context: .
+# #     #   dockerfile: Mysql.Dockerfile
+
+# #     # container_name: mysql2
+# #     container_name: bu72_mysql2
+# #     networks:
+# #       - laravel
+# #     # image: yobasystems/alpine-mariadb
+# #     image: mariadb:10.7.8
+
+# #     environment:
+
+# #       MYSQL_ROOT_HOST: "%"
+# #       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+
+# #       MYSQL_DATABASE: ${BU_DB_DATABASE}
+# #       MYSQL_USER: ${BU_DB_USERNAME}
+# #       MYSQL_PASSWORD: ${BU_DB_PASSWORD}
+
+# #     # expose:
+# #     #   - '3306'
+# #     ports:
+# #       # - '3600:3306'
+# #       - '3306:3306'
+# #     volumes:
+# #       # - './data-mysql:/var/lib/mysql'
+# #       # - v_mysql:/var/lib/mysql
+# #       - '${BU_FOLDER_DB}:/var/lib/mysql'
+# #     restart: unless-stopped
+
+# #   #++
+# #   bu72_phpmyadmin:
+# #     image: phpmyadmin/phpmyadmin
+# #     links:
+# #       # - mysql2:db
+# #       - bu72_mysql2:db
+# #     ports:
+# #       - 6060:80
+# #     environment:
+# #       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+# #       UPLOAD_LIMIT: 300M
+# #     depends_on:
+# #       # - mysql2
+# #       - bu72_mysql2
+# #     networks:
+# #       - laravel
+
+
+# #   # redis:
+# #   #     container_name: redis
+# #   #     image: redis:latest
+# #   #     command: redis-server --appendonly yes --replica-read-only no
+# #   #     ports:
+# #   #         - "6379:6379"
+# #   #     volumes:
+# #   #         - dataredis:/var/lib/redis
+# #   #     environment:
+# #   #         - REDIS_REPLICATION_MODE=master
+# #   #     restart: unless-stopped
+# #   #     networks:
+# #   #         - laravel
+
+
+
+# # volumes:
+# #   # scr:
+# #   Caddyfile:
+# #   # dataredis:
+# #   v_mysql:
+# #   data-www:
+# #   www47:
+# #   config:
+# #   bu72_front:
+
+
+
+# #   # redis_db:
+# #   #   container_name: redis_db
+# #   #   image: docker.io/bitnami/redis:6.2
+# #   #   environment:
+# #   #     - "ALLOW_EMPTY_PASSWORD=yes"
+# #   #     - "REDIS_PORT_NUMBER=6379"
+# #   #   expose: 
+# #   #     - 6379
+# #   #   # ports:
+# #   #   #   - '6379:6379'
+# #   #   volumes:
+# #   #     - './data-redis:/bitnami/redis/datum'
+# #   #   networks:
+# #   #     - laravel
+
+# #   # mailhog:
+# #   #   container_name: mailhog
+# #   #   image: mailhog/mailhog:latest
+# #   #   ports:
+# #   #     - "1025:1025"
+# #   #     - "8025:8025"
+# #   #   networks:
+# #   #     - laravel
+
+# #   # composer:
+# #   #   build:
+# #   #     context: .
+# #   #     dockerfile: composer.dockerfile
+# #   #     args:
+# #   #       - PHPUSER=${PHPUSER:-www-data}
+# #   #       - PHPGROUP=${PHPGROUP:-www-data}
+# #   #   container_name: composer
+# #   #   volumes:
+# #   #     - ./src:/srv
+# #   #   depends_on:
+# #   #     - app
+# #   #   user: ${PHPUSER:-www-data}
+# #   #   entrypoint: [ 'composer', '--ignore-platform-reqs' ]
+# #   #   networks:
+# #   #     - laravel

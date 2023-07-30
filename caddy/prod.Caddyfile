@@ -2,7 +2,7 @@ ttt72.ru, ttt72.dev.php-cat.com {
 	
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
-    tls 1@php-cat.com
+    tls support@php-cat.com
 
     root * /srv/public
     encode gzip
@@ -20,6 +20,17 @@ ttt72.local  {
     php_fastcgi ttt72_laravel:9000
     file_server
 }
+
+# bu72.ru {
+	
+# 	# Формируем самоподписной сертификат для работы https
+# 	tls internal    
+
+#     root * /srv/public
+#     encode gzip
+#     php_fastcgi ttt72_laravel:9000
+#     file_server
+# }
 
 # bu72.ru {
 

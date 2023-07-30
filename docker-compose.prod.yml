@@ -114,7 +114,8 @@ services:
       UPLOAD_LIMIT: 300M
 
 
-
+volumes:
+  caddy_certs:
 
 networks:
   laravel: null

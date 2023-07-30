@@ -115,6 +115,14 @@ services:
 
 
 
+
+networks:
+  laravel: null
+
+
+
+
+
 # version: '3.8'
 
 # services:

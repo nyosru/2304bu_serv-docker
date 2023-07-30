@@ -45,7 +45,7 @@ services:
       context: .
       dockerfile: ttt72_laravel/Dockerfile
 
-    working_dir: /srv
+    working_dir: /srv/
 
     environment:
       - PHPGROUP=www-data
@@ -53,7 +53,7 @@ services:
 
     restart: unless-stopped
     tty: true
-    
+
     # ports:
     # # #   # - 80:6080    
     #   - 9000:9000

@@ -320,21 +320,6 @@ networks:
 #   config:
 #   bu72_front:
 
-# networks:
-#   laravel: null
-
-#   # npm:
-#   #   image: node:13.7
-#   #   container_name: npm
-#   #   volumes:
-#   #     - './src:/srv'
-#   #   ports:
-#   #     - "4000:3000"
-#   #     - "4001:3001"
-#   #   working_dir: /srv
-#   #   entrypoint: [ 'npm' ]
-#   #   networks:
-#   #     - laravel
 
 
 #   # redis_db:

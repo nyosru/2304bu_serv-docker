@@ -32,5 +32,6 @@ start:
 	# docker-compose exec bu72_back composer i
 	# docker-compose exec bu72_back php artisan migrate
 
+	docker-compose exec ttt72_laravel ls 
 	# docker-compose exec ttt72_laravel php composer.phar i
-	docker-compose exec ttt72_laravel php artisan migrate
+	# docker-compose exec ttt72_laravel php artisan migrate

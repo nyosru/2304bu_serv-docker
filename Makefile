@@ -19,8 +19,10 @@ dev:
 	docker-compose exec ttt72_laravel php artisan migrate
 	
 prod:
+	
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
+
 	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 
 	make start

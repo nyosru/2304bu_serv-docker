@@ -21,7 +21,6 @@ RUN  apt-get install -y \
 # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-
 # update 
 RUN apt-get update 
 RUN  curl -sL https://deb.nodesource.com/setup_18.x | bash 

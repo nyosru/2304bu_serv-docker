@@ -1,0 +1,79 @@
+# localhost{
+# 	respond "Hello, world!"
+# }
+
+# bu72.local {
+
+# 	 # Формируем самоподписной сертификат для работы https
+#      tls internal
+# 	 # tls 1@php-cat.com
+
+#    # Включаем логгирование для удобной отладки
+#     log {
+#         format json
+#     }
+
+# 	file_server
+# 	reverse_proxy nuxt:3000
+
+# }
+
+# api.bu72.local {
+
+# 	# Формируем самоподписной сертификат для работы https
+# 	tls internal
+
+#    # Включаем логгирование для удобной отладки
+#     log {
+#         format json
+#     }
+
+# 	# Set this path to your site's directory.
+# 	root * /srv/public
+
+# 	# Enable the static file server.
+# 	file_server
+
+# 	# GZIP
+# 	encode gzip
+
+#     #log
+
+# 	# Or serve a PHP site through php-fpm:
+# 	php_fastcgi bu72_back:9000
+# }
+
+
+
+ttt72.local {
+
+# 	# Формируем самоподписной сертификат для работы https
+# 	tls internal
+
+# 	auto_https off
+# 	respond "Hello, world!"
+# }
+
+# ttt72.local2 {
+
+
+	 # Формируем самоподписной сертификат для работы https
+     tls internal
+	 # tls 1@php-cat.com
+
+   # Включаем логгирование для удобной отладки
+    log {
+        format json
+    }
+
+	gzip
+	
+	# root * /srv/public
+	root * /public
+	# root * /var/www/html/ttt72s
+	# root * /var/www/html/ttt72/public
+
+	file_server
+	reverse_proxy ttt72_laravel:9061
+
+}

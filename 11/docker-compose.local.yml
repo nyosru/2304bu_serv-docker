@@ -4,14 +4,8 @@ services:
 
   caddy:
     container_name: caddy
-    # image: caddy:2.6.4
-    # image: caddy:2.6
+    image: caddy:2.6.4
     restart: unless-stopped
-
-    build:
-      context: .
-      dockerfile: caddy/Dockerfile
-
     ports:
       - "80:80"
       - "443:443"
@@ -20,103 +14,13 @@ services:
     volumes:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
       - './caddy/config:/config/caddy/'
-      - caddy_certs:/root/.caddy
       # - '${BU_PHP_FOLDER}:/srv'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${TTT72_PHP_FOLDER}:/srv'
-    depends_on:
-      - ttt72_laravel
+      - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+    # depends_on:
     #   - bu72_back
     networks:
       - laravel
-    #   # - ttt72_net
-
-
-
-  ttt72_laravel:
-    container_name: ttt72_laravel
-
-    # depends_on:
-    #   - ttt72_mysql
-    networks:
-      - laravel
-
-    build:
-      context: .
-      dockerfile: ttt72_laravel/Dockerfile
-
-    working_dir: /srv/
-
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-
-    restart: unless-stopped
-    tty: true
-    # ports:
-    # # #   # - 80:6080    
-    #   - 9000:9000
-    #   - 81:80
-      # - "9900:80"
-    # expose:
-    # # # #   # - 9061
-    #   - 9000    
-    volumes:
-      # - '${TTT72_PHP_FOLDER}:/srv'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${TTT72_PHP_FOLDER}:/srv'
-    
-
-  # nodejs:
-  #   image: node:alpine
-  #   networks:
-  #     - laravel
-  #   # build: .
-  #   volumes:
-  #     - .:/usr/app
-  #   tty: true
-
-  ttt72_mysql:
-    container_name: ttt72_mysql
-    networks:
-      - laravel
-    image: mariadb:10.7.8
-
-    environment:
-
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
-
-      MYSQL_DATABASE: ${TTT72_DB_DATABASE}
-      MYSQL_USER: ${TTT72_DB_USERNAME}
-      MYSQL_PASSWORD: ${TTT72_DB_PASSWORD}
-    ports:
-      - 3361:3306
-    volumes:
-      - '${TTT72_FOLDER_DB}:/var/lib/mysql'
-    restart: unless-stopped
-
-
-  # #++
-  ttt72_phpmyadmin:
-    depends_on:
-      - ttt72_mysql
-    networks:
-      - laravel
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - 6061:80
-    links:
-      - ttt72_mysql:db
-    environment:
-      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-
-
-
-
-
+      # - ttt72_net
 
   # nuxt:
   #     container_name: nuxt
@@ -234,6 +138,63 @@ services:
 
 
 
+  # ttt72_mysql:
+  #   container_name: ttt72_mysql
+  #   networks:
+  #     - laravel
+  #   image: mariadb:10.7.8
+
+  #   environment:
+
+  #     MYSQL_ROOT_HOST: "%"
+  #     MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
+
+  #     MYSQL_DATABASE: ${TTT72_DB_DATABASE}
+  #     MYSQL_USER: ${TTT72_DB_USERNAME}
+  #     MYSQL_PASSWORD: ${TTT72_DB_PASSWORD}
+  #   ports:
+  #     - 3361:3306
+  #   volumes:
+  #     - '${TTT72_FOLDER_DB}:/var/lib/mysql'
+  #   restart: unless-stopped
+
+
+  # ttt72_laravel:
+  #   container_name: ttt72_laravel
+
+  #   # depends_on:
+  #   #   - ttt72_mysql
+  #   networks:
+  #     - laravel
+
+  #   environment:
+  #     - PHPGROUP=www-data
+  #     - PHPUSER=www-data
+  #   build:
+  #     context: .
+  #     dockerfile: ttt72_laravel/Dockerfile
+  #   restart: unless-stopped
+  #   tty: true
+  #   expose:
+  #     - 9061
+  #   volumes:
+  #     # - '${TTT72_PHP_FOLDER}:/srv'
+  #     - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+
+  # #++
+  # ttt72_phpmyadmin:
+  #   depends_on:
+  #     - ttt72_mysql
+  #   networks:
+  #     - laravel
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #     - 6061:80
+  #   links:
+  #     - ttt72_mysql:db
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
+  #     UPLOAD_LIMIT: 300M
 
 
 
@@ -242,8 +203,10 @@ services:
 
 
 
-volumes:
-  caddy_certs:
+
+
+
+# volumes:
 #   # scr:
 #   Caddyfile:
 #   # dataredis:
@@ -254,6 +217,5 @@ volumes:
 #   bu72_front:
 
 networks:
-  laravel: 
-    driver: bridge
+  laravel: null
   # ttt72_net: null

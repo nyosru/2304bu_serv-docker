@@ -1,7 +1,7 @@
 FROM php:8.2.0-fpm
 
-# ARG PHPGROUP
-# ARG PHPUSER
+ARG PHPGROUP
+ARG PHPUSER
 
 # ENV PHPGROUP=${PHPGROUP}
 # ENV PHPUSER=${PHPUSER}
@@ -9,7 +9,7 @@ FROM php:8.2.0-fpm
 
 WORKDIR /srv
 
-# USER ${PHPUSER}
+USER ${PHPUSER}
 
 
 RUN apt-get update -y && docker-php-ext-install pdo_mysql

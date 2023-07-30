@@ -88,26 +88,26 @@ jobs:
             make prod
           # docker-compose up -d              
 
-      - uses: appleboy/ssh-action@master
-        with:
+      # - uses: appleboy/ssh-action@master
+      #   with:
 
-          host: ${{ env.VPS_IP }}
-          username: ${{ env.VPS_USERNAME }}
-          key: ${{ secrets.DEPLOY_KEY }}
+      #     host: ${{ env.VPS_IP }}
+      #     username: ${{ env.VPS_USERNAME }}
+      #     key: ${{ secrets.DEPLOY_KEY }}
 
-          script: |
-            cd ${{ env.DIR }}            
-            docker-compose exec ttt72_laravel php composer.phar i --no-dev
-            docker-compose exec ttt72_laravel php artisan migrate
-          # docker-compose exec bu72_back php composer.phar i --no-dev
-          # docker-compose exec bu72_back php artisan migrate
+      #     script: |
+      #       cd ${{ env.DIR }}            
+      #       docker-compose exec ttt72_laravel php composer.phar i --no-dev
+      #       docker-compose exec ttt72_laravel php artisan migrate
+      #     # docker-compose exec bu72_back php composer.phar i --no-dev
+      #     # docker-compose exec bu72_back php artisan migrate
 
-          # docker-compose up --build  
-          # docker-compose up --build -d            
+      #     # docker-compose up --build  
+      #     # docker-compose up --build -d            
 
-          # make prod
-          # /opt/php74/bin/php composer.phar i
-          # /opt/php74/bin/php artisan migrate
+      #     # make prod
+      #     # /opt/php74/bin/php composer.phar i
+      #     # /opt/php74/bin/php artisan migrate
 
 #   deploy_npm:
 #     runs-on: ubuntu-latest

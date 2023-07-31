@@ -1,7 +1,7 @@
 
-# ттт72.рф
-# xn--72-qmcaa.xn--p1ai
-ттт72.рф{
+
+
+ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru{
 	
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
@@ -13,7 +13,9 @@
     file_server
 }
 
-ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru{
+# ттт72.рф
+# xn--72-qmcaa.xn--p1ai
+ттт72.рф{
 	
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

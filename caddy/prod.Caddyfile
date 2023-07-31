@@ -1,4 +1,17 @@
-ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru, ттт72.рф, xn--72-qmcaa.xn--p1ai {
+# ттт72.рф
+xn--72-qmcaa.xn--p1ai {
+	
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+
+    root * /srv/public
+    encode gzip
+    php_fastcgi ttt72_laravel:9000
+    file_server
+}
+
+ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru{
 	
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

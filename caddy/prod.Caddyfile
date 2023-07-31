@@ -3,8 +3,8 @@
 xn--72-qmcaa.xn--p1ai, 2.bu72.ru, 3.bu72.ru, 2.ttt72.ru, ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru {
 	
 	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@uralweb.info
+	tls internal
+    # tls support@uralweb.info
     
     root /storage /srv/storage/public
     root * /srv/public

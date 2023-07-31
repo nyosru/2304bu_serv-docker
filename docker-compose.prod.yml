@@ -24,6 +24,7 @@ services:
       - './caddy/certs:/data/caddy/locks/'
       - './caddy/certs_lib:/var/lib/caddy/'
       - './caddy/share:/local/share/caddy'
+      - './caddy/share2:/.local/share/caddy'
       # - '${BU_PHP_FOLDER}:/srv'
       # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
       - '${TTT72_PHP_FOLDER}:/srv'

@@ -32,7 +32,8 @@ start:
 	# docker stop $(docker ps -a -q)
 	# docker rm $(docker ps -a -q)
 
-	docker-compose up --build -d --remove-orphans
+	# docker-compose up --build -d --remove-orphans
+	docker-compose up -d
 
 	# docker-compose exec bu72_back composer i
 	# docker-compose exec bu72_back php artisan migrate

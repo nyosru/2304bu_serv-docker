@@ -30,6 +30,7 @@ prod:
 start0:
 
 	docker-compose exec ttt72_laravel php artisan storage:link
+	docker-compose up -d
 
 start:
 
@@ -37,7 +38,7 @@ start:
 	# docker rm $(docker ps -a -q)
 
 	# docker-compose up --build -d --remove-orphans
-	docker-compose up -d
+	# docker-compose up -d
 
 	# docker-compose exec bu72_back composer i
 	# docker-compose exec bu72_back php artisan migrate
@@ -45,5 +46,7 @@ start:
 	# docker-compose exec ttt72_laravel ls 
 
 	# docker-compose exec caddy restart caddy
+	
 	docker-compose exec ttt72_laravel php composer.phar i --no-dev
 	docker-compose exec ttt72_laravel php artisan migrate
+	docker exec -w /etc/caddy 326d5adebb21 caddy reload

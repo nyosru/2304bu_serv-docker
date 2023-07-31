@@ -47,6 +47,8 @@ start:
 
 	# docker-compose exec caddy restart caddy
 
-	docker-compose exec ttt72_laravel php composer.phar i --no-dev
-	docker-compose exec ttt72_laravel php artisan migrate
+	# docker-compose exec ttt72_laravel php composer.phar i --no-dev
+	docker exec ttt72_laravel php composer.phar i --no-dev
+	# docker-compose exec ttt72_laravel php artisan migrate
+	docker exec ttt72_laravel php artisan migrate
 	docker exec -w /etc/caddy caddy caddy reload

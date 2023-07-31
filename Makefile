@@ -27,6 +27,10 @@ prod:
 
 	make start
 
+start0:
+
+	docker-compose exec ttt72_laravel php artisan storage:link
+
 start:
 
 	# docker stop $(docker ps -a -q)
@@ -39,6 +43,6 @@ start:
 	# docker-compose exec bu72_back php artisan migrate
 
 	# docker-compose exec ttt72_laravel ls 
+
 	docker-compose exec ttt72_laravel php composer.phar i
 	docker-compose exec ttt72_laravel php artisan migrate
-	docker-compose exec ttt72_laravel php artisan storage:link

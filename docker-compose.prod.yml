@@ -29,7 +29,7 @@ services:
       - './caddy/share3:/local/share/'
       - './caddy/share4:/.local/share/'
       - './caddy/share5:/usr/share/caddy'
-      - './caddy/share6:/'
+      - './caddy/share6:/config/'
       # - '${BU_PHP_FOLDER}:/srv'
       # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
       - '${TTT72_PHP_FOLDER}:/srv'

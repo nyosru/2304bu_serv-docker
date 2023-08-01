@@ -7,6 +7,7 @@ services:
     # image: caddy:2.6.4
     # image: caddy:2.6
     restart: unless-stopped
+    # restart: always
 
     build:
       context: .

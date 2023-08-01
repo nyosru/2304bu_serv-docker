@@ -127,8 +127,192 @@ services:
       UPLOAD_LIMIT: 300M
 
 
-volumes:
-  caddy_certs:
+
+
+
+
+  bu72_mysql2:
+    container_name: bu72_mysql2
+    networks:
+      - laravel
+    image: mariadb:10.7.8
+
+    environment:
+
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+
+      MYSQL_DATABASE: ${BU_DB_DATABASE}
+      MYSQL_USER: ${BU_DB_USERNAME}
+      MYSQL_PASSWORD: ${BU_DB_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - '${BU_FOLDER_DB}:/var/lib/mysql'
+    restart: unless-stopped
+
+  #++
+  bu72_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - bu72_mysql2:db
+    ports:
+      - 6060:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - bu72_mysql2
+    networks:
+      - laravel
+
+
+
+
+
+# #   # app:
+  bu72_back:
+# #     # container_name: app
+    container_name: bu72_back
+
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: bu72_back/Dockerfile
+# #       # args:
+# #       #   - PHPUSER=${PHPUSER:-www-data}
+# #       #   - PHPGROUP=${PHPGROUP:-www-data}
+# #       # environment:
+# #       #   DB_HOST: mysql
+# #     restart: unless-stopped
+# #     tty: true
+# #     expose:
+# #       - 9000
+# #       # - 9001
+# #     volumes:
+# #       # - './data-www:/srv'
+# #       - '${BU_PHP_FOLDER}:/srv'
+# #       # - '${BU_PHP_FOLDER}:/var/www/html'
+# #       # - www47:/srv
+# #     depends_on:
+# #       - bu72_mysql2
+# #       # - redis_db
+# #       # - mailhog
+
+
+
+  # ttt72_laravel:
+    # container_name: ttt72_laravel
+
+    # depends_on:
+    #   - ttt72_mysql
+    # networks:
+    #   - laravel
+
+    # build:
+    #   context: .
+    #   dockerfile: ttt72_laravel/Dockerfile
+
+    working_dir: /srv_bu_api/
+
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+
+    restart: unless-stopped
+    tty: true
+
+    # ports:
+    # # #   # - 80:6080    
+    #   - 9000:9000
+    #   - 81:80
+      # - "9900:80"
+    expose:
+      - 9010    
+    # # # #   # - 9061
+      
+    volumes:
+      # - '${TTT72_PHP_FOLDER}:/srv'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      # - '${TTT72_PHP_FOLDER}:/srv'
+      - '../2304bu/:/srv_bu_api/'
+    
+
+
+
+
+
+
+
+# #   # bu72_front:
+
+# #   #   container_name: bu72_front
+
+# #   #   build:
+# #   #     context: .
+# #   #     dockerfile: bu72_front/Dockerfile
+# #   #     # args:
+# #   #     #   - PHPUSER=${PHPUSER:-www-data}
+# #   #     #   - PHPGROUP=${PHPGROUP:-www-data}
+# #   #     # environment:
+# #   #     #   DB_HOST: mysql
+# #   #   # command:
+# #   #   #   - /npm install
+# #   #   #   - /npm run build
+# #   #   #   - /node .output/server/index.mjs   
+# #   #   # restart: unless-stopped
+# #   #   # tty: true
+# #   #   # expose:
+# #   #   # #   # - 9000
+# #   #   # #   - 9005
+# #   #   # #   # - 9001
+# #   #   #   # - 3000
+# #   #   #   - 8080
+# #   #   # volumes:
+# #   #   # #   # - './data-www:/srv'
+# #   #   # #   - '${BU_PHP_FOLDER}:/srv'
+# #   #   # #   # - www47:/srv
+# #   #   #   # - '${BU_FRONT_FOLDER}:/app'
+# #   #   #   - '${BU_FRONT_FOLDER}:/usr/src/app'
+# #   #   # ports:
+# #   #   # - 8080:8080
+# #   #   # working_dir: /var/www/html/avantage
+# #   #   # volumes:
+# #   #   # # #   # - ./avantage:/var/www/html/avantage
+# #   #   # # #   # - ${BU_FRONT_FOLDER}:/var/www/html/avantage
+# #   #   # # #   # - '${BU_FRONT_FOLDER}:/usr/src/app'
+# #   #   # # #   # - '${BU_FRONT_FOLDER}:/app'
+# #   #   # # #   - '/bu72_front/code:/usr/src/app'
+# #   #   # #   - /bu72_front/code:/usr/src/app
+# #   #   #   - './bu72_front/code:/app'
+# #   #   # user: node
+
+# #   #   # payloadExtraction: false
+
+# #   #   # command: sh -c "node .output/server/index.mjs"
+# #   #   # stdin_open: true
+
+# #   #   # depends_on:
+# #   #   #   # - mysql2
+# #   #   #   # - bu72_mysql2
+# #   #   #   # - redis_db
+# #   #   #   # - mailhog
+# #   #   #   - bu72_back
+# #   #   networks:
+# #   #     - laravel
+
+
+
+
+
+
+
+
+
+# volumes:
+  # caddy_certs:
 
 networks:
   laravel: null
@@ -193,40 +377,6 @@ networks:
 #     depends_on:
 #       - bu72_mysql2
 
-#   bu72_mysql2:
-#     container_name: bu72_mysql2
-#     networks:
-#       - laravel
-#     image: mariadb:10.7.8
-
-#     environment:
-
-#       MYSQL_ROOT_HOST: "%"
-#       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
-
-#       MYSQL_DATABASE: ${BU_DB_DATABASE}
-#       MYSQL_USER: ${BU_DB_USERNAME}
-#       MYSQL_PASSWORD: ${BU_DB_PASSWORD}
-#     ports:
-#       - '3306:3306'
-#     volumes:
-#       - '${BU_FOLDER_DB}:/var/lib/mysql'
-#     restart: unless-stopped
-
-#   #++
-#   bu72_phpmyadmin:
-#     image: phpmyadmin/phpmyadmin
-#     links:
-#       - bu72_mysql2:db
-#     ports:
-#       - 6060:80
-#     environment:
-#       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
-#       UPLOAD_LIMIT: 300M
-#     depends_on:
-#       - bu72_mysql2
-#     networks:
-#       - laravel
 
 # # volumes:
 # #   # scr:

@@ -12,10 +12,75 @@ ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru {
 }
 
 # # ттт72.рф
-# # xn--72-qmcaa.xn--p1ai
 xn--72-qmcaa.xn--p1ai {
 	redir https://ttt72.ru
 }
+
+ttt72.local  {
+	
+	# Формируем самоподписной сертификат для работы https
+	tls internal    
+
+    root * /srv/public
+    encode gzip
+    php_fastcgi ttt72_laravel:9000
+    file_server
+}
+
+
+
+
+
+# бу72.рф
+xn--72-9kc6e.xn--p1ai, bu72.ru {
+
+    # Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+    
+    respond "Hello, world!"
+
+    # # root /storage /srv_bu_api/storage/public
+    root * ../2304bu/public
+    encode gzip
+    php_fastcgi bu_api_laravel:9010
+    file_server
+
+}
+
+
+api.bu72.ru {
+    # Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+    
+    # root /storage /srv_bu_api/storage/public
+    root * /srv_bu_api/public
+    encode gzip
+    php_fastcgi bu_api_laravel:9010
+    file_server
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # # # ттт72.рф
 # # # xn--72-qmcaa.xn--p1ai
@@ -31,16 +96,6 @@ xn--72-qmcaa.xn--p1ai {
 #     file_server
 # }
 
-ttt72.local  {
-	
-	# Формируем самоподписной сертификат для работы https
-	tls internal    
-
-    root * /srv/public
-    encode gzip
-    php_fastcgi ttt72_laravel:9000
-    file_server
-}
 
 # bu72.ru {
 	

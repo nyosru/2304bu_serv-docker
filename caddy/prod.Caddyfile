@@ -59,14 +59,26 @@ api.bu72.ru {
 }
 
 
+# XN--80AA4AQHDJD.XN--P1AI
+# ( IDN = АТРАКТОР.РФ )
 
+# XN--80AJAHDPGDO0AJM4R.XN--P1AI
+# ( IDN = МИСТЕРЗЕЛЁНКА.РФ )
 
+# XN--80AJAAIESGEQ2AKN.XN--P1AI
+# ( IDN = МИСТЕРЗЕЛЕНКА.РФ )
 
+# XN----8SBNBJDSHDQ2AKN0T.XN--P1AI
+# ( IDN = МИСТЕР-ЗЕЛЁНКА.РФ )
 
+# 	XN--80AALCAKQIHIN5BMO2KOA.XN--P1AI
+# ( IDN = ЗЕМЕЛЬНЫЙКАДАСТР.РФ )
 
+# XN--80AGODDREDZPH.XN--P1AI
+# ( IDN = СНОУКАЙТИНГ.РФ )
 
-
-
+# 	XN--72-JLCYSFHTH6F.XN--P1AI
+# ( IDN = ПРОДУКТЫ72.РФ )
 
 # складдокументов.рф или 
 xn--80aefaf0adenlhe2ayl.xn--p1ai {
@@ -80,7 +92,9 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai {
 }
 
 
-
+{
+    respond "ещё чуть чуть и вот вот"
+}
 
 
 

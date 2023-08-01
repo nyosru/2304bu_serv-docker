@@ -1,9 +1,7 @@
 ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru {
-	
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@uralweb.info
-    
     root /storage /srv/storage/public
     root * /srv/public
     encode gzip
@@ -48,7 +46,6 @@ xn--72-9kc6e.xn--p1ai, bu72.ru {
 
 }
 
-
 api.bu72.ru {
     # Формируем самоподписной сертификат для работы https
 	# tls internal
@@ -70,6 +67,17 @@ api.bu72.ru {
 
 
 
+
+# складдокументов.рф или 
+xn--80aefaf0adenlhe2ayl.xn--p1ai {
+
+    # Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+    
+    respond "складдокументов"
+
+}
 
 
 

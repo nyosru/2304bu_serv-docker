@@ -29,6 +29,7 @@ ttt72.local  {
 
 
 
+
 # бу72.рф
 xn--72-9kc6e.xn--p1ai, bu72.ru {
 
@@ -46,17 +47,17 @@ xn--72-9kc6e.xn--p1ai, bu72.ru {
 
 }
 
-api.bu72.ru {
-    # Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
+# api.bu72.ru {
+#     # Формируем самоподписной сертификат для работы https
+# 	# tls internal
+#     tls support@php-cat.com
     
-    # root /storage /srv_bu_api/storage/public
-    root * /srv_bu_api/public
-    encode gzip
-    php_fastcgi bu_api_laravel:9010
-    file_server
-}
+#     # root /storage /srv_bu_api/storage/public
+#     root * /srv_bu_api/public
+#     encode gzip
+#     php_fastcgi bu_api_laravel:9010
+#     file_server
+# }
 
 
 

@@ -96,8 +96,7 @@ api.bu72.ru {
 #     tls support@php-cat.com
     
 #     respond "складдокументов"
-
-}
+# }
 
 
 *.ru, *.xn--p1ai, *.com, *.info {

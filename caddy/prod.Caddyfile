@@ -98,7 +98,7 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai {
 }
 
 
-* {
+*.ru {
     tls support@php-cat.com
     respond "ещё чуть чуть и вот вот"
 }

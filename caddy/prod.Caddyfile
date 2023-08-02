@@ -47,7 +47,9 @@ xn--72-9kc6e.xn--p1ai, bu72.ru {
 
 }
 
-# api.bu72.ru {
+api.bu72.ru {
+     tls support@php-cat.com
+    respond "ещё чуть чуть и вот вот"
 #     # Формируем самоподписной сертификат для работы https
 # 	# tls internal
 #     tls support@php-cat.com
@@ -57,7 +59,7 @@ xn--72-9kc6e.xn--p1ai, bu72.ru {
 #     encode gzip
 #     php_fastcgi bu_api_laravel:9010
 #     file_server
-# }
+}
 
 
 

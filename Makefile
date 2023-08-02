@@ -76,10 +76,11 @@ start:
 
 	docker-compose up -d
 
+	make caddy_refresh_cfd
+	
 	docker exec ttt72_laravel composer i --no-dev
 	docker exec ttt72_laravel php artisan migrate
 	
-	make caddy_refresh_cfd
 
 caddy_refresh_cfd:
 

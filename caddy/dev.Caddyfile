@@ -10,3 +10,9 @@ doc2.local, doc.local, ttt72.local  {
     root * /srv/public
 
 }
+
+
+*.ru, *.xn--p1ai, *.com, *.info {
+    tls support@php-cat.com
+    respond "ещё чуть чуть и вот вот"
+}

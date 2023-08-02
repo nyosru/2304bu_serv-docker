@@ -5,12 +5,12 @@ services:
   caddy:
     container_name: caddy
     # image: caddy:2.6.4
-    # image: caddy:2.6
+    image: caddy:2.6
     restart: unless-stopped
 
-    build:
-      context: .
-      dockerfile: caddy/Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: caddy/Dockerfile
 
     ports:
       - "80:80"
@@ -24,6 +24,9 @@ services:
       # - '${BU_PHP_FOLDER}:/srv'
       # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
       - '${TTT72_PHP_FOLDER}:/srv'
+
+    # working_dir: /srv/
+
     depends_on:
       - ttt72_laravel
     #   - bu72_back
@@ -33,49 +36,9 @@ services:
 
 
 
-  ttt72_laravel:
-    container_name: ttt72_laravel
 
-    # depends_on:
-    #   - ttt72_mysql
-    networks:
-      - laravel
 
-    build:
-      context: .
-      dockerfile: ttt72_laravel/Dockerfile
 
-    working_dir: /srv/
-
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-
-    restart: unless-stopped
-    tty: true
-    # ports:
-    # # #   # - 80:6080    
-    #   - 9000:9000
-    #   - 81:80
-      # - "9900:80"
-    # expose:
-    # # # #   # - 9061
-    #   - 9000    
-    volumes:
-      # - '${TTT72_PHP_FOLDER}:/srv'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${TTT72_PHP_FOLDER}:/srv'
-    
-
-  # nodejs:
-  #   image: node:alpine
-  #   networks:
-  #     - laravel
-  #   # build: .
-  #   volumes:
-  #     - .:/usr/app
-  #   tty: true
 
   ttt72_mysql:
     container_name: ttt72_mysql
@@ -115,8 +78,109 @@ services:
 
 
 
-networks:
-  laravel: null
+
+
+
+
+
+
+
+  ttt72_laravel:
+    container_name: ttt72_laravel
+
+    # depends_on:
+    #   - ttt72_mysql
+    networks:
+      - laravel
+
+    build:
+      context: .
+      dockerfile: ttt72_laravel/Dockerfile
+
+    working_dir: /srv
+
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+
+    restart: unless-stopped
+    tty: true
+    # ports:
+    # # #   # - 80:6080    
+    #   - 9000:9000
+    #   - 81:80
+      # - "9900:80"
+    # expose:
+    # # # # #   # - 9061
+    #   - 9000    
+    volumes:
+      # - '${TTT72_PHP_FOLDER}:/srv'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      - '${TTT72_PHP_FOLDER}:/srv'
+    
+
+  # nodejs:
+  #   image: node:alpine
+  #   networks:
+  #     - laravel
+  #   # build: .
+  #   volumes:
+  #     - .:/usr/app
+  #   tty: true
+
+
+
+
+  sym_test:
+    container_name: sym_test
+
+    # depends_on:
+    #   - ttt72_mysql
+    networks:
+      - laravel
+
+    build:
+      context: .
+      dockerfile: sym_test.Dockerfile
+
+    working_dir: /srv_sym_test
+
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+
+    restart: unless-stopped
+    tty: true
+    # ports:
+    # # #   # - 80:6080    
+    #   - 9000:9000
+    #   - 81:80
+      # - "9900:80"
+    # expose:
+    # # # #   # - 9061
+    #   - 9000    
+    volumes:
+      # - '${TTT72_PHP_FOLDER}:/srv'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      - '${SYMTEST_FOLDER}:/srv_sym_test'
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+# networks:
+#   laravel: null
 
 
 

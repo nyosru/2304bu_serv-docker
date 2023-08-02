@@ -1,30 +1,31 @@
-ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru {
+# # складдокументов.рф # ттт72.рф
+xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru {
+
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@uralweb.info
+
     root /storage /srv/storage/public
     root * /srv/public
+
     encode gzip
     php_fastcgi ttt72_laravel:9000
     file_server
 }
 
-# # ттт72.рф
-xn--72-qmcaa.xn--p1ai {
-	redir https://ttt72.ru
-}
 
-ttt72.local  {
-	
-	# Формируем самоподписной сертификат для работы https
-	tls internal    
+# doc2.local, doc.local, ttt72.local  {
+# 	# Формируем самоподписной сертификат для работы https
+# 	tls internal
 
-    root * /srv/public
-    encode gzip
-    php_fastcgi ttt72_laravel:9000
-    file_server
-}
+#     php_fastcgi ttt72_laravel:9000
+#     file_server
+#     encode gzip
 
+#     root /storage /srv/storage/public
+#     root * /srv/public
+
+# }
 
 
 
@@ -84,19 +85,6 @@ api.bu72.ru {
 
 # 	XN--72-JLCYSFHTH6F.XN--P1AI
 # ( IDN = ПРОДУКТЫ72.РФ )
-
-
-
-
-# # складдокументов.рф или 
-xn--80aefaf0adenlhe2ayl.xn--p1ai {
-
-    # Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-    
-    respond "складдокументов"
-}
 
 
 *.ru, *.xn--p1ai, *.com, *.info {

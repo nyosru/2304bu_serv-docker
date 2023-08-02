@@ -1,4 +1,4 @@
-dev:
+dev00:
 
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml	
@@ -8,18 +8,36 @@ dev:
 
 	# make start
 	# docker-compose up --build
-
 	# docker-compose down
 	# docker-compose up --build -d --remove-orphans
 	# docker-compose up --abort-on-container-exit
-	docker-compose up --build -d
+	# docker-compose up --build -d
+	docker-compose up -d
+
+	# docker exec -w /etc/caddy caddy caddy fmt
+
+	make caddy_refresh_cfd
 
 	# # docker-compose exec ttt72_laravel ./vendor/bin/sail up
-	docker-compose exec ttt72_laravel composer i
-	docker-compose exec ttt72_laravel php artisan migrate
-	
+
+	# ttt72_laravel 
+	# docker-compose exec ttt72_laravel composer i
+	# docker-compose exec ttt72_laravel php artisan migrate
+
+dev:
+
+	cp caddy/dev.Caddyfile caddy/Caddyfile
+	cp docker-compose.local.yml docker-compose.yml	
+
+	docker-compose up -d
+
+	make caddy_refresh_cfd
+
+	docker exec ttt72_laravel composer i
+	docker exec ttt72_laravel php artisan migrate
+
 prod:
-	
+
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 
@@ -44,11 +62,15 @@ start:
 	# docker-compose exec bu72_back php artisan migrate
 
 	# docker-compose exec ttt72_laravel ls 
-
 	# docker-compose exec caddy restart caddy
 
 	# docker-compose exec ttt72_laravel php composer.phar i --no-dev
 	docker exec ttt72_laravel php composer.phar i --no-dev
+
 	# docker-compose exec ttt72_laravel php artisan migrate
 	docker exec ttt72_laravel php artisan migrate
+	
+	make caddy_refresh_cfd
+
+caddy_refresh_cfd:
 	docker exec -w /etc/caddy caddy caddy reload

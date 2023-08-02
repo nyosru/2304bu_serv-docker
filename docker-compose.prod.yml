@@ -5,13 +5,13 @@ services:
   caddy:
     container_name: caddy
     # image: caddy:2.6.4
-    # image: caddy:2.6
+    image: caddy:2.6
     restart: unless-stopped
     # restart: always
 
-    build:
-      context: .
-      dockerfile: caddy/Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: caddy/Dockerfile
 
     ports:
       - "80:80"

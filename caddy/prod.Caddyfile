@@ -100,10 +100,11 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai {
 }
 
 
-*.ru {
+*.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com
     respond "ещё чуть чуть и вот вот"
 }
+
 
 
 

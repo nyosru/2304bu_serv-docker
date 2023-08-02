@@ -35,7 +35,7 @@ services:
       # # - '${BU_PHP_FOLDER}:/srv'
       # # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
       - '${TTT72_PHP_FOLDER}:/srv'
-      
+
     depends_on:
       - ttt72_laravel
     #   - bu72_back
@@ -45,11 +45,53 @@ services:
 
 
 
+
+  ttt72_mysql:
+    container_name: ttt72_mysql
+    networks:
+      - laravel
+    image: mariadb:10.7.8
+
+    environment:
+
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
+
+      MYSQL_DATABASE: ${TTT72_DB_DATABASE}
+      MYSQL_USER: ${TTT72_DB_USERNAME}
+      MYSQL_PASSWORD: ${TTT72_DB_PASSWORD}
+    ports:
+      - 3361:3306
+    volumes:
+      - '${TTT72_FOLDER_DB}:/var/lib/mysql'
+    restart: unless-stopped
+
+
+  # #++
+  ttt72_phpmyadmin:
+    depends_on:
+      - ttt72_mysql
+    networks:
+      - laravel
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 6061:80
+    links:
+      - ttt72_mysql:db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+
+
+
+
+
   ttt72_laravel:
     container_name: ttt72_laravel
 
-    # depends_on:
-    #   - ttt72_mysql
+    depends_on:
+      - ttt72_mysql
+
     networks:
       - laravel
 
@@ -90,44 +132,7 @@ services:
   #   volumes:
   #     - .:/usr/app
   #   tty: true
-
-  ttt72_mysql:
-    container_name: ttt72_mysql
-    networks:
-      - laravel
-    image: mariadb:10.7.8
-
-    environment:
-
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
-
-      MYSQL_DATABASE: ${TTT72_DB_DATABASE}
-      MYSQL_USER: ${TTT72_DB_USERNAME}
-      MYSQL_PASSWORD: ${TTT72_DB_PASSWORD}
-    ports:
-      - 3361:3306
-    volumes:
-      - '${TTT72_FOLDER_DB}:/var/lib/mysql'
-    restart: unless-stopped
-
-
-  # #++
-  ttt72_phpmyadmin:
-    depends_on:
-      - ttt72_mysql
-    networks:
-      - laravel
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - 6061:80
-    links:
-      - ttt72_mysql:db
-    environment:
-      MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-
-
+s
 
 
 

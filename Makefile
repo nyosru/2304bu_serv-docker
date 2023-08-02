@@ -50,7 +50,7 @@ start0:
 	docker-compose exec ttt72_laravel php artisan storage:link
 	docker-compose up -d
 
-start:
+start00:
 
 	# docker stop $(docker ps -a -q)
 	# docker rm $(docker ps -a -q)
@@ -72,5 +72,15 @@ start:
 	
 	make caddy_refresh_cfd
 
+start:
+
+	docker-compose up -d
+
+	docker exec ttt72_laravel composer i --no-dev
+	docker exec ttt72_laravel php artisan migrate
+	
+	make caddy_refresh_cfd
+
 caddy_refresh_cfd:
+
 	docker exec -w /etc/caddy caddy caddy reload

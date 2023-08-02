@@ -56,7 +56,7 @@ services:
       context: .
       dockerfile: ttt72_laravel/Dockerfile
 
-    working_dir: /srv/
+    working_dir: /srv
 
     environment:
       - PHPGROUP=www-data

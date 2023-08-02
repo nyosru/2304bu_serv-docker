@@ -89,14 +89,14 @@ api.bu72.ru {
 
 
 # # складдокументов.рф или 
-# xn--80aefaf0adenlhe2ayl.xn--p1ai {
+xn--80aefaf0adenlhe2ayl.xn--p1ai {
 
-#     # Формируем самоподписной сертификат для работы https
-# 	# tls internal
-#     tls support@php-cat.com
+    # Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
     
-#     respond "складдокументов"
-# }
+    respond "складдокументов"
+}
 
 
 *.ru, *.xn--p1ai, *.com, *.info {

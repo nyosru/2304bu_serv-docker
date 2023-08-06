@@ -1,6 +1,10 @@
-doc.local, ttt72.local  {
+
+
+# # 1 1 складдокументов.рф ттт72.рф
+doc.local, ttt72.local, xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru {
 	# Формируем самоподписной сертификат для работы https
-	tls internal
+	# tls internal
+    tls support@php-cat.com
 
     # auto_https off
 
@@ -15,9 +19,9 @@ doc.local, ttt72.local  {
 }
 
 api.bu72.ru, api.bu72.local  {
-    # respond "Hello, world!222"
-# 	# Формируем самоподписной сертификат для работы https
-	tls internal
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
 
     php_fastcgi bu72_back:9000
 
@@ -30,8 +34,9 @@ api.bu72.ru, api.bu72.local  {
 
 # ttt722.local  {
 site2.local  {
-# 	# Формируем самоподписной сертификат для работы https
-	tls internal
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
 
     # php_fastcgi ttt722_laravel:9050
     php_fastcgi site2:9000
@@ -45,9 +50,10 @@ site2.local  {
 
 }
 
-sym.local  {
+sym.local, symfony.dev.php-cat.com  {
 	# Формируем самоподписной сертификат для работы https
-	tls internal
+	# tls internal
+    tls support@php-cat.com
 
     php_fastcgi sym_test:9000
     file_server
@@ -63,5 +69,5 @@ sym.local  {
 
 *.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com
-    respond "ещё чуть чуть и вот вот"
+    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
 }

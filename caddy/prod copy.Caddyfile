@@ -1,0 +1,481 @@
+# # localhost {
+# # 	respond "Hello, world!"
+# # }
+
+# # localhost:2016 {
+# # 	respond "Goodbye, world!"
+# # }
+
+# # 1 1 складдокументов.рф ттт72.рф
+# doc.local, ttt72.local, xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru  {
+
+#     # auto_https off
+
+# 	# Формируем самоподписной сертификат для работы https
+# 	# tls internal
+#     tls support@php-cat.com
+
+#     php_fastcgi ttt72_laravel:9000
+#     # reverse_proxy ttt72_laravel:9000
+#     file_server
+#     encode gzip
+
+#     root /storage /srv/storage/public
+#     root * /srv/public
+
+# }
+
+# api.bu72.local  {
+#     # respond "Hello, world!222"
+# # 	# Формируем самоподписной сертификат для работы https
+# 	# tls internal
+#     tls support@php-cat.com
+
+#     php_fastcgi bu72_back:9000
+
+#     file_server
+#     encode gzip
+    
+#     root /storage /srv_bu_back/storage/public
+#     root * /srv_bu_back/public
+# }
+
+# # ttt722.local  {
+# site2.local  {
+# # 	# Формируем самоподписной сертификат для работы https
+# 	# tls internal
+#     tls support@php-cat.com
+
+#     # php_fastcgi ttt722_laravel:9050
+#     php_fastcgi site2:9000
+    
+#     file_server
+#     encode gzip
+
+# #     root /storage /srv2/storage/public
+#     # root * /srv2/public
+#     root * /site2/public
+
+# }
+
+# symfony.dev.php-cat.com, sym.local  {
+# 	# Формируем самоподписной сертификат для работы https
+# 	# tls internal
+#     tls support@php-cat.com
+
+#     php_fastcgi sym_test:9000
+#     file_server
+#     encode gzip
+
+#     # root /storage /srv/storage/public
+#     root * /srv_sym_test/public
+#     # root * /srv_sym_test
+#     # root * /srv_sym
+
+# }
+
+
+# *.ru, *.xn--p1ai, *.com, *.info {
+#     tls support@php-cat.com
+    
+#     respond "ещё чуть чуть и вот вот"
+# }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # # # складдокументов.рф # ттт72.рф
+# # xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru, ttt72.dev.php-cat.com, ttt.bu72.ru {
+
+# # 	# Формируем самоподписной сертификат для работы https
+# # 	# tls internal
+# #     tls support@uralweb.info
+
+# #     root /storage /srv/storage/public
+# #     root * /srv/public
+
+# #     encode gzip
+# #     php_fastcgi ttt72_laravel:9000
+# #     file_server
+# # }
+
+
+# # doc2.local, doc.local, ttt72.local  {
+# # 	# Формируем самоподписной сертификат для работы https
+# # 	tls internal
+
+# #     php_fastcgi ttt72_laravel:9000
+# #     file_server
+# #     encode gzip
+
+# #     root /storage /srv/storage/public
+# #     root * /srv/public
+
+# # }
+
+
+
+
+
+# # # бу72.рф
+# # xn--72-9kc6e.xn--p1ai, bu72.ru {
+
+# #     # Формируем самоподписной сертификат для работы https
+# # 	# tls internal
+# #     tls support@php-cat.com
+    
+# #     respond "Hello, world!"
+
+# #     # # root /storage /srv_bu_api/storage/public
+# #     root * ../2304bu/public
+# #     encode gzip
+# #     php_fastcgi bu_api_laravel:9010
+# #     file_server
+
+# # }
+
+# # api.bu72.ru {
+# #      tls support@php-cat.com
+# #     respond "ещё чуть чуть и вот вот"
+# # #     # Формируем самоподписной сертификат для работы https
+# # # 	# tls internal
+# # #     tls support@php-cat.com
+    
+# # #     # root /storage /srv_bu_api/storage/public
+# # #     root * /srv_bu_api/public
+# # #     encode gzip
+# # #     php_fastcgi bu_api_laravel:9010
+# # #     file_server
+# # }
+
+
+
+
+# # XN--80AA4AQHDJD.XN--P1AI
+# # ( IDN = АТРАКТОР.РФ )
+
+# # XN--80AJAHDPGDO0AJM4R.XN--P1AI
+# # ( IDN = МИСТЕРЗЕЛЁНКА.РФ )
+
+# # XN--80AJAAIESGEQ2AKN.XN--P1AI
+# # ( IDN = МИСТЕРЗЕЛЕНКА.РФ )
+
+# # XN----8SBNBJDSHDQ2AKN0T.XN--P1AI
+# # ( IDN = МИСТЕР-ЗЕЛЁНКА.РФ )
+
+# # 	XN--80AALCAKQIHIN5BMO2KOA.XN--P1AI
+# # ( IDN = ЗЕМЕЛЬНЫЙКАДАСТР.РФ )
+
+# # XN--80AGODDREDZPH.XN--P1AI
+# # ( IDN = СНОУКАЙТИНГ.РФ )
+
+# # 	XN--72-JLCYSFHTH6F.XN--P1AI
+# # ( IDN = ПРОДУКТЫ72.РФ )
+
+
+# # *.ru, *.xn--p1ai, *.com, *.info {
+# #     tls support@php-cat.com
+# #     respond "ещё чуть чуть и вот вот"
+# # }
+
+
+# # # # ттт72.рф
+# # # # xn--72-qmcaa.xn--p1ai
+# # xn--72-qmcaa.xn--p1ai {
+	
+# # 	# Формируем самоподписной сертификат для работы https
+# # 	# tls internal
+# #     tls support@php-cat.com
+
+# #     root * /srv/public
+# #     encode gzip
+# #     php_fastcgi ttt72_laravel:9000
+# #     file_server
+# # }
+
+
+# # bu72.ru {
+	
+# # 	# Формируем самоподписной сертификат для работы https
+# # 	tls internal    
+
+# #     root * /srv/public
+# #     encode gzip
+# #     php_fastcgi ttt72_laravel:9000
+# #     file_server
+# # }
+
+# # bu72.ru {
+
+# # 	 # Формируем самоподписной сертификат для работы https
+# #     #  tls internal
+# # 	 tls 1@php-cat.com
+
+# #    # Включаем логгирование для удобной отладки
+# #     log {
+# #         format json
+# #     }
+
+# # 	file_server
+# # 	reverse_proxy nuxt:3000
+
+# # }
+
+# # bu.dev.php-cat.com {
+
+# # 	 # Формируем самоподписной сертификат для работы https
+# #     #  tls internal
+# # 	 tls 1@php-cat.com
+
+# #    # Включаем логгирование для удобной отладки
+# #     log {
+# #         format json
+# #     }
+
+# # 	file_server
+# # 	reverse_proxy nuxt_dev:3000
+
+# # }
+
+# # api.bu72.ru {
+
+# # 	# Формируем самоподписной сертификат для работы https
+# # 	# tls internal
+# # 	tls 1@php-cat.com
+
+# #    # Включаем логгирование для удобной отладки
+# #     log {
+# #         format json
+# #     }
+
+# # 	# Set this path to your site's directory.
+# # 	root * /srv/public
+
+# # 	# Enable the static file server.
+# # 	file_server
+
+# # 	# GZIP
+# # 	encode gzip
+
+# #     #log
+
+# # 	# Or serve a PHP site through php-fpm:
+# # 	php_fastcgi bu72_back:9000
+# # }
+
+
+
+# # bu-api.dev.php-cat.com {
+
+# # 	# Формируем самоподписной сертификат для работы https
+# # 	# tls internal
+# # 	tls 1@php-cat.com
+
+# #    # Включаем логгирование для удобной отладки
+# #     log {
+# #         format json
+# #     }
+
+# # 	# Set this path to your site's directory.
+# # 	root * /srv/public
+
+# # 	# Enable the static file server.
+# # 	file_server
+
+# # 	# GZIP
+# # 	encode gzip
+
+# #     #log
+
+# # 	# Or serve a PHP site through php-fpm:
+# # 	php_fastcgi bu72_back_dev:9000
+# # }
+
+
+
+
+
+
+# # # # localhost {
+
+
+# # # # 	 # Формируем самоподписной сертификат для работы https
+# # # #     # tls internal
+
+
+# # # #     # Отдаем картинки напрямую из файловой системы минуя приложение
+# # # #     # Картинки в нашем проекте хранятся в /app/public внутри образа с Caddy
+# # # #     # Выше в Dockerfile мы туда их копируем
+# # # #     # /images/app.png => /app/public/images/app.png
+# # # # #    handle /images/* {
+# # # # #        file_server
+# # # # #        root * /app/public
+# # # # #    }
+
+# # # #     # Все остальные запросы передаются в приложение
+# # # #  #   handle {
+# # # #         # app - имя домена во внутренней сети Docker
+# # # #         # В девелопменте совпадает с именем сервиса в docker-compose.yml
+# # # #         # Для продакшена надо будет создать общую сеть
+# # # #  #       reverse_proxy app:3000
+# # # #  #   }
+
+# # # #    # Включаем логгирование для удобной отладки
+# # # #     log {
+# # # #         format json
+# # # #     }
+
+# # # # 	# Set this path to your site's directory.
+# # # # 	root * /srv/public
+# # # # 	# root * /srv/data-www/public
+
+# # # # 	# Enable the static file server.
+# # # # 	file_server
+
+# # # # 	# GZIP
+# # # # 	encode gzip
+
+# # # #     #log
+
+# # # # 	# Or serve a PHP site through php-fpm:
+# # # # 	php_fastcgi app:9000
+# # # # }
+
+# # # localhost, bu72.local {
+
+# # # 	 # Формируем самоподписной сертификат для работы https
+# # #      tls internal
+# # # 	 # tls 1@php-cat.com
+
+# # #    # Включаем логгирование для удобной отладки
+# # #     log {
+# # #         format json
+# # #     }
+
+# # # 	# Set this path to your site's directory.
+# # # 	# root * /srv/public
+# # # 	# root * /usr/src/app
+# # # 	root * /app
+# # # 	# root * /srv/data-www/public
+
+# # # 	# Enable the static file server.
+# # # 	file_server
+
+# # # 	# GZIP
+# # # 	encode gzip
+
+# # #     #log
+
+# # # 	# Or serve a PHP site through php-fpm:
+# # # 	# php_fastcgi app:9000
+# # # 	# reverse_proxy bu72_node:9005
+# # # 	reverse_proxy bu72_front:3000
+# # # 	# reverse_proxy bu72_front:8080
+# # # }
+
+
+# # # bu72.ru {
+
+# # # 	 # Формируем самоподписной сертификат для работы https
+# # #     #  tls internal
+# # # 	 # tls 1@php-cat.com
+
+# # #    # Включаем логгирование для удобной отладки
+# # #     log {
+# # #         format json
+# # #     }
+
+# # # 	# Set this path to your site's directory.
+# # # 	# root * /srv/public
+# # # 	# root * /usr/src/app
+# # # 	root * /app
+# # # 	# root * /srv/data-www/public
+
+# # # 	# Enable the static file server.
+# # # 	file_server
+
+# # # 	# GZIP
+# # # 	encode gzip
+
+# # #     #log
+
+# # # 	# Or serve a PHP site through php-fpm:
+# # # 	# php_fastcgi app:9000
+# # # 	# reverse_proxy bu72_node:9005
+# # # 	reverse_proxy bu72_front:3000
+# # # 	# reverse_proxy bu72_front:8080
+# # # }
+
+
+
+
+
+
+# # # # api.bu72.local {
+
+# # # # 	 # Формируем самоподписной сертификат для работы https
+# # # #      tls internal
+
+# # # #    # Включаем логгирование для удобной отладки
+# # # #     log {
+# # # #         format json
+# # # #     }
+
+# # # # 	# Set this path to your site's directory.
+# # # # 	root * /srv/public
+# # # # 	# root * /var/www/html/public
+# # # # 	# root * /var/www/html
+# # # # 	# root * /public
+# # # # 	# root * /srv/data-www/public
+
+# # # # 	# Enable the static file server.
+# # # # 	file_server
+
+# # # # 	# GZIP
+# # # # 	encode gzip
+
+# # # #     #log
+
+# # # # 	# Or serve a PHP site through php-fpm:
+# # # # 	php_fastcgi bu72_back:9000
+# # # # }
+
+# # # api.bu72.ru {
+
+# # # 	 # Формируем самоподписной сертификат для работы https
+# # #     #  tls internal
+
+# # #    # Включаем логгирование для удобной отладки
+# # #     # log {
+# # #     #     format json
+# # #     # }
+
+# # # 	# Set this path to your site's directory.
+# # # 	root * /srv/public
+# # # 	# root * /var/www/html/public
+# # # 	# root * /var/www/html
+# # # 	# root * /public
+# # # 	# root * /srv/data-www/public
+
+# # # 	# Enable the static file server.
+# # # 	file_server
+
+# # # 	# GZIP
+# # # 	encode gzip
+
+# # #     #log
+
+# # # 	# Or serve a PHP site through php-fpm:
+# # # 	php_fastcgi bu72_back:9000
+# # # }

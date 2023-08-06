@@ -1,12 +1,3 @@
-# localhost {
-# 	respond "Hello, world!"
-# }
-
-# localhost:2016 {
-# 	respond "Goodbye, world!"
-# }
-
-
 doc.local, ttt72.local  {
 
     # auto_https off
@@ -33,7 +24,7 @@ api.bu72.local  {
 
     file_server
     encode gzip
-    
+
     root /storage /srv_bu_back/storage/public
     root * /srv_bu_back/public
 }

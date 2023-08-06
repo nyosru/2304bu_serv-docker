@@ -1,13 +1,72 @@
-doc2.local, doc.local, ttt72.local  {
+# localhost {
+# 	respond "Hello, world!"
+# }
+
+# localhost:2016 {
+# 	respond "Goodbye, world!"
+# }
+
+
+doc.local, ttt72.local  {
+
+    # auto_https off
+
 	# Формируем самоподписной сертификат для работы https
 	tls internal
 
     php_fastcgi ttt72_laravel:9000
+    # reverse_proxy ttt72_laravel:9000
     file_server
     encode gzip
 
     root /storage /srv/storage/public
     root * /srv/public
+
+}
+
+api.bu72.local  {
+    # respond "Hello, world!222"
+# 	# Формируем самоподписной сертификат для работы https
+	tls internal
+
+    php_fastcgi bu72_back:9000
+
+    file_server
+    encode gzip
+    
+    root /storage /srv_bu_back/storage/public
+    root * /srv_bu_back/public
+}
+
+# ttt722.local  {
+site2.local  {
+# 	# Формируем самоподписной сертификат для работы https
+	tls internal
+
+    # php_fastcgi ttt722_laravel:9050
+    php_fastcgi site2:9000
+    
+    file_server
+    encode gzip
+
+#     root /storage /srv2/storage/public
+    # root * /srv2/public
+    root * /site2/public
+
+}
+
+sym.local  {
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+
+    php_fastcgi sym_test:9000
+    file_server
+    encode gzip
+
+    # root /storage /srv/storage/public
+    root * /srv_sym_test/public
+    # root * /srv_sym_test
+    # root * /srv_sym
 
 }
 

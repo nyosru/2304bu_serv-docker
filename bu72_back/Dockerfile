@@ -10,7 +10,7 @@ ARG PHPUSER
 # RUN mkdir -p /srv/storage && chmod -R 755 /srv/storage
 
 # RUN mkdir -p /srv
-WORKDIR /srv
+WORKDIR /srv_bu_back
 # WORKDIR /var/www/html
 # RUN mkdir -p /srv/data-www/storage && chmod -R 755 /srv/data-www/storage
 # RUN mkdir -p /srv/storage && chmod -R 755 /srv/storages

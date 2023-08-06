@@ -36,6 +36,10 @@ dev:
 	docker exec ttt72_laravel composer i
 	docker exec ttt72_laravel php artisan migrate
 
+	# docker exec sym_test composer i
+	# docker exec sym_test symfony -h
+	# docker exec sym_test php composer i
+
 prod:
 
 	cp caddy/prod.Caddyfile caddy/Caddyfile

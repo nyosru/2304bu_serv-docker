@@ -24,11 +24,18 @@ services:
       # - '${BU_PHP_FOLDER}:/srv'
       # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
       - '${TTT72_PHP_FOLDER}:/srv'
+      # - '${SYMTEST_FOLDER}:/srv_sym'
+      # - '${TTT722_PHP_FOLDER}:/srv2'
+      - '${TTT722_PHP_FOLDER}:/site2'
+      - '${SYMTEST_FOLDER}:/srv_sym_test'
+      - '${BU_PHP_FOLDER}:/srv_bu_back'
 
     # working_dir: /srv/
 
     depends_on:
       - ttt72_laravel
+      # - ttt722_laravel
+      # - sym_test
     #   - bu72_back
     networks:
       - laravel
@@ -86,6 +93,7 @@ services:
 
 
   ttt72_laravel:
+
     container_name: ttt72_laravel
 
     # depends_on:
@@ -120,6 +128,41 @@ services:
       - '${TTT72_PHP_FOLDER}:/srv'
     
 
+  site2:
+    container_name: site2
+
+  #   # depends_on:
+  #   #   - ttt72_mysql
+    networks:
+      - laravel
+
+    build:
+      context: .
+      dockerfile: site2/Dockerfile
+
+    working_dir: /site2
+
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+
+    restart: unless-stopped
+    # tty: true
+  #   ports:
+  # #   # # #   # - 80:6080    
+  # #   #   - 9000:9000
+  # #   #   - 81:80
+  #     - "9050:9000"
+    # expose:
+  #   # # # # #   # - 9061
+      # - 9050    
+    volumes:
+  #     # - '${TTT72_PHP_FOLDER}:/srv'
+  #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+  #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+      - '${SITE2_PHP_FOLDER}:/site2'
+    
+
   # nodejs:
   #   image: node:alpine
   #   networks:
@@ -133,6 +176,7 @@ services:
 
 
   sym_test:
+
     container_name: sym_test
 
     # depends_on:
@@ -214,25 +258,25 @@ services:
   #     networks:
   #       - laravel
 
-  # bu72_back:
-  #   container_name: bu72_back
+  bu72_back:
+    container_name: bu72_back
 
-  #   environment:
-  #     - PHPGROUP=www-data
-  #     - PHPUSER=www-data
-  #   networks:
-  #     - laravel
-  #   build:
-  #     context: .
-  #     dockerfile: bu72_back/Dockerfile
-  #   restart: unless-stopped
-  #   tty: true
-  #   expose:
-  #     - 9000
-  #   volumes:
-  #     - '${BU_PHP_FOLDER}:/srv'
-  #   depends_on:
-  #     - bu72_mysql2
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: bu72_back/Dockerfile
+    restart: unless-stopped
+    tty: true
+    expose:
+      - 9000
+    volumes:
+      - '${BU_PHP_FOLDER}:/srv_bu_back'
+    depends_on:
+      - bu72_mysql2
 
   # bu72_back_dev:
   #   container_name: bu72_back_dev
@@ -254,40 +298,40 @@ services:
   #   depends_on:
   #     - bu72_mysql2
 
-  # bu72_mysql2:
-  #   container_name: bu72_mysql2
-  #   networks:
-  #     - laravel
-  #   image: mariadb:10.7.8
+  bu72_mysql2:
+    container_name: bu72_mysql2
+    networks:
+      - laravel
+    image: mariadb:10.7.8
 
-  #   environment:
+    environment:
 
-  #     MYSQL_ROOT_HOST: "%"
-  #     MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
 
-  #     MYSQL_DATABASE: ${BU_DB_DATABASE}
-  #     MYSQL_USER: ${BU_DB_USERNAME}
-  #     MYSQL_PASSWORD: ${BU_DB_PASSWORD}
-  #   ports:
-  #     - '3306:3306'
-  #   volumes:
-  #     - '${BU_FOLDER_DB}:/var/lib/mysql'
-  #   restart: unless-stopped
+      MYSQL_DATABASE: ${BU_DB_DATABASE}
+      MYSQL_USER: ${BU_DB_USERNAME}
+      MYSQL_PASSWORD: ${BU_DB_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - '${BU_FOLDER_DB}:/var/lib/mysql'
+    restart: unless-stopped
 
-  # #++
-  # bu72_phpmyadmin:
-  #   image: phpmyadmin/phpmyadmin
-  #   links:
-  #     - bu72_mysql2:db
-  #   ports:
-  #     - 6060:80
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
-  #     UPLOAD_LIMIT: 300M
-  #   depends_on:
-  #     - bu72_mysql2
-  #   networks:
-  #     - laravel
+  #++
+  bu72_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - bu72_mysql2:db
+    ports:
+      - 6070:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - bu72_mysql2
+    networks:
+      - laravel
 
 
 

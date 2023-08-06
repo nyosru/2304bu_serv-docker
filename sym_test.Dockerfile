@@ -10,7 +10,8 @@ ARG PHPUSER
 # RUN mkdir -p /srv/storage && chmod -R 755 /srv/storage
 
 # RUN mkdir -p /srv
-WORKDIR /srv_sym_test
+# WORKDIR /srv_sym_test/site/public
+WORKDIR /srv_sym_test/public
 # WORKDIR /var/www/html
 # RUN mkdir -p /srv/data-www/storage && chmod -R 755 /srv/data-www/storage
 # RUN mkdir -p /srv/storage && chmod -R 755 /srv/storages
@@ -37,3 +38,5 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # RUN cd /home/sym_test \
 #     chmod -R 0777 storage/
+
+EXPOSE 9000

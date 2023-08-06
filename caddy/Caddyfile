@@ -1,18 +1,8 @@
-# localhost {
-# 	respond "Hello, world!"
-# }
-
-# localhost:2016 {
-# 	respond "Goodbye, world!"
-# }
-
-
 doc.local, ttt72.local  {
-
-    # auto_https off
-
 	# Формируем самоподписной сертификат для работы https
 	tls internal
+
+    # auto_https off
 
     php_fastcgi ttt72_laravel:9000
     # reverse_proxy ttt72_laravel:9000
@@ -33,7 +23,7 @@ api.bu72.local  {
 
     file_server
     encode gzip
-    
+
     root /storage /srv_bu_back/storage/public
     root * /srv_bu_back/public
 }

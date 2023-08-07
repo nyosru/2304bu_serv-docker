@@ -1,6 +1,14 @@
-# мистерзеленка.рф www.мистерзеленка.рф мистер-зелёнка.рф www.мистер-зелёнка.рф www.мистерзелёнка.рф
-xn--80ajaaiesgeq2akn.xn--p1ai., www.xn--80ajaaiesgeq2akn.xn--p1ai., xn----8sbnbjdshdq2akn0t.xn--p1ai., www.xn----8sbnbjdshdq2akn0t.xn--p1ai., www.xn--80ajahdpgdo0ajm4r.xn--p1ai.{
-    redir https://МистерЗелёнка.рф
+# мистер-зелёнка.рф *.мистер-зелёнка.рф 
+xn----8sbnbjdshdq2akn0t.xn--p1ai., *.xn----8sbnbjdshdq2akn0t.xn--p1ai.{
+    redir 'https://МистерЗелёнка.рф'
+}
+# мистерзеленка.рф *.мистерзеленка.рф
+xn--80ajaaiesgeq2akn.xn--p1ai., *.xn--80ajaaiesgeq2akn.xn--p1ai.{
+    redir 'https://МистерЗелёнка.рф'
+}
+# *.мистерзелёнка.рф
+*.xn--80ajahdpgdo0ajm4r.xn--p1ai.{
+    redir 'https://МистерЗелёнка.рф'
 }
 #     $d['мистерзелёнка.рф'] = 'xn--80aja    $d~'vbcnthptk§yrf/ha'` = эчт--80фофрвзпвщ0фоь4кючт--з1фшюэж     
 # hdpgdo0ajm4r.xn--p1ai.';     
@@ -10,10 +18,6 @@ xn--80ajaaiesgeq2akn.xn--p1ai., www.xn--80ajaaiesgeq2akn.xn--p1ai., xn----8sbnbj
 
 # XN--80AA4AQHDJD.XN--P1AI
 # ( IDN = АТРАКТОР.РФ )
-# # XN--80AJAHDPGDO0AJM4R.XN--P1AI
-# # ( IDN = МИСТЕРЗЕЛЁНКА.РФ )
-# # XN--80AJAAIESGEQ2AKN.XN--P1AI
-# # ( IDN = МИСТЕРЗЕЛЕНКА.РФ )
 
 # # ЗЕМЕЛЬНЫЙКАДАСТР.РФ МИСТЕР-ЗЕЛЁНКА.РФ СНОУКАЙТИНГ.РФ ПРОДУКТЫ72.РФ АТРАКТОР.РФ ЗЕМЕЛЬНЫЙКАДАСТР.РФ 1 1 складдокументов.рф ттт72.рф
 XN--80AALCAKQIHIN5BMO2KOA.XN--P1AI, XN----8SBNBJDSHDQ2AKN0T.XN--P1AI, XN--80AGODDREDZPH.XN--P1AI, XN--72-JLCYSFHTH6F.XN--P1AI, XN--80AA4AQHDJD.XN--P1AI, xn--80aalcakqihin5bmo2koa.xn--p1ai, doc.local, ttt72.local, xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru {

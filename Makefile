@@ -91,6 +91,8 @@ start:
 	docker exec ttt72_laravel composer i --no-dev
 	docker exec ttt72_laravel php artisan migrate
 	
+	docker exec base17 composer i --no-dev
+	docker exec base17 php artisan migrate
 
 caddy_refresh_cfd:
 

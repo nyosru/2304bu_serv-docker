@@ -26,8 +26,9 @@ dev00:
 
 dev:
 
-	# cp caddy/dev.Caddyfile caddy/Caddyfile
-	cp caddy/prod.Caddyfile caddy/Caddyfile
+	cp caddy/dev.Caddyfile caddy/Caddyfile
+	# cp caddy/prod.Caddyfile caddy/Caddyfile
+
 	cp docker-compose.local.yml docker-compose.yml	
 	# cp docker-compose.prod.yml docker-compose.yml	
 
@@ -37,6 +38,9 @@ dev:
 
 	docker exec ttt72_laravel composer i
 	docker exec ttt72_laravel php artisan migrate
+
+	docker exec base17 composer i
+	docker exec base17 php artisan migrate
 
 	# docker exec sym_test composer i
 	# docker exec sym_test symfony -h

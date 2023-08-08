@@ -1,3 +1,16 @@
+php-cat.com, phpcat.dev45.php-cat.com, phpcat.dev54.uralweb.info {
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+    php_fastcgi base17:9000
+    # reverse_proxy ttt72_laravel:9000
+    file_server
+    encode gzip
+    root /storage /srv_base17/storage/public
+    root * /srv_base17/public
+}
+
+
 # # мистер-зелёнка.рф *.мистер-зелёнка.рф 
 # xn----8sbnbjdshdq2akn0t.xn--p1ai., *.xn----8sbnbjdshdq2akn0t.xn--p1ai. {
 #     redir 'https://МистерЗелёнка.рф'

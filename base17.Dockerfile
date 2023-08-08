@@ -17,8 +17,9 @@ RUN  apt-get install -y \
     npm \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
 
-RUN apt-get update && apt-get install -y git \
-    && apt-get install -y nodejs
+RUN apt-get update && apt-get install -y git 
+# \
+#     && apt-get install -y nodejs
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

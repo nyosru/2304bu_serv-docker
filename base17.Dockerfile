@@ -1,7 +1,7 @@
 # FROM php:8.2.0-fpm
-# FROM php:8.2.0-fpm-alpine
+FROM php:8.2.0-fpm-alpine
 
-FROM tangramor/nginx-php8-fpm:php8.2.8_node20.5.0
+# FROM tangramor/nginx-php8-fpm:php8.2.8_node20.5.0
 
 ARG PHPGROUP
 ARG PHPUSER
@@ -10,12 +10,15 @@ WORKDIR /srv_base17
 
 USER ${PHPUSER}
 
-RUN apt-get update -y && docker-php-ext-install pdo_mysql
-RUN apt-get update && apt-get install -y git
-RUN  apt-get install -y \
-    libzip-dev \
-    npm \
-    && docker-php-ext-install zip  && docker-php-ext-enable zip
+RUN apk update && apk upgrade
+RUN docker-php-ext-install pdo pdo_mysql
+
+# RUN apt-get update -y && docker-php-ext-install pdo_mysql
+# RUN apt-get update && apt-get install -y git
+# RUN  apt-get install -y \
+#     libzip-dev \
+#     npm \
+#     && docker-php-ext-install zip  && docker-php-ext-enable zip
 
 RUN apt-get update && apt-get install -y git 
 # \

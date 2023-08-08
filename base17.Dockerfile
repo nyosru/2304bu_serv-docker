@@ -1,4 +1,7 @@
-FROM php:8.2.0-fpm
+# FROM php:8.2.0-fpm
+# FROM php:8.2.0-fpm-alpine
+
+FROM tangramor/nginx-php8-fpm:php8.2.8_node20.5.0
 
 ARG PHPGROUP
 ARG PHPUSER
@@ -14,6 +17,8 @@ RUN  apt-get install -y \
     npm \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
 
+RUN apt-get update && apt-get install -y git \
+    && apt-get install -y nodejs
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

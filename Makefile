@@ -99,7 +99,6 @@ start:
 	docker exec base17 php artisan migrate
 	docker exec base17 npm i
 
-
 caddy_refresh_cfd:
 
 	docker exec -w /etc/caddy caddy caddy reload

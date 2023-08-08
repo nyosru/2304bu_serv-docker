@@ -3,14 +3,32 @@ FROM php:8.2.0-fpm
 ARG PHPGROUP
 ARG PHPUSER
 
+WORKDIR /srv_base17
+
+USER ${PHPUSER}
+
+RUN apt-get update -y && docker-php-ext-install pdo_mysql
+RUN apt-get update && apt-get install -y git
+RUN  apt-get install -y \
+    libzip-dev \
+    npm \
+    && docker-php-ext-install zip  && docker-php-ext-enable zip
+
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+
+# RUN cd /srv_base17 \
+#     chmod -R 0777 storage/
+
+
 # ENV PHPGROUP=${PHPGROUP}
 # ENV PHPUSER=${PHPUSER}
 # ENV PHPUSER=phpcat
 
-# RUN mkdir -p /srv/storage && chmod -R 755 /srv/storage
 
+# RUN mkdir -p /srv/storage && chmod -R 755 /srv/storage
 # RUN mkdir -p /srv
-WORKDIR /srv_base17
 # WORKDIR /var/www/html
 # RUN mkdir -p /srv/data-www/storage && chmod -R 755 /srv/data-www/storage
 # RUN mkdir -p /srv/storage && chmod -R 755 /srv/storages
@@ -21,23 +39,6 @@ WORKDIR /srv_base17
 # RUN chmod -R 777 /srv/storage
 
 # RUN useradd -G www-data,root -u $uid -d /home/${PHPUSER} ${PHPUSER}
-USER ${PHPUSER}
-
-RUN apt-get update -y && docker-php-ext-install pdo_mysql
-RUN apt-get update && apt-get install -y git
-RUN  apt-get install -y \
-    libzip-dev \
-    npm \
-    && docker-php-ext-install zip  && docker-php-ext-enable zip
-
-# RUN sudo apt install nodejs
-
-# # Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
 
 # RUN php composer.phar i \
 #     php artisan migrate
-
-RUN cd /srv_base17 \
-    chmod -R 0777 storage/

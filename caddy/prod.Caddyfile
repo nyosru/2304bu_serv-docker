@@ -1,7 +1,7 @@
 php-cat.com, phpcat.dev45.php-cat.com, phpcat.dev54.uralweb.info {
 	# Формируем самоподписной сертификат для работы https
-	tls internal
-    # tls support@php-cat.com
+	# tls internal
+    tls support@php-cat.com
     php_fastcgi base17:9000
     # reverse_proxy ttt72_laravel:9000
     file_server

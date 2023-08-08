@@ -82,6 +82,10 @@ start00:
 	
 	make caddy_refresh_cfd
 
+
+
+
+
 start:
 
 	docker-compose up -d
@@ -93,6 +97,7 @@ start:
 	
 	docker exec base17 composer i --no-dev
 	docker exec base17 php artisan migrate
+
 
 caddy_refresh_cfd:
 

@@ -29,10 +29,11 @@ RUN  apt-get install -y \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
 
-RUN apt-get update && apt-get install nodejs
+RUN sudo apt-get install nodejs
 
 # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 
 # RUN php composer.phar i \
 #     php artisan migrate

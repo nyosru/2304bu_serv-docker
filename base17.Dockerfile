@@ -30,9 +30,8 @@ RUN apt-get update && apt-get install -y git
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-
-# RUN cd /srv_base17 \
-#     chmod -R 0777 storage/
+RUN cd /srv_base17 \
+    chmod -R 0777 storage/
 
 
 # ENV PHPGROUP=${PHPGROUP}

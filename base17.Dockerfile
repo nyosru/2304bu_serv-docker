@@ -31,9 +31,7 @@ RUN curl https://www.npmjs.com/install.sh | sh
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 
-RUN sudo chown -R ${PHPUSER} /srv_base17/storage
-
-USER ${PHPUSER}
+# RUN sudo chown -R ${PHPUSER} /srv_base17/storage
 
 # RUN cd /srv_base17 \
 #     chmod -R 0777 storage/
@@ -75,3 +73,9 @@ USER ${PHPUSER}
 
 # RUN php composer.phar i \
 #     php artisan migrate
+
+
+RUN cd /srv_base17
+RUN sudo chown -R ${PHPUSER} /storage
+USER ${PHPUSER}
+

@@ -23,7 +23,7 @@ RUN  apt-get install -y \
 RUN apt-get update && apt-get install -y git 
 
 # Install NPM
-# RUN curl https://www.npmjs.com/install.sh | sh
+RUN curl https://www.npmjs.com/install.sh | sh
 
 # \
 #     && apt-get install -y nodejs
@@ -47,7 +47,7 @@ RUN cd /srv_base17 \
 # RUN chmod -R 755 /srv/data-www/storage
 # RUN chmod -R 755 /srv/storage
 
-# RUN chown -R ${PHPUSER}:${PHPGROUP} /srv/storage
+RUN chown -R ${PHPUSER}:${PHPGROUP} /srv_base17/storage
 # RUN chmod -R 777 /srv/storage
 
 # RUN useradd -G www-data,root -u $uid -d /home/${PHPUSER} ${PHPUSER}

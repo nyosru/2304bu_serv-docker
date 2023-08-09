@@ -38,8 +38,9 @@ services:
       # # - '${BU_PHP_FOLDER}:/srv'
       # - '${BU_PHP_FOLDER}:/srv_bu_back'
       # # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${TTT72_PHP_FOLDER}:/srv'
+      - '${TTT72_PHP_FOLDER}:/srv/'
       - '${BU_PHP_FOLDER}:/srv_bu_back/'
+      - '${BASE17_FOLDER}:/srv_base17/'
 
     depends_on:
       - ttt72_laravel

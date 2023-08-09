@@ -178,6 +178,19 @@ services:
       # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
       - '${BASE17_FOLDER}:/srv_base17'
 
+ # Для сборки js
+  node:
+    build:
+        context: .
+        dockerfile: ./base17.node.Dockerfile
+    tty: true
+    ports:
+        - "5173:5173"
+    working_dir: /srv_base17
+    # volumes:
+    #     - .:/var/www # Монтируем локальную папку в контейнер как /var/www
+
+
   base17_mysql:
     container_name: base17_mysql
     networks:

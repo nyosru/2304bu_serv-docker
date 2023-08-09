@@ -41,6 +41,7 @@ dev:
 
 	docker exec base17 composer i
 	docker exec base17 php artisan migrate
+	# docker exec base17 npm i
 
 	# docker exec sym_test composer i
 	# docker exec sym_test symfony -h

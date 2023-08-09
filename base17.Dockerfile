@@ -7,9 +7,6 @@ ARG PHPUSER
 
 WORKDIR /srv_base17
 
-
-
-
 # RUN apk update && apk upgrade
 # RUN docker-php-ext-install pdo pdo_mysql
 
@@ -17,18 +14,32 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql
 RUN apt-get update && apt-get install -y git
 RUN  apt-get install -y \
     libzip-dev \
-    npm \
-    && docker-php-ext-install zip  && docker-php-ext-enable zip
+    && docker-php-ext-install zip \ 
+    && docker-php-ext-enable zip
 
-RUN apt-get update && apt-get install -y git 
+# RUN apt-get update && apt-get install -y git 
 
 # Install NPM
-RUN curl https://www.npmjs.com/install.sh | sh
+# RUN curl https://www.npmjs.com/install.sh | sh
 
 # \
 #     && apt-get install -y nodejs
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN apk add --update nodejs nodejs-npm
+RUN npm install gulp-cli -g
+RUN npm install
+
+RUN cd /srv_base17
+RUN sudo chown -R ${PHPUSER} /storage
+USER ${PHPUSER}
+
+
+
+
+
+
 
 
 # RUN sudo chown -R ${PHPUSER} /srv_base17/storage
@@ -73,9 +84,4 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # RUN php composer.phar i \
 #     php artisan migrate
-
-
-RUN cd /srv_base17
-RUN sudo chown -R ${PHPUSER} /storage
-USER ${PHPUSER}
 

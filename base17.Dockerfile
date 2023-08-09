@@ -1,14 +1,21 @@
 FROM php:8.2.0-fpm
 # FROM php:8.2.0-fpm-alpine
-
 # FROM tangramor/nginx-php8-fpm:php8.2.8_node20.5.0
 
-ARG PHPGROUP
-ARG PHPUSER
+
+
+
+# ARG PHPGROUP
+# ARG PHPUSER
 
 WORKDIR /srv_base17
 
-USER ${PHPUSER}
+# USER ${PHPUSER}
+
+
+
+
+
 
 # RUN apk update && apk upgrade
 # RUN docker-php-ext-install pdo pdo_mysql
@@ -30,8 +37,21 @@ RUN curl https://www.npmjs.com/install.sh | sh
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN cd /srv_base17 \
-    chmod -R 0777 storage/
+# RUN cd /srv_base17 \
+#     chmod -R 0777 storage/
+
+# Add user for laravel application
+RUN groupadd -g 1000 www && useradd -u 1000 -ms /bin/bash -g www www
+
+# Change current user to www
+USER www
+
+
+
+
+
+
+
 
 
 # ENV PHPGROUP=${PHPGROUP}
@@ -47,7 +67,7 @@ RUN cd /srv_base17 \
 # RUN chmod -R 755 /srv/data-www/storage
 # RUN chmod -R 755 /srv/storage
 
-RUN chown -R ${PHPUSER}:${PHPGROUP} /srv_base17/storage
+# RUN chown -R ${PHPUSER}:${PHPGROUP} /srv_base17/storage
 # RUN chmod -R 777 /srv/storage
 
 # RUN useradd -G www-data,root -u $uid -d /home/${PHPUSER} ${PHPUSER}

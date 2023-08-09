@@ -98,7 +98,7 @@ start:
 	
 	docker exec base17 composer i --no-dev
 	docker exec base17 php artisan migrate
-	docker exec base17 npm i
+	# docker exec base17 npm i
 
 caddy_refresh_cfd:
 

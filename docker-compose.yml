@@ -34,15 +34,13 @@ services:
     # working_dir: /srv/
 
     depends_on:
-      - ttt72_laravel
+      - ttt72
       # - ttt722_laravel
       # - sym_test
     #   - bu72_back
     networks:
       - laravel
     #   # - ttt72_net
-
-
 
 
 
@@ -93,9 +91,9 @@ services:
 
 
 
-  ttt72_laravel:
+  ttt72:
 
-    container_name: ttt72_laravel
+    container_name: ttt72
 
     # depends_on:
     #   - ttt72_mysql
@@ -104,7 +102,7 @@ services:
 
     build:
       context: .
-      dockerfile: ttt72_laravel/Dockerfile
+      dockerfile: docker.ttt72.Dockerfile
 
     working_dir: /srv
 

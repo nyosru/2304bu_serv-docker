@@ -24,6 +24,7 @@ dev00:
 	# docker-compose exec ttt72_laravel composer i
 	# docker-compose exec ttt72_laravel php artisan migrate
 
+
 dev:
 
 	cp caddy/dev.Caddyfile caddy/Caddyfile
@@ -36,8 +37,8 @@ dev:
 
 	make caddy_refresh_cfd
 
-	docker exec ttt72_laravel composer i
-	docker exec ttt72_laravel php artisan migrate
+	docker exec ttt72 composer i
+	docker exec ttt72 php artisan migrate
 
 	docker exec base17 composer i
 	docker exec base17 php artisan migrate

@@ -1,6 +1,11 @@
+FROM node:latest AS node
 FROM php:8.2.0-fpm
 # FROM php:8.2.0-fpm-alpine
 # FROM tangramor/nginx-php8-fpm:php8.2.8_node20.5.0
+
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 ARG PHPGROUP
 ARG PHPUSER
@@ -25,14 +30,17 @@ RUN  apt-get install -y \
 # \
 #     && apt-get install -y nodejs
 # Get latest Composer
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN apk add --update nodejs nodejs-npm
-RUN npm install gulp-cli -g
-RUN npm install
+# RUN apk add --update nodejs nodejs-npm
+# RUN npm install gulp-cli -g
+# RUN npm install
 
-RUN cd /srv_base17
-RUN sudo chown -R ${PHPUSER} /storage
+# RUN cd /srv_base17
+# RUN sudo chown -R ${PHPUSER} /storage
+# RUN chown -R ${PHPUSER} /srv_base17/storage
+
 USER ${PHPUSER}
 
 

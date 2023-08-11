@@ -60,8 +60,9 @@ api.bu72.ru, api.bu72.local  {
     root * /srv_bu_back/public
 }
 
-# ttt722.local  {
-site2.local  {
+# site2.local
+domain.php-cat.com  {
+    
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com

@@ -37,13 +37,16 @@ dev:
 
 	make caddy_refresh_cfd
 
-	docker exec ttt72 composer i
-	docker exec ttt72 php artisan migrate
+	# docker exec ttt72 composer i
+	# docker exec ttt72 php artisan migrate
 
-	docker exec base17 composer i
-	docker exec base17 php artisan migrate
-	# docker exec base17_node npm i
-	# docker exec base17 npm i
+	# docker exec base17 composer i
+	# docker exec base17 php artisan migrate
+	# # docker exec base17_node npm i
+	# # docker exec base17 npm i
+
+	docker exec site2 composer i
+	docker exec site2 php artisan migrate
 
 	# docker exec sym_test composer i
 	# docker exec sym_test symfony -h

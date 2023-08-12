@@ -13,7 +13,8 @@ FROM caddy:2.6
 # # RUN mkdir -p /srv
 # # WORKDIR /srv
 # # WORKDIR /var/www/html/ttt72
-WORKDIR /srv
+# WORKDIR /srv
+WORKDIR /site2
 # # WORKDIR /var/www/html
 # # RUN mkdir -p /srv/data-www/storage && chmod -R 755 /srv/data-www/storage
 # # RUN mkdir -p /srv/storage && chmod -R 755 /srv/storages

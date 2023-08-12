@@ -17,18 +17,17 @@ WORKDIR /site2
 
 USER ${PHPUSER}
 
-
-# RUN apt-get update -y && docker-php-ext-install pdo_mysql
-RUN apt-get update && apt-get install -y git
-# RUN  apt-get install -y \
-#     libzip-dev \
-#     && docker-php-ext-install zip  && docker-php-ext-enable zip
+RUN apt-get update -y && docker-php-ext-install pdo_mysql \
+    && apt-get update && apt-get install -y git \
+    &&  apt-get install -y \
+    libzip-dev \
+    && docker-php-ext-install zip  && docker-php-ext-enable zip
 
 # # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # # update 
-RUN apt-get update 
+# RUN apt-get update 
 # RUN  curl -sL https://deb.nodesource.com/setup_18.x | bash 
 # RUN apt-get install nodejs 
 
@@ -36,7 +35,7 @@ RUN apt-get update
 #     chmod -R 0777 storage/
 
 # EXPOSE 9050
-EXPOSE 9000
+# EXPOSE 9000
 
 CMD ["php-fpm"]
 

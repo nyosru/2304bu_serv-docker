@@ -1,21 +1,18 @@
 
 # ttt722.local  {
-site2.local  {
+site2.local, 2308beget.local, domain.dev.php-cat.com {
+    
 	# Формируем самоподписной сертификат для работы https
 	tls internal
     # tls support@php-cat.com
 
-    # php_fastcgi ttt722_laravel:9050
-    # php_fastcgi site2:9000
-    php_fastcgi site2:9000
-    # reverse_proxy site2:9010
+    php_fastcgi 2308beget:9000
     
     file_server
     encode gzip
 
-    root /storage /site2/storage/public
-    # root * /srv2/public
-    root * /site2/public
+    # root /storage /2308beget/storage/public
+    root * /2308beget/public
 
 }
 

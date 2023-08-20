@@ -26,7 +26,7 @@ services:
       # - '${TTT72_PHP_FOLDER}:/srv'
       # # - '${SYMTEST_FOLDER}:/srv_sym'
       # # - '${TTT722_PHP_FOLDER}:/srv2'
-      - '${TTT722_PHP_FOLDER}:/site2'
+      - '${FOLDER_2308BEGET}:/2308beget'
       # - '${SYMTEST_FOLDER}:/srv_sym_test'
       # - '${BU_PHP_FOLDER}:/srv_bu_back'
       # - '${BASE17_FOLDER}:/srv_base17'
@@ -35,7 +35,7 @@ services:
 
     depends_on:
       # - ttt72
-      - site2
+      - 2308beget
       - db_mysql
       # - ttt722_laravel
       # - sym_test
@@ -48,8 +48,8 @@ services:
 
 
 
-  site2:
-    container_name: site2
+  2308beget:
+    container_name: 2308beget
 
     depends_on:
       - db_mysql
@@ -59,9 +59,9 @@ services:
 
     build:
       context: .
-      dockerfile: docker.site2.Dockerfile
+      dockerfile: docker.2308beget.Dockerfile
 
-    working_dir: /site2
+    working_dir: /2308beget
 
     environment:
       - PHPGROUP=www-data
@@ -84,7 +84,7 @@ services:
   #     # - '${TTT72_PHP_FOLDER}:/srv'
   #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
   #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${SITE2_PHP_FOLDER}:/site2'
+      - '${FOLDER_2308BEGET}:/2308beget'
 
     # depends_on:
     #   - ttt72_mysql
@@ -106,7 +106,7 @@ services:
       # xMYSQL_USER: ${TTT72_DB_USERNAME}
       # xMYSQL_PASSWORD: ${TTT72_DB_PASSWORD}
     ports:
-      - 3306
+      - 3306:3306
     # expose:
     #   - 3306
     volumes:

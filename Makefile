@@ -98,11 +98,13 @@ start:
 
 	make caddy_refresh_cfd
 	
-	docker exec ttt72_laravel composer i --no-dev
-	docker exec ttt72_laravel php artisan migrate
-	
-	docker exec base17 composer i --no-dev
-	docker exec base17 php artisan migrate
+	docker exec 2308beget composer i --no-dev
+	docker exec 2308beget php artisan migrate
+#	docker exec ttt72_laravel composer i --no-dev
+#	docker exec ttt72_laravel php artisan migrate
+
+#	docker exec base17 composer i --no-dev
+#	docker exec base17 php artisan migrate
 	# docker exec base17 npm i
 
 caddy_refresh_cfd:

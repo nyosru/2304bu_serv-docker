@@ -91,7 +91,7 @@ services:
 
   db_mysql:
     container_name: db_mysql
-    
+
     image: mariadb:10.7.8
 
     networks:
@@ -135,22 +135,22 @@ services:
   #     - '${TTT72_FOLDER_DB}:/var/lib/mysql'
   #   restart: unless-stopped
 
-
-  # #++
-  ttt72_phpmyadmin:
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - 6061:80
-    links:
-      - db_mysql:db
-    environment:
-      # xMYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-
+#
+#  # #++
+#  ttt72_phpmyadmin:
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    image: phpmyadmin/phpmyadmin
+#    ports:
+#      - 6061:80
+#    links:
+#      - db_mysql:db
+#    environment:
+#      # xMYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
+#      UPLOAD_LIMIT: 300M
+#
 
 
 

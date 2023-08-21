@@ -38,10 +38,10 @@ services:
       # # - '${BU_PHP_FOLDER}:/srv'
       # - '${BU_PHP_FOLDER}:/srv_bu_back'
       # # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${TTT72_PHP_FOLDER}:/srv/'
-      - '${BU_PHP_FOLDER}:/srv_bu_back/'
-      - '${BASE17_FOLDER}:/srv_base17/'
-      - '${SITE2_PHP_FOLDER}:/site2'
+#      - '${TTT72_PHP_FOLDER}:/srv/'
+#      - '${BU_PHP_FOLDER}:/srv_bu_back/'
+#      - '${BASE17_FOLDER}:/srv_base17/'
+      - '${FOLDER_2308BEGET}:/2308beget'
 
     depends_on:
       - ttt72_laravel
@@ -49,6 +49,40 @@ services:
     networks:
       - laravel
     #   # - ttt72_net
+
+
+
+
+  2308beget:
+    container_name: 2308beget
+
+    depends_on:
+      - db_mysql
+
+    networks:
+      - laravel
+
+    build:
+      context: .
+      dockerfile: docker.2308beget.Dockerfile
+
+    working_dir: /2308beget
+
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+
+    restart: unless-stopped
+      # tty: true
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2308BEGET}:/2308beget'
+
+    # depends_on:
+    #   - ttt72_mysql
+
+
 
   ttt72_mysql:
     container_name: ttt72_mysql
@@ -85,42 +119,42 @@ services:
       MYSQL_ROOT_PASSWORD: ${TTT72_DB_ROOT_PASSWORD}
       UPLOAD_LIMIT: 300M
 
-  ttt72_laravel:
-    container_name: ttt72_laravel
-
-    depends_on:
-      - ttt72_mysql
-
-    networks:
-      - laravel
-
-    build:
-      context: .
-      dockerfile: ttt72_laravel/Dockerfile
-
-    working_dir: /srv
-
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-
-    restart: unless-stopped
-    tty: true
-
-    # ports:
-    # # #   # - 80:6080    
-    #   - 9000:9000
-    #   - 81:80
-      # - "9900:80"
-    # expose:
-    #   - 9000    
-    # # # #   # - 9061
-      
-    volumes:
-      # - '${TTT72_PHP_FOLDER}:/srv'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${TTT72_PHP_FOLDER}:/srv'
+#  ttt72_laravel:
+#    container_name: ttt72_laravel
+#
+#    depends_on:
+#      - ttt72_mysql
+#
+#    networks:
+#      - laravel
+#
+#    build:
+#      context: .
+#      dockerfile: ttt72_laravel/Dockerfile
+#
+#    working_dir: /srv
+#
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#
+#    restart: unless-stopped
+#    tty: true
+#
+#    # ports:
+#    # # #   # - 80:6080
+#    #   - 9000:9000
+#    #   - 81:80
+#      # - "9900:80"
+#    # expose:
+#    #   - 9000
+#    # # # #   # - 9061
+#
+#    volumes:
+#      # - '${TTT72_PHP_FOLDER}:/srv'
+#      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#      - '${TTT72_PHP_FOLDER}:/srv'
 
   # nodejs:
   #   image: node:alpine
@@ -174,74 +208,74 @@ services:
 
 
 
-# #   # app:
-  bu72_back:
-# #     # container_name: app
-    container_name: bu72_back
+## #   # app:
+#  bu72_back:
+## #     # container_name: app
+#    container_name: bu72_back
+#
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: bu72_back/Dockerfile
+## #       # args:
+## #       #   - PHPUSER=${PHPUSER:-www-data}
+## #       #   - PHPGROUP=${PHPGROUP:-www-data}
+## #       # environment:
+## #       #   DB_HOST: mysql
+## #     restart: unless-stopped
+## #     tty: true
+## #     expose:
+## #       - 9000
+## #       # - 9001
+## #     volumes:
+## #       # - './data-www:/srv'
+## #       - '${BU_PHP_FOLDER}:/srv'
+## #       # - '${BU_PHP_FOLDER}:/var/www/html'
+## #       # - www47:/srv
+## #     depends_on:
+## #       - bu72_mysql2
+## #       # - redis_db
+## #       # - mailhog
 
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: bu72_back/Dockerfile
-# #       # args:
-# #       #   - PHPUSER=${PHPUSER:-www-data}
-# #       #   - PHPGROUP=${PHPGROUP:-www-data}
-# #       # environment:
-# #       #   DB_HOST: mysql
-# #     restart: unless-stopped
-# #     tty: true
-# #     expose:
-# #       - 9000
-# #       # - 9001
-# #     volumes:
-# #       # - './data-www:/srv'
-# #       - '${BU_PHP_FOLDER}:/srv'
-# #       # - '${BU_PHP_FOLDER}:/var/www/html'
-# #       # - www47:/srv
-# #     depends_on:
-# #       - bu72_mysql2
-# #       # - redis_db
-# #       # - mailhog
 
 
-
-  # ttt72_laravel:
-    # container_name: ttt72_laravel
-
-    # depends_on:
-    #   - ttt72_mysql
-    # networks:
-    #   - laravel
-
-    # build:
-    #   context: .
-    #   dockerfile: ttt72_laravel/Dockerfile
-
-    working_dir: /srv_bu_back/
-
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-
-    restart: unless-stopped
-    tty: true
-
-    # ports:
-    # # #   # - 80:6080    
-    #   - 9000:9000
-    #   - 81:80
-      # - "9900:80"
-    expose:
-      - 9000
-    # # # #   # - 9061
-      
-    volumes:
-      # - '${TTT72_PHP_FOLDER}:/srv'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      # - '${TTT72_PHP_FOLDER}:/srv'
-      - '${BU_PHP_FOLDER}:/srv_bu_back/'
+#  # ttt72_laravel:
+#    # container_name: ttt72_laravel
+#
+#    # depends_on:
+#    #   - ttt72_mysql
+#    # networks:
+#    #   - laravel
+#
+#    # build:
+#    #   context: .
+#    #   dockerfile: ttt72_laravel/Dockerfile
+#
+#    working_dir: /srv_bu_back/
+#
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#
+#    restart: unless-stopped
+#    tty: true
+#
+#    # ports:
+#    # # #   # - 80:6080
+#    #   - 9000:9000
+#    #   - 81:80
+#      # - "9900:80"
+#    expose:
+#      - 9000
+#    # # # #   # - 9061
+#
+#    volumes:
+#      # - '${TTT72_PHP_FOLDER}:/srv'
+#      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#      # - '${TTT72_PHP_FOLDER}:/srv'
+#      - '${BU_PHP_FOLDER}:/srv_bu_back/'
     
 
 
@@ -319,118 +353,118 @@ services:
   # caddy_certs:
 
 
-  base17:
-
-    container_name: base17
-
-    # depends_on:
-    #   - ttt72_mysql
-    networks:
-      - laravel
-
-    # links:
-    #   - base17_mysql:db
-
-    build:
-      context: .
-      dockerfile: base17.Dockerfile
-
-    working_dir: /srv_base17
-
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-
-    restart: unless-stopped
-    tty: true
-    # ports:
-    # # #   # - 80:6080    
-    #   - 9000:9000
-    #   - 81:80
-      # - "9900:80"
-    expose:
-    # # # # #   # - 9061
-      - 9000    
-    volumes:
-      # - '${TTT72_PHP_FOLDER}:/srv'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${BASE17_FOLDER}:/srv_base17'
-
-  base17_mysql:
-    container_name: base17_mysql
-    networks:
-      - laravel
-    image: mariadb:10.7.8
-
-    environment:
-
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: ${BASE17_DB_ROOT_PASSWORD}
-
-      xMYSQL_DATABASE: ${BU_DB_DATABASE}
-      MYSQL_DATABASE: base17
-      xMYSQL_USER: ${BU_DB_USERNAME}
-      xMYSQL_PASSWORD: ${BU_DB_PASSWORD}
-    # ports:
-    #   - '33061:3306'
-    expose:
-      - 3306
-    volumes:
-      - '${BASE17_FOLDER_DB}:/var/lib/mysql'
-    restart: unless-stopped
-
-  #++
-  base17_phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - base17_mysql:db
-    ports:
-      - 6090:80
-    environment:
-      MYSQL_ROOT_PASSWORD: ${BASE17_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-    depends_on:
-      - base17_mysql
-    networks:
-      - laravel
-
-
+#  base17:
+#
+#    container_name: base17
+#
+#    # depends_on:
+#    #   - ttt72_mysql
+#    networks:
+#      - laravel
+#
+#    # links:
+#    #   - base17_mysql:db
+#
+#    build:
+#      context: .
+#      dockerfile: base17.Dockerfile
+#
+#    working_dir: /srv_base17
+#
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#
+#    restart: unless-stopped
+#    tty: true
+#    # ports:
+#    # # #   # - 80:6080
+#    #   - 9000:9000
+#    #   - 81:80
+#      # - "9900:80"
+#    expose:
+#    # # # # #   # - 9061
+#      - 9000
+#    volumes:
+#      # - '${TTT72_PHP_FOLDER}:/srv'
+#      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#      # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#      - '${BASE17_FOLDER}:/srv_base17'
+#
+#  base17_mysql:
+#    container_name: base17_mysql
+#    networks:
+#      - laravel
+#    image: mariadb:10.7.8
+#
+#    environment:
+#
+#      MYSQL_ROOT_HOST: "%"
+#      MYSQL_ROOT_PASSWORD: ${BASE17_DB_ROOT_PASSWORD}
+#
+#      xMYSQL_DATABASE: ${BU_DB_DATABASE}
+#      MYSQL_DATABASE: base17
+#      xMYSQL_USER: ${BU_DB_USERNAME}
+#      xMYSQL_PASSWORD: ${BU_DB_PASSWORD}
+#    # ports:
+#    #   - '33061:3306'
+#    expose:
+#      - 3306
+#    volumes:
+#      - '${BASE17_FOLDER_DB}:/var/lib/mysql'
+#    restart: unless-stopped
+#
+#  #++
+#  base17_phpmyadmin:
+#    image: phpmyadmin/phpmyadmin
+#    links:
+#      - base17_mysql:db
+#    ports:
+#      - 6090:80
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${BASE17_DB_ROOT_PASSWORD}
+#      UPLOAD_LIMIT: 300M
+#    depends_on:
+#      - base17_mysql
+#    networks:
+#      - laravel
 
 
-  site2:
-    container_name: site2
 
-  #   # depends_on:
-  #   #   - ttt72_mysql
-    networks:
-      - laravel
-
-    build:
-      context: .
-      dockerfile: site2/Dockerfile
-
-    working_dir: /site2
-
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-
-    restart: unless-stopped
-    # tty: true
-  #   ports:
-  # #   # # #   # - 80:6080    
-  # #   #   - 9000:9000
-  # #   #   - 81:80
-  #     - "9050:9000"
-    # expose:
-  #   # # # # #   # - 9061
-      # - 9050    
-    volumes:
-  #     # - '${TTT72_PHP_FOLDER}:/srv'
-  #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-  #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
-      - '${SITE2_PHP_FOLDER}:/site2'
+#
+#  site2:
+#    container_name: site2
+#
+#  #   # depends_on:
+#  #   #   - ttt72_mysql
+#    networks:
+#      - laravel
+#
+#    build:
+#      context: .
+#      dockerfile: site2/Dockerfile
+#
+#    working_dir: /site2
+#
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#
+#    restart: unless-stopped
+#    # tty: true
+#  #   ports:
+#  # #   # # #   # - 80:6080
+#  # #   #   - 9000:9000
+#  # #   #   - 81:80
+#  #     - "9050:9000"
+#    # expose:
+#  #   # # # # #   # - 9061
+#      # - 9050
+#    volumes:
+#  #     # - '${TTT72_PHP_FOLDER}:/srv'
+#  #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#  #     # - '${TTT72_PHP_FOLDER}:/var/www/html/ttt72'
+#      - '${SITE2_PHP_FOLDER}:/site2'
     
 
   # nodejs:

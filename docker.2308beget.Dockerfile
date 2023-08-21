@@ -31,8 +31,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # RUN  curl -sL https://deb.nodesource.com/setup_18.x | bash 
 # RUN apt-get install nodejs 
 
-RUN cd /2308beget \
-    chmod -R 0777 storage/
+#RUN #cd /2308beget \
+##    chmod -R 0777 storage/
 
 # EXPOSE 9050
 # EXPOSE 9000

@@ -45,8 +45,7 @@ dev:
 	# # docker exec base17_node npm i
 	# # docker exec base17 npm i
 
-	docker exec 2308beget composer i
-	docker exec 2308beget php artisan migrate
+	make start_2308beget_dev
 
 	# docker exec sym_test composer i
 	# docker exec sym_test symfony -h
@@ -60,6 +59,51 @@ prod:
 	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 
 	make start
+
+
+
+
+
+start:
+
+	docker-compose up -d
+
+	make caddy_refresh_cfd
+
+	make start_2308beget
+
+
+#	docker exec ttt72_laravel composer i --no-dev
+#	docker exec ttt72_laravel php artisan migrate
+
+#	docker exec base17 composer i --no-dev
+#	docker exec base17 php artisan migrate
+	# docker exec base17 npm i
+
+
+start_2308beget:
+	docker exec 2308beget composer i --no-dev
+	docker exec 2308beget php artisan migrate
+	docker exec 2308beget npm run build
+
+start_2308beget_dev:
+	docker exec 2308beget composer i
+	docker exec 2308beget php artisan migrate
+	docker exec 2308beget npm run build
+
+caddy_refresh_cfd:
+	docker exec -w /etc/caddy caddy caddy reload
+
+
+
+
+
+
+
+
+
+
+
 
 start0:
 
@@ -90,23 +134,3 @@ start00:
 
 
 
-
-
-start:
-
-	docker-compose up -d
-
-	make caddy_refresh_cfd
-	
-	docker exec 2308beget composer i --no-dev
-	docker exec 2308beget php artisan migrate
-#	docker exec ttt72_laravel composer i --no-dev
-#	docker exec ttt72_laravel php artisan migrate
-
-#	docker exec base17 composer i --no-dev
-#	docker exec base17 php artisan migrate
-	# docker exec base17 npm i
-
-caddy_refresh_cfd:
-
-	docker exec -w /etc/caddy caddy caddy reload

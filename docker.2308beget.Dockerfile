@@ -37,6 +37,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # EXPOSE 9050
 # EXPOSE 9000
 
+USER root
+RUN addgroup -g 1000 app && addgroup www-data app
+RUN adduser -u 1000 -s /bin/sh -D -G app app
+USER www-data
+
 CMD ["php-fpm"]
 
 

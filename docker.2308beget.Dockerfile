@@ -9,9 +9,9 @@ RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 ARG PHPGROUP
 ARG PHPUSER
 
-# # ENV PHPGROUP=${PHPGROUP}
-# # ENV PHPUSER=${PHPUSER}
-# # ENV PHPUSER=phpcat
+ENV PHPGROUP=${PHPGROUP}
+ENV PHPUSER=${PHPUSER}
+ # ENV PHPUSER=phpcat
 
 WORKDIR /2308beget
 

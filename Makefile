@@ -1,30 +1,3 @@
-dev00:
-
-	cp caddy/dev.Caddyfile caddy/Caddyfile
-	cp docker-compose.local.yml docker-compose.yml	
-
-	# # bu72	
-	# cp bu72_front/code/nuxt.config.local.ts bu72_front/code/nuxt.config.ts
-
-	# make start
-	# docker-compose up --build
-	# docker-compose down
-	# docker-compose up --build -d --remove-orphans
-	# docker-compose up --abort-on-container-exit
-	# docker-compose up --build -d
-	docker-compose up -d
-
-	# docker exec -w /etc/caddy caddy caddy fmt
-
-	make caddy_refresh_cfd
-
-	# # docker-compose exec ttt72_laravel ./vendor/bin/sail up
-
-	# ttt72_laravel 
-	# docker-compose exec ttt72_laravel composer i
-	# docker-compose exec ttt72_laravel php artisan migrate
-
-
 dev:
 
 	cp caddy/dev.Caddyfile caddy/Caddyfile
@@ -60,8 +33,7 @@ prod:
 
 	make start
 
-
-
+	docker system prune
 
 
 start:
@@ -133,4 +105,29 @@ start00:
 	make caddy_refresh_cfd
 
 
+dev00:
+
+	cp caddy/dev.Caddyfile caddy/Caddyfile
+	cp docker-compose.local.yml docker-compose.yml
+
+	# # bu72
+	# cp bu72_front/code/nuxt.config.local.ts bu72_front/code/nuxt.config.ts
+
+	# make start
+	# docker-compose up --build
+	# docker-compose down
+	# docker-compose up --build -d --remove-orphans
+	# docker-compose up --abort-on-container-exit
+	# docker-compose up --build -d
+	docker-compose up -d
+
+	# docker exec -w /etc/caddy caddy caddy fmt
+
+	make caddy_refresh_cfd
+
+	# # docker-compose exec ttt72_laravel ./vendor/bin/sail up
+
+	# ttt72_laravel
+	# docker-compose exec ttt72_laravel composer i
+	# docker-compose exec ttt72_laravel php artisan migrate
 

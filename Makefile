@@ -54,7 +54,8 @@ start:
 
 
 start_2308beget:
-	docker exec 2308beget composer i --no-dev
+	#docker exec 2308beget composer i --no-dev
+	docker exec 2308beget composer i
 	docker exec 2308beget php artisan migrate
 	docker exec 2308beget npm run build
 

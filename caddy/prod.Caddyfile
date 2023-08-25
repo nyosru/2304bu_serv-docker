@@ -1,4 +1,4 @@
-domain.php-cat.com  {
+ттт72.рф, ttt72.ru, domain.php-cat.com  {
 
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
@@ -9,7 +9,7 @@ domain.php-cat.com  {
     file_server
     encode gzip
 
-#     root /storage /srv2/storage/public
+    root /storage /2308beget/storage/public
     root * /2308beget/public
 
 }

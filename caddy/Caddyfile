@@ -1,6 +1,8 @@
 
 # ttt722.local  {
-site2.local, 2308beget.local, domain.dev.php-cat.com {
+# site2.local, 2308beget.local,
+
+ttt72.local, domain.dev.php-cat.com {
     
 	# Формируем самоподписной сертификат для работы https
 	tls internal

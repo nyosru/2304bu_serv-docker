@@ -1,7 +1,7 @@
 ттт72.рф, xn--72-qmcaa.xn--p1ai{
     tls support@php-cat.com
     redir https://ttt72.ru
-   respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
+    #  respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
 }
 
 ttt72.ru, domain.php-cat.com  {
@@ -27,5 +27,5 @@ ttt72.ru, domain.php-cat.com  {
 
 *.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com
- respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
+    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
 }

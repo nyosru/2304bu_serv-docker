@@ -1,5 +1,10 @@
+ттт72.рф, xn--72-qmcaa.xn--p1ai{
+    tls support@php-cat.com
+    redir https://ttt72.ru
+   respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
+}
 
-ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru, domain.php-cat.com  {
+ttt72.ru, domain.php-cat.com  {
 
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
@@ -10,18 +15,17 @@
     file_server
     encode gzip
 
-   #handle /storage/* {
-    #    file_server
-     #   root * /2308beget/storage/public/*
-    #}
+   handle /storage/* {
+        file_server
+        root * /2308beget/storage/public/*
+    }
 
     # root /storage/* /2308beget/storage/public/*
-
     root * /2308beget/public
 
 }
 
 *.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com
- c
+ respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
 }

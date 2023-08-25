@@ -1,4 +1,9 @@
-ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru, domain.php-cat.com  {
+ттт72.рф, xn--72-qmcaa.xn--p1ai{
+    tls support@php-cat.com
+    redir https://ttt72.ru
+}
+
+ttt72.ru, domain.php-cat.com  {
 
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

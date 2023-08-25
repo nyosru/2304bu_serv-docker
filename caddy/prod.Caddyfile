@@ -9,11 +9,10 @@
     file_server
     encode gzip
 
-    # root /storage /2308beget/storage/public
+    root /storage/* /2308beget/storage/public/*
     root * /2308beget/public
 
 }
-
 
 *.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com

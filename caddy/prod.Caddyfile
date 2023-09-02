@@ -1,7 +1,7 @@
 
 www.domainwaiter.com{
     tls support@php-cat.com
-    redir https://domainwaiter.com
+    redir * https://domainwaiter.com
 }
 
 domainwaiter.com, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru, domain.php-cat.com  {

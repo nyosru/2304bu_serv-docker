@@ -20,10 +20,10 @@
 
 }
 
-сергейсб.рф, xn--90adfbu3bff.xn--p1ai{
+сергейсб.рф, xn--90adfbu3bff.xn--p1ai {
     tls support@php-cat.com
     redir / https://php-cat.com
-    }
+}
 
 *.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com

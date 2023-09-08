@@ -1,5 +1,5 @@
 
-сергейсб.рф, xn--90adfbu3bff.xn--p1ai, кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru, domain.php-cat.com  {
+кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru, domain.php-cat.com  {
 
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
@@ -19,6 +19,11 @@
     root * /2308beget/public
 
 }
+
+сергейсб.рф, xn--90adfbu3bff.xn--p1ai{
+    tls support@php-cat.com
+    redir / https://php-cat.com
+    }
 
 *.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com

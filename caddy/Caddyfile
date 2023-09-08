@@ -1,8 +1,4 @@
-
-# ttt722.local  {
-# site2.local, 2308beget.local,
-
-ttt72.local, domain.dev.php-cat.com {
+krugi.local, phpcat.local, ttt72.local, domain.dev.php-cat.com {
     
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -13,91 +9,42 @@ ttt72.local, domain.dev.php-cat.com {
     file_server
     encode gzip
 
-    # root /storage /2308beget/storage/public
+    root /storage /2308beget/storage/public
     root * /2308beget/public
 
 }
 
+php.local, d2.php-cat.com {
 
-# # # мистер-зелёнка.рф *.мистер-зелёнка.рф 
-# # xn----8sbnbjdshdq2akn0t.xn--p1ai., *.xn----8sbnbjdshdq2akn0t.xn--p1ai. {
-# #     redir 'https://МистерЗелёнка.рф'
-# # }
-# # # мистерзеленка.рф *.мистерзеленка.рф
-# # xn--80ajaaiesgeq2akn.xn--p1ai., *.xn--80ajaaiesgeq2akn.xn--p1ai. {
-# #     redir 'https://МистерЗелёнка.рф'
-# # }
-# # # *.мистерзелёнка.рф
-# # *.xn--80ajahdpgdo0ajm4r.xn--p1ai. {
-# #     redir 'https://МистерЗелёнка.рф'
-# # }
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
 
-# #     $d['мистерзелёнка.рф'] = 'xn--80aja    $d~'vbcnthptk§yrf/ha'` = эчт--80фофрвзпвщ0фоь4кючт--з1фшюэж     
-# # hdpgdo0ajm4r.xn--p1ai.';     
-# #     // xn----8sbnbjdshdq2akn0t.xn--p1ai.
-# #     $d[''] = '';
+    php_fastcgi base17:9000
+
+    file_server
+    encode gzip
+
+    root /storage /base17/storage/public
+    root * /base17/public
+
+}
 
 
-# # XN--80AA4AQHDJD.XN--P1AI
-# # ( IDN = АТРАКТОР.РФ )
+#base16.local, photo.doc.loc {
+	# Формируем самоподписной сертификат для работы https
+#	tls internal
+    # tls support@php-cat.com
 
-# # # 1 ЗЕМЕЛЬНЫЙКАДАСТР.РФ МИСТЕР-ЗЕЛЁНКА.РФ СНОУКАЙТИНГ.РФ ПРОДУКТЫ72.РФ АТРАКТОР.РФ ЗЕМЕЛЬНЫЙКАДАСТР.РФ 1 1 складдокументов.рф ттт72.рф
-# doc.local, php.ttt.local, ttt72.local, ttt72.ru {
-# 	# Формируем самоподписной сертификат для работы https
-# 	tls internal
-#     # tls support@php-cat.com
-#     php_fastcgi ttt72_laravel:9000
-#     # reverse_proxy ttt72_laravel:9000
-#     file_server
-#     encode gzip
-#     root /storage /srv/storage/public
-#     root * /srv/public
-# }
+ #   php_fastcgi base16sites:9010
 
+  #  file_server
+   # encode gzip
 
-# # 1
-# php.local {
-# 	# Формируем самоподписной сертификат для работы https
-# 	tls internal
-#     # tls support@php-cat.com
-#     php_fastcgi base17:9000
-#     # reverse_proxy ttt72_laravel:9000
-#     file_server
-#     encode gzip
-#     root /storage /srv_base17/storage/public
-#     root * /srv_base17/public
-# }
+   # root /storage /base16sites/storage/public
+   # root * /base16sites/public
 
-# api.bu72.local  {
-# 	# Формируем самоподписной сертификат для работы https
-# 	tls internal
-#     # tls support@php-cat.com
-
-#     php_fastcgi bu72_back:9000
-
-#     file_server
-#     encode gzip
-
-#     root /storage /srv_bu_back/storage/public
-#     root * /srv_bu_back/public
-# }
-
-
-# sym.local {
-# 	# Формируем самоподписной сертификат для работы https
-# 	tls internal
-#     # tls support@php-cat.com
-
-#     php_fastcgi sym_test:9000
-#     file_server
-#     encode gzip
-
-#     # root /storage /srv/storage/public
-#     root * /srv_sym_test/public
-#     # root * /srv_sym_test
-#     # root * /srv_sym
-
-# }
+#}
 
 *.ru, *.xn--p1ai, *.com, *.info {
     # tls support@php-cat.com

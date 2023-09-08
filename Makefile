@@ -2,13 +2,17 @@ dev:
 
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	# cp caddy/prod.Caddyfile caddy/Caddyfile
-
-	cp docker-compose.local.yml docker-compose.yml	
+	cp docker-compose.local.yml docker-compose.yml
 	# cp docker-compose.prod.yml docker-compose.yml	
 
 	docker-compose up -d
-
 	make caddy_refresh_cfd
+
+#	make start_2308beget_dev
+#	make start_base17
+	make start_base16sites
+
+
 
 	# docker exec ttt72 composer i
 	# docker exec ttt72 php artisan migrate
@@ -17,8 +21,6 @@ dev:
 	# docker exec base17 php artisan migrate
 	# # docker exec base17_node npm i
 	# # docker exec base17 npm i
-
-	make start_2308beget_dev
 
 	# docker exec sym_test composer i
 	# docker exec sym_test symfony -h
@@ -63,6 +65,20 @@ start_2308beget_dev:
 	docker exec 2308beget composer i
 	docker exec 2308beget php artisan migrate
 	docker exec 2308beget npm run build
+
+start_base17:
+	docker exec base17 php composer.phar i
+	#docker exec base17 composer i
+	docker exec base17 php artisan migrate
+	#docker exec base17 npm run build
+	docker exec base17 npm run prod
+
+start_base16sites:
+	docker exec base16sites php composer.phar i
+	#docker exec base17 composer i
+	docker exec base16sites php artisan migrate
+	#docker exec base17 npm run build
+	#docker exec base16sites npm run prod
 
 caddy_refresh_cfd:
 	docker exec -w /etc/caddy caddy caddy reload

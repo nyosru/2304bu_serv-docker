@@ -10,12 +10,12 @@
     file_server
     encode gzip
 
-   handle /storage/* {
-        file_server
-        root * /2308beget/storage/app/public/*
-    }
+#   handle /storage/* {
+ #       file_server
+  #      root * /2308beget/storage/app/public/*
+   # }
 
-    # root /storage/* /2308beget/storage/public/
+    root /storage/* /2308beget/storage/app/public/
     root * /2308beget/public
 
 }

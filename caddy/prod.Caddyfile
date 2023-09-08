@@ -12,7 +12,7 @@
 
    handle /storage/* {
         file_server
-        root * /2308beget/storage/app/public/
+        root * /2308beget/storage/app/public/*
     }
 
     # root /storage/* /2308beget/storage/public/

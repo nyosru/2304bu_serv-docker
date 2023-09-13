@@ -24,8 +24,8 @@
 # phpcat.local, wire.local {
 livewire.php-cat.com {
 	# Формируем самоподписной сертификат для работы https
-	tls internal
-    # tls support@php-cat.com
+	# tls internal
+    tls support@php-cat.com
 
     php_fastcgi 2309larawire:9000
     

@@ -82,7 +82,7 @@ start_base16sites:
 	#docker exec base16sites npm run prod
 
 start_2309livewire:
-	docker exec 2309livewire php composer i
+	docker exec 2309livewire composer i
 	docker exec 2309livewire php artisan migrate
 
 caddy_refresh_cfd:

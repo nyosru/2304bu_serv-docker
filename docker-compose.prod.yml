@@ -31,7 +31,7 @@ services:
 
     depends_on:
       - 2308beget
-      - 2309larawire
+      - 2309livewire
       - db_mysql
     networks:
       - laravel
@@ -95,8 +95,8 @@ services:
       - laravel
 
 
-  2309larawire:
-    container_name: 2309larawire
+  2309livewire:
+    container_name: 2309livewire
 
     depends_on:
       - db_mysql
@@ -106,7 +106,7 @@ services:
 
     build:
       context: .
-      dockerfile: docker.2309larawire.Dockerfile
+      dockerfile: docker.2309livewire.Dockerfile
 
     working_dir: /2309livewire
 

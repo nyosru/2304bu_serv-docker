@@ -10,9 +10,10 @@ dev:
 
 #	make start_2308beget_dev
 #	make start_base17
-	make start_base16sites
+# make start_base16sites
 
-
+	# docker exec 2309larawire composer i
+	# docker exec 2309larawire php artisan migrate
 
 	# docker exec ttt72 composer i
 	# docker exec ttt72 php artisan migrate
@@ -45,7 +46,7 @@ start:
 	make caddy_refresh_cfd
 
 	make start_2308beget
-
+	make start_2309livewire
 
 #	docker exec ttt72_laravel composer i --no-dev
 #	docker exec ttt72_laravel php artisan migrate
@@ -79,6 +80,10 @@ start_base16sites:
 	docker exec base16sites php artisan migrate
 	#docker exec base17 npm run build
 	#docker exec base16sites npm run prod
+
+start_2309livewire:
+	docker exec 2309livewire php composer i
+	docker exec 2309livewire php artisan migrate
 
 caddy_refresh_cfd:
 	docker exec -w /etc/caddy caddy caddy reload

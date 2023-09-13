@@ -27,13 +27,13 @@ livewire.php-cat.com {
 	# tls internal
     tls support@php-cat.com
 
-    php_fastcgi 2309larawire:9000
+    php_fastcgi 2309livewire:9000
     
     file_server
     encode gzip
 
-    #root /storage /2309larawire/storage/public
-    root * /2309larawire/public
+    #root /storage /2309livewire/storage/public
+    root * /2309livewire/public
 
 }
 

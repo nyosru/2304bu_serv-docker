@@ -107,7 +107,7 @@ services:
       context: .
       dockerfile: docker.2309larawire.Dockerfile
 
-    working_dir: /2309larawire
+    working_dir: /2309livewire
 
     environment:
       - PHPGROUP=www-data
@@ -120,5 +120,5 @@ services:
     # links:
     #   - db_mysql:db
     volumes:
-      - '${FOLDER_2309LARAWIRE}:/2309larawire'
+      - '${FOLDER_2309LARAWIRE}:/2309livewire'
 

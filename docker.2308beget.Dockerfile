@@ -117,7 +117,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # RUN cd /srv \
     # chmod -R 0777 storage/
- RUN chmod -R 0777 storage/
+# RUN chmod -R 0777 storage/
 # RUN cd /var/www/html/ttt72 \
 #     chmod -R 0777 storage/
 

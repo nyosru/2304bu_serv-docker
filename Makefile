@@ -34,14 +34,14 @@ prod:
 
 	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 
+	docker-compose up -d --build
+
 	make start
 
-	docker system prune
+	docker system prune --force
 
 
 start:
-
-	docker-compose up -d
 
 	make caddy_refresh_cfd
 

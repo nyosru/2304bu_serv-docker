@@ -27,14 +27,15 @@ services:
       - './caddy/certs:/data/caddy/locks/'
       - './caddy/certs3:/data/caddy/certificates/'
       - '${FOLDER_2308BEGET}:/2308beget'
+      - '${FOLDER_2309LARAWIRE}:/2309livewire'
 
     depends_on:
       - 2308beget
+      - 2309larawire
       - db_mysql
     networks:
       - laravel
     #   # - ttt72_net
-
 
   db_mysql:
     container_name: db_mysql

@@ -94,3 +94,31 @@ services:
       - laravel
 
 
+  2309larawire:
+    container_name: 2309larawire
+
+    depends_on:
+      - db_mysql
+
+    networks:
+      - laravel
+
+    build:
+      context: .
+      dockerfile: docker.2309larawire.Dockerfile
+
+    working_dir: /2309larawire
+
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    # links:
+    #   - db_mysql:db
+    volumes:
+      - '${FOLDER_2309LARAWIRE}:/2309larawire'
+

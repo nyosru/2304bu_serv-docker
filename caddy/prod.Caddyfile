@@ -20,6 +20,23 @@
 
 }
 
+
+# phpcat.local, wire.local {
+livewire.php-cat.com {
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309larawire:9000
+    
+    file_server
+    encode gzip
+
+    #root /storage /2309larawire/storage/public
+    root * /2309larawire/public
+
+}
+
 сергейсб.рф, xn--90adfbu3bff.xn--p1ai {
     tls support@php-cat.com
     redir / https://php-cat.com

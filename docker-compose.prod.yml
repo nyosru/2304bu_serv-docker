@@ -26,6 +26,7 @@ services:
       - './caddy/config:/config/caddy/'
       - './caddy/certs:/data/caddy/locks/'
       - './caddy/certs3:/data/caddy/certificates/'
+
       - '${FOLDER_2308BEGET}:/2308beget'
       - '${FOLDER_2309LARAWIRE}:/2309livewire'
 
@@ -33,6 +34,7 @@ services:
       - 2308beget
       - 2309livewire
       - db_mysql
+
     networks:
       - laravel
     #   # - ttt72_net
@@ -108,7 +110,7 @@ services:
       context: .
       dockerfile: docker.2309livewire.Dockerfile
 
-    working_dir: /2309livewire
+#    working_dir: /2309livewire
 
     environment:
       - PHPGROUP=www-data

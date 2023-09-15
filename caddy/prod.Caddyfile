@@ -32,7 +32,7 @@ livewire.php-cat.com {
     file_server
     encode gzip
 
-    #root /storage /2309livewire/storage/public
+    root /storage/* /2309livewire/storage/app/public
     root * /2309livewire/public
 
 }

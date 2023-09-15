@@ -6,6 +6,9 @@ dev:
 	# cp docker-compose.prod.yml docker-compose.yml	
 
 	docker-compose up -d
+
+	make start_2309livewire
+
 	make caddy_refresh_cfd
 
 #	make start_2308beget_dev

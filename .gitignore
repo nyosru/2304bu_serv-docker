@@ -2,3 +2,5 @@
 11
 temp
 .env
+/caddy/certs3/*
+/caddy/certs/*

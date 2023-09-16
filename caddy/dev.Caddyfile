@@ -1,11 +1,27 @@
-krugi.local, phpcat.local, ttt72.local, domain.dev.php-cat.com {
-    
+krugi.local, phpcat.old.local, ttt72.local, domain.dev.php-cat.com {
+
 	# Формируем самоподписной сертификат для работы https
 	tls internal
     # tls support@php-cat.com
 
     php_fastcgi 2308beget:9000
-    
+
+    file_server
+    encode gzip
+
+    # root /storage /2308beget/storage/public
+    root * /2308beget/public
+
+}
+
+domain2.dev.php-cat.com {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2308beget:9000
+
     file_server
     encode gzip
 
@@ -27,6 +43,22 @@ php.local, d2.php-cat.com {
 
     root /storage /base17/storage/public
     root * /base17/public
+
+}
+
+livewire.php-cat.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    root * /2309livewire/public
 
 }
 

@@ -33,6 +33,8 @@ domainwaiter.com, domain.php-cat.com  {
 
 # phpcat.local, wire.local {
 
+
+
 php-cat.com, livewire.php-cat.com {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

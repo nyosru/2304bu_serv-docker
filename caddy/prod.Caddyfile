@@ -30,12 +30,8 @@ domainwaiter.com, domain.php-cat.com  {
     root * /2308beget/public
 }
 
-
 # phpcat.local, wire.local {
-
-
-
-php-cat.com, livewire.php-cat.com, управлятор.рф {
+php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com
@@ -43,7 +39,6 @@ php-cat.com, livewire.php-cat.com, управлятор.рф {
     file_server
     encode gzip
 
-    # root /storage/* /2309livewire/storage/app/public
     root * /2309livewire/public
 
 }

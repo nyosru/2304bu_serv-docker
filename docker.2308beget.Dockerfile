@@ -1,6 +1,12 @@
 FROM node:latest AS node
-FROM php:8.2.0-fpm
-
+#FROM php:8.2.0-fpm
+FROM php:8.2-fpm
+RUN apt-get update && apt-get install -y \
+		libfreetype-dev \
+		libjpeg62-turbo-dev \
+		libpng-dev \
+	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+	&& docker-php-ext-install -j$(nproc) gd
 
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -11,7 +17,7 @@ ARG PHPUSER
 
 ENV PHPGROUP=${PHPGROUP}
 ENV PHPUSER=${PHPUSER}
- # ENV PHPUSER=phpcat
+ # ENV PHPUSEссылкана
 
 WORKDIR /2308beget
 
@@ -22,6 +28,41 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
     &&  apt-get install -y \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
+
+#RUN apt-get update && apt-get install -y \
+#		libfreetype-dev \
+#		libjpeg62-turbo-dev \
+#		libpng-dev \
+#	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+#	&& docker-php-ext-install -j$(nproc) gd \
+
+# RUN #apt-get update && apt-get install -y \
+#	&& docker-php-ext-install gd
+
+
+#RUN apt-get update -y \
+
+#    && docker-php-ext-install -j$(nproc) gd \
+#    && docker-php-ext-enable gd
+## Setup GD extension
+#RUN apk add --no-cache \
+#      freetype \
+#      libjpeg-turbo \
+#      libpng \
+#      freetype-dev \
+#      libjpeg-turbo-dev \
+#      libpng-dev \
+#    && docker-php-ext-configure gd \
+#      --with-freetype=/usr/include/ \
+#      # --with-png=/usr/include/ \ # No longer necessary as of 7.4; https://github.com/docker-library/php/pull/910#issuecomment-559383597
+#      --with-jpeg=/usr/include/ \
+#    && docker-php-ext-install -j$(nproc) gd \
+#    && docker-php-ext-enable gd \
+#    && apk del --no-cache \
+#      freetype-dev \
+#      libjpeg-turbo-dev \
+#      libpng-dev \
+#    && rm -rf /tmp/*
 
 # # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -66,6 +107,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # # Install PHP extensions
+# RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # # Get latest Composer

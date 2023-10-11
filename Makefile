@@ -8,6 +8,7 @@ dev:
 	docker-compose up -d
 
 	make start_2309livewire
+	make start_2308beget_dev
 
 	make caddy_refresh_cfd
 
@@ -31,23 +32,18 @@ dev:
 	# docker exec sym_test php composer i
 
 prod:
-
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
-
 	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
-
 	docker-compose up -d --build
-
-	make start
-
+#	make start
+	make start_2309livewire
+	make start_2308beget
+	make caddy_refresh_cfd
 	docker system prune --force
 
-
 start:
-
 	make caddy_refresh_cfd
-
 	make start_2308beget
 	make start_2309livewire
 
@@ -60,8 +56,8 @@ start:
 
 
 start_2308beget:
-	#docker exec 2308beget composer i --no-dev
-	docker exec 2308beget composer i
+	docker exec 2308beget composer i --no-dev
+#	docker exec 2308beget composer i
 	docker exec 2308beget php artisan migrate
 	docker exec 2308beget npm run build
 

@@ -37,7 +37,7 @@ prod:
 	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 	docker-compose up -d --build
 
-#	make start
+	#	make start
 
 	# make start_2309livewire
 	make start_2309livewire_prod

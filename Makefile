@@ -36,8 +36,12 @@ prod:
 	cp docker-compose.prod.yml docker-compose.yml
 	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 	docker-compose up -d --build
+
 #	make start
-	make start_2309livewire
+
+	# make start_2309livewire
+	make start_2309livewire_prod
+
 	make start_2308beget
 	make caddy_refresh_cfd
 	docker system prune --force
@@ -82,6 +86,10 @@ start_base16sites:
 
 start_2309livewire:
 	docker exec 2309livewire composer i
+	docker exec 2309livewire php artisan migrate
+
+start_2309livewire_prod:
+	docker exec 2309livewire composer i --no-dev
 	docker exec 2309livewire php artisan migrate
 
 caddy_refresh_cfd:

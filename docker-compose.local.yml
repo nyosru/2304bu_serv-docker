@@ -15,10 +15,13 @@ services:
       - './caddy/config:/config/caddy/'
       - '${FOLDER_2308BEGET}:/2308beget'
       - '${FOLDER_2309LIVEWIRE}:/2309livewire'
+      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+
     depends_on:
       - db_mysql
       - 2308beget
       - 2309livewire
+      - test231012
     networks:
       - laravel
 
@@ -106,7 +109,7 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.test231012.Dockerfile
+      dockerfile: ${TEST231012_DOCKERFILE}
     working_dir: ${FOLDER_TEST231012_SERV}
     environment:
       - PHPGROUP=www-data

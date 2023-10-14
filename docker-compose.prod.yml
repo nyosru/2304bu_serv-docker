@@ -29,6 +29,7 @@ services:
 
       - '${FOLDER_2308BEGET}:/2308beget'
       - '${FOLDER_2309LARAWIRE}:/2309livewire'
+      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 
     depends_on:
       - 2308beget
@@ -125,3 +126,22 @@ services:
     volumes:
       - '${FOLDER_2309LARAWIRE}:/2309livewire'
 
+
+  test231012:
+    container_name: test231012
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: ${TEST231012_DOCKERFILE}
+    working_dir: ${FOLDER_TEST231012_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'

@@ -98,16 +98,16 @@ services:
       - '${FOLDER_2309LIVEWIRE}:/2309livewire'
 
 
-  test2310:
-    container_name: test2310
+  test231012:
+    container_name: test231012
     depends_on:
       - db_mysql
     networks:
       - laravel
     build:
       context: .
-      dockerfile: docker.test2310.Dockerfile
-    working_dir: ${FOLDER_TEST2310_SERV}
+      dockerfile: docker.test231012.Dockerfile
+    working_dir: ${FOLDER_TEST231012_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
@@ -115,9 +115,7 @@ services:
     expose:
       - 9000
     volumes:
-      - '${FOLDER_TEST2310}:${FOLDER_TEST2310_SERV}'
-
-
+      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 
 # volumes:
 #   caddy_certs:

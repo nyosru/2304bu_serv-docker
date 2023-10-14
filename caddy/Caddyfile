@@ -62,6 +62,19 @@ livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local {
 }
 
 
+test231012.local {
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi test231012:9000
+    file_server
+    encode gzip
+
+    root * /test231012/public
+}
+
+
 #base16.local, photo.doc.loc {
 	# Формируем самоподписной сертификат для работы https
 #	tls internal

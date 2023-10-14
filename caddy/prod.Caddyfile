@@ -43,6 +43,20 @@ php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j
 
 }
 
+
+test231012.php-cat.com {
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+
+    php_fastcgi test231012:9000
+    file_server
+    encode gzip
+
+    root * /test231012/public
+}
+
+
 сергейсб.рф, xn--90adfbu3bff.xn--p1ai {
     tls support@php-cat.com
     redir / https://php-cat.com

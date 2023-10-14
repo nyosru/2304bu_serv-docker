@@ -10,6 +10,8 @@ dev:
 	make start_2309livewire
 	make start_2308beget_dev
 
+	make start_test231012
+
 	make caddy_refresh_cfd
 
 #	make start_2308beget_dev
@@ -87,6 +89,10 @@ start_base16sites:
 start_2309livewire:
 	docker exec 2309livewire composer i
 	docker exec 2309livewire php artisan migrate
+
+start_test231012:
+	docker exec test231012 composer i
+	docker exec test231012 php artisan migrate
 
 start_2309livewire_prod:
 	docker exec 2309livewire composer i --no-dev

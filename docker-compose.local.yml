@@ -98,6 +98,26 @@ services:
       - '${FOLDER_2309LIVEWIRE}:/2309livewire'
 
 
+  test231012:
+    container_name: test231012
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.test231012.Dockerfile
+    working_dir: ${FOLDER_TEST231012_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+
+
 
 # volumes:
 #   caddy_certs:

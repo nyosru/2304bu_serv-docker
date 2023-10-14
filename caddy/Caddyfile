@@ -1,4 +1,4 @@
-krugi.local, phpcat.old.local, ttt72.local, domain.dev.php-cat.com {
+krugi.local, phpcat.old.local, ttt72.local {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -10,11 +10,10 @@ krugi.local, phpcat.old.local, ttt72.local, domain.dev.php-cat.com {
     encode gzip
 
     # root /storage /2308beget/storage/public
-    root * /2308beget/public
-
+    root * /2308beget
 }
 
-domain2.dev.php-cat.com {
+domain.dev.php-cat.com, domainwaiter.co {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -46,7 +45,7 @@ php.local, d2.php-cat.com {
 
 }
 
-livewire.php-cat.local {
+livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal

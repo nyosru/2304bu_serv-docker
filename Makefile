@@ -43,8 +43,9 @@ prod:
 
 	# make start_2309livewire
 	make start_2309livewire_prod
-
 	make start_2308beget
+	make start_test231012_prod
+
 	make caddy_refresh_cfd
 	docker system prune --force
 
@@ -92,6 +93,10 @@ start_2309livewire:
 
 start_test231012:
 	docker exec test231012 composer i
+	docker exec test231012 php artisan migrate
+
+start_test231012_prod:
+	docker exec test231012 composer i --no-dev
 	docker exec test231012 php artisan migrate
 
 start_2309livewire_prod:

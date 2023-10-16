@@ -23,7 +23,17 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
 
+#    # Install Memcached for php 7
+#RUN apt-get update -y && docker-php-ext-install memcached \
+#    && docker-php-ext-enable memcached && apt-get update
+##RUN set -eux \
+##    && pecl install memcached \
+##    && docker-php-ext-enable memcached \
+##    && true
+
 # # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 #RUN cd /2309livewire && chmod -R 0777 storage
+
+

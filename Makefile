@@ -7,9 +7,8 @@ dev:
 
 	docker-compose up -d
 
-	make start_2309livewire
-	make start_2308beget_dev
-
+#	make start_2309livewire
+#	make start_2308beget_dev
 	make start_test231012
 
 	make caddy_refresh_cfd
@@ -94,10 +93,12 @@ start_2309livewire:
 start_test231012:
 	docker exec test231012 composer i
 	docker exec test231012 php artisan migrate
+	docker exec test231012 docker exec -it test231012  php artisan l5-swagger:generate
 
 start_test231012_prod:
 	docker exec test231012 composer i --no-dev
 	docker exec test231012 php artisan migrate
+	docker exec test231012 docker exec -it test231012  php artisan l5-swagger:generate
 
 start_2309livewire_prod:
 	docker exec 2309livewire composer i --no-dev

@@ -27,6 +27,33 @@ services:
 
 
 
+  redis:
+    container_name: redis
+    image: redis:latest
+    networks:
+      - laravel
+    ports:
+      - "6379:6379"
+#    volumes:
+#      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
+    restart: unless-stopped
+
+#
+#  memcached:
+#    container_name: memcached
+#    image: memcached:latest
+#    networks:
+#      - laravel
+##    environment:
+##      MYSQL_ROOT_HOST: "%"
+##      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+#    ports:
+#      - "11211:11211"
+##    volumes:
+##      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
+#    restart: unless-stopped
+#
+
   db_mysql:
     container_name: db_mysql
     image: mariadb:10.7.8
@@ -105,6 +132,10 @@ services:
     container_name: test231012
     depends_on:
       - db_mysql
+#      - memcached
+      - redis
+#    links:
+#      - memcached:Memcached
     networks:
       - laravel
     build:

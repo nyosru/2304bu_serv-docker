@@ -27,16 +27,16 @@ services:
 
 
 
-  redis:
-    container_name: redis
-    image: redis:latest
-    networks:
-      - laravel
-    ports:
-      - "6379:6379"
-#    volumes:
-#      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
-    restart: unless-stopped
+#  redis:
+#    container_name: redis
+#    image: redis:latest
+#    networks:
+#      - laravel
+#    ports:
+#      - "6379:6379"
+##    volumes:
+##      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
+#    restart: unless-stopped
 
 #
 #  memcached:
@@ -133,7 +133,7 @@ services:
     depends_on:
       - db_mysql
 #      - memcached
-      - redis
+#      - redis
 #    links:
 #      - memcached:Memcached
     networks:

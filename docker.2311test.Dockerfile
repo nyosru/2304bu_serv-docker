@@ -1,7 +1,5 @@
 FROM node:latest AS node
-#FROM php:8.2.0-fpm
-FROM php:8.2-fpm
-
+FROM php:8.2.0-fpm
 
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -12,9 +10,10 @@ ARG PHPUSER
 
 ENV PHPGROUP=${PHPGROUP}
 ENV PHPUSER=${PHPUSER}
+ENV FOLDER=${FOLDER}
  # ENV PHPUSER=phpcat
 
-WORKDIR /2309livewire
+WORKDIR ${FOLDER}
 
 USER ${PHPUSER}
 
@@ -26,5 +25,3 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
 
 # # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-#RUN cd /2309livewire && chmod -R 0777 storage

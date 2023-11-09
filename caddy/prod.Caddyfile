@@ -1,4 +1,19 @@
 
+test2311.symfony.php-cat.com {
+
+    # Формируем самоподписной сертификат для работы https
+    # tls internal
+    tls support@php-cat.com
+
+     php_fastcgi 2311test:9000
+
+     file_server
+     encode gzip
+
+     root * /2311test/public
+
+ }
+
 кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru {
 
 	# Формируем самоподписной сертификат для работы https

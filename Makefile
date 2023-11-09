@@ -9,7 +9,8 @@ dev:
 
 #	make start_2309livewire
 #	make start_2308beget_dev
-	make start_test231012
+#	make start_test231012
+	make start_2302didrive
 
 	make caddy_refresh_cfd
 
@@ -103,6 +104,17 @@ start_test231012_prod:
 start_2309livewire_prod:
 	docker exec 2309livewire composer i --no-dev
 	docker exec 2309livewire php artisan migrate
+
+start_2302didrive:
+	docker exec 2302didrive composer i
+	docker exec 2302didrive php artisan migrate
+	docker exec 2302didrive php artisan l5-swagger:generate
+
+start_2302didrive_prod:
+	docker exec 2302didrive composer i --no-dev
+	docker exec 2302didrive php artisan migrate
+	docker exec 2302didrive php artisan l5-swagger:generate
+
 
 caddy_refresh_cfd:
 	docker exec -w /etc/caddy caddy caddy reload

@@ -145,3 +145,25 @@ services:
       - 9000
     volumes:
       - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+
+  2311test:
+    container_name: 2311test
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    links:
+      - db_mysql:ss_db
+    build:
+      context: .
+      dockerfile: docker.2311test.Dockerfile
+    working_dir: ${FOLDER_2311TEST_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2311TEST_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'

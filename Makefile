@@ -108,7 +108,7 @@ start_2309livewire_prod:
 start_2302didrive:
 	docker exec 2302didrive composer i
 	docker exec 2302didrive php artisan migrate
-	docker exec 2302didrive php artisan l5-swagger:generate
+	#docker exec 2302didrive php artisan l5-swagger:generate
 
 start_2302didrive_prod:
 	docker exec 2302didrive composer i --no-dev

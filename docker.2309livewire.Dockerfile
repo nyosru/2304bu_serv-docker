@@ -9,12 +9,14 @@ RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 ARG PHPGROUP
 ARG PHPUSER
+ARG FOLDER
 
 ENV PHPGROUP=${PHPGROUP}
 ENV PHPUSER=${PHPUSER}
+ENV FOLDER=${FOLDER}
  # ENV PHPUSER=phpcat
 
-WORKDIR /2309livewire
+WORKDIR ${FOLDER}
 
 USER ${PHPUSER}
 

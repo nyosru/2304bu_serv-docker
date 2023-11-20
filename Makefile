@@ -42,7 +42,8 @@ prod:
 	#	make start
 
 	# make start_2309livewire
-	make start_2309livewire_prod
+
+	#make start_2309livewire_prod
 	make start_2308beget
 	make start_test231012_prod
 

@@ -13,18 +13,19 @@ services:
     volumes:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
       - './caddy/config:/config/caddy/'
-#      - '${FOLDER_2308BEGET}:/2308beget'
-#      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
-#      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
-      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-
+##      - '${FOLDER_2308BEGET}:/2308beget'
+##      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
+##      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+#      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
     depends_on:
       - db_mysql
 #      - 2308beget
 #      - 2309livewire
 #      - test231012
-      - 2302didrive
+#      - 2302didrive
+      - test231116php
     networks:
       - laravel
 
@@ -55,7 +56,8 @@ services:
 ##    volumes:
 ##      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
 #    restart: unless-stopped
-#
+
+
 
   db_mysql:
     container_name: db_mysql
@@ -89,27 +91,29 @@ services:
 
 
 
-  2302didrive:
-    container_name: 2302didrive
+#  2302didrive:
+#    container_name: 2302didrive
+#
+#    build:
+#      context: .
+#      dockerfile: ${DOCKERFILE_2302DIDRIVE}
+#    working_dir: ${FOLDER_2302DIDRIVE_CADDY}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2302DIDRIVE_CADDY}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
+#
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
 
-    build:
-      context: .
-      dockerfile: ${DOCKERFILE_2302DIDRIVE}
-    working_dir: ${FOLDER_2302DIDRIVE_CADDY}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2302DIDRIVE_CADDY}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
 
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
 
 
 #  2308beget:
@@ -134,25 +138,54 @@ services:
 #      - laravel
 
 
-  2309livewire:
-    container_name: 2309livewire
+
+
+#  2309livewire:
+#    container_name: 2309livewire
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.2308beget.Dockerfile
+#    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+
+
+
+
+
+  test231116php:
+    container_name: test231116php
     depends_on:
       - db_mysql
     networks:
       - laravel
     build:
       context: .
-      dockerfile: docker.2308beget.Dockerfile
-    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+      dockerfile: docker.test231116php.Dockerfile
+    working_dir: ${FOLDER_TEST23116PHP_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
-      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+      - FOLDER=${FOLDER_TEST23116PHP_SERV}
     restart: unless-stopped
     expose:
       - 9000
     volumes:
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+
+
+
 
 
 #  test231012:

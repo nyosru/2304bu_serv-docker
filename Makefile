@@ -10,7 +10,7 @@ dev:
 #	make start_2309livewire
 #	make start_2308beget_dev
 #	make start_test231012
-	make start_2302didrive
+#	make start_2302didrive
 
 	make caddy_refresh_cfd
 

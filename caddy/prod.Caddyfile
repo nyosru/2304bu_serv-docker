@@ -58,6 +58,18 @@ php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j
 
 }
 
+vk.files.php-cat.com {
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+    php_fastcgi 2309livewire:9000
+    file_server
+    encode gzip
+
+    root * /2309livewire/public
+
+}
+
 test231012.php-cat.com {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

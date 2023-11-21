@@ -1,3 +1,18 @@
+test231116.php.php-cat.com, d47.php-cat.com {
+
+	# Формируем самоподписной сертификат для работы https
+	#tls internal
+    tls support@php-cat.com
+
+    php_fastcgi test231116php:9000
+
+    file_server
+    encode gzip
+
+    # root /storage /2308beget/storage/public
+    root * /test231116php/public
+}
+
 
 test2311.symfony.php-cat.com {
 

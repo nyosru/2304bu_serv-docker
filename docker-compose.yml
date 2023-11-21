@@ -166,8 +166,8 @@ services:
 
   test231116php:
     container_name: test231116php
-    depends_on:
-      - db_mysql
+#    depends_on:
+#      - db_mysql
     networks:
       - laravel
     build:

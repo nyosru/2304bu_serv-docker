@@ -7,7 +7,6 @@ services:
 
   caddy:
     container_name: caddy
-    # image: caddy:2.6.4
     image: caddy:2.6
     restart: unless-stopped
     # restart: always
@@ -40,31 +39,23 @@ services:
       - 2308beget
       - 2309livewire
       - db_mysql
-
+      - test231116php
     networks:
       - laravel
-    #   # - ttt72_net
 
   db_mysql:
     container_name: db_mysql
-
     image: mariadb:10.7.8
-
     networks:
       - laravel
-
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
-
     ports:
       - 3306:3306
     volumes:
       - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
     restart: unless-stopped
-
-
-
 
 
 
@@ -92,8 +83,6 @@ services:
       - laravel
     depends_on:
       - db_mysql
-
-
   #++
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -108,7 +97,6 @@ services:
       - db_mysql
     networks:
       - laravel
-
 
   2309livewire:
     container_name: 2309livewire
@@ -138,7 +126,6 @@ services:
     #   - db_mysql:db
     volumes:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-
 
   test231012:
     container_name: test231012
@@ -181,8 +168,6 @@ services:
     volumes:
       - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
 
-
-
   test231116php:
     container_name: test231116php
     #    depends_on:
@@ -202,4 +187,3 @@ services:
       - 9000
     volumes:
       - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
-

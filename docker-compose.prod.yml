@@ -100,24 +100,18 @@ services:
 
   2309livewire:
     container_name: 2309livewire
-
     depends_on:
       - db_mysql
-
     networks:
       - laravel
-
     build:
       context: .
       dockerfile: docker.2309livewire.Dockerfile
-
-#    working_dir: /2309livewire
-
+    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
-
     restart: unless-stopped
     # tty: true
     expose:

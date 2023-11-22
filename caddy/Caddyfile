@@ -72,7 +72,7 @@ livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.ph
     encode gzip
 
     #root /storage /base17/storage/public
-    root * /2309livewire/public
+    root * /home/2309livewire/public
 
 }
 

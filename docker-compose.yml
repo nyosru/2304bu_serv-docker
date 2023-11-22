@@ -80,7 +80,7 @@ services:
     links:
       - db_mysql:db
     ports:
-      - 6061:80
+      - 6060:80
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
       UPLOAD_LIMIT: 300M

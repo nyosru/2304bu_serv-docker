@@ -60,7 +60,7 @@ php.local, d2.php-cat.com {
 
 }
 
-livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local {
+livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal

@@ -107,7 +107,7 @@ services:
     build:
       context: .
       dockerfile: docker.2309livewire.Dockerfile
-#    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data

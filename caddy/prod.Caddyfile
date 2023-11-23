@@ -72,7 +72,8 @@ php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j
     file_server
     encode gzip
 
-    root * /home/2309livewire/public
+    # root * /home/2309livewire/public
+    root * /2309livewire/public
 
 }
 
@@ -85,7 +86,9 @@ vk.files.php-cat.com {
     encode gzip
 
     php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    # root * /home/2309livewire/public
+    root * /2309livewire/public
+    # root * /var/www/html/2309livewire/public
 }
 
 test231012.php-cat.com {

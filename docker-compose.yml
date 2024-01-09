@@ -1,5 +1,15 @@
 version: '3.8'
 
+
+networks:
+  laravel:
+    driver: bridge
+  # ttt72_net: null
+
+volumes:
+  caddy_caddyfile:
+    driver: bridge
+
 services:
 
   caddy:
@@ -11,25 +21,40 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - './caddy/Caddyfile:/etc/caddy/Caddyfile'
-      - './caddy/config:/config/caddy/'
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/config:/config/caddy
+#      - ${FOLDER_UPR_SERV}/storage/app/caddy:/etc/caddy
+      - caddy_caddyfile:/etc/caddy
+#      - caddy_caddyfile:/caddy/Caddyfile
+#      - caddy_caddyfile:/caddy
+#      - caddy_caddyfile:/etc/caddy
+#      - caddy_caddyfile:./caddy
+#      - caddy_caddyfile:/etc/caddy/Caddyfile
+#      - caddy_caddyfile:/caddy
+#      - caddyfile:/caddy/Caddyfile
+#      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:/etc/caddy/Caddyfile'
 ##      - '${FOLDER_2308BEGET}:/2308beget'
 ##      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
 ##      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 #      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+#      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
+#      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+#      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
     depends_on:
       - db_mysql
 #      - 2308beget
-      - 2309livewire
+#      - 2309livewire
 #      - test231012
 #      - 2302didrive
-      - test231116php
+#      - test231116php
+#      - upr_serv
+      - 2401test
     networks:
       - laravel
-
-
 
 #  redis:
 #    container_name: redis
@@ -91,6 +116,89 @@ services:
 
 
 
+
+#  2309livewire:
+#    container_name: 2309livewire
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      #      dockerfile: docker.2308beget.Dockerfile
+#      dockerfile: docker.2309livewire.Dockerfile
+#    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#
+#
+#
+#  upr_serv:
+#    container_name: upr_serv
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      #      dockerfile: docker.2308beget.Dockerfile
+#      dockerfile: docker.laravel.Dockerfile
+#    working_dir: ${FOLDER_UPR_SERV_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_UPR_SERV_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
+#      - caddy_caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddy
+#
+##      - './caddy/Caddyfile:/caddy/Caddyfile'
+##      - './caddy/config:/caddy/config'
+##      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:${FOLDER_UPR_SERV}/storage/app/caddyfile33/'
+##      - './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+
+
+
+
+  2401test:
+    container_name: 2401test
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2401TEST_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2401TEST_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+#      - caddy_caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddy
+
+#      - './caddy/Caddyfile:/caddy/Caddyfile'
+#      - './caddy/config:/caddy/config'
+#      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:${FOLDER_UPR_SERV}/storage/app/caddyfile33/'
+#      - './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+
+
+
 #  2302didrive:
 #    container_name: 2302didrive
 #
@@ -140,49 +248,95 @@ services:
 
 
 
-  2309livewire:
-    container_name: 2309livewire
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.2308beget.Dockerfile
-    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-
-
-
-
-
-  test231116php:
-    container_name: test231116php
+#  rosoweb:
+#    container_name: rosoweb
 #    depends_on:
 #      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.test231116php.Dockerfile
-    working_dir: ${FOLDER_TEST23116PHP_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_TEST23116PHP_SERV}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.rosoweb.Dockerfile
+#    working_dir: ${FOLDER_ROSOWEB_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_ROSOWEB_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_ROSOWEB}:${FOLDER_ROSOWEB_SERV}'
+
+
+
+
+#  site2311ar:
+#    container_name: site2311ar
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.site2311ar.Dockerfile
+#    working_dir: ${FOLDER_2311AR_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2311AR_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2311AR}:${FOLDER_2311AR_SERV}'
+
+
+
+
+#  2311adminator:
+#    container_name: 2311adminator
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.2311adminator.Dockerfile
+#    working_dir: ${FOLDER_2311ADMINATOR_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2311ADMINATOR_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2311ADMINATOR}:${FOLDER_2311ADMINATOR_SERV}'
+
+
+
+
+
+#  test231116php:
+#    container_name: test231116php
+##    depends_on:
+##      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.test231116php.Dockerfile
+#    working_dir: ${FOLDER_TEST23116PHP_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_TEST23116PHP_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
 
 
 
@@ -228,8 +382,3 @@ services:
 # #   bu72_front:
 
 
-
-networks:
-  laravel:
-    driver: bridge
-  # ttt72_net: null

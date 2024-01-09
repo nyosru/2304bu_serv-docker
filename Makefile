@@ -1,5 +1,29 @@
-dev:
+#
+#creat: creat_caddyfile
+#
+#creat_caddyfile: ./../upr_serv/storage/app/caddy/777example.txt ./../upr_serv/storage/app/caddy/777example.txt
+#	cat &^ > output_file.txt
 
+ca:
+	docker-compose up -d
+	docker cp upr_serv:/home/upr_serv/storage/app/Caddyfile-new ./Caddyfile-new
+	#docker-compose down
+	#docker cp ./Caddyfile-new caddy:/etc/caddy/Caddyfile
+	#docker cp ./Caddyfile-new /2304bu_serv-docker/caddy/Caddyfile
+	#cp ./Caddyfile-new /2304bu_serv-docker/caddy/Caddyfile
+	#cp ./Caddyfile-new /etc/caddy/Caddyfile
+	cp ./Caddyfile-new ./caddy/Caddyfile
+	cp ./Caddyfile-new ./caddy/Caddyfile.new
+	#docker cp ./Caddyfile-new caddy:/etc/caddy/Caddyfile
+	#docker cp ./Caddyfile-new caddy:/caddy/Caddyfile
+	#cp docker-compose.local.yml docker-compose.yml
+#	cp caddy/Caddyfile.new caddy/Caddyfile
+	docker-compose up -d
+	#cp caddy/dev.Caddyfile caddy/Caddyfile
+	#make caddy_refresh_cfd
+	#docker-compose up -d
+
+dev:
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	# cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml

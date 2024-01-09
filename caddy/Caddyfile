@@ -1,3 +1,64 @@
+2401test_lara.php-cat.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2401test:9000
+
+    file_server
+    encode gzip
+
+    root * /home/2401test_laravel/public
+
+}
+
+
+#аренда сервис
+ar.php-cat.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /2309livewire/public
+
+}
+
+rosoweb.local {
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi rosoweb:9000
+
+    file_server
+    encode gzip
+
+    root * /rosoweb/web
+}
+
+site2311ar.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi site2311ar:9000
+
+    file_server
+    encode gzip
+
+    root * /site2311ar/web
+}
+
 test231116.local {
 
 	# Формируем самоподписной сертификат для работы https
@@ -60,6 +121,12 @@ php.local, d2.php-cat.com {
 
 }
 
+
+
+
+
+
+
 livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
 
 	# Формируем самоподписной сертификат для работы https
@@ -72,9 +139,31 @@ livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.ph
     encode gzip
 
     #root /storage /base17/storage/public
-    root * /home/2309livewire/public
+    # root * /home/2309livewire/public
+    root * /2309livewire/public
 
 }
+
+
+upr.php-cat.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi upr_serv:9000
+
+    file_server
+    encode gzip
+
+    root * /home/upr_serv/public
+
+}
+
+
+
+
+
 
 
 test231012.local {

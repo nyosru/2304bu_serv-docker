@@ -35,7 +35,7 @@ dev:
 #	make start_2308beget_dev
 #	make start_test231012
 #	make start_2302didrive
-
+# make start_2401test
 	make caddy_refresh_cfd
 
 #	make start_2308beget_dev
@@ -69,6 +69,7 @@ prod:
 
 	make start_2308beget
 	make start_test231012_prod
+	make start_2401test
 
 	make caddy_refresh_cfd
 	docker system prune --force
@@ -136,6 +137,10 @@ start_2302didrive:
 	docker exec 2302didrive composer i
 	docker exec 2302didrive php artisan migrate
 	#docker exec 2302didrive php artisan l5-swagger:generate
+
+start_2401test:
+	docker exec 2401test composer i
+	docker exec 2401test php artisan migrate
 
 start_2302didrive_prod:
 	docker exec 2302didrive composer i --no-dev

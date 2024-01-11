@@ -26,7 +26,7 @@ services:
       - './caddy/certs:/data/caddy/locks/'
       - './caddy/certs3:/data/caddy/certificates/'
 
-      - '${FOLDER_2308BEGET}:/2308beget'
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 #      - '${FOLDER_2309LARAWIRE}:/2309livewire'
 #      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 #      - '${FOLDER_2309LARAWIRE}:${FOLDER_2309LIVEWIRE_SERV}'

@@ -86,7 +86,7 @@ krugi.local, phpcat.old.local, ttt72.local {
     encode gzip
 
     # root /storage /2308beget/storage/public
-    root * /2308beget
+    root * /home/2308beget/public
 }
 
 domain.dev.php-cat.com, domainwaiter.co {

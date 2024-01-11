@@ -33,7 +33,6 @@ services:
 #      - caddy_caddyfile:/caddy
 #      - caddyfile:/caddy/Caddyfile
 #      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:/etc/caddy/Caddyfile'
-##      - '${FOLDER_2308BEGET}:/2308beget'
 ##      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
 ##      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 #      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
@@ -42,11 +41,13 @@ services:
 #      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
 #      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
 #      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
       - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
 
     depends_on:
       - db_mysql
-#      - 2308beget
+      - 2308beget
 #      - 2309livewire
 #      - test231012
 #      - 2302didrive
@@ -224,26 +225,28 @@ services:
 
 
 
-#  2308beget:
-#    container_name: 2308beget
-#
-#    build:
-#      context: .
-#      dockerfile: docker.2308beget.Dockerfile
-#    working_dir: /2308beget
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
+  2308beget:
+    container_name: 2308beget
+
+    build:
+      context: .
+      dockerfile: docker.2308beget.Dockerfile
+    working_dir: ${FOLDER_2308BEGET_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
 #      - '${FOLDER_2308BEGET}:/2308beget'
-#
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
 
 
 

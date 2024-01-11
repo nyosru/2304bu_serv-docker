@@ -32,7 +32,7 @@ dev:
 	docker-compose up -d
 
 #	make start_2309livewire
-#	make start_2308beget_dev
+	make start_2308beget_dev
 #	make start_test231012
 #	make start_2302didrive
 # make start_2401test
@@ -74,9 +74,6 @@ prod:
 	make caddy_refresh_cfd
 	docker system prune --force
 
-
-
-
 start:
 	make caddy_refresh_cfd
 	make start_2308beget
@@ -94,12 +91,14 @@ start_2308beget:
 	docker exec 2308beget composer i --no-dev
 #	docker exec 2308beget composer i
 	docker exec 2308beget php artisan migrate
-	docker exec 2308beget npm run build
+	#docker exec 2308beget npm run build
 
 start_2308beget_dev:
 	docker exec 2308beget composer i
 	docker exec 2308beget php artisan migrate
-	docker exec 2308beget npm run build
+	#docker exec 2308beget npm run build
+	#docker exec 2308beget php artisan storage:link
+
 
 start_base17:
 	docker exec base17 php composer.phar i

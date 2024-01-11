@@ -69,16 +69,17 @@ services:
     build:
       context: .
       dockerfile: docker.2308beget.Dockerfile
-    working_dir: /2308beget
+    working_dir: ${FOLDER_2308BEGET_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
     restart: unless-stopped
       # tty: true
     expose:
       - 9000
     volumes:
-      - '${FOLDER_2308BEGET}:/2308beget'
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 
     networks:
       - laravel

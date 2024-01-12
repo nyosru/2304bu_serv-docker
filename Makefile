@@ -86,7 +86,6 @@ start:
 #	docker exec base17 php artisan migrate
 	# docker exec base17 npm i
 
-
 start_2308beget:
 	docker exec 2308beget composer i --no-dev
 #	docker exec 2308beget composer i

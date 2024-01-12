@@ -74,7 +74,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # RUN  curl -sL https://deb.nodesource.com/setup_18.x | bash 
 # RUN apt-get install nodejs 
 
-RUN cd /home/2308beget && chown -R www-data:www-data storage
+#RUN cd /home/2308beget && chown -R www-data:www-data storage
 #RUN #cd /2309livewire && chmod -R 0777 storage
 
 #RUN #cd /2308beget \

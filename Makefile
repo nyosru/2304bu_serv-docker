@@ -92,6 +92,7 @@ start_2308beget:
 #	docker exec 2308beget composer i
 	docker exec 2308beget php artisan migrate
 	#docker exec 2308beget npm run build
+	docker exec 2308beget chown -R www-data:www-data storage
 
 start_2308beget_dev:
 	docker exec 2308beget composer i

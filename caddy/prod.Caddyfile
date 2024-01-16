@@ -1,7 +1,7 @@
 d47.avto-as.ru {
 	# Формируем самоподписной сертификат для работы https
-	tls internal
-    # tls support@php-cat.com
+	#tls internal
+    tls support@php-cat.com
 
     file_server
     encode gzip
@@ -12,8 +12,8 @@ d47.avto-as.ru {
 
 47.avto-as.ru {
 	# Формируем самоподписной сертификат для работы https
-	tls internal
-    # tls support@php-cat.com
+	#tls internal
+    tls support@php-cat.com
 
     file_server
     encode gzip

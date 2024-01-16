@@ -13,10 +13,8 @@ ARG FOLDER
 ENV PHPGROUP=${PHPGROUP}
 ENV PHPUSER=${PHPUSER}
 ENV FOLDER=${FOLDER}
- # ENV PHPUSER=phpcat
 
 WORKDIR ${FOLDER}
-
 USER ${PHPUSER}
 
 RUN apt-get update -y && docker-php-ext-install pdo_mysql \

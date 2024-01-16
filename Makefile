@@ -23,6 +23,8 @@ ca:
 	#make caddy_refresh_cfd
 	#docker-compose up -d
 
+
+
 dev:
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	# cp caddy/prod.Caddyfile caddy/Caddyfile
@@ -32,10 +34,14 @@ dev:
 	docker-compose up -d
 
 #	make start_2309livewire
-	make start_2308beget_dev
+#	make start_2308beget_dev
 #	make start_test231012
 #	make start_2302didrive
 # make start_2401test
+
+	make start_as_didrive
+	make start_as
+
 	make caddy_refresh_cfd
 
 #	make start_2308beget_dev
@@ -145,6 +151,34 @@ start_2302didrive_prod:
 	docker exec 2302didrive composer i --no-dev
 	docker exec 2302didrive php artisan migrate
 	docker exec 2302didrive php artisan l5-swagger:generate
+
+
+
+
+
+
+
+
+start_as_prod:
+	docker exec 2302didrive composer i --no-dev
+	docker exec 2302didrive php artisan migrate
+	docker exec 2302didrive php artisan l5-swagger:generate
+
+
+
+
+start_as_didrive:
+	docker exec 2312didrive_auto composer i
+	docker exec 2312didrive_auto php artisan migrate
+	#docker exec 2312didrive_auto php artisan l5-swagger:generate
+
+start_as:
+	docker exec 2312auto_as composer i
+	docker exec 2312auto_as php artisan migrate
+	#docker exec 2312auto_as php artisan l5-swagger:generate
+
+
+
 
 
 caddy_refresh_cfd:

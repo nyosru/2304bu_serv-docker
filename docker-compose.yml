@@ -4,7 +4,23 @@ version: '3.8'
 networks:
   laravel:
     driver: bridge
+#  laravel_as:
+#    driver: bridge
   # ttt72_net: null
+
+# volumes:
+#   caddy_certs:
+# #   # scr:
+# #   Caddyfile:
+# #   # dataredis:
+# #   v_mysql:
+# #   data-www:
+# #   www47:
+# #   config:
+# #   bu72_front:
+
+
+
 
 volumes:
   caddy_caddyfile:
@@ -43,7 +59,11 @@ services:
 #      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
 
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+#      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
+      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+
 
     depends_on:
       - db_mysql
@@ -53,7 +73,7 @@ services:
 #      - 2302didrive
 #      - test231116php
 #      - upr_serv
-      - 2401test
+#      - 2401test
     networks:
       - laravel
 
@@ -116,9 +136,66 @@ services:
       - laravel
 
 
+## ------------ дальше контейнеры в работе ------------------
+#
+#  2302didrive:
+#    container_name: 2302didrive
+#
+#    build:
+#      context: .
+#      dockerfile: ${DOCKERFILE_2302DIDRIVE}
+#    working_dir: ${FOLDER_2302DIDRIVE_CADDY}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2302DIDRIVE_CADDY}
+#    volumes:
+#      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
 
 
-#  2309livewire:
+
+
+#  2401test:
+#    container_name: 2401test
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.laravel.Dockerfile
+#    working_dir: ${FOLDER_2401TEST_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2401TEST_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #  2309livewire:
 #    container_name: 2309livewire
 #    depends_on:
 #      - db_mysql
@@ -171,56 +248,8 @@ services:
 
 
 
-  2401test:
-    container_name: 2401test
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      #      dockerfile: docker.2308beget.Dockerfile
-      dockerfile: docker.laravel.Dockerfile
-    working_dir: ${FOLDER_2401TEST_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2401TEST_SERV}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
-#      - caddy_caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddy
-
-#      - './caddy/Caddyfile:/caddy/Caddyfile'
-#      - './caddy/config:/caddy/config'
-#      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:${FOLDER_UPR_SERV}/storage/app/caddyfile33/'
-#      - './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
 
 
-
-#  2302didrive:
-#    container_name: 2302didrive
-#
-#    build:
-#      context: .
-#      dockerfile: ${DOCKERFILE_2302DIDRIVE}
-#    working_dir: ${FOLDER_2302DIDRIVE_CADDY}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2302DIDRIVE_CADDY}
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
-#
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
 
 
 
@@ -373,15 +402,84 @@ services:
 
 
 
-# volumes:
-#   caddy_certs:
-# #   # scr:
-# #   Caddyfile:
-# #   # dataredis:
-# #   v_mysql:
-# #   data-www:
-# #   www47:
-# #   config:
-# #   bu72_front:
+  db_mysql_as:
+    container_name: db_mysql_as
+    image: mariadb:10.7.8
+    networks:
+      - laravel
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+#    ports:
+#      - '3307:3306'
+    volumes:
+      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
+    restart: unless-stopped
 
+
+
+
+  #++
+  phpmyadmin_as:
+    container_name: phpmyadmin_as
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql_as:db
+    ports:
+      - 6061:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql_as
+    networks:
+      - laravel
+
+
+  2312auto_as:
+    container_name: 2312auto_as
+    build:
+      context: .
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+
+
+  2312didrive_auto:
+    container_name: 2312didrive_auto
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+    links:
+      - db_mysql_as:db
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql_as
 

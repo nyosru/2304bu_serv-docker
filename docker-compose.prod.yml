@@ -1,7 +1,8 @@
 version: '3.8'
 
 networks:
-  laravel: null
+  laravel:
+    driver: bridge
 
 services:
 
@@ -203,3 +204,88 @@ services:
       - 9000
     volumes:
       - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
+
+
+
+
+
+
+
+
+  db_mysql_as:
+    container_name: db_mysql_as
+    image: mariadb:10.7.8
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
+    networks:
+      - laravel
+
+  #++
+  phpmyadmin_as:
+    container_name: phpmyadmin_as
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql_as:db
+    ports:
+      - 6061:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql_as
+    networks:
+      - laravel
+
+
+  2312auto_as:
+    container_name: 2312auto_as
+    build:
+      context: .
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+
+
+  2312didrive_auto:
+    container_name: 2312didrive_auto
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+    links:
+      - db_mysql_as:db
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql_as
+

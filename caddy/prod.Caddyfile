@@ -1,4 +1,7 @@
-d.php-cat.com, dev-as.php-cat.com, dev.47.avto-as.ru, 47.avto-as.ru {
+# d.php-cat.com, dev-as.php-cat.com
+# dev-as-didrive.php-cat.com
+
+dev.47.avto-as.ru {
     #dev as
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -11,7 +14,20 @@ d.php-cat.com, dev-as.php-cat.com, dev.47.avto-as.ru, 47.avto-as.ru {
     root * /home_as/2312auto_as/public
 }
 
-dev-as-didrive.php-cat.com, dev.d47.avto-as.ru, d47.avto-as.ru {
+47.avto-as.ru {
+    #dev as
+	# Формируем самоподписной сертификат для работы https
+	#tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi 2312auto_as_prod:9000
+    root * /home_as/2312auto_as_prod/public
+}
+
+dev.d47.avto-as.ru {
     #dev as didrive
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -22,6 +38,19 @@ dev-as-didrive.php-cat.com, dev.d47.avto-as.ru, d47.avto-as.ru {
 
     php_fastcgi 2312didrive_auto:9000
     root * /home_as/2312auto_as_didrive/public
+}
+
+d47.avto-as.ru {
+    #dev as didrive
+	# Формируем самоподписной сертификат для работы https
+	#tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi 2312didrive_auto_prod:9000
+    root * /home_as/2312auto_as_didrive_prod/public
 }
 
 

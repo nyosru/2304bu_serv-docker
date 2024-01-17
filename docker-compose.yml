@@ -1,6 +1,5 @@
 version: '3.8'
 
-
 networks:
   laravel:
     driver: bridge
@@ -18,9 +17,6 @@ networks:
 # #   www47:
 # #   config:
 # #   bu72_front:
-
-
-
 
 volumes:
   caddy_caddyfile:
@@ -404,6 +400,23 @@ services:
 
 
 
+
+
+
+
+
+
+  my-cron-job:
+    container_name: my-cron-job
+    build:
+      context: .
+      dockerfile: cron/Dockerfile  # Указываем путь к Dockerfile относительно docker-compose.yml
+    volumes:
+      - ./cron/cronfile:/etc/cron.d/mycron
+      - ./cron/script.sh:/usr/src/script.sh
+    #запускает cron в режиме foreground, чтобы контейнер не завершался сразу после выполнения задач.
+#    command: ["cron", "-f"]
+    command: ["cron", "&&", "tail", "-f", "/var/log/cron.log"]
 
 
   db_mysql_as:

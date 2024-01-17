@@ -1,4 +1,4 @@
-dev-as.php-cat.com, dev.47.avto-as.ru, 47.avto-as.ru {
+d.php-cat.com, dev-as.php-cat.com, dev.47.avto-as.ru, 47.avto-as.ru {
     #dev as
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -40,7 +40,7 @@ dev-as-didrive.php-cat.com, dev.d47.avto-as.ru, d47.avto-as.ru {
 
 # 2401test_lara.php-cat.local {
 
-d.php-cat.com, test2401laravel-vitrin.php-cat.com {
+test2401laravel-vitrin.php-cat.com {
 
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

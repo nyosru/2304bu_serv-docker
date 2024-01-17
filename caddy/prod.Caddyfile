@@ -1,3 +1,15 @@
+prod.47.avto-as.ru {
+	# Формируем самоподписной сертификат для работы https
+	#tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi 2312didrive_auto_prod:9000
+    root * /home_as/2312auto_as_prod/public
+}
+
 d47.avto-as.ru {
 	# Формируем самоподписной сертификат для работы https
 	#tls internal

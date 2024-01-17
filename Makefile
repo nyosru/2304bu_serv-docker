@@ -63,7 +63,10 @@ dev:
 	# docker exec sym_test symfony -h
 	# docker exec sym_test php composer i
 
+
+
 prod:
+
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
@@ -77,8 +80,18 @@ prod:
 	make start_test231012_prod
 	make start_2401test
 
+	make start_as_prod
+	make start_as_didrive_prod
+
 	make caddy_refresh_cfd
 	docker system prune --force
+
+
+
+
+
+
+
 
 start:
 	make caddy_refresh_cfd
@@ -158,21 +171,15 @@ start_2302didrive_prod:
 
 
 
-
-start_as_prod:
-	docker exec 2302didrive composer i --no-dev
-	docker exec 2302didrive php artisan migrate
-	docker exec 2302didrive php artisan l5-swagger:generate
-	docker exec 2312auto_as npx update-browserslist-db@latest
-	docker exec 2312auto_as npm run prod
-
-
+#
+#start_as_prod:
+#	docker exec 2302didrive composer i --no-dev
+#	docker exec 2302didrive php artisan migrate
+#	docker exec 2302didrive php artisan l5-swagger:generate
+#	docker exec 2312auto_as npx update-browserslist-db@latest
+#	docker exec 2312auto_as npm run prod
 
 
-start_as_didrive:
-	docker exec 2312didrive_auto composer i
-	docker exec 2312didrive_auto php artisan migrate
-	#docker exec 2312didrive_auto php artisan l5-swagger:generate
 
 start_as:
 	docker exec 2312auto_as composer i
@@ -181,6 +188,22 @@ start_as:
 	docker exec 2312auto_as npm run dev
 	#docker exec 2312auto_as npm run prod
 	#docker exec 2312auto_as php artisan l5-swagger:generate
+start_as_didrive:
+	docker exec 2312didrive_auto composer i
+	docker exec 2312didrive_auto php artisan migrate
+	#docker exec 2312didrive_auto php artisan l5-swagger:generate
+
+
+start_as_prod:
+	docker exec 2312auto_as composer i --no-dev
+	docker exec 2312auto_as php artisan migrate
+	docker exec 2312auto_as npx update-browserslist-db@latest
+	docker exec 2312auto_as npm run prod
+	#docker exec 2312auto_as php artisan l5-swagger:generate
+start_as_didrive_prod:
+	docker exec 2312didrive_auto composer i --no-dev
+	docker exec 2312didrive_auto php artisan migrate
+	#docker exec 2312didrive_auto php artisan l5-swagger:generate
 
 
 

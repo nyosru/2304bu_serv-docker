@@ -77,6 +77,10 @@ services:
     networks:
       - laravel
 
+
+
+
+
 #  redis:
 #    container_name: redis
 #    image: redis:latest
@@ -440,7 +444,7 @@ services:
     container_name: 2312auto_as
     build:
       context: .
-      dockerfile: docker.laravel.Dockerfile
+      dockerfile: docker.laravel_vue.Dockerfile
     working_dir: ${FOLDER_2312AUTO_AS_SERV}
     environment:
       - PHPGROUP=www-data

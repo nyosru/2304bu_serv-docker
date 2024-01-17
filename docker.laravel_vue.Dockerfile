@@ -23,7 +23,7 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
 
-#RUN #npm install -g npm
+RUN npm install -g npm
 
 # # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

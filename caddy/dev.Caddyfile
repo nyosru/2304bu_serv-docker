@@ -19,7 +19,10 @@ auto-as.local {
     encode gzip
 
     php_fastcgi 2312auto_as:9000
+
     root * /home_as/2312auto_as/public
+    #rewrite /storage/photo/(.*) /storage/photo_no.jpg
+
 }
 
 

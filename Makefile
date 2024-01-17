@@ -163,6 +163,8 @@ start_as_prod:
 	docker exec 2302didrive composer i --no-dev
 	docker exec 2302didrive php artisan migrate
 	docker exec 2302didrive php artisan l5-swagger:generate
+	docker exec 2312auto_as npx update-browserslist-db@latest
+	docker exec 2312auto_as npm run prod
 
 
 
@@ -175,6 +177,9 @@ start_as_didrive:
 start_as:
 	docker exec 2312auto_as composer i
 	docker exec 2312auto_as php artisan migrate
+	docker exec 2312auto_as npx update-browserslist-db@latest
+	docker exec 2312auto_as npm run dev
+	#docker exec 2312auto_as npm run prod
 	#docker exec 2312auto_as php artisan l5-swagger:generate
 
 

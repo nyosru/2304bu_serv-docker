@@ -1,32 +1,42 @@
 didrive.auto-as.local {
-
 	# Формируем самоподписной сертификат для работы https
 	tls internal
     # tls support@php-cat.com
 
-    php_fastcgi 2312didrive_auto:9000
-
     file_server
     encode gzip
 
+    php_fastcgi 2312didrive_auto:9000
     root * /home_as/2312auto_as_didrive/public
-
 }
 
 auto-as.local {
-
 	# Формируем самоподписной сертификат для работы https
 	tls internal
     # tls support@php-cat.com
 
-    php_fastcgi 2312auto_as:9000
-
     file_server
     encode gzip
 
+    php_fastcgi 2312auto_as:9000
+
     root * /home_as/2312auto_as/public
+    #rewrite /storage/photo/(.*) /storage/photo_no.jpg
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 2401test_lara.php-cat.local {

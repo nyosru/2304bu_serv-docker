@@ -77,6 +77,10 @@ services:
     networks:
       - laravel
 
+
+
+
+
 #  redis:
 #    container_name: redis
 #    image: redis:latest

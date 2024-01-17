@@ -209,17 +209,19 @@ start_2302didrive_prod:
 
 
 start_avtoas:
-	docker exec 2312auto_as chmod -R 0777 storage
 	docker exec 2312auto_as composer i
 	docker exec 2312auto_as php artisan migrate
 	docker exec 2312auto_as npx update-browserslist-db@latest
 	docker exec 2312auto_as npm run dev
+	docker exec 2312auto_as chmod -R 0777 storage
+	docker exec 2312auto_as php artisan storage:link
 start_avtoas_prod:
-	docker exec 2312auto_as_prod chmod -R 0777 storage
 	docker exec 2312auto_as_prod composer i --no-dev
 	docker exec 2312auto_as_prod php artisan migrate
 	docker exec 2312auto_as_prod npx update-browserslist-db@latest
 	docker exec 2312auto_as_prod npm run prod
+	docker exec 2312auto_as_prod chmod -R 0777 storage
+	docker exec 2312auto_as_prod php artisan storage:link
 
 start_avtoas_didrive:
 	docker exec 2312didrive_auto chmod -R 0777 storage
@@ -227,12 +229,14 @@ start_avtoas_didrive:
 	docker exec 2312didrive_auto php artisan migrate
 	#docker exec 2312didrive_auto npx update-browserslist-db@latest
 	#docker exec 2312didrive_auto npm run dev
+	docker exec 2312didrive_auto php artisan storage:link
 start_avtoas_didrive_prod:
 	docker exec 2312didrive_auto_prod chmod -R 0777 storage
 	docker exec 2312didrive_auto_prod composer i --no-dev
 	docker exec 2312didrive_auto_prod php artisan migrate
 	#docker exec 2312didrive_auto_prod npx update-browserslist-db@latest
 	#docker exec 2312didrive_auto_prod npm run prod
+	docker exec 2312didrive_auto_prod php artisan storage:link
 
 
 

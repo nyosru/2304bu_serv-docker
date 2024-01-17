@@ -444,7 +444,7 @@ services:
     container_name: 2312auto_as
     build:
       context: .
-      dockerfile: docker.laravel.Dockerfile
+      dockerfile: docker.laravel_vue.Dockerfile
     working_dir: ${FOLDER_2312AUTO_AS_SERV}
     environment:
       - PHPGROUP=www-data
@@ -462,7 +462,28 @@ services:
       - db_mysql_as
     volumes:
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-
+  2312auto_as_prod:
+    container_name: 2312auto_as_prod
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_PROD_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_PROD_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
 
   2312didrive_auto:
     container_name: 2312didrive_auto
@@ -480,6 +501,30 @@ services:
       - 9000
     volumes:
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+    links:
+      - db_mysql_as:db
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql_as
+
+
+  2312didrive_auto_prod:
+    container_name: 2312didrive_auto_prod
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
     links:
       - db_mysql_as:db
     networks:

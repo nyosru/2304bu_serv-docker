@@ -370,10 +370,10 @@ services:
       - 9000
     networks:
       - laravel
-    links:
-      - db_mysql_as:db
-    depends_on:
-      - db_mysql_as
+#    links:
+#      - db_mysql_as:db
+#    depends_on:
+#      - db_mysql_as
     volumes:
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 

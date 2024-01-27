@@ -348,3 +348,31 @@ services:
       - laravel
     depends_on:
       - db_mysql_as
+
+
+
+
+
+  api_php74:
+    container_name: api_php74
+    build:
+      context: .
+      dockerfile: ./docker.php74_soap.Dockerfile
+    working_dir: ${FOLDER_API_PHP74_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_API_PHP74_SERV}
+    restart: unless-stopped
+    tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+

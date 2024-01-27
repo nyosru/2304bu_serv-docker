@@ -25,6 +25,19 @@ auto-as.local {
 
 }
 
+#api74.php-cat.com.
+api7.php-cat.local, api47.php-cat.local {
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi api_php74:9000
+    root * /home_as/base-php7-api/public
+}
+
 
 
 

@@ -53,13 +53,11 @@ services:
 #      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
 #      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
 #      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
-
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 #      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
-
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
     depends_on:
       - db_mysql
@@ -70,6 +68,7 @@ services:
 #      - test231116php
 #      - upr_serv
 #      - 2401test
+      - api_php74
     networks:
       - laravel
 
@@ -113,8 +112,8 @@ services:
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
-    ports:
-      - 3306:3306
+#    ports:
+#      - 3306:3306
     volumes:
       - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
     restart: unless-stopped
@@ -453,11 +452,41 @@ services:
       - laravel
 
 
+
+
+
+  api_php74:
+    container_name: api_php74
+    build:
+      context: .
+      dockerfile: ./docker.php74_soap.Dockerfile
+    working_dir: ${FOLDER_API_PHP74_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_API_PHP74_SERV}
+    restart: unless-stopped
+    tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+
+
+
+
+
   2312auto_as:
     container_name: 2312auto_as
     build:
       context: .
-      dockerfile: docker.laravel_vue.Dockerfile
+      dockerfile: docker.laravel_vue_soap.Dockerfile
     working_dir: ${FOLDER_2312AUTO_AS_SERV}
     environment:
       - PHPGROUP=www-data
@@ -475,6 +504,7 @@ services:
       - db_mysql_as
     volumes:
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+
   2312auto_as_prod:
     container_name: 2312auto_as_prod
     build:

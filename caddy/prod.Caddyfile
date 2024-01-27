@@ -56,8 +56,10 @@ d47.avto-as.ru {
 
 
 
-#api7.php-cat.local, api47.php-cat.local {
 api74.php-cat.com {
+
+    #api7.php-cat.local, api47.php-cat.local {
+
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
     tls support@php-cat.com

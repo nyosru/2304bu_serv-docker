@@ -1,3 +1,4 @@
+
 didrive.auto-as.local {
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -22,6 +23,31 @@ auto-as.local {
 
     root * /home_as/2312auto_as/public
     #rewrite /storage/photo/(.*) /storage/photo_no.jpg
+
+}
+
+
+
+
+
+
+
+
+
+livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /2309livewire/public
 
 }
 
@@ -179,24 +205,6 @@ php.local, d2.php-cat.com {
 
 
 
-
-
-livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
-
-	# Формируем самоподписной сертификат для работы https
-	tls internal
-    # tls support@php-cat.com
-
-    php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
-    #root /storage /base17/storage/public
-    # root * /home/2309livewire/public
-    root * /2309livewire/public
-
-}
 
 
 upr.php-cat.local {

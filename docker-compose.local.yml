@@ -48,21 +48,25 @@ services:
 ##      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
 ##      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 #      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
-#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 #      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
 #      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
 #      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
 #      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 #      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
+
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
     depends_on:
       - db_mysql
       - 2308beget
-#      - 2309livewire
+      - 2309livewire
 #      - test231012
 #      - 2302didrive
 #      - test231116php
@@ -136,6 +140,42 @@ services:
 
 
 ## ------------ дальше контейнеры в работе ------------------
+
+
+
+
+
+  2309livewire:
+    container_name: 2309livewire
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+
+
+
+
+
+
+
+
+
+
+
 #
 #  2302didrive:
 #    container_name: 2302didrive
@@ -192,28 +232,6 @@ services:
 
 
 
-
-
-  #  2309livewire:
-#    container_name: 2309livewire
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
-#    build:
-#      context: .
-#      #      dockerfile: docker.2308beget.Dockerfile
-#      dockerfile: docker.2309livewire.Dockerfile
-#    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 #
 #
 #
@@ -481,6 +499,8 @@ services:
 
 
 
+# avto-as
+
 
   2312auto_as:
     container_name: 2312auto_as
@@ -496,6 +516,8 @@ services:
     # tty: true
     expose:
       - 9000
+#    ports:
+#      - 50:22
     networks:
       - laravel
     links:
@@ -504,6 +526,8 @@ services:
       - db_mysql_as
     volumes:
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+
 
   2312auto_as_prod:
     container_name: 2312auto_as_prod
@@ -575,3 +599,72 @@ services:
     depends_on:
       - db_mysql_as
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##https://habr.com/ru/articles/671344/
+#
+#  elasticsearch:
+#    image: elasticsearch:7.16.1
+##    volumes:
+##      - ./configs/elasticsearch/config.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+##      - ./docker_volumes/elasticsearch/data:/usr/share/elasticsearch/data
+#    environment:
+#      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+#      ELASTIC_USERNAME: "elastic"
+#      ELASTIC_PASSWORD: "MyPw123"
+#      discovery.type: single-node
+#    networks:
+##      - elk
+#      - laravel
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#
+#  logstash:
+#    image: logstash:7.16.2
+##    volumes:
+##      - ./configs/logstash/config.yml:/usr/share/logstash/config/logstash.yml:ro
+#    environment:
+#      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+#    ports:
+#      - "5044:5044"
+#      - "5001:5000"
+#      - "9600:9600"
+#    networks:
+##      - elk
+#      - laravel
+#    depends_on:
+#      - elasticsearch
+#
+#  kibana:
+#    image: kibana:7.16.1
+#    depends_on:
+#      - elasticsearch
+##    volumes:
+##      - ./configs/kibana/config.yml:/usr/share/kibana/config/kibana.yml:ro
+#    networks:
+##      - elk
+#      - laravel
+#    ports:
+#      - "5601:5601"
+##
+##networks:
+##  elk:
+##    driver: bridge

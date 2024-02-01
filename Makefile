@@ -31,7 +31,8 @@ dev:
 	cp docker-compose.local.yml docker-compose.yml
 	# cp docker-compose.prod.yml docker-compose.yml	
 
-	docker-compose up -d
+	#docker-compose up -d --build
+	docker-compose up -d --force-recreate
 
 #	make start_2309livewire
 #	make start_2308beget_dev

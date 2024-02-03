@@ -1,13 +1,15 @@
-земельныйкадастр.рф {
+земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai {
     tls support@php-cat.com
     respond "привет буфет, и пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"}
 }
 
 
-# d.php-cat.com, dev-as.php-cat.com
-# dev-as-didrive.php-cat.com
-
 dev.47.avto-as.ru {
+
+
+    # d.php-cat.com, dev-as.php-cat.com
+    # dev-as-didrive.php-cat.com
+
     #dev as
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -90,9 +92,9 @@ api74.php-cat.com {
 
 
 
-# 2401test_lara.php-cat.local {
-
 test2401laravel-vitrin.php-cat.com {
+
+    # 2401test_lara.php-cat.local {
 
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
@@ -109,7 +111,8 @@ test2401laravel-vitrin.php-cat.com {
 
 
 test231116.php.php-cat.com {
-# , d47.php-cat.com
+
+    # , d47.php-cat.com
 
 	# Формируем самоподписной сертификат для работы https
 	#tls internal

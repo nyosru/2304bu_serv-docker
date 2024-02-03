@@ -1,16 +1,9 @@
-земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai {
-    tls support@php-cat.com
-    respond "привет буфет, и пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"}
-}
+# ------------- dev as ----------
 
+# d.php-cat.com, dev-as.php-cat.com
+# dev-as-didrive.php-cat.com
 
 dev.47.avto-as.ru {
-
-
-    # d.php-cat.com, dev-as.php-cat.com
-    # dev-as-didrive.php-cat.com
-
-    #dev as
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
     tls support@php-cat.com
@@ -60,6 +53,8 @@ d47.avto-as.ru {
     php_fastcgi 2312didrive_auto_prod:9000
     root * /home_as/2312auto_as_didrive_prod/public
 }
+
+
 
 
 

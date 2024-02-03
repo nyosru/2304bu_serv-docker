@@ -1,3 +1,9 @@
+земельныйкадастр.рф {
+    tls support@php-cat.com
+    respond "привет буфет, и пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"}
+}
+
+
 # d.php-cat.com, dev-as.php-cat.com
 # dev-as-didrive.php-cat.com
 
@@ -203,11 +209,6 @@ test231012.php-cat.com {
 сергейсб.рф, xn--90adfbu3bff.xn--p1ai {
     tls support@php-cat.com
     redir / https://php-cat.com
-}
-
-земельныйкадастр.рф {
-    tls support@php-cat.com
-    respond "привет буфет, и пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"}
 }
 
 *.ru, *.xn--p1ai, *.com, *.info {

@@ -1,3 +1,16 @@
+# phpcat.local, wire.local {
+
+xn--80aalcakqihin5bmo2koa.xn--p1ai, земельныйкадастр.рф, php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
+	# tls internal
+    tls support@php-cat.com
+    file_server
+    encode gzip
+
+    php_fastcgi 2309livewire:9000
+    root * /2309livewire/public
+}
+
+
 # ------------- dev as ----------
 
 # d.php-cat.com, dev-as.php-cat.com
@@ -163,20 +176,6 @@ domainwaiter.com, domain.php-cat.com  {
     root * /2308beget/public
 }
 
-# phpcat.local, wire.local {
-php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
-
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-    php_fastcgi 2309livewire:9000
-    file_server
-    encode gzip
-
-    # root * /home/2309livewire/public
-    root * /2309livewire/public
-
-}
 
 vk.files.php-cat.com {
 	# Формируем самоподписной сертификат для работы https

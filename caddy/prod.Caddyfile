@@ -205,6 +205,11 @@ test231012.php-cat.com {
     redir / https://php-cat.com
 }
 
+земельныйкадастр.рф {
+    tls support@php-cat.com
+    respond "привет буфет, и пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"}
+}
+
 *.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com
     respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"

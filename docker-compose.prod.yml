@@ -306,7 +306,6 @@ services:
       - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
       - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
 
-
   2312didrive_auto:
     #dev
     container_name: 2312didrive_auto

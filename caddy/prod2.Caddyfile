@@ -1,32 +1,12 @@
-# phpcat.local, wire.local {
 
-земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai { {
-	# tls internal
-    tls support@php-cat.com
-    file_server
-    encode gzip
-
-    php_fastcgi 2309livewire:9000
-    root * /2309livewire/public
-}
-
-php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
-	# tls internal
-    tls support@php-cat.com
-    file_server
-    encode gzip
-
-    php_fastcgi 2309livewire:9000
-    root * /2309livewire/public
-}
-
-
-# ------------- dev as ----------
-
-# d.php-cat.com, dev-as.php-cat.com
-# dev-as-didrive.php-cat.com
 
 dev.47.avto-as.ru {
+
+
+    # d.php-cat.com, dev-as.php-cat.com
+    # dev-as-didrive.php-cat.com
+
+    #dev as
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
     tls support@php-cat.com
@@ -76,8 +56,6 @@ d47.avto-as.ru {
     php_fastcgi 2312didrive_auto_prod:9000
     root * /home_as/2312auto_as_didrive_prod/public
 }
-
-
 
 
 
@@ -186,6 +164,20 @@ domainwaiter.com, domain.php-cat.com  {
     root * /2308beget/public
 }
 
+# phpcat.local, wire.local {
+php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
+
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+    php_fastcgi 2309livewire:9000
+    file_server
+    encode gzip
+
+    # root * /home/2309livewire/public
+    root * /2309livewire/public
+
+}
 
 vk.files.php-cat.com {
 	# Формируем самоподписной сертификат для работы https
@@ -218,7 +210,7 @@ test231012.php-cat.com {
     redir / https://php-cat.com
 }
 
-*.ru, *.xn--p1ai, *.com, *.info {
-    tls support@php-cat.com
-    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
-}
+#*.ru, *.xn--p1ai, *.com, *.info {
+#    tls support@php-cat.com
+#    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
+#}

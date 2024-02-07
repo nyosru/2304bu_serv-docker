@@ -1,3 +1,27 @@
+
+
+земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local, livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /2309livewire/public
+
+}
+
+#земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai {
+#    tls internal
+#    #tls support@php-cat.com
+#    respond "привет буфет, и пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"}
+#}
+
+
 didrive.auto-as.local {
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -25,6 +49,15 @@ auto-as.local {
 
 }
 
+
+
+
+
+
+
+
+
+#api74.php-cat.com.
 api7.php-cat.local, api47.php-cat.local {
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -33,8 +66,8 @@ api7.php-cat.local, api47.php-cat.local {
     file_server
     encode gzip
 
-    php_fastcgi 2312auto_as74services3:9000
-    root * /home_as/2312auto_as74services/public
+    php_fastcgi api_php74:9000
+    root * /home_as/base-php7-api/public
 }
 
 
@@ -180,24 +213,6 @@ php.local, d2.php-cat.com {
 
 
 
-livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
-
-	# Формируем самоподписной сертификат для работы https
-	tls internal
-    # tls support@php-cat.com
-
-    php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
-    #root /storage /base17/storage/public
-    # root * /home/2309livewire/public
-    root * /2309livewire/public
-
-}
-
-
 upr.php-cat.local {
 
 	# Формируем самоподписной сертификат для работы https
@@ -249,19 +264,15 @@ didrive.local {
 	# Формируем самоподписной сертификат для работы https
 #	tls internal
     # tls support@php-cat.com
-
  #   php_fastcgi base16sites:9010
-
   #  file_server
    # encode gzip
-
    # root /storage /base16sites/storage/public
    # root * /base16sites/public
-
 #}
 
-*.ru, *.xn--p1ai, *.com, *.info {
-    # tls support@php-cat.com
-    tls internal
-    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
-}
+# *.ru, *.xn--p1ai, *.com, *.info {
+#    # tls support@php-cat.com
+#    tls internal
+#    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
+# }

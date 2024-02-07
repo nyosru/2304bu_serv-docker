@@ -48,27 +48,31 @@ services:
 ##      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
 ##      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 #      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
-#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 #      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
 #      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
 #      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
 #      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
-      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 #      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
+      #      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-      - '${FOLDER_2312AUTO_AS_SERVICE}:${FOLDER_2312AUTO_AS_SERVICE_SERV}'
+
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 
     depends_on:
       - db_mysql
-      - 2308beget
-#      - 2309livewire
+#      - 2308beget
+      - 2309livewire
 #      - test231012
 #      - 2302didrive
 #      - test231116php
 #      - upr_serv
 #      - 2401test
-      - 2312auto_as74services3
+#      - api_php74
     networks:
       - laravel
 
@@ -136,6 +140,42 @@ services:
 
 
 ## ------------ дальше контейнеры в работе ------------------
+
+
+
+
+
+  2309livewire:
+    container_name: 2309livewire
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+
+
+
+
+
+
+
+
+
+
+
 #
 #  2302didrive:
 #    container_name: 2302didrive
@@ -192,28 +232,6 @@ services:
 
 
 
-
-
-  #  2309livewire:
-#    container_name: 2309livewire
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
-#    build:
-#      context: .
-#      #      dockerfile: docker.2308beget.Dockerfile
-#      dockerfile: docker.2309livewire.Dockerfile
-#    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 #
 #
 #
@@ -252,29 +270,29 @@ services:
 
 
 
-
-  2308beget:
-    container_name: 2308beget
-
-    build:
-      context: .
-      dockerfile: docker.2308beget.Dockerfile
-    working_dir: ${FOLDER_2308BEGET_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2308BEGET_SERV}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-#      - '${FOLDER_2308BEGET}:/2308beget'
-      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
+#
+#  2308beget:
+#    container_name: 2308beget
+#
+#    build:
+#      context: .
+#      dockerfile: docker.2308beget.Dockerfile
+#    working_dir: ${FOLDER_2308BEGET_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2308BEGET_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+##      - '${FOLDER_2308BEGET}:/2308beget'
+#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+#
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
 
 
 
@@ -418,160 +436,235 @@ services:
 ##    command: ["cron", "-f"]
 #    command: ["cron", "&&", "tail", "-f", "/var/log/cron.log"]
 
-  db_mysql_as:
-    container_name: db_mysql_as
-    image: mariadb:10.7.8
-    networks:
-      - laravel
-    environment:
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+#  db_mysql_as:
+#    container_name: db_mysql_as
+#    image: mariadb:10.7.8
+#    networks:
+#      - laravel
+#    environment:
+#      MYSQL_ROOT_HOST: "%"
+#      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+##    ports:
+##      - '3307:3306'
+#    volumes:
+#      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
+#    restart: unless-stopped
+#
+#
+#
+#
+#  #++
+#  phpmyadmin_as:
+#    container_name: phpmyadmin_as
+#    image: phpmyadmin/phpmyadmin
+#    links:
+#      - db_mysql_as:db
 #    ports:
-#      - '3307:3306'
-    volumes:
-      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
-    restart: unless-stopped
+#      - 6061:80
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+#      UPLOAD_LIMIT: 300M
+#    depends_on:
+#      - db_mysql_as
+#    networks:
+#      - laravel
 
 
 
 
-  #++
-  phpmyadmin_as:
-    container_name: phpmyadmin_as
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db_mysql_as:db
-    ports:
-      - 6061:80
-    environment:
-      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-    depends_on:
-      - db_mysql_as
-    networks:
-      - laravel
+#
+#  api_php74:
+#    container_name: api_php74
+#    build:
+#      context: .
+#      dockerfile: ./docker.php74_soap.Dockerfile
+#    working_dir: ${FOLDER_API_PHP74_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_API_PHP74_SERV}
+#    restart: unless-stopped
+#    tty: true
+#    expose:
+#      - 9000
+#    networks:
+#      - laravel
+#    links:
+#      - db_mysql_as:db
+#    depends_on:
+#      - db_mysql_as
+#    volumes:
+#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+#
+#
+#
+#
+## avto-as
+#
+#
+#  2312auto_as:
+#    container_name: 2312auto_as
+#    build:
+#      context: .
+#      dockerfile: docker.laravel_vue_soap.Dockerfile
+#    working_dir: ${FOLDER_2312AUTO_AS_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2312AUTO_AS_SERV}
+#    restart: unless-stopped
+#    # tty: true
+#    expose:
+#      - 9000
+##    ports:
+##      - 50:22
+#    networks:
+#      - laravel
+#    links:
+#      - db_mysql_as:db
+#    depends_on:
+#      - db_mysql_as
+#    volumes:
+#      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+#
+#
+#  2312auto_as_prod:
+#    container_name: 2312auto_as_prod
+#    build:
+#      context: .
+#      dockerfile: docker.laravel_vue.Dockerfile
+#    working_dir: ${FOLDER_2312AUTO_AS_PROD_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2312AUTO_AS_PROD_SERV}
+#    restart: unless-stopped
+#    # tty: true
+#    expose:
+#      - 9000
+#    networks:
+#      - laravel
+#    links:
+#      - db_mysql_as:db
+#    depends_on:
+#      - db_mysql_as
+#    volumes:
+#      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+#
+#  2312didrive_auto:
+#    container_name: 2312didrive_auto
+#    build:
+#      context: .
+#      #      dockerfile: docker.2308beget.Dockerfile
+#      dockerfile: docker.laravel.Dockerfile
+#    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+#    links:
+#      - db_mysql_as:db
+#    networks:
+#      - laravel
+#    depends_on:
+#      - db_mysql_as
+#
+#
+#  2312didrive_auto_prod:
+#    container_name: 2312didrive_auto_prod
+#    build:
+#      context: .
+#      #      dockerfile: docker.2308beget.Dockerfile
+#      dockerfile: docker.laravel.Dockerfile
+#    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
+#    links:
+#      - db_mysql_as:db
+#    networks:
+#      - laravel
+#    depends_on:
+#      - db_mysql_as
 
 
 
 
 
-  2312auto_as74services3:
-    container_name: 2312auto_as74services3
-    build:
-      context: .
-      dockerfile: ./docker.php74_soap.Dockerfile
-    working_dir: ${FOLDER_2312AUTO_AS_SERVICE_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2312AUTO_AS_SERVICE_SERV}
-    restart: unless-stopped
-    tty: true
-    expose:
-      - 9000
-    networks:
-      - laravel
-    links:
-      - db_mysql_as:db
-    depends_on:
-      - db_mysql_as
-    volumes:
-      - '${FOLDER_2312AUTO_AS_SERVICE}:${FOLDER_2312AUTO_AS_SERVICE_SERV}'
 
 
 
 
 
-  2312auto_as:
-    container_name: 2312auto_as
-    build:
-      context: .
-      dockerfile: docker.laravel_vue_soap.Dockerfile
-    working_dir: ${FOLDER_2312AUTO_AS_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2312AUTO_AS_SERV}
-    restart: unless-stopped
-    # tty: true
-    expose:
-      - 9000
-    networks:
-      - laravel
-    links:
-      - db_mysql_as:db
-    depends_on:
-      - db_mysql_as
-    volumes:
-      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-
-  2312auto_as_prod:
-    container_name: 2312auto_as_prod
-    build:
-      context: .
-      dockerfile: docker.laravel_vue.Dockerfile
-    working_dir: ${FOLDER_2312AUTO_AS_PROD_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2312AUTO_AS_PROD_SERV}
-    restart: unless-stopped
-    # tty: true
-    expose:
-      - 9000
-    networks:
-      - laravel
-    links:
-      - db_mysql_as:db
-    depends_on:
-      - db_mysql_as
-    volumes:
-      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
-
-  2312didrive_auto:
-    container_name: 2312didrive_auto
-    build:
-      context: .
-      #      dockerfile: docker.2308beget.Dockerfile
-      dockerfile: docker.laravel.Dockerfile
-    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-    links:
-      - db_mysql_as:db
-    networks:
-      - laravel
-    depends_on:
-      - db_mysql_as
 
 
-  2312didrive_auto_prod:
-    container_name: 2312didrive_auto_prod
-    build:
-      context: .
-      #      dockerfile: docker.2308beget.Dockerfile
-      dockerfile: docker.laravel.Dockerfile
-    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
-    links:
-      - db_mysql_as:db
-    networks:
-      - laravel
-    depends_on:
-      - db_mysql_as
 
+
+
+
+
+
+
+
+##https://habr.com/ru/articles/671344/
+#
+#  elasticsearch:
+#    image: elasticsearch:7.16.1
+##    volumes:
+##      - ./configs/elasticsearch/config.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+##      - ./docker_volumes/elasticsearch/data:/usr/share/elasticsearch/data
+#    environment:
+#      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+#      ELASTIC_USERNAME: "elastic"
+#      ELASTIC_PASSWORD: "MyPw123"
+#      discovery.type: single-node
+#    networks:
+##      - elk
+#      - laravel
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#
+#  logstash:
+#    image: logstash:7.16.2
+##    volumes:
+##      - ./configs/logstash/config.yml:/usr/share/logstash/config/logstash.yml:ro
+#    environment:
+#      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+#    ports:
+#      - "5044:5044"
+#      - "5001:5000"
+#      - "9600:9600"
+#    networks:
+##      - elk
+#      - laravel
+#    depends_on:
+#      - elasticsearch
+#
+#  kibana:
+#    image: kibana:7.16.1
+#    depends_on:
+#      - elasticsearch
+##    volumes:
+##      - ./configs/kibana/config.yml:/usr/share/kibana/config/kibana.yml:ro
+#    networks:
+##      - elk
+#      - laravel
+#    ports:
+#      - "5601:5601"
+##
+##networks:
+##  elk:
+##    driver: bridge

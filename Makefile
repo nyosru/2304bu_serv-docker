@@ -34,7 +34,7 @@ dev:
 	#docker-compose up -d --build
 	docker-compose up -d --force-recreate
 
-#	make start_2309livewire
+	make start_2309livewire
 #	make start_2308beget_dev
 #	make start_test231012
 #	make start_2302didrive
@@ -43,11 +43,10 @@ dev:
 	#make start_as_didrive
 	#make start_as
 
-
-	make start_avtoas
-	#make start_avtoas_prod
-	make start_avtoas_didrive
-	#make start_avtoas_didrive_prod
+#	make start_avtoas
+#	#make start_avtoas_prod
+#	make start_avtoas_didrive
+#	#make start_avtoas_didrive_prod
 
 	make caddy_refresh_cfd
 

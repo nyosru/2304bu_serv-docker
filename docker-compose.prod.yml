@@ -309,8 +309,9 @@ services:
 
 
   ftp-server:
-    image: stilliard/pure-ftpd:hardened
-#    image: fauria/vsftpd
+#    image: stilliard/pure-ftpd:hardened
+#    image: stilliard/pure-ftpd:latest
+    image: fauria/vsftpd
 
     container_name: ftp-server
     ports:
@@ -323,8 +324,8 @@ services:
       - FTP_USER_PASS=pass1
       - PASV_ADDRESS=45.12.72.4
     volumes:
-#      - '/home/asuser:/home/vsftpd'
-      - '/home/asuser:/home/user'
+      - '/home/asuser:/home/vsftpd'
+#      - '/home/asuser:/home/user'
 #      - '/home/:/home/user'
     restart: always
 #    networks:

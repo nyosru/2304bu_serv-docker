@@ -320,7 +320,7 @@ services:
       - FTP_PASS=password1
       - PASV_ADDRESS=45.12.72.4
     volumes:
-      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:/home/user'
+      - '/home/asuser:/home/user'
     restart: always
     networks:
       - laravel

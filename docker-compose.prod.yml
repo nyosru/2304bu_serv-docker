@@ -319,7 +319,7 @@ services:
       - "30000-30009:30000-30009"
     environment:
       - FTP_USER=user1
-      - FTP_PASS=password1
+      - FTP_PASS=pass1
       - PASV_ADDRESS=45.12.72.4
     volumes:
 #      - '/home/asuser:/home/vsftpd'

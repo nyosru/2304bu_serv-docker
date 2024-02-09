@@ -306,6 +306,26 @@ services:
       - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
       - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
 
+
+
+  ftp-server:
+    image: stilliard/pure-ftpd:hardened
+    container_name: ftp-server
+    ports:
+      - "20:20"
+      - "21:21"
+      - "30000-30009:30000-30009"
+    environment:
+      - FTP_USER=user1
+      - FTP_PASS=password1
+      - PASV_ADDRESS=45.12.72.4
+    volumes:
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:/home/user'
+    restart: always
+    networks:
+      - laravel
+
+
   2312didrive_auto:
     #dev
     container_name: 2312didrive_auto

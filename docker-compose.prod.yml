@@ -319,9 +319,9 @@ services:
       - FTP_USER=user1
       - FTP_PASS=password1
       - PASV_ADDRESS=45.12.72.4
-    volumes:
+#    volumes:
 #      - '/home/asuser:/home/user'
-      - '/home/:/home/user'
+#      - '/home/:/home/user'
     restart: always
     networks:
       - laravel

@@ -318,9 +318,12 @@ services:
       - "20:20"
       - "21:21"
       - "30000-30009:30000-30009"
+      - "60000-60099:60000-60099"
     environment:
       - FTP_USER=user1
+      - FTP_NAME=user1
       - FTP_PASS=pass1
+      - FTP_PASSWD=pass1
       - FTP_USER_PASS=pass1
       - PASV_ADDRESS=45.12.72.4
     volumes:

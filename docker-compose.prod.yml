@@ -286,7 +286,7 @@ services:
     container_name: 2312auto_as_prod
     build:
       context: .
-      dockerfile: docker.laravel_vue.Dockerfile
+      dockerfile: docker.laravel_vue.copy.Dockerfile
     working_dir: ${FOLDER_2312AUTO_AS_PROD_SERV}
     environment:
       - PHPGROUP=www-data

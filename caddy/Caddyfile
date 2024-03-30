@@ -1,6 +1,21 @@
 
 
-земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local, livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
+земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /2309livewire/public
+
+}
+
+livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local, zem.local {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -22,6 +37,14 @@
 #}
 
 
+
+
+
+
+
+
+
+
 didrive.auto-as.local {
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -33,6 +56,7 @@ didrive.auto-as.local {
     php_fastcgi 2312didrive_auto:9000
     root * /home_as/2312auto_as_didrive/public
 }
+
 
 auto-as.local {
 	# Формируем самоподписной сертификат для работы https
@@ -58,7 +82,7 @@ auto-as.local {
 
 
 #api74.php-cat.com.
-api7.php-cat.local, api47.php-cat.local {
+api7.php-cat.local, api47.php-cat.local, api74.php-cat.local {
 	# Формируем самоподписной сертификат для работы https
 	tls internal
     # tls support@php-cat.com

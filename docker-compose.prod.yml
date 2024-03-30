@@ -331,8 +331,8 @@ services:
 #      - '/home/asuser:/home/user'
 #      - '/home/:/home/user'
     restart: always
-#    networks:
-#      - laravel
+    networks:
+      - laravel
 
 
   2312didrive_auto:

@@ -15,7 +15,7 @@
 
 }
 
-livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
+livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local, zem.local {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -35,6 +35,14 @@ livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.ph
 #    #tls support@php-cat.com
 #    respond "привет буфет, и пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"}
 #}
+
+
+
+
+
+
+
+
 
 
 didrive.auto-as.local {
@@ -74,7 +82,7 @@ auto-as.local {
 
 
 #api74.php-cat.com.
-api7.php-cat.local, api47.php-cat.local {
+api7.php-cat.local, api47.php-cat.local, api74.php-cat.local {
 	# Формируем самоподписной сертификат для работы https
 	tls internal
     # tls support@php-cat.com

@@ -4,6 +4,15 @@ networks:
   laravel:
     driver: bridge
 
+
+volumes:
+  auto_as_img_volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: '${FOLDER_2312AUTO_AS__DIR_PHOTO}'
+      o: bind
+
 services:
 
   caddy:
@@ -408,13 +417,3 @@ services:
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
 
-
-
-
-volumes:
-  auto_as_img_volume:
-    driver: local
-    driver_opts:
-      type: none
-      device: '${FOLDER_2312AUTO_AS__DIR_PHOTO}'
-      o: bind

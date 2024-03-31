@@ -49,7 +49,11 @@ services:
       - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
 
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+
+#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+      - 'auto_as_img_volume:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+      - 'auto_as_img_volume:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+
       - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
 
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'

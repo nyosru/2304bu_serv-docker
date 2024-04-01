@@ -336,9 +336,10 @@ services:
       - FTP_USER=${AVTOAS_FTP_USER}
 #      - FTP_USER=user1
 #      - FTP_NAME=user1
+      - FTP_NAME=${AVTOAS_FTP_USER}
 #      - FTP_PASS=pass1
-#      - FTP_PASS=${AVTOAS_FTP_PASS}
-#      - FTP_PASSWD=${AVTOAS_FTP_PASS}
+      - FTP_PASS=${AVTOAS_FTP_PASS}
+      - FTP_PASSWD=${AVTOAS_FTP_PASS}
 #      - FTP_PASSWD=pass1
 #      - FTP_USER_PASS=pass1
       - FTP_USER_PASS=${AVTOAS_FTP_PASS}

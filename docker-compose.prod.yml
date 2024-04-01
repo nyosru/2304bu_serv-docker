@@ -333,9 +333,11 @@ services:
       - "30000-30009:30000-30009"
       - "60000-60099:60000-60099"
     environment:
-      - FTP_USER=user1
+      - FTP_USER=${AVTOAS_FTP_USER}
+#      - FTP_USER=user1
 #      - FTP_NAME=user1
-      - FTP_PASS=pass1
+#      - FTP_PASS=pass1
+      - FTP_PASS=${AVTOAS_FTP_PASS}
 #      - FTP_PASSWD=pass1
 #      - FTP_USER_PASS=pass1
 #      - PASV_ADDRESS=45.12.72.4

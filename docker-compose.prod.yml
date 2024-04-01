@@ -325,7 +325,6 @@ services:
 #    image: stilliard/pure-ftpd:hardened
 #    image: stilliard/pure-ftpd:latest
     image: fauria/vsftpd
-
     container_name: ftp-server
     ports:
       - "20:20"
@@ -333,10 +332,9 @@ services:
       - "30000-30009:30000-30009"
       - "60000-60099:60000-60099"
     environment:
-      - FTP_USER=${AVTOAS_FTP_USER}
-      - FTP_PASS=${AVTOAS_FTP_PASS}
+#      - FTP_USER=${AVTOAS_FTP_USER}
+#      - FTP_PASS=${AVTOAS_FTP_PASS}
       - PASV_ADDRESS=45.12.72.4
-
 #      - FTP_USER=user1
 #      - FTP_NAME=user1
 #      - FTP_NAME=${AVTOAS_FTP_USER}
@@ -350,9 +348,12 @@ services:
       - '/home_ftp:/home/vsftpd'
 #      - '/home/asuser:/home/user'
 #      - '/home/:/home/user'
+      - './ftp_create_users.sh:/usr/local/bin/create_users.sh'  # Монтируем скрипт в контейнер
+
     restart: always
     networks:
       - laravel
+    command: /bin/sh -c "chmod +x /usr/local/bin/create_users.sh && /usr/local/bin/create_users.sh"
 
 
   2312didrive_auto:

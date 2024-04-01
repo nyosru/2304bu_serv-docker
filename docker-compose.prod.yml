@@ -337,6 +337,7 @@ services:
       - FTP_PASS=${AVTOAS_FTP_1S_PASS}
       - FTP_USER2=${AVTOAS_FTP_PHOTO_USER}
       - FTP_PASS2=${AVTOAS_FTP_PHOTO_PASS}
+      - PASV_ADDRESS=45.12.72.4
 
 #      - FTP_USER=user1
 #      - FTP_NAME=user1
@@ -346,7 +347,6 @@ services:
 #      - FTP_PASSWD=pass1
 #      - FTP_USER_PASS=pass1
 #      - FTP_USER_PASS=${AVTOAS_FTP_PASS}
-      - PASV_ADDRESS=45.12.72.4
 #      - PASV_ENABLE=YES
     volumes:
       - '/home_ftp:/home/vsftpd'

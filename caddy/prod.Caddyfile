@@ -55,7 +55,7 @@ dev.47.avto-as.ru {
 # ------------- avto-as didrive dev ----------
 
 
-dev.d47.avto-as.ru {
+#dev.d47.avto-as.ru {
     #dev as didrive
 	# Формируем самоподписной сертификат для работы https
 	#tls internal

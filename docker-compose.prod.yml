@@ -333,12 +333,15 @@ services:
       - "30000-30009:30000-30009"
       - "60000-60099:60000-60099"
     environment:
-      - FTP_USER=${AVTOAS_FTP_USER}
+      - FTP_USER=${AVTOAS_FTP_1S_USER}
+      - FTP_PASS=${AVTOAS_FTP_1S_PASS}
+      - FTP_USER=${AVTOAS_FTP_PHOTO_USER}
+      - FTP_PASS=${AVTOAS_FTP_PHOTO_PASS}
+
 #      - FTP_USER=user1
 #      - FTP_NAME=user1
 #      - FTP_NAME=${AVTOAS_FTP_USER}
 #      - FTP_PASS=pass1
-      - FTP_PASS=${AVTOAS_FTP_PASS}
 #      - FTP_PASSWD=${AVTOAS_FTP_PASS}
 #      - FTP_PASSWD=pass1
 #      - FTP_USER_PASS=pass1

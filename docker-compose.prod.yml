@@ -338,9 +338,10 @@ services:
 #      - FTP_NAME=user1
 #      - FTP_PASS=pass1
 #      - FTP_PASS=${AVTOAS_FTP_PASS}
-      - FTP_PASSWD=${AVTOAS_FTP_PASS}
+#      - FTP_PASSWD=${AVTOAS_FTP_PASS}
 #      - FTP_PASSWD=pass1
 #      - FTP_USER_PASS=pass1
+      - FTP_USER_PASS=${AVTOAS_FTP_PASS}
 #      - PASV_ADDRESS=45.12.72.4
 #      - PASV_ENABLE=YES
     volumes:

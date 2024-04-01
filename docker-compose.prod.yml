@@ -336,17 +336,17 @@ services:
       - FTP_USER=${AVTOAS_FTP_USER}
 #      - FTP_USER=user1
 #      - FTP_NAME=user1
-      - FTP_NAME=${AVTOAS_FTP_USER}
+#      - FTP_NAME=${AVTOAS_FTP_USER}
 #      - FTP_PASS=pass1
-      - FTP_PASS=${AVTOAS_FTP_PASS}
+#      - FTP_PASS=${AVTOAS_FTP_PASS}
       - FTP_PASSWD=${AVTOAS_FTP_PASS}
 #      - FTP_PASSWD=pass1
 #      - FTP_USER_PASS=pass1
-      - FTP_USER_PASS=${AVTOAS_FTP_PASS}
+#      - FTP_USER_PASS=${AVTOAS_FTP_PASS}
       - PASV_ADDRESS=45.12.72.4
 #      - PASV_ENABLE=YES
     volumes:
-      - '/home/asuser:/home/vsftpd'
+      - '/home_as/ftp:/home/vsftpd'
 #      - '/home/asuser:/home/user'
 #      - '/home/:/home/user'
     restart: always

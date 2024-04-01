@@ -349,7 +349,7 @@ services:
       - PASV_ADDRESS=45.12.72.4
 #      - PASV_ENABLE=YES
     volumes:
-      - '/home_as/ftp:/home/vsftpd'
+      - '/home_ftp:/home/vsftpd'
 #      - '/home/asuser:/home/user'
 #      - '/home/:/home/user'
     restart: always

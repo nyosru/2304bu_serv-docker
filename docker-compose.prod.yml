@@ -335,8 +335,8 @@ services:
     environment:
       - FTP_USER=${AVTOAS_FTP_1S_USER}
       - FTP_PASS=${AVTOAS_FTP_1S_PASS}
-      - FTP_USER=${AVTOAS_FTP_PHOTO_USER}
-      - FTP_PASS=${AVTOAS_FTP_PHOTO_PASS}
+      - FTP_USER2=${AVTOAS_FTP_PHOTO_USER}
+      - FTP_PASS2=${AVTOAS_FTP_PHOTO_PASS}
 
 #      - FTP_USER=user1
 #      - FTP_NAME=user1

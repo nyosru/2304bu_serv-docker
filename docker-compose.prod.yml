@@ -370,29 +370,29 @@ services:
     depends_on:
       - db_mysql_as
 
-  2312didrive_auto_prod:
-    #prod
-    container_name: 2312didrive_auto_prod
-    build:
-      context: .
-      #      dockerfile: docker.2308beget.Dockerfile
-      dockerfile: docker.laravel.Dockerfile
-    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
-    restart: unless-stopped
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
-    links:
-      - db_mysql_as:db
-    networks:
-      - laravel
-    depends_on:
-      - db_mysql_as
+#  2312didrive_auto_prod:
+#    #prod
+#    container_name: 2312didrive_auto_prod
+#    build:
+#      context: .
+#      #      dockerfile: docker.2308beget.Dockerfile
+#      dockerfile: docker.laravel.Dockerfile
+#    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
+#    links:
+#      - db_mysql_as:db
+#    networks:
+#      - laravel
+#    depends_on:
+#      - db_mysql_as
 
 
   api_php74:

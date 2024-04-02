@@ -26,7 +26,7 @@ php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j
 # d.php-cat.com, dev-as.php-cat.com
 # dev-as-didrive.php-cat.com
 
-dev.47.avto-as.ru {
+dev.47.avto-as.ru, 2dev.47.avto-as.ru {
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
     tls support@php-cat.com

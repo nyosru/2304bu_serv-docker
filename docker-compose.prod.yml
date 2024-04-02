@@ -5,6 +5,17 @@ networks:
     driver: bridge
 
 
+#volumes:
+#  caddy_caddyfile:
+#    driver: bridge
+#
+#  auto_as_img_volume:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      device: '${FOLDER_2312AUTO_AS__DIR_PHOTO}'
+#      o: bind
+
 services:
 
   caddy:
@@ -52,7 +63,7 @@ services:
       - 2309livewire
       - db_mysql
       - test231116php
-      - 2312didrive_auto_prod
+#      - 2312didrive_auto_prod
       - 2312didrive_auto
       - 2312auto_as_prod
       - 2312auto_as

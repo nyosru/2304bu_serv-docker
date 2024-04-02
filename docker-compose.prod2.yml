@@ -1,0 +1,420 @@
+version: '3.8'
+
+networks:
+  laravel:
+    driver: bridge
+
+
+#volumes:
+#  caddy_caddyfile:
+#    driver: bridge
+#
+#  auto_as_img_volume:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      device: '${FOLDER_2312AUTO_AS__DIR_PHOTO}'
+#      o: bind
+
+services:
+
+  caddy:
+    container_name: caddy
+    image: caddy:2.6
+    restart: unless-stopped
+    # restart: always
+
+    # build:
+    #   context: .
+    #   dockerfile: caddy/Dockerfile
+
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+
+    volumes:
+      - './caddy/Caddyfile:/etc/caddy/Caddyfile'
+      - './caddy/config:/config/caddy/'
+      - './caddy/certs:/data/caddy/locks/'
+      - './caddy/certs3:/data/caddy/certificates/'
+
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+#      - '${FOLDER_2309LARAWIRE}:/2309livewire'
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      - '${FOLDER_2309LARAWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
+      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+#      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+
+    depends_on:
+      - 2308beget
+      - 2309livewire
+      - db_mysql
+      - test231116php
+#      - 2312didrive_auto_prod
+      - 2312didrive_auto
+      - 2312auto_as_prod
+      - 2312auto_as
+    networks:
+      - laravel
+
+  db_mysql:
+    container_name: db_mysql
+    image: mariadb:10.7.8
+    networks:
+      - laravel
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
+    restart: unless-stopped
+
+
+
+
+
+
+  2308beget:
+    container_name: 2308beget
+
+    build:
+      context: .
+      dockerfile: docker.2308beget.Dockerfile
+    working_dir: ${FOLDER_2308BEGET_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
+    restart: unless-stopped
+      # tty: true
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql
+  #++
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql:db
+    ports:
+      - 6060:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+
+  2309livewire:
+    container_name: 2309livewire
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    # links:
+    #   - db_mysql:db
+    volumes:
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+
+  test231012:
+    container_name: test231012
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: ${TEST231012_DOCKERFILE}
+    working_dir: ${FOLDER_TEST231012_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+
+  2311test:
+    container_name: 2311test
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    links:
+      - db_mysql:ss_db
+    build:
+      context: .
+      dockerfile: docker.2311test.Dockerfile
+    working_dir: ${FOLDER_2311TEST_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2311TEST_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
+
+  test231116php:
+    container_name: test231116php
+    #    depends_on:
+    #      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.test231116php.Dockerfile
+    working_dir: ${FOLDER_TEST23116PHP_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_TEST23116PHP_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+
+  2401test:
+    container_name: 2401test
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2401TEST_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2401TEST_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+
+
+
+
+
+
+
+
+
+  db_mysql_as:
+    container_name: db_mysql_as
+    image: mariadb:10.7.8
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
+    networks:
+      - laravel
+
+  #++
+  phpmyadmin_as:
+    container_name: phpmyadmin_as
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql_as:db
+    ports:
+      - 6061:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql_as
+    networks:
+      - laravel
+
+
+
+
+
+  2312auto_as:
+    #dev
+    container_name: 2312auto_as
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+
+  2312auto_as_prod:
+    #prod
+    container_name: 2312auto_as_prod
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.copy.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_PROD_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_PROD_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+
+
+  2312didrive_auto:
+    #didirive
+    container_name: 2312didrive_auto
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+    links:
+      - db_mysql_as:db
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql_as
+
+  #  2312didrive_auto_prod:
+  #    #prod
+  #    container_name: 2312didrive_auto_prod
+  #    build:
+  #      context: .
+  #      #      dockerfile: docker.2308beget.Dockerfile
+  #      dockerfile: docker.laravel.Dockerfile
+  #    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+  #    environment:
+  #      - PHPGROUP=www-data
+  #      - PHPUSER=www-data
+  #      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+  #    restart: unless-stopped
+  #    expose:
+  #      - 9000
+  #    volumes:
+  #      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
+  #    links:
+  #      - db_mysql_as:db
+  #    networks:
+  #      - laravel
+  #    depends_on:
+  #      - db_mysql_as
+
+
+
+
+
+  ftp-server:
+    image: fauria/vsftpd
+    container_name: ftp-server
+    ports:
+      - "20:20"
+      - "21:21"
+      - "30000-30009:30000-30009"
+      - "60000-60099:60000-60099"
+    environment:
+      - FTP_USER=${AVTOAS_FTP_USER}
+      - FTP_PASS=${AVTOAS_FTP_PASS}
+      - PASV_ADDRESS=45.12.72.4
+#      - PASV_ENABLE=YES
+    volumes:
+      - '/home_ftp:/home/vsftpd'
+    restart: always
+    networks:
+      - laravel
+
+
+
+  api_php74:
+    container_name: api_php74
+    build:
+      context: .
+      dockerfile: ./docker.php74_soap.Dockerfile
+    working_dir: ${FOLDER_API_PHP74_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_API_PHP74_SERV}
+    restart: unless-stopped
+    tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+#    links:
+#      - db_mysql_as:db
+#    depends_on:
+#      - db_mysql_as
+    volumes:
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+
+

@@ -5,14 +5,6 @@ networks:
     driver: bridge
 
 
-volumes:
-  auto_as_img_volume:
-    driver: local
-    driver_opts:
-      type: none
-      device: '${FOLDER_2312AUTO_AS__DIR_PHOTO}'
-      o: bind
-
 services:
 
   caddy:
@@ -50,8 +42,8 @@ services:
       - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
 #      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-      - 'auto_as_img_volume:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-      - 'auto_as_img_volume:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
 #      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
@@ -290,7 +282,7 @@ services:
       - db_mysql_as
     volumes:
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-      - 'auto_as_img_volume:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
 
   2312auto_as_prod:
     #prod
@@ -315,7 +307,7 @@ services:
       - db_mysql_as
     volumes:
       - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
-      - 'auto_as_img_volume:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
 
 
 

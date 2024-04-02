@@ -236,114 +236,114 @@ services:
 #
 #
 #
-#
-#
-#  db_mysql_as:
-#    container_name: db_mysql_as
-#    image: mariadb:10.7.8
-#    environment:
-#      MYSQL_ROOT_HOST: "%"
-#      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
-#    restart: unless-stopped
-#    volumes:
-#      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
-#    networks:
-#      - laravel
-#
-#  #++
-#  phpmyadmin_as:
-#    container_name: phpmyadmin_as
-#    image: phpmyadmin/phpmyadmin
-#    links:
-#      - db_mysql_as:db
-#    ports:
-#      - 6061:80
-#    environment:
-#      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
-#      UPLOAD_LIMIT: 300M
-#    depends_on:
-#      - db_mysql_as
-#    networks:
-#      - laravel
-#
-#
-#
-#
-#
-#  2312auto_as:
-#    #dev
-#    container_name: 2312auto_as
-#    build:
-#      context: .
-#      dockerfile: docker.laravel_vue.Dockerfile
-#    working_dir: ${FOLDER_2312AUTO_AS_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2312AUTO_AS_SERV}
-#    restart: unless-stopped
-#    # tty: true
-#    expose:
-#      - 9000
-#    networks:
-#      - laravel
-#    links:
-#      - db_mysql_as:db
-#    depends_on:
-#      - db_mysql_as
-#    volumes:
-#      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-#
-#  2312auto_as_prod:
-#    #prod
-#    container_name: 2312auto_as_prod
-#    build:
-#      context: .
-#      dockerfile: docker.laravel_vue.copy.Dockerfile
-#    working_dir: ${FOLDER_2312AUTO_AS_PROD_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2312AUTO_AS_PROD_SERV}
-#    restart: unless-stopped
-#    # tty: true
-#    expose:
-#      - 9000
-#    networks:
-#      - laravel
-#    links:
-#      - db_mysql_as:db
-#    depends_on:
-#      - db_mysql_as
-#    volumes:
-#      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
-#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
-#
-#
-#  2312didrive_auto:
-#    #didirive
-#    container_name: 2312didrive_auto
-#    build:
-#      context: .
-#      #      dockerfile: docker.2308beget.Dockerfile
-#      dockerfile: docker.laravel.Dockerfile
-#    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-#    links:
-#      - db_mysql_as:db
-#    networks:
-#      - laravel
-#    depends_on:
-#      - db_mysql_as
+
+
+  db_mysql_as:
+    container_name: db_mysql_as
+    image: mariadb:10.7.8
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
+    networks:
+      - laravel
+
+  #++
+  phpmyadmin_as:
+    container_name: phpmyadmin_as
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql_as:db
+    ports:
+      - 6061:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql_as
+    networks:
+      - laravel
+
+
+
+
+
+  2312auto_as:
+    #dev
+    container_name: 2312auto_as
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+
+  2312auto_as_prod:
+    #prod
+    container_name: 2312auto_as_prod
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.copy.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_PROD_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_PROD_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+    links:
+      - db_mysql_as:db
+    depends_on:
+      - db_mysql_as
+    volumes:
+      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+
+
+  2312didrive_auto:
+    #didirive
+    container_name: 2312didrive_auto
+    build:
+      context: .
+      #      dockerfile: docker.2308beget.Dockerfile
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+    links:
+      - db_mysql_as:db
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql_as
 #
 #  #  2312didrive_auto_prod:
 #  #    #prod
@@ -372,49 +372,49 @@ services:
 #
 #
 #
-#
-#  ftp-server:
-#    image: fauria/vsftpd
-#    container_name: ftp-server
-#    ports:
-#      - "20:20"
-#      - "21:21"
-#      - "30000-30009:30000-30009"
-#      - "60000-60099:60000-60099"
-#    environment:
-#      - FTP_USER=${AVTOAS_FTP_USER}
-#      - FTP_PASS=${AVTOAS_FTP_PASS}
-#      - PASV_ADDRESS=45.12.72.4
-##      - PASV_ENABLE=YES
-#    volumes:
-#      - '/home_ftp:/home/vsftpd'
-#    restart: always
-#    networks:
-#      - laravel
-#
-#
-#
-#  api_php74:
-#    container_name: api_php74
-#    build:
-#      context: .
-#      dockerfile: ./docker.php74_soap.Dockerfile
-#    working_dir: ${FOLDER_API_PHP74_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_API_PHP74_SERV}
-#    restart: unless-stopped
-#    tty: true
-#    expose:
-#      - 9000
-#    networks:
-#      - laravel
-##    links:
-##      - db_mysql_as:db
-##    depends_on:
-##      - db_mysql_as
-#    volumes:
-#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
-#
+
+  ftp-server:
+    image: fauria/vsftpd
+    container_name: ftp-server
+    ports:
+      - "20:20"
+      - "21:21"
+      - "30000-30009:30000-30009"
+      - "60000-60099:60000-60099"
+    environment:
+      - FTP_USER=${AVTOAS_FTP_USER}
+      - FTP_PASS=${AVTOAS_FTP_PASS}
+      - PASV_ADDRESS=45.12.72.4
+#      - PASV_ENABLE=YES
+    volumes:
+      - '/home_ftp:/home/vsftpd'
+    restart: always
+    networks:
+      - laravel
+
+
+
+  api_php74:
+    container_name: api_php74
+    build:
+      context: .
+      dockerfile: ./docker.php74_soap.Dockerfile
+    working_dir: ${FOLDER_API_PHP74_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_API_PHP74_SERV}
+    restart: unless-stopped
+    tty: true
+    expose:
+      - 9000
+    networks:
+      - laravel
+#    links:
+#      - db_mysql_as:db
+#    depends_on:
+#      - db_mysql_as
+    volumes:
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+
 #

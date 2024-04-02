@@ -321,44 +321,8 @@ services:
       - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
 
 
-
-  ftp-server:
-#    image: stilliard/pure-ftpd:hardened
-#    image: stilliard/pure-ftpd:latest
-    image: fauria/vsftpd
-    container_name: ftp-server
-    ports:
-      - "20:20"
-      - "21:21"
-      - "30000-30009:30000-30009"
-      - "60000-60099:60000-60099"
-    environment:
-      - FTP_USER=${AVTOAS_FTP_USER}
-      - FTP_PASS=${AVTOAS_FTP_PASS}
-      - PASV_ADDRESS=45.12.72.4
-#      - FTP_USER=user1
-#      - FTP_NAME=user1
-#      - FTP_NAME=${AVTOAS_FTP_USER}
-#      - FTP_PASS=pass1
-#      - FTP_PASSWD=${AVTOAS_FTP_PASS}
-#      - FTP_PASSWD=pass1
-#      - FTP_USER_PASS=pass1
-#      - FTP_USER_PASS=${AVTOAS_FTP_PASS}
-#      - PASV_ENABLE=YES
-    volumes:
-      - '/home_ftp:/home/vsftpd'
-#      - '/home/asuser:/home/user'
-#      - '/home/:/home/user'
-#      - './ftp_create_users.sh:/usr/local/bin/create_users.sh'  # Монтируем скрипт в контейнер
-
-    restart: always
-    networks:
-      - laravel
-#    command: /bin/sh -c "chmod +x /usr/local/bin/create_users.sh && /usr/local/bin/create_users.sh"
-
-
   2312didrive_auto:
-    #dev
+    #didirive
     container_name: 2312didrive_auto
     build:
       context: .
@@ -381,29 +345,53 @@ services:
     depends_on:
       - db_mysql_as
 
-#  2312didrive_auto_prod:
-#    #prod
-#    container_name: 2312didrive_auto_prod
-#    build:
-#      context: .
-#      #      dockerfile: docker.2308beget.Dockerfile
-#      dockerfile: docker.laravel.Dockerfile
-#    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
-#    links:
-#      - db_mysql_as:db
-#    networks:
-#      - laravel
-#    depends_on:
-#      - db_mysql_as
+  #  2312didrive_auto_prod:
+  #    #prod
+  #    container_name: 2312didrive_auto_prod
+  #    build:
+  #      context: .
+  #      #      dockerfile: docker.2308beget.Dockerfile
+  #      dockerfile: docker.laravel.Dockerfile
+  #    working_dir: ${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+  #    environment:
+  #      - PHPGROUP=www-data
+  #      - PHPUSER=www-data
+  #      - FOLDER=${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}
+  #    restart: unless-stopped
+  #    expose:
+  #      - 9000
+  #    volumes:
+  #      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
+  #    links:
+  #      - db_mysql_as:db
+  #    networks:
+  #      - laravel
+  #    depends_on:
+  #      - db_mysql_as
+
+
+
+
+
+  ftp-server:
+    image: fauria/vsftpd
+    container_name: ftp-server
+    ports:
+      - "20:20"
+      - "21:21"
+      - "30000-30009:30000-30009"
+      - "60000-60099:60000-60099"
+    environment:
+      - FTP_USER=${AVTOAS_FTP_USER}
+      - FTP_PASS=${AVTOAS_FTP_PASS}
+      - PASV_ADDRESS=45.12.72.4
+#      - PASV_ENABLE=YES
+    volumes:
+      - '/home_ftp:/home/vsftpd'
+    restart: always
+    networks:
+      - laravel
+
 
 
   api_php74:

@@ -79,16 +79,16 @@ prod:
 	docker-compose up -d --build
 
 	#	make start
-	# make start_2309livewire
+# 	make start_2309livewire
 	#make start_2309livewire_prod
 
 	make start_2308beget
 #	make start_test231012_prod
 #	make start_2401test
 #
-#	make start_avtoas
-#	make start_avtoas_prod
-#	make start_avtoas_didrive
+	make start_avtoas
+	make start_avtoas_prod
+	make start_avtoas_didrive
 #	make start_avtoas_didrive_prod
 
 	make caddy_refresh_cfd

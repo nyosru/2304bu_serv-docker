@@ -1,7 +1,9 @@
+FROM php:8.2-fpm
+
 FROM node:latest AS node
-#FROM php:8.2-fpm
+
 #
-FROM php:8.2.0-fpm
+#FROM php:8.2.0-fpm
 #
 #ARG PHPGROUP
 #ARG PHPUSER

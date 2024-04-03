@@ -60,14 +60,14 @@ services:
 ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
 #
     depends_on:
-#      - 2308beget
+      - 2308beget
       - 2309livewire
       - db_mysql
 #      - test231116php
 ##      - 2312didrive_auto_prod
-#      - 2312didrive_auto
-#      - 2312auto_as_prod
-#      - 2312auto_as
+      - 2312didrive_auto
+      - 2312auto_as_prod
+      - 2312auto_as
     networks:
       - laravel
 
@@ -90,28 +90,28 @@ services:
 #
 #
 #
-#  2308beget:
-#    container_name: 2308beget
-#
-#    build:
-#      context: .
-#      dockerfile: docker.2308beget.Dockerfile
-#    working_dir: ${FOLDER_2308BEGET_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2308BEGET_SERV}
-#    restart: unless-stopped
-#      # tty: true
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-#
-#    networks:
-#      - laravel
-#    depends_on:
-#      - db_mysql
+  2308beget:
+    container_name: 2308beget
+
+    build:
+      context: .
+      dockerfile: docker.2308beget.Dockerfile
+    working_dir: ${FOLDER_2308BEGET_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
+    restart: unless-stopped
+      # tty: true
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql
   #++
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

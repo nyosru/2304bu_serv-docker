@@ -39,7 +39,7 @@ services:
       - './caddy/certs:/data/caddy/locks/'
       - './caddy/certs3:/data/caddy/certificates/'
 
-#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 ##      - '${FOLDER_2309LARAWIRE}:/2309livewire'
 ##      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 ##      - '${FOLDER_2309LARAWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
@@ -49,14 +49,15 @@ services:
 #      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
 #      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
 #
-#      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-#      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
-#      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+
 ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
 ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
-#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 #
     depends_on:
 #      - 2308beget
@@ -89,28 +90,28 @@ services:
 #
 #
 #
-#  2308beget:
-#    container_name: 2308beget
-#
-#    build:
-#      context: .
-#      dockerfile: docker.2308beget.Dockerfile
-#    working_dir: ${FOLDER_2308BEGET_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2308BEGET_SERV}
-#    restart: unless-stopped
-#      # tty: true
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-#
-#    networks:
-#      - laravel
-#    depends_on:
-#      - db_mysql
+  2308beget:
+    container_name: 2308beget
+
+    build:
+      context: .
+      dockerfile: docker.2308beget.Dockerfile
+    working_dir: ${FOLDER_2308BEGET_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
+    restart: unless-stopped
+      # tty: true
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql
   #++
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

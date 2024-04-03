@@ -226,7 +226,7 @@ start_avtoas_prod:
 	docker exec 2312auto_as_prod php artisan migrate
 	docker exec 2312auto_as_prod npx update-browserslist-db@latest
 
-	#docker exec 2312auto_as_prod npm run prod
+	docker exec 2312auto_as_prod npm run prod
 
 	#docker exec 2312auto_as_prod chmod -R 0777 storage
 	docker exec 2312auto_as_prod php artisan storage:link

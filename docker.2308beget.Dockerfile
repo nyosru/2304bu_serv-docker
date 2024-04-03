@@ -1,6 +1,10 @@
 FROM node:latest AS node
-#FROM php:8.2.0-fpm
+
 FROM php:8.2-fpm
+
+
+#FROM php:8.2.0-fpm
+
 RUN apt-get update && apt-get install -y \
 		libfreetype-dev \
 		libjpeg62-turbo-dev \
@@ -30,6 +34,13 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
     &&  apt-get install -y \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
+
+# # # Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN chmod -R 0775 storage/
+RUN chown -R www-data:www-data ./
+
 
 #RUN apt-get update && apt-get install -y \
 #		libfreetype-dev \
@@ -66,8 +77,6 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
 #      libpng-dev \
 #    && rm -rf /tmp/*
 
-# # # Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # # update 
 # RUN apt-get update 
@@ -79,6 +88,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 #RUN #cd /2308beget \
 ##    chmod -R 0777 storage/
+
 
 # EXPOSE 9050
 # EXPOSE 9000

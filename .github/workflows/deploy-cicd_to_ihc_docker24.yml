@@ -30,22 +30,23 @@ jobs:
             git fetch --all
             git reset --hard ${{ env.GIT_BRANCH }}
 
-  deploy_composer_stop:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - uses: appleboy/ssh-action@master
-        with:
-          host: ${{ env.VPS_IP }}
-          username: ${{ env.VPS_USERNAME }}
-          key: ${{ secrets.DEPLOY_KEY_DOCKER24 }}
-          script: |
-            cd ${{ env.DIR }}
-            docker-compose down            
+#  deploy_composer_stop:
+#    runs-on: ubuntu-latest
+#    needs: deploy
+#    steps:
+#      - uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ env.VPS_IP }}
+#          username: ${{ env.VPS_USERNAME }}
+#          key: ${{ secrets.DEPLOY_KEY_DOCKER24 }}
+#          script: |
+#            cd ${{ env.DIR }}
+#            docker-compose down
 
   deploy_composer:
     runs-on: ubuntu-latest
-    needs: deploy_composer_stop
+#    needs: deploy_composer_stop
+    needs: deploy
     steps:
       - uses: appleboy/ssh-action@master
         with:

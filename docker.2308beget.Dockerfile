@@ -38,8 +38,8 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
 # # # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN chmod -R 0775 storage/
-RUN chown -R www-data:www-data ./
+#RUN chmod -R 0775 storage/
+#RUN chown -R www-data:www-data ./
 
 
 #RUN apt-get update && apt-get install -y \

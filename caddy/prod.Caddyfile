@@ -28,8 +28,8 @@ php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j
 
 77.управлятор.рф, 77.xn--80ae1ambgeod9j.xn--p1ai., dev.47.avto-as.ru, 2dev.47.avto-as.ru {
 	# Формируем самоподписной сертификат для работы https
-	tls internal
-    #tls support@php-cat.com
+	#tls internal
+    tls support@php-cat.com
 
     file_server
     encode gzip

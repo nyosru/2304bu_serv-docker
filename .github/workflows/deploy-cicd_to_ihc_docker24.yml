@@ -43,7 +43,7 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY_DOCKER24 }}
           script: |
             cd ${{ env.DIR }}
-            docker-compose down
+            docker-compose down --remove-orphans
 
 
 

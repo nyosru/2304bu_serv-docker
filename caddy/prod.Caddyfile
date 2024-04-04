@@ -11,7 +11,7 @@ vk.files.php-cat.com {
     root * /home/2309livewire/public
 }
 
-*.ru, *.xn--p1ai, *.com, *.info {
+* {
     tls support@php-cat.com
     file_server
     encode gzip

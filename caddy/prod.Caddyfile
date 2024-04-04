@@ -10,7 +10,7 @@ vk.files.php-cat.com {
     root * /home/2309livewire/public
 }
 
-*.ru, *.xn--p1ai, *.com, *.info {
+:80, :443 {
      tls support@php-cat.com
      respond "ещё чуть чуть и вот вот"
 }

@@ -145,6 +145,7 @@ start_base16sites:
 start_2309livewire:
 	docker exec 2309livewire composer i
 	docker exec 2309livewire php artisan migrate
+	docker exec 2309livewire chown -R www-data:www-data storage
 
 start_test231012:
 	docker exec test231012 composer i

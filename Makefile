@@ -35,7 +35,7 @@ dev:
 	docker-compose up -d --force-recreate
 
 	make start_2309livewire
-#	make start_2308beget_dev
+	make start_2308beget_dev
 #	make start_test231012
 #	make start_2302didrive
 # make start_2401test
@@ -114,7 +114,7 @@ start:
 	# docker exec base17 npm i
 
 start_2308beget:
-	docker exec 2308beget composer update
+	#docker exec 2308beget composer update
 	docker exec 2308beget composer i --no-dev
 #	docker exec 2308beget composer i
 	docker exec 2308beget php artisan migrate

@@ -94,20 +94,6 @@ php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j
 
 # ------------- avto-as didrive dev ----------
 
-
-#dev.d47.avto-as.ru {
-    #dev as didrive
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-#    tls support@php-cat.com
-
-#    file_server
-#    encode gzip
-
-#    php_fastcgi 2312didrive_auto:9000
-#    root * /home_as/2312auto_as_didrive/public
-#}
-
 d47.avto-as.ru {
     #dev as didrive
 	# Формируем самоподписной сертификат для работы https
@@ -258,10 +244,10 @@ test231012.php-cat.com {
     root * /test231012/public
 }
 
-сергейсб.рф, xn--90adfbu3bff.xn--p1ai {
-    tls support@php-cat.com
-    redir / https://php-cat.com
-}
+#сергейсб.рф, xn--90adfbu3bff.xn--p1ai {
+#    tls support@php-cat.com
+#    redir / https://php-cat.com
+#}
 
 *.ru, *.xn--p1ai, *.com, *.info, * {
     tls support@php-cat.com

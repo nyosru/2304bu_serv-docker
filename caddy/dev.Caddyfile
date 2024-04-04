@@ -1,6 +1,6 @@
 
 
-земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
+земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal
@@ -15,7 +15,22 @@
 
 }
 
-livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local, zem.local {
+приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
+
+	# Формируем самоподписной сертификат для работы https
+	tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /2309livewire/public
+
+}
+
+livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
 
 	# Формируем самоподписной сертификат для работы https
 	tls internal

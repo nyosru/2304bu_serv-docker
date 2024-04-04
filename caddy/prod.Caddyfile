@@ -1,12 +1,12 @@
-#111продукты72.рф, 111xn--72-jlcysfhth6f.xn--p1ai, product.local  {
+продукты72.рф, xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
-#    tls support@php-cat.com
-#    php_fastcgi 2309livewire:9000
-#    file_server
-#    encode gzip
-#    root * /home/2309livewire/public
-#}
+    tls support@php-cat.com
+    php_fastcgi 2309livewire:9000
+    file_server
+    encode gzip
+    root * /home/2309livewire/public
+}
 
 земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local {
 

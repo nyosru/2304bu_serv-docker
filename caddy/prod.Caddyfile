@@ -38,25 +38,6 @@ vk.files.php-cat.com {
 
 }
 
-bu72.ru, бу72.фр, xn--72-9kc6e.xn--p1ai {
-    # tls internal
-    tls support@php-cat.com
-    file_server
-    encode gzip
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
-
-атрактор.рф, xn--80aa4aqhdjd.xn--p1ai, antifretting.ru {
-    # tls internal
-    tls support@php-cat.com
-    file_server
-    encode gzip
-
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
-
 
 php-cat.com {
 	# tls internal
@@ -170,40 +151,6 @@ test2401laravel-vitrin.php-cat.com {
 
 }
 
-
-test231116.php.php-cat.com {
-
-    # , d47.php-cat.com
-
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-    tls support@php-cat.com
-
-    php_fastcgi test231116php:9000
-
-    file_server
-    encode gzip
-
-    # root /storage /2308beget/storage/public
-    root * /test231116php/public
-}
-
-
-test2311.symfony.php-cat.com {
-
-    # Формируем самоподписной сертификат для работы https
-    # tls internal
-    tls support@php-cat.com
-
-     php_fastcgi 2311test:9000
-
-     file_server
-     encode gzip
-
-     root * /2311test/public
-
- }
-
 кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru {
 
 	# Формируем самоподписной сертификат для работы https
@@ -230,3 +177,8 @@ domainwaiter.com, domain.php-cat.com  {
 }
 
 
+
+*.ru, *.xn--p1ai, *.com, *.info {
+     tls support@php-cat.com
+     respond "ещё чуть чуть и вот вот"
+}

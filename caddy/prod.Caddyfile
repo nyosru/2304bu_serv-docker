@@ -50,7 +50,19 @@ xn--80aa4aqhdjd.xn--p1ai, атрактор.рф, antifretting.ru {
     root * /home/2309livewire/public
 }
 
-php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
+
+php-cat.com {
+	# tls internal
+    tls support@php-cat.com
+    file_server
+    encode gzip
+
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
+}
+
+
+livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
 	# tls internal
     tls support@php-cat.com
     file_server

@@ -60,7 +60,7 @@ services:
 #      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 #      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
 #      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
-#      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
 
     depends_on:
       - 2308beget
@@ -70,6 +70,7 @@ services:
       - 2312auto_as_prod
       - 2312auto_as
 
+      - 2401test
     #      - test231116php
     ##      - 2312didrive_auto_prod
     networks:
@@ -215,25 +216,25 @@ services:
 #    volumes:
 #      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
 #
-#  2401test:
-#    container_name: 2401test
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
-#    build:
-#      context: .
-#      dockerfile: docker.laravel.Dockerfile
-#    working_dir: ${FOLDER_2401TEST_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2401TEST_SERV}
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
-#      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+  2401test:
+    container_name: 2401test
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_2401TEST_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2401TEST_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
 #
 #
 #

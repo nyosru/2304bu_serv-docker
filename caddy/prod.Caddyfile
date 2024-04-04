@@ -1,22 +1,25 @@
-vk.files.php-cat.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
 
 :80 {
-     tls support@php-cat.com
-     respond "ещё чуть чуть и вот вот"
+    	# Формируем самоподписной сертификат для работы https
+    	# tls internal
+        tls support@php-cat.com
+
+        file_server
+        encode gzip
+
+        php_fastcgi 2309livewire:9000
+        root * /home/2309livewire/public
 }
 
 :443 {
-     tls support@php-cat.com
-     respond "ещё чуть чуть и вот вот"
+    	# Формируем самоподписной сертификат для работы https
+    	# tls internal
+        tls support@php-cat.com
+
+        file_server
+        encode gzip
+
+        php_fastcgi 2309livewire:9000
+        root * /home/2309livewire/public
 }
 

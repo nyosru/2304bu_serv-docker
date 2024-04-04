@@ -1,4 +1,13 @@
-продукты72.рф, xn--72-jlcysfhth6f.xn--p1ai, product.local  {
+
+*.ru, *.xn--p1ai, *.com, *.info {
+    tls support@php-cat.com
+    file_server
+    encode gzip
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
+    }
+
+1продукты72.рф, 1xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
     tls support@php-cat.com

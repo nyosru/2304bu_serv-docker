@@ -279,7 +279,7 @@ test231012.php-cat.com {
 #    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
 #}
 
-*.ru, *.xn--p1ai, *.com, *.info, * {
+*.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com
     file_server
     encode gzip

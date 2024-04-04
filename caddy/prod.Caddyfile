@@ -1,4 +1,3 @@
-
 vk.files.php-cat.com {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
@@ -11,11 +10,8 @@ vk.files.php-cat.com {
     root * /home/2309livewire/public
 }
 
-* {
-    tls support@php-cat.com
-    file_server
-    encode gzip
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+*.ru, *.xn--p1ai, *.com, *.info {
+     tls support@php-cat.com
+     respond "ещё чуть чуть и вот вот"
 }
 

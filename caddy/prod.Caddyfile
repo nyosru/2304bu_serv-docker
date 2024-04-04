@@ -29,7 +29,6 @@
 }
 
 приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
-
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
     tls support@php-cat.com
@@ -40,7 +39,6 @@
     encode gzip
 
     root * /home/2309livewire/public
-
 }
 
 

@@ -1,12 +1,4 @@
 
-*.ru, *.xn--p1ai, *.com, *.info {
-    tls support@php-cat.com
-    file_server
-    encode gzip
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-    }
-
 1продукты72.рф, 1xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -16,6 +8,16 @@
     encode gzip
     root * /home/2309livewire/public
 }
+
+
+*.ru, *.xn--p1ai, *.com, *.info {
+    tls support@php-cat.com
+    file_server
+    encode gzip
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
+}
+
 
 земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local {
 

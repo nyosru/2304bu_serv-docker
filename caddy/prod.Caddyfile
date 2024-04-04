@@ -10,7 +10,7 @@
     file_server
     encode gzip
 
-    root * /2309livewire/public
+    root * /home/2309livewire/public
 
 }
 
@@ -25,7 +25,7 @@
     file_server
     encode gzip
 
-    root * /2309livewire/public
+    root * /home/2309livewire/public
 
 }
 
@@ -37,7 +37,7 @@ bu72.ru, xn--72-9kc6e.xn--p1ai {
     encode gzip
 
     php_fastcgi 2309livewire:9000
-    root * /2309livewire/public
+    root * /home/2309livewire/public
 }
 
 xn--80aa4aqhdjd.xn--p1ai, атрактор.рф, antifretting.ru {
@@ -47,7 +47,7 @@ xn--80aa4aqhdjd.xn--p1ai, атрактор.рф, antifretting.ru {
     encode gzip
 
     php_fastcgi 2309livewire:9000
-    root * /2309livewire/public
+    root * /home/2309livewire/public
 }
 
 php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
@@ -57,7 +57,7 @@ php-cat.com, livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j
     encode gzip
 
     php_fastcgi 2309livewire:9000
-    root * /2309livewire/public
+    root * /home/2309livewire/public
 }
 
 
@@ -227,8 +227,8 @@ vk.files.php-cat.com {
     encode gzip
 
     php_fastcgi 2309livewire:9000
-    # root * /home/2309livewire/public
-    root * /2309livewire/public
+    root * /home/2309livewire/public
+    #root * /2309livewire/public
     # root * /var/www/html/2309livewire/public
 }
 

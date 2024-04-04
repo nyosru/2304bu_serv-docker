@@ -72,7 +72,7 @@ services:
 
     depends_on:
       - db_mysql
-#      - 2308beget
+      - 2308beget
       - 2309livewire
 #      - test231012
 #      - 2302didrive

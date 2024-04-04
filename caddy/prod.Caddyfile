@@ -12,15 +12,6 @@
 
 
 
-*.ru, *.xn--p1ai, *.com, *.info {
-    tls support@php-cat.com
-    file_server
-    encode gzip
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
-
-
 
 земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local {
 
@@ -265,24 +256,11 @@ vk.files.php-cat.com {
     # root * /var/www/html/2309livewire/public
 }
 
-test231012.php-cat.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
+*.ru, *.xn--p1ai, *.com, *.info {
     tls support@php-cat.com
-
-    php_fastcgi test231012:9000
     file_server
     encode gzip
-
-    root * /test231012/public
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
 }
 
-#сергейсб.рф, xn--90adfbu3bff.xn--p1ai {
-#    tls support@php-cat.com
-#    redir / https://php-cat.com
-#}
-
-#*.ru, *.xn--p1ai, *.com, *.info, * {
-#    tls support@php-cat.com
-#    respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
-#}

@@ -65,12 +65,13 @@ services:
     depends_on:
       - 2308beget
       - 2309livewire
-      - db_mysql
-#      - test231116php
-##      - 2312didrive_auto_prod
+
       - 2312didrive_auto
       - 2312auto_as_prod
       - 2312auto_as
+
+    #      - test231116php
+    ##      - 2312didrive_auto_prod
     networks:
       - laravel
 

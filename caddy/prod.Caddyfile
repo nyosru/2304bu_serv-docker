@@ -173,7 +173,7 @@ domainwaiter.com, domain.php-cat.com  {
 
 
 
-*.ru, *.xn--p1ai, *.com, *.info {
+*.ru, *.xn--p1ai, *.com, *.info, :80, :433 {
      tls support@php-cat.com
      respond "ещё чуть чуть и вот вот"
 }

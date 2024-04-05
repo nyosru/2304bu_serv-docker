@@ -173,7 +173,7 @@ domainwaiter.com, domain.php-cat.com  {
     php_fastcgi 2308beget:9000
     file_server
     encode gzip
-    root * /2308beget/public
+    root * /home/2308beget/public
 }
 
 

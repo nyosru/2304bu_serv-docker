@@ -84,7 +84,7 @@ prod:
 
 	make start_2308beget
 #	make start_test231012_prod
-#	make start_2401test
+	make start_2401test
 #
 	make start_avtoas
 	make start_avtoas_prod

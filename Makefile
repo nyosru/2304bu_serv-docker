@@ -169,6 +169,7 @@ start_2302didrive:
 start_2401test:
 	docker exec 2401test composer i
 	docker exec 2401test php artisan migrate
+	docker exec 2401test chown -R www-data:www-data storage
 
 start_2302didrive_prod:
 	docker exec 2302didrive composer i --no-dev

@@ -23,7 +23,8 @@ vk.files.php-cat.com {
     root * /home/2309livewire/public
 }
 
-земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local, приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
+#земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
+приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
 
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -50,7 +51,8 @@ php-cat.com {
 }
 
 
-livewire.php-cat.com, управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
+#livewire.php-cat.com,
+управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
 	# tls internal
     tls support@php-cat.com
     file_server
@@ -161,7 +163,7 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2308beget/public
 }
 
-domainwaiter.com, domain.php-cat.com  {
+domainwaiter.com, domainwaiter.local  {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com
@@ -177,8 +179,8 @@ domainwaiter.com, domain.php-cat.com  {
     #tls internal
     #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
     # Формируем самоподписной сертификат для работы https
-    tls internal
-    # tls support@php-cat.com
+    # tls internal
+    tls support@php-cat.com
 
     php_fastcgi 2309livewire:9000
 

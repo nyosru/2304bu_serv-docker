@@ -13,18 +13,10 @@ vk.files.php-cat.com {
 
 
 
-11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-    tls support@php-cat.com
-    php_fastcgi 2309livewire:9000
-    file_server
-    encode gzip
-    root * /home/2309livewire/public
-}
-
-#земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
-приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
+# 11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
+# земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
+# приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
+xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
 
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -52,7 +44,8 @@ php-cat.com {
 
 
 #livewire.php-cat.com,
-управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
+# управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
+xn--80ae1ambgeod9j.xn--p1ai {
 	# tls internal
     tls support@php-cat.com
     file_server
@@ -108,9 +101,9 @@ d47.avto-as.ru {
 
 
 
-api74.php-cat.com {
+#api7.php-cat.local, api47.php-cat.local {
 
-    #api7.php-cat.local, api47.php-cat.local {
+api74.php-cat.com {
 
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -153,7 +146,8 @@ test2401laravel-vitrin.php-cat.com {
 
 }
 
-кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru {
+#кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru
+xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com
@@ -163,7 +157,8 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2308beget/public
 }
 
-domainwaiter.com, domainwaiter.local  {
+#domainwaiter.com, domainwaiter.local  {
+domainwaiter.com {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com

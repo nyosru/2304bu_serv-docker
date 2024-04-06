@@ -302,29 +302,29 @@ services:
 
 
 
-#
-#  2308beget:
-#    container_name: 2308beget
-#
-#    build:
-#      context: .
-#      dockerfile: docker.2308beget.Dockerfile
-#    working_dir: ${FOLDER_2308BEGET_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2308BEGET_SERV}
-#    restart: unless-stopped
-#    expose:
-#      - 9000
-#    volumes:
-##      - '${FOLDER_2308BEGET}:/2308beget'
-#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-#
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
+
+  2308beget:
+    container_name: 2308beget
+
+    build:
+      context: .
+      dockerfile: docker.2308beget.Dockerfile
+    working_dir: ${FOLDER_2308BEGET_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+#      - '${FOLDER_2308BEGET}:/2308beget'
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
 
 
 

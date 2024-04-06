@@ -175,7 +175,7 @@ domainwaiter.com {
     #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
     # Формируем самоподписной сертификат для работы https
     #tls internal
-    tls support@php-cat.com
+    #tls support@php-cat.com
 
     php_fastcgi 2309livewire:9000
 

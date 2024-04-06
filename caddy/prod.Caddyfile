@@ -13,7 +13,7 @@ vk.files.php-cat.com {
 
 
 
-продукты72.рф, xn--72-jlcysfhth6f.xn--p1ai, product.local  {
+11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
     tls support@php-cat.com
@@ -172,8 +172,18 @@ domainwaiter.com, domain.php-cat.com  {
 }
 
 
+*.ru, *.xn--p1ai, *.com, *.info, *.local {
+    # tls support@php-cat.com
+    #tls internal
+    #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
 
-*.ru, *.xn--p1ai, *.com, *.info, :80, :433 {
-     tls support@php-cat.com
-     respond "ещё чуть чуть и вот вот"
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /home/2309livewire/public
 }

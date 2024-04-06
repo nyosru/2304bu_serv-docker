@@ -169,7 +169,7 @@ domainwaiter.com {
 }
 
 
-*.ru, *.xn--p1ai, *.com, *.info, *.local {
+*.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
     # tls support@php-cat.com
     #tls internal
     #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"

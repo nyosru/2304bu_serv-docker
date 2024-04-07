@@ -11,8 +11,6 @@ vk.files.php-cat.com {
     root * /home/2309livewire/public
 }
 
-
-
 # 11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 # земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
@@ -46,6 +44,17 @@ php-cat.com {
 #livewire.php-cat.com,
 # управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
 xn--80ae1ambgeod9j.xn--p1ai {
+	# tls internal
+    tls support@php-cat.com
+    file_server
+    encode gzip
+
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
+}
+;домены что пока пустые
+
+сноукайтинг.рф {
 	# tls internal
     tls support@php-cat.com
     file_server

@@ -54,7 +54,7 @@ xn--80ae1ambgeod9j.xn--p1ai {
 }
 
 #домены что пока пустые
-сноукайтинг.рф {
+сноукайтинг.рф,  продукты72.рф {
 	# tls internal
     tls support@php-cat.com
     file_server

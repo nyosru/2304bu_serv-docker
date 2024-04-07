@@ -241,7 +241,7 @@ services:
 #
 #
 #
-#
+# avto-as
 #
 #
 #
@@ -427,3 +427,32 @@ services:
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
 #
+#
+#
+# base17
+#
+#
+#
+
+  base17:
+    container_name: base17
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.Dockerfile
+    working_dir: ${FOLDER_BASE17_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_BASE17_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    # links:
+    #   - db_mysql:db
+    volumes:
+      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'

@@ -14,7 +14,7 @@ vk.files.php-cat.com {
 # 11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 # земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
-xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
+приватизациягаража.рф {
 
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -43,7 +43,7 @@ php-cat.com {
 
 #livewire.php-cat.com,
 # управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
-xn--80ae1ambgeod9j.xn--p1ai {
+управлятор.рф {
 	# tls internal
     tls support@php-cat.com
     file_server
@@ -54,7 +54,7 @@ xn--80ae1ambgeod9j.xn--p1ai {
 }
 
 #домены что пока пустые
-сноукайтинг.рф,  продукты72.рф {
+сноукайтинг.рф,  продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф {
 	# tls internal
     tls support@php-cat.com
     file_server
@@ -63,6 +63,12 @@ xn--80ae1ambgeod9j.xn--p1ai {
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }
+
+
+
+
+
+
 
 
 # ------------- avto-as dev ----------
@@ -155,8 +161,9 @@ test2401laravel-vitrin.php-cat.com {
 
 }
 
-#кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru
-xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru {
+# кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru
+# xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru {
+кружки.сергейсб.рф, ттт72.рф, ttt72.ru {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com

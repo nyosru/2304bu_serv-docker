@@ -52,8 +52,8 @@ xn--80ae1ambgeod9j.xn--p1ai {
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }
-;домены что пока пустые
 
+#домены что пока пустые
 сноукайтинг.рф {
 	# tls internal
     tls support@php-cat.com

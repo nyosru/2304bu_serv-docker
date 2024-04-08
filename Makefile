@@ -144,11 +144,13 @@ start_base17:
 	#docker exec base17 npm run build
 
 start_base16sites:
-	docker exec base16sites php composer.phar i --no-dev
+	#docker exec base16sites php composer.phar i --no-dev
 	#docker exec base17 composer i
-	docker exec base16sites php artisan migrate
 	#docker exec base17 npm run build
 	#docker exec base16sites npm run prod
+
+	#docker exec base16sites composer i --no-dev
+	#docker exec base16sites php artisan migrate
 
 start_2309livewire:
 	docker exec 2309livewire composer i

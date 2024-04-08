@@ -39,9 +39,6 @@ services:
       - './caddy/certs:/data/caddy/locks/'
       - './caddy/certs3:/data/caddy/certificates/'
 
-      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-
       #avto-as
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
       - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
@@ -52,8 +49,12 @@ services:
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
       - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
       - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
 
 
 ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'

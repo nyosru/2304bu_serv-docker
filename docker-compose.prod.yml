@@ -470,7 +470,7 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.laravel_vue.Dockerfile
+      dockerfile: docker.laravel-php74.Dockerfile
     working_dir: ${FOLDER_BASE16_SERV}
     environment:
       - PHPGROUP=www-data

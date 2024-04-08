@@ -23,22 +23,11 @@ vue3.php-cat.com {
     root * /home/base16/public
 }
 
-vk.files.php-cat.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
 
 # 11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 # земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
-приватизациягаража.рф {
+php-cat.com, приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
 
 	# Формируем самоподписной сертификат для работы https
 	#tls internal
@@ -54,31 +43,13 @@ vk.files.php-cat.com {
 }
 
 
-php-cat.com {
-	# tls internal
-    tls support@php-cat.com
-    file_server
-    encode gzip
-
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
-
 
 #livewire.php-cat.com,
 # управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
-управлятор.рф {
-	# tls internal
-    tls support@php-cat.com
-    file_server
-    encode gzip
 
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
 
 #домены что пока пустые
-сноукайтинг.рф,  продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф, атрактор.рф {
+сноукайтинг.рф,  продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф, атрактор.рф, domainwaiter.com {
 	# tls internal
     tls support@php-cat.com
     file_server
@@ -196,16 +167,7 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2308beget/public
 }
 
-#domainwaiter.com, domainwaiter.local  {
-domainwaiter.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-    php_fastcgi 2308beget:9000
-    file_server
-    encode gzip
-    root * /home/2308beget/public
-}
+
 
 
 *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {

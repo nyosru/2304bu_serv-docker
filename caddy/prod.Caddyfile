@@ -19,7 +19,7 @@ vue3.php-cat.com {
     file_server
     encode gzip
 
-    php_fastcgi 2309livewire:9000
+    php_fastcgi base16sites:9000
     root * /home/base16/public
 }
 

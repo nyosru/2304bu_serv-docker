@@ -36,6 +36,7 @@ dev:
 
 	make start_2309livewire
 	make start_2308beget_dev
+	make start_base17
 #	make start_test231012
 #	make start_2302didrive
 # make start_2401test
@@ -91,6 +92,9 @@ prod:
 	make start_avtoas_didrive
 #	make start_avtoas_didrive_prod
 
+	start_base16sites
+	start_base17
+
 	make caddy_refresh_cfd
 	docker system prune --force
 
@@ -129,14 +133,18 @@ start_2308beget_dev:
 
 
 start_base17:
+	docker exec base17 chown -R www-data:www-data storage
 	docker exec base17 php composer.phar i
 	#docker exec base17 composer i
 	docker exec base17 php artisan migrate
 	#docker exec base17 npm run build
+	docker exec base17 npm i
 	docker exec base17 npm run prod
+	#docker exec base17 npm run dev
+	#docker exec base17 npm run build
 
 start_base16sites:
-	docker exec base16sites php composer.phar i
+	docker exec base16sites composer i --no-dev
 	#docker exec base17 composer i
 	docker exec base16sites php artisan migrate
 	#docker exec base17 npm run build
@@ -260,6 +268,7 @@ start_avtoas_didrive_prod:
 
 
 caddy_refresh_cfd:
+	#docker exec -w /etc/caddy caddy caddy fmt
 	docker exec -w /etc/caddy caddy caddy reload
 
 

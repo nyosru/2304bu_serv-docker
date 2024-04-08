@@ -74,8 +74,12 @@ services:
 
       - 2401test
       - test231116php
+      - base17
+      - base16sites
+
     #      - test231116php
     ##      - 2312didrive_auto_prod
+
     networks:
       - laravel
 
@@ -456,3 +460,29 @@ services:
     #   - db_mysql:db
     volumes:
       - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
+
+
+  base16sites:
+    container_name: base16sites
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.Dockerfile
+    working_dir: ${FOLDER_BASE16_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_BASE16_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    links:
+      - db_mysql:db
+    volumes:
+      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+
+

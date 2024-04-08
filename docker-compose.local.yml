@@ -69,11 +69,13 @@ services:
 
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
 
     depends_on:
       - db_mysql
       - 2308beget
       - 2309livewire
+      - base17
 #      - test231012
 #      - 2302didrive
 #      - test231116php
@@ -704,3 +706,35 @@ services:
 
 
 
+
+  #
+  #
+  #
+  # base17
+  #
+  #
+  #
+
+  base17:
+    container_name: base17
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+#      dockerfile: base17.node.Dockerfile
+      dockerfile: docker.laravel.Dockerfile
+    working_dir: ${FOLDER_BASE17_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_BASE17_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
+#    links:
+#      - db_mysql:db

@@ -82,18 +82,19 @@ prod:
 	#	make start
 # 	make start_2309livewire
 	#make start_2309livewire_prod
-
-	make start_2308beget
 #	make start_test231012_prod
-	make start_2401test
-#
-	make start_avtoas
-	make start_avtoas_prod
-	make start_avtoas_didrive
-#	make start_avtoas_didrive_prod
 
-	make start_base16sites
-	make start_base17
+# рабочие
+
+#	make start_2308beget
+#	make start_2401test
+#
+#	make start_avtoas
+#	make start_avtoas_prod
+#	make start_avtoas_didrive
+#
+#	make start_base16sites
+#	make start_base17
 
 	make caddy_refresh_cfd
 	docker system prune --force

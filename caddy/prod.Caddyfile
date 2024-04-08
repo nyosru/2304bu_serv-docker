@@ -71,7 +71,6 @@ php-cat.com {
     tls support@php-cat.com
     file_server
     encode gzip
-
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }

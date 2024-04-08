@@ -186,7 +186,7 @@ test2401laravel-vitrin.php-cat.com {
 
 # кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru
 # xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru {
-кружки.сергейсб.рф, ттт72.рф, ttt72.ru {
+ттт72.рф, ttt72.ru {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com

@@ -92,7 +92,7 @@ prod:
 	make start_avtoas_didrive
 #	make start_avtoas_didrive_prod
 
-	start_base16sites
+	#start_base16sites
 	start_base17
 
 	make caddy_refresh_cfd

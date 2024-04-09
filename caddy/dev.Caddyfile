@@ -14,6 +14,19 @@ zem.local {
 }
 
 
+кружки.сергейсб.рф, krugi.local {
+    # Формируем самоподписной сертификат для работы https
+    # tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi 2308beget:9000
+#    root * /home/base16/public
+    root * /home/2308beget/public
+    }
+
 xprivat.local {
     #приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, xprivat.local {
 
@@ -160,7 +173,7 @@ test231116.local {
     root * /test231116php/public
 }
 
-krugi.local, phpcat.old.local, ttt72.local {
+phpcat.old.local, ttt72.local {
     # Формируем самоподписной сертификат для работы https
     tls internal
     # tls support@php-cat.com

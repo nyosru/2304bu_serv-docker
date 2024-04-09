@@ -61,15 +61,16 @@ services:
 #      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
 #      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
 
-      #      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
       - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
       - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-
       - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
       - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
+      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 
     depends_on:
       - db_mysql
@@ -738,3 +739,29 @@ services:
       - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
 #    links:
 #      - db_mysql:db
+
+
+  base16sites:
+    container_name: base16sites
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.laravel-php74.Dockerfile
+    working_dir: ${FOLDER_BASE16_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_BASE16_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    links:
+      - db_mysql:db
+    volumes:
+      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+
+

@@ -11,7 +11,7 @@ vue3.php-cat.com {
     root * /home/base17/public
 }
 
-кружки.сергейсб.рф {
+ттт72.рф, ttt72.ru, кружки.сергейсб.рф {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com
@@ -154,20 +154,6 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2401test_laravel/public
 
 }
-
-# кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru
-# xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, xn--72-qmcaa.xn--p1ai, ttt72.ru {
-ттт72.рф, ttt72.ru {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-    php_fastcgi 2308beget:9000
-    file_server
-    encode gzip
-    root * /home/2308beget/public
-}
-
-
 
 
 *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {

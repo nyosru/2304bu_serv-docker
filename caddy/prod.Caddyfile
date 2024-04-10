@@ -12,7 +12,7 @@ vue3.php-cat.com {
 }
 
 #ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru, кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai {
-ттт72.рф, ttt72.ru, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai {
+ттт72.рф, ttt72.ru, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal
     tls support@php-cat.com
@@ -28,7 +28,7 @@ vue3.php-cat.com {
 # 11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 # земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
-php-cat.com, приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com, domainwaiter.com {
+php-cat.com, приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
 
 	# Формируем самоподписной сертификат для работы https
 	#tls internal

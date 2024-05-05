@@ -1,3 +1,14 @@
+народноехозяйство.рус {
+    # Формируем самоподписной сертификат для работы https
+    # tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi 2309livewire:9000
+    root * /home/base17/public
+}
 
 vue3.php-cat.com {
 	# Формируем самоподписной сертификат для работы https

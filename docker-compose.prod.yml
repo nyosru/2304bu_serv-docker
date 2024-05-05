@@ -161,6 +161,32 @@ services:
     #   - db_mysql:db
     volumes:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+
+
+  base12narek:
+    container_name: base12narek
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.Dockerfile
+    working_dir: ${FOLDER_BASE12NAREK_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_BASE12NAREK_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    links:
+      - db_mysql:db
+    volumes:
+      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+
+
 #
 #  test231012:
 #    container_name: test231012

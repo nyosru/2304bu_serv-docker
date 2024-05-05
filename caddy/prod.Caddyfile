@@ -6,8 +6,8 @@
     file_server
     encode gzip
 
-    php_fastcgi 2309livewire:9000
-    root * /home/base17/public
+    php_fastcgi base12narek:9000
+    root * /home/base12narek/public
 }
 
 vue3.php-cat.com {

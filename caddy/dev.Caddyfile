@@ -1,3 +1,16 @@
+#xn--80aaaovlboecchebw6s7a.xn--p1ai, народноехозяйство.рус {
+base12narek.local {
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    #tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi base12narek:9000
+    root * /home/base12narek/public
+}
+
 zem.local {
     #земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local {
 
@@ -13,6 +26,21 @@ zem.local {
     root * /home/2309livewire/public
 }
 
+
+as.php-cat.com.local {
+
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    #tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /home/2309livewire/public
+
+}
 
 кружки.сергейсб.рф, krugi.local {
     # Формируем самоподписной сертификат для работы https

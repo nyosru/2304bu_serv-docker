@@ -1,4 +1,5 @@
-xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
+#xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
+xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     # Формируем самоподписной сертификат для работы https
     # tls internal
     tls support@php-cat.com

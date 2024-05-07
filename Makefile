@@ -96,7 +96,7 @@ prod:
 #	make start_base16sites
 #	make start_base17
 
-	make start_base12narek
+#	make start_base12narek
 
 	make caddy_refresh_cfd
 	docker system prune --force

@@ -104,7 +104,7 @@ dev.47.avto-as.ru {
     root * /home_as/2312auto_as/public
 }
 
-47.avto-as.ru {
+avs.php-cat.com, 47.avto-as.ru {
     #dev as
 	# Формируем самоподписной сертификат для работы https
 	#tls internal

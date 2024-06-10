@@ -120,8 +120,8 @@ avs.php-cat.com, 47.avto-as.ru {
 
 
 # ------------- avto-as didrive dev ----------
-
-d47.avto-as.ru {
+# avs.didrive.php-cat.com - ihc docker24
+avs.didrive.php-cat.com, d47.avto-as.ru {
     #dev as didrive
 	# Формируем самоподписной сертификат для работы https
 	#tls internal

@@ -1,3 +1,9 @@
+
+кпрф72.рф {
+    tls support@php-cat.com
+    redir https://kprf72.ru{uri} 301
+}
+
 #xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
 xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     # Формируем самоподписной сертификат для работы https

@@ -14,7 +14,7 @@ RUN chmod 0644 /etc/cron.d/my-crontab
 RUN crontab /etc/cron.d/my-crontab
 
 # Создаем папку для логов
-RUN mkdir /var/log/cron
+#RUN mkdir /var/log/cron
 RUN chmod 0777 /var/log/cron/cron.log
 
 # Копируем скрипт запуска

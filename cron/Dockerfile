@@ -15,7 +15,7 @@ RUN crontab /etc/cron.d/my-crontab
 
 # Создаем папку для логов
 #RUN mkdir /var/log/cron
-RUN chmod 0777 /var/log/cron/cron.log
+#RUN chmod 0777 /var/log/cron/cron.log
 
 # Копируем скрипт запуска
 COPY cron/entrypoint.sh /entrypoint.sh

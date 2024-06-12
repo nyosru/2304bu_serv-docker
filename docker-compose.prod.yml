@@ -18,6 +18,15 @@ networks:
 
 services:
 
+  cron-service:
+    build:
+      context: .
+      dockerfile: cron/Dockerfile
+    container_name: cron-service
+    volumes:
+      - ./cron/logs:/var/log/cron
+    restart: unless-stopped
+
   caddy:
     container_name: caddy
     image: caddy:2.6

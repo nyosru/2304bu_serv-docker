@@ -2,7 +2,7 @@
 FROM debian:latest
 
 # Обновляем пакеты и устанавливаем cron, curl и procps
-RUN apt-get update && apt-get install -y cron curl procps
+RUN apt-get update && apt-get install -y cron curl procps iputils-ping
 
 # Копируем crontab файл и добавляем его в cron-таблицу
 COPY cron/my-crontab /etc/cron.d/my-crontab

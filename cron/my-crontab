@@ -7,7 +7,7 @@
 
 # * * * * * curl -v "http://api.php-cat.com/telegram.php?msg=работа крон норм%26s=1%26domain=testdrive.com" >> /var/log/cron/cron.log 2>&1
 # * * * * * wget -q -O - "http://api.php-cat.com/telegram.php?msg=работа крон норм%26s=1%26domain=testdrive.com" >> /var/log/cron/cron.log 2>&1
-7 * * * * wget -q -O - "http://api.php-cat.com/telegram.php?msg=работа крон норм&s=1&domain=testdrive.com" >> /var/log/cron/cron.log 2>&1
+7 * * * * wget -q -O - "http://api.php-cat.com/telegram.php?msg=работа крон норм&s=1&domain=api.php-cat.com" >> /var/log/cron/cron.log 2>&1
 # * * * * * echo "Running curl at $(date)" >> /var/log/cron/cron.log 2>&1
 
 # Обязательно оставляем пустую строку в конце файла

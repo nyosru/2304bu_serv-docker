@@ -1,7 +1,8 @@
 # Выполняем задачу раз в час и перенаправляем вывод в лог файл
 # */5 * * * * root curl -s http://cron.php-cat.com/cron/run.php?step=1 >> /var/log/cron/cron.log 2>&1
 # */5 * * * * root curl -s http://cron.php-cat.com/cron/run.php?step=1 >> /var/log/cron/cron.log 2>&1
-* * * * * root curl -s http://api.php-cat.com/telegram.php?msg=111&s=1&domain=testdrive.com >> /var/log/cron/cron.log 2>&1
+
+*/2 * * * * root curl -s http://api.php-cat.com/telegram.php?msg=111&s=1&domain=testdrive.com >> /var/log/cron/cron.log 2>&1
 
 # Обязательно оставляем пустую строку в конце файла
 

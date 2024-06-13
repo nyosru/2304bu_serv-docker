@@ -1,6 +1,7 @@
 #FROM node:latest AS node
 #FROM php:8.2.0-fpm
-FROM php:8.2-fpm
+#FROM php:8.2-fpm
+FROM php:7.0-fpm
 
 #COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 #COPY --from=node /usr/local/bin/node /usr/local/bin/node

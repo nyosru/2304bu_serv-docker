@@ -18,6 +18,17 @@ xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     root * /home/base12narek/public
 }
 
+api3.php-cat.com {
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi site_api:9000
+    root * /home/site_api/public
+}
 vue3.php-cat.com {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

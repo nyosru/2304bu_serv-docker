@@ -176,6 +176,30 @@ services:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 
 
+  site_api:
+    container_name: site_api
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.site_api.Dockerfile
+    working_dir: ${FOLDER_SITE_API_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_SITE_API_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    # links:
+    #   - db_mysql:db
+    volumes:
+      - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+
+
   base12narek:
     container_name: base12narek
     depends_on:

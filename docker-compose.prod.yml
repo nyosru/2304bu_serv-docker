@@ -77,6 +77,8 @@ services:
 #      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
 #      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
 
+      - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+
     depends_on:
       - 2308beget
       - 2309livewire
@@ -89,7 +91,7 @@ services:
       - test231116php
       - base17
       - base16sites
-
+      - site_api
     #      - test231116php
     ##      - 2312didrive_auto_prod
 

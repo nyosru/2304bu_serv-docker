@@ -97,6 +97,7 @@ prod:
 #	make start_base17
 
 #	make start_base12narek
+#	make start_site_api
 
 	make caddy_refresh_cfd
 	docker system prune --force
@@ -127,6 +128,9 @@ start_base12narek:
 	docker exec base12narek php artisan migrate
 	#docker exec 2308beget npm run build
 	docker exec base12narek chown -R www-data:www-data storage
+
+start_site_api:
+	docker exec site_api composer i --no-dev
 
 start_2308beget:
 	#docker exec 2308beget composer update

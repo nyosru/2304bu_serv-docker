@@ -27,7 +27,7 @@ api3.php-cat.com {
     encode gzip
 
     php_fastcgi site_api:9000
-    root * /home/site_api/public
+    root * /home/site_api
 }
 vue3.php-cat.com {
 	# Формируем самоподписной сертификат для работы https

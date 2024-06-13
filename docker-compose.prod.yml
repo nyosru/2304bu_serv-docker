@@ -186,7 +186,7 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.site_api.Dockerfile
+      dockerfile: docker.php74_soap.Dockerfile
     working_dir: ${FOLDER_SITE_API_SERV}
     environment:
       - PHPGROUP=www-data

@@ -199,7 +199,6 @@ services:
     volumes:
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
 
-
   base12narek:
     container_name: base12narek
     depends_on:

@@ -93,6 +93,7 @@ services:
       - base17
       - base16sites
       - site_api
+      - upr_serv
     #      - test231116php
     ##      - 2312didrive_auto_prod
 

@@ -39,7 +39,7 @@ upr.php-cat.com {
     encode gzip
 
     php_fastcgi upr_serv:9000
-    root * /home/upr_serv
+    root * /home/upr_serv/public
 }
 vue3.php-cat.com {
 	# Формируем самоподписной сертификат для работы https

@@ -178,6 +178,30 @@ services:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
 
 
+  upr_serv:
+    container_name: upr_serv
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_UPRSERV_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_UPRSERV_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    # links:
+    #   - db_mysql:db
+    volumes:
+      - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
+
+
   site_api:
     container_name: site_api
     depends_on:

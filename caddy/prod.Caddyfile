@@ -29,6 +29,18 @@ api.php-cat.com, api3.php-cat.com {
     php_fastcgi site_api:9000
     root * /home/site_api
 }
+
+upr.php-cat.com {
+	# Формируем самоподписной сертификат для работы https
+	# tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi upr_serv:9000
+    root * /home/upr_serv
+}
 vue3.php-cat.com {
 	# Формируем самоподписной сертификат для работы https
 	# tls internal

@@ -186,7 +186,7 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.2309livewire.Dockerfile
+      dockerfile: docker.livewire.Dockerfile
     working_dir: ${FOLDER_UPRSERV_SERV}
     environment:
       - PHPGROUP=www-data

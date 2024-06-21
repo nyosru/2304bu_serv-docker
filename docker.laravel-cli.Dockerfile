@@ -1,11 +1,12 @@
 FROM node:latest AS node
-#FROM php:8.2.0-fpm
 FROM php:8.2-fpm
 
+# Копирование Node.js и npm из образа node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
+# Установка зависимостей PHP и инструментов
 ARG PHPGROUP
 ARG PHPUSER
 ARG FOLDER
@@ -17,48 +18,32 @@ ENV FOLDER=${FOLDER}
 WORKDIR ${FOLDER}
 USER ${PHPUSER}
 
-RUN apt-get update -y && docker-php-ext-install pdo_mysql \
-    && apt-get update && apt-get install -y git \
-    &&  apt-get install -y \
-    libzip-dev \
-    && docker-php-ext-install zip  && docker-php-ext-enable zip
-
-#RUN #npm install -g npm
-
-
-
-
-# Установка Docker CLI и установка пользователя www-data в группу docker
-RUN apt-get update && \
-    apt-get install -y docker.io && \
-    usermod -aG docker www-data
-
-# Установка зависимостей для Docker CLI
-RUN apt-get update && \
+RUN apt-get update -y && \
     apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg2 \
-    software-properties-common
-
-# Добавление официального GPG ключа Docker
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-
-# Добавление Docker репозитория
-RUN add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+        git \
+        libzip-dev \
+    && docker-php-ext-install pdo_mysql zip && docker-php-ext-enable zip
 
 # Установка Docker CLI
-RUN apt-get update && apt-get install -y docker-ce-cli
+RUN apt-get update && \
+    apt-get install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg2 \
+        software-properties-common \
+    && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
+    && add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
+    && apt-get update && apt-get install -y docker-ce-cli
 
-# Удаление ненужных файлов и очистка кеша
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-
-
-
-# # # Get latest Composer
+# Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-#RUN cd /2309livewire && chmod -R 0777 storage
+# Опционально: настройка прав доступа к папкам (расскомментируйте и измените по необходимости)
+# RUN chmod -R 0777 /path/to/your/folder
+
+# Очистка кеша и временных файлов
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Ваш остальной код Dockerfile продолжает здесь

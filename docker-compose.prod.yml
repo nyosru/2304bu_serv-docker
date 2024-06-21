@@ -203,7 +203,7 @@ services:
     volumes:
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
       - './cron:${FOLDER_UPRSERV_SERV}/storage/app/cron'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+#      - '/var/run/docker.sock:/var/run/docker.sock'
 
 
   flask-api:

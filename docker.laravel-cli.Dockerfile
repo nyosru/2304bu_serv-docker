@@ -26,6 +26,13 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
 #RUN #npm install -g npm
 
 
+
+
+# Установка Docker CLI и установка пользователя www-data в группу docker
+RUN apt-get update && \
+    apt-get install -y docker.io && \
+    usermod -aG docker www-data
+
 # Установка зависимостей для Docker CLI
 RUN apt-get update && \
     apt-get install -y \
@@ -43,10 +50,11 @@ RUN add-apt-repository \
     "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
 # Установка Docker CLI
-RUN apt-get update && apt-get install -y docker.io
+RUN apt-get update && apt-get install -y docker-ce-cli
 
 # Удаление ненужных файлов и очистка кеша
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 
 

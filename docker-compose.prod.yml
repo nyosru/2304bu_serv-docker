@@ -208,7 +208,7 @@ services:
 
   flask-api:
     build:
-      context: ./flask-api/Dockerfile  # путь к директории с Dockerfile для Flask API
+      context: ./flask-api  # путь к директории с Dockerfile для Flask API
     container_name: flask-api
     ports:
       - "5000:5000"

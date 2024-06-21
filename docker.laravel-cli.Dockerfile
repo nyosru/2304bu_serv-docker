@@ -45,7 +45,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Опционально: настройка прав доступа к папкам
 # RUN chmod -R 0777 /path/to/your/folder
 
-RUN chmod 666 /var/run/docker.sock
+#RUN chmod 666 /var/run/docker.sock
 
 # Добавление пользователя в группу Docker и предоставление sudo прав
 RUN usermod -aG docker ${PHPUSER} \

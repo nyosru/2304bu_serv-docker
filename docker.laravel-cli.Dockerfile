@@ -16,6 +16,14 @@ ENV FOLDER=${FOLDER}
 
 WORKDIR ${FOLDER}
 
+
+RUN apt-get update -y && docker-php-ext-install pdo_mysql \
+    && apt-get update && apt-get install -y git \
+    &&  apt-get install -y \
+    libzip-dev \
+    && docker-php-ext-install zip  && docker-php-ext-enable zip
+
+
 # Установка зависимостей и добавление пользователя в группу Docker
 RUN apt-get update -y && \
     apt-get install -y \

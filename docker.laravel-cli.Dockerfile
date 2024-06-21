@@ -15,15 +15,20 @@ ENV PHPUSER=${PHPUSER}
 ENV FOLDER=${FOLDER}
 
 WORKDIR ${FOLDER}
-USER ${PHPUSER}
 
+# Установка зависимостей и добавление пользователя в группу Docker
 RUN apt-get update -y && \
     apt-get install -y \
         git \
         libzip-dev \
         curl \
         gnupg \
-    && docker-php-ext-install pdo_mysql zip && docker-php-ext-enable zip
+        sudo \
+    && docker-php-ext-install pdo_mysql zip && docker-php-ext-enable zip \
+    && usermod -aG docker ${PHPUSER} \
+    && echo "${PHPUSER} ALL=(ALL) NOPASSWD: /usr/bin/docker" > /etc/sudoers.d/docker
+
+USER ${PHPUSER}
 
 # Установка Docker CLI
 RUN curl -fsSL https://get.docker.com -o get-docker.sh && \

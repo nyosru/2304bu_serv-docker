@@ -21,10 +21,15 @@ RUN apt-get update -y && \
     apt-get install -y \
         git \
         libzip-dev \
-        docker-ce-cli \
+        curl \
+        gnupg \
     && docker-php-ext-install pdo_mysql zip && docker-php-ext-enable zip
 
-# Устанавливаем Composer
+# Установка Docker CLI
+RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
+    sh get-docker.sh
+
+# Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Опционально: настройка прав доступа к папкам

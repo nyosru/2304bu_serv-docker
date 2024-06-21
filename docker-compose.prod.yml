@@ -188,7 +188,7 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.laravel.Dockerfile
+      dockerfile: docker.laravel-cli.Dockerfile
     working_dir: ${FOLDER_UPRSERV_SERV}
     environment:
       - PHPGROUP=www-data

@@ -1,12 +1,11 @@
+# Используем два базовых образа: Node.js и PHP
 FROM node:latest AS node
 FROM php:8.2-fpm
 
-# Копирование Node.js и npm из образа node
-COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=node /usr/local/bin/node /usr/local/bin/node
-RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+# Копируем Node.js и npm из образа node
+COPY --from=node /usr/local /usr/local
 
-# Установка зависимостей PHP и инструментов
+# Устанавливаем зависимости PHP и инструменты
 ARG PHPGROUP
 ARG PHPUSER
 ARG FOLDER
@@ -22,28 +21,16 @@ RUN apt-get update -y && \
     apt-get install -y \
         git \
         libzip-dev \
+        docker-ce-cli \
     && docker-php-ext-install pdo_mysql zip && docker-php-ext-enable zip
 
-# Установка Docker CLI
-RUN apt-get update && \
-    apt-get install -y \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        gnupg2 \
-        software-properties-common \
-    && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
-    && add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
-    && apt-get update && apt-get install -y docker-ce-cli
-
-# Установка Composer
+# Устанавливаем Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Опционально: настройка прав доступа к папкам (расскомментируйте и измените по необходимости)
+# Опционально: настройка прав доступа к папкам
 # RUN chmod -R 0777 /path/to/your/folder
 
-# Очистка кеша и временных файлов
+# Очищаем кеш и временные файлы
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Ваш остальной код Dockerfile продолжает здесь

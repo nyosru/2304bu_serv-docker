@@ -202,6 +202,7 @@ services:
     #   - db_mysql:db
     volumes:
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
+      - './cron:${FOLDER_UPRSERV_SERV}/storage/app/cron'
 
 
   site_api:

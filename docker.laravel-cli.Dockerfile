@@ -26,16 +26,10 @@ RUN apt-get update -y && \
         sudo \
         apt-transport-https \
         ca-certificates \
-        software-properties-common \
-    && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
-    && add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
-    && apt-get update && apt-get install -y docker-ce-cli \
-    && docker-php-ext-install pdo_mysql zip && docker-php-ext-enable zip \
-    && usermod -aG docker ${PHPUSER} \
-    && echo "${PHPUSER} ALL=(ALL) NOPASSWD: /usr/bin/docker" > /etc/sudoers.d/docker
+        software-properties-common
 
-USER ${PHPUSER}
+# Установка Docker CLI
+RUN curl -fsSL https://get.docker.com | sh
 
 # Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

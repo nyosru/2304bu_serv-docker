@@ -43,10 +43,11 @@ RUN add-apt-repository \
     "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
 # Установка Docker CLI
-RUN apt-get update && apt-get install -y docker-ce-cli
+RUN apt-get update && apt-get install -y docker.io
 
 # Удаление ненужных файлов и очистка кеша
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 
 # # # Get latest Composer

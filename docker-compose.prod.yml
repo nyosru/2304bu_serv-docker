@@ -19,6 +19,18 @@ volumes:
 
 services:
 
+
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    restart: always
+    ports:
+      - "9008:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+
   cron-service:
     build:
       context: .

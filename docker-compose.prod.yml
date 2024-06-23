@@ -5,7 +5,8 @@ networks:
     driver: bridge
 
 #
-##volumes:
+volumes:
+  cron_volume:
 ##  caddy_caddyfile:
 ##    driver: bridge
 ##
@@ -25,6 +26,7 @@ services:
     container_name: cron-service
     volumes:
       - ./cron/logs:/var/log/cron
+      - cron_volume:/etc/cron.d
     restart: unless-stopped
     dns:
       - 8.8.8.8
@@ -203,7 +205,9 @@ services:
     volumes:
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
       - './cron:${FOLDER_UPRSERV_SERV}/storage/app/cron'
+      - 'cron_volume:${FOLDER_UPRSERV_SERV}/storage/app/cron2'
 #      - '/var/run/docker.sock:/var/run/docker.sock'
+#      - ''
 
 
   flask-api:

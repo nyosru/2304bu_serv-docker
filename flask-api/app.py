@@ -4,6 +4,38 @@ import docker
 app = Flask(__name__)
 client = docker.from_env()
 
+@app.route('/copy', methods=['POST'])
+def copy_crontab():
+    try:
+        # Получаем данные запроса
+        data = request.json
+        source_path = data['source_path']
+        target_path = data['target_path']
+        container_name = data['container_name']
+
+        # Получаем контейнер по имени
+        container = client.containers.get(container_name)
+
+        # Проверяем, что файл source_path существует локально
+        if not os.path.exists(source_path):
+            raise FileNotFoundError("File '{source_path}' not found.")
+
+        # Копируем файл в контейнер
+        with open(source_path, 'rb') as file:
+            container.put_archive(os.path.dirname(target_path), file.read())
+
+        return jsonify({
+            'status': 'success',
+            'message': 'File {source_path} copied to {container_name}:{target_path} successfully.',
+            'code': 200
+        }), 200
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'code': 500
+        }), 500
+
 
 @app.route('/restart', methods=['POST'])
 def restart_container():

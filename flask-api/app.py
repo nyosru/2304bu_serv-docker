@@ -4,6 +4,62 @@ import docker
 app = Flask(__name__)
 client = docker.from_env()
 
+
+@app.route('/get_crontab', methods=['GET'])
+def get_crontab():
+    try:
+        container_name = request.args.get('container_name')
+
+        # Получаем контейнер по имени
+        container = client.containers.get(container_name)
+
+        # Выполняем команду crontab -l в контейнере
+        exec_command = container.exec_run(['crontab', '-l'])
+
+        if exec_command.exit_code == 0:
+            crontab_content = exec_command.output.decode('utf-8')
+            return jsonify({
+                'status': 'success',
+                'crontab': crontab_content,
+                'code': 200
+            }), 200
+        else:
+            raise Exception("Failed to retrieve crontab.")
+
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'code': 500
+        }), 500
+
+@app.route('/update-crontab', methods=['POST'])
+def update_crontab():
+    try:
+        data = request.json
+        container_name = data['container_name']
+        crontab_path = data['crontab_path']
+
+        # Получаем контейнер по имени
+        container = client.containers.get(container_name)
+
+        # Обновляем cron-таблицу
+        exit_code, output = container.exec_run(f'bash -c "crontab {crontab_path}"')
+        if exit_code != 0:
+            raise Exception(f"Failed to update crontab: {output.decode('utf-8')}")
+
+        return jsonify({
+            'status': 'success',
+            'message': f'Crontab updated successfully in container {container_name}',
+            'code': 200
+        }), 200
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'code': 500
+        }), 500
+
 @app.route('/copy', methods=['POST'])
 def copy_crontab():
     try:

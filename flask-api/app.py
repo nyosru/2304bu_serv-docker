@@ -5,7 +5,7 @@ app = Flask(__name__)
 client = docker.from_env()
 
 @app.route('/get_jobs_crontab', methods=['GET'])
-def get_crontab():
+def get_jobs_crontab():
     try:
         container_name = request.args.get('container_name')
 
@@ -31,8 +31,6 @@ def get_crontab():
             'message': str(e),
             'code': 500
         }), 500
-
-
 
 @app.route('/get_crontab', methods=['GET'])
 def get_crontab():

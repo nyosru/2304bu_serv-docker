@@ -71,13 +71,13 @@ def update_crontab():
         container = client.containers.get(container_name)
 
         # Обновляем cron-таблицу
-        exit_code, output = container.exec_run(f'bash -c "crontab {crontab_path}"')
+        exit_code, output = container.exec_run('bash -c "crontab {crontab_path}"')
         if exit_code != 0:
-            raise Exception(f"Failed to update crontab: {output.decode('utf-8')}")
+            raise Exception("Failed to update crontab: {output.decode('utf-8')}")
 
         return jsonify({
             'status': 'success',
-            'message': f'Crontab updated successfully in container {container_name}',
+            'message': 'Crontab updated successfully in container {container_name}',
             'code': 200
         }), 200
     except Exception as e:
@@ -129,7 +129,7 @@ def restart_container():
     try:
         container = client.containers.get(container_name)
         container.restart()
-        return jsonify({'status': 'success', 'message': f'Container {container_name} restarted'}), 200
+        return jsonify({'status': 'success', 'message': 'Container {container_name} restarted'}), 200
     except docker.errors.NotFound:
         return jsonify({'error': 'Container not found'}), 404
     except Exception as e:
@@ -157,7 +157,7 @@ def rebuild_container():
 
         return jsonify({
             'status': 'success',
-            'message': f'Container {container_name} rebuilt and restarted successfully.',
+            'message': 'Container {container_name} rebuilt and restarted successfully.',
             'code': 200
         }), 200
     except Exception as e:

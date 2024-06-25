@@ -6,4 +6,3 @@
 # * * * * * echo "Running curl at $(date)" >> /var/log/cron/cron.log 2>&1
 
 # Обязательно оставляем пустую строку в конце файла2233
-

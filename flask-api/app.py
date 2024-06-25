@@ -4,7 +4,6 @@ import docker
 app = Flask(__name__)
 client = docker.from_env()
 
-
 @app.route('/get_jobs_crontab', methods=['GET'])
 def get_crontab():
     try:

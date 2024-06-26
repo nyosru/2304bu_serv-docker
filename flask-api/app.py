@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 import docker
 
+import traceback
+
 app = Flask(__name__)
 client = docker.from_env()
 
@@ -49,7 +51,7 @@ def full_update_crontab():
     except Exception as e:
         return jsonify({
             'status': 'error',
-            'message': str(e),
+            'message': f"{str(e)}\n{traceback.format_exc()}",
             'code': 500
         }), 500
 

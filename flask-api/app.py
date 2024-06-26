@@ -4,6 +4,56 @@ import docker
 app = Flask(__name__)
 client = docker.from_env()
 
+
+@app.route('/full_update_crontab', methods=['POST'])
+def full_update_crontab():
+    try:
+        data = request.get_json()
+        container_name = data.get('container_name')
+        new_crontab_content = data.get('crontab_content')
+
+        if not container_name or not new_crontab_content:
+            return jsonify({
+                'status': 'error',
+                'message': 'container_name and crontab_content are required.',
+                'code': 400
+            }), 400
+
+        # Получаем контейнер по имени
+        container = client.containers.get(container_name)
+
+        # Сначала очищаем текущий crontab
+        clear_command = container.exec_run(['crontab', '-r'])
+        if clear_command.exit_code != 0 and "no crontab for" not in clear_command.output.decode('utf-8'):
+            raise Exception("Failed to clear crontab.")
+
+        # Создаем временный файл с новым содержимым crontab
+        with open('/tmp/new_crontab', 'w') as f:
+            f.write(new_crontab_content)
+
+        # Копируем временный файл в контейнер
+        with open('/tmp/new_crontab', 'rb') as f:
+            container.put_archive('/tmp/', f.read())
+
+        # Добавляем новый crontab
+        add_command = container.exec_run(['crontab', '/tmp/new_crontab'])
+        if add_command.exit_code != 0:
+            raise Exception("Failed to add new crontab.")
+
+        return jsonify({
+            'status': 'success',
+            'message': 'Crontab updated successfully.',
+            'code': 200
+        }), 200
+
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'code': 500
+        }), 500
+
+
 @app.route('/get_jobs_crontab', methods=['GET'])
 def get_jobs_crontab():
     try:

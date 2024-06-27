@@ -20,9 +20,8 @@ def create_tarfile(file_name, content):
 @app.route('/full_update_crontab', methods=['POST'])
 def full_update_crontab():
     try:
-        data = request.get_json()
-        container_name = data.get('container_name')
-        new_crontab_content = data.get('crontab_content')
+        container_name = request.form.get('container_name')
+        new_crontab_content = request.form.get('crontab_content')
 
         if not container_name or not new_crontab_content:
             return jsonify({
@@ -122,9 +121,8 @@ def get_crontab():
 @app.route('/update-crontab', methods=['POST'])
 def update_crontab():
     try:
-        data = request.json
-        container_name = data['container_name']
-        crontab_path = data['crontab_path']
+        container_name = request.form.get('container_name')
+        crontab_path = request.form.get('crontab_path')
 
         # Получаем контейнер по имени
         container = client.containers.get(container_name)
@@ -150,10 +148,9 @@ def update_crontab():
 def copy_crontab():
     try:
         # Получаем данные запроса
-        data = request.json
-        source_path = data['source_path']
-        target_path = data['target_path']
-        container_name = data['container_name']
+        source_path = request.form.get('source_path')
+        target_path = request.form.get('target_path')
+        container_name = request.form.get('container_name')
 
         # Получаем контейнер по имени
         container = client.containers.get(container_name)
@@ -180,7 +177,7 @@ def copy_crontab():
 
 @app.route('/restart', methods=['POST'])
 def restart_container():
-    container_name = request.json.get('container_name')
+    container_name = request.form.get('container_name')
     if not container_name:
         return jsonify({'error': 'No container name provided'}), 400
 
@@ -196,8 +193,7 @@ def restart_container():
 @app.route('/rebuild', methods=['POST'])
 def rebuild_container():
     try:
-        data = request.json
-        container_name = data['container_name']
+        container_name = request.form.get('container_name')
 
         # Fetch the container
         container = client.containers.get(container_name)

@@ -1,59 +1,68 @@
 from flask import Flask, request, jsonify
 import docker
-
 import traceback
+import tarfile
+import io
+import os
 
 app = Flask(__name__)
 client = docker.from_env()
 
+def create_tarfile(file_name, content):
+    tar_stream = io.BytesIO()
+    with tarfile.open(fileobj=tar_stream, mode='w') as tar:
+        tarinfo = tarfile.TarInfo(name=file_name)
+        tarinfo.size = len(content)
+        tar.addfile(tarinfo, io.BytesIO(content.encode('utf-8')))
+    tar_stream.seek(0)
+    return tar_stream
+
 
 @app.route('/full_update_crontab', methods=['POST'])
 def full_update_crontab():
-    try:
-        data = request.get_json()
-        container_name = data.get('container_name')
-        new_crontab_content = data.get('crontab_content')
+  try:
+          data = request.get_json()
+          container_name = data.get('container_name')
+          new_crontab_content = data.get('crontab_content')
 
-        if not container_name or not new_crontab_content:
-            return jsonify({
-                'status': 'error',
-                'message': 'container_name and crontab_content are required.',
-                'code': 400
-            }), 400
+          if not container_name or not new_crontab_content:
+              return jsonify({
+                  'status': 'error',
+                  'message': 'container_name and crontab_content are required.',
+                  'code': 400
+              }), 400
 
-        # Получаем контейнер по имени
-        container = client.containers.get(container_name)
+          # Получаем контейнер по имени
+          container = client.containers.get(container_name)
 
-        # Сначала очищаем текущий crontab
-        clear_command = container.exec_run(['crontab', '-r'])
-        if clear_command.exit_code != 0 and "no crontab for" not in clear_command.output.decode('utf-8'):
-            raise Exception("Failed to clear crontab.")
+          # Сначала очищаем текущий crontab
+          clear_command = container.exec_run(['crontab', '-r'])
+          if clear_command.exit_code != 0 and "no crontab for" not in clear_command.output.decode('utf-8'):
+              raise Exception("Failed to clear crontab.")
 
-        # Создаем временный файл с новым содержимым crontab
-        with open('/tmp/new_crontab', 'w') as f:
-            f.write(new_crontab_content)
+          # Создаем tar-архив с новым содержимым crontab
+          tar_stream = create_tarfile('new_crontab', new_crontab_content)
 
-        # Копируем временный файл в контейнер
-        with open('/tmp/new_crontab', 'rb') as f:
-            container.put_archive('/tmp/', f.read())
+          # Копируем tar-архив в контейнер
+          container.put_archive('/tmp/', tar_stream)
 
-        # Добавляем новый crontab
-        add_command = container.exec_run(['crontab', '/tmp/new_crontab'])
-        if add_command.exit_code != 0:
-            raise Exception("Failed to add new crontab.")
+          # Добавляем новый crontab
+          add_command = container.exec_run(['crontab', '/tmp/new_crontab'])
+          if add_command.exit_code != 0:
+              raise Exception("Failed to add new crontab.")
 
-        return jsonify({
-            'status': 'success',
-            'message': 'Crontab updated successfully.',
-            'code': 200
-        }), 200
+          return jsonify({
+              'status': 'success',
+              'message': 'Crontab updated successfully.',
+              'code': 200
+          }), 200
 
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': f"{str(e)}\n{traceback.format_exc()}",
-            'code': 500
-        }), 500
+      except Exception as e:
+          return jsonify({
+              'status': 'error',
+              'message': f"{str(e)}\n{traceback.format_exc()}",
+              'code': 500
+          }), 500
 
 
 @app.route('/get_jobs_crontab', methods=['GET'])

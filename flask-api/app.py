@@ -17,53 +17,51 @@ def create_tarfile(file_name, content):
     tar_stream.seek(0)
     return tar_stream
 
-
 @app.route('/full_update_crontab', methods=['POST'])
 def full_update_crontab():
-  try:
-          data = request.get_json()
-          container_name = data.get('container_name')
-          new_crontab_content = data.get('crontab_content')
+    try:
+        data = request.get_json()
+        container_name = data.get('container_name')
+        new_crontab_content = data.get('crontab_content')
 
-          if not container_name or not new_crontab_content:
-              return jsonify({
-                  'status': 'error',
-                  'message': 'container_name and crontab_content are required.',
-                  'code': 400
-              }), 400
+        if not container_name or not new_crontab_content:
+            return jsonify({
+                'status': 'error',
+                'message': 'container_name and crontab_content are required.',
+                'code': 400
+            }), 400
 
-          # Получаем контейнер по имени
-          container = client.containers.get(container_name)
+        # Получаем контейнер по имени
+        container = client.containers.get(container_name)
 
-          # Сначала очищаем текущий crontab
-          clear_command = container.exec_run(['crontab', '-r'])
-          if clear_command.exit_code != 0 and "no crontab for" not in clear_command.output.decode('utf-8'):
-              raise Exception("Failed to clear crontab.")
+        # Сначала очищаем текущий crontab
+        clear_command = container.exec_run(['crontab', '-r'])
+        if clear_command.exit_code != 0 and "no crontab for" not in clear_command.output.decode('utf-8'):
+            raise Exception("Failed to clear crontab.")
 
-          # Создаем tar-архив с новым содержимым crontab
-          tar_stream = create_tarfile('new_crontab', new_crontab_content)
+        # Создаем tar-архив с новым содержимым crontab
+        tar_stream = create_tarfile('new_crontab', new_crontab_content)
 
-          # Копируем tar-архив в контейнер
-          container.put_archive('/tmp/', tar_stream)
+        # Копируем tar-архив в контейнер
+        container.put_archive('/tmp/', tar_stream)
 
-          # Добавляем новый crontab
-          add_command = container.exec_run(['crontab', '/tmp/new_crontab'])
-          if add_command.exit_code != 0:
-              raise Exception("Failed to add new crontab.")
+        # Добавляем новый crontab
+        add_command = container.exec_run(['crontab', '/tmp/new_crontab'])
+        if add_command.exit_code != 0:
+            raise Exception("Failed to add new crontab.")
 
-          return jsonify({
-              'status': 'success',
-              'message': 'Crontab updated successfully.',
-              'code': 200
-          }), 200
+        return jsonify({
+            'status': 'success',
+            'message': 'Crontab updated successfully.',
+            'code': 200
+        }), 200
 
-      except Exception as e:
-          return jsonify({
-              'status': 'error',
-              'message': f"{str(e)}\n{traceback.format_exc()}",
-              'code': 500
-          }), 500
-
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f"{str(e)}\n{traceback.format_exc()}",
+            'code': 500
+        }), 500
 
 @app.route('/get_jobs_crontab', methods=['GET'])
 def get_jobs_crontab():
@@ -132,13 +130,13 @@ def update_crontab():
         container = client.containers.get(container_name)
 
         # Обновляем cron-таблицу
-        exit_code, output = container.exec_run('bash -c "crontab {crontab_path}"')
+        exit_code, output = container.exec_run(f'bash -c "crontab {crontab_path}"')
         if exit_code != 0:
-            raise Exception("Failed to update crontab: {output.decode('utf-8')}")
+            raise Exception(f"Failed to update crontab: {output.decode('utf-8')}")
 
         return jsonify({
             'status': 'success',
-            'message': 'Crontab updated successfully in container {container_name}',
+            'message': f'Crontab updated successfully in container {container_name}',
             'code': 200
         }), 200
     except Exception as e:
@@ -162,7 +160,7 @@ def copy_crontab():
 
         # Проверяем, что файл source_path существует локально
         if not os.path.exists(source_path):
-            raise FileNotFoundError("File '{source_path}' not found.")
+            raise FileNotFoundError(f"File '{source_path}' not found.")
 
         # Копируем файл в контейнер
         with open(source_path, 'rb') as file:
@@ -170,7 +168,7 @@ def copy_crontab():
 
         return jsonify({
             'status': 'success',
-            'message': 'File {source_path} copied to {container_name}:{target_path} successfully.',
+            'message': f'File {source_path} copied to {container_name}:{target_path} successfully.',
             'code': 200
         }), 200
     except Exception as e:
@@ -179,7 +177,6 @@ def copy_crontab():
             'message': str(e),
             'code': 500
         }), 500
-
 
 @app.route('/restart', methods=['POST'])
 def restart_container():
@@ -190,7 +187,7 @@ def restart_container():
     try:
         container = client.containers.get(container_name)
         container.restart()
-        return jsonify({'status': 'success', 'message': 'Container {container_name} restarted'}), 200
+        return jsonify({'status': 'success', 'message': f'Container {container_name} restarted'}), 200
     except docker.errors.NotFound:
         return jsonify({'error': 'Container not found'}), 404
     except Exception as e:
@@ -218,7 +215,7 @@ def rebuild_container():
 
         return jsonify({
             'status': 'success',
-            'message': 'Container {container_name} rebuilt and restarted successfully.',
+            'message': f'Container {container_name} rebuilt and restarted successfully.',
             'code': 200
         }), 200
     except Exception as e:

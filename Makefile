@@ -34,9 +34,11 @@ dev:
 	#docker-compose up -d --build
 	docker-compose up -d --force-recreate
 
-	make start_2309livewire
-	make start_2308beget_dev
-	make start_base17
+#	make start_2309livewire
+#	make start_2308beget_dev
+#	make start_base17
+
+
 #	make start_test231012
 #	make start_2302didrive
 # make start_2401test
@@ -353,3 +355,11 @@ dev00:
 	# docker-compose exec ttt72_laravel composer i
 	# docker-compose exec ttt72_laravel php artisan migrate
 
+restart-cron:
+	@echo "Stopping cron service..."
+	sudo service cron stop
+	@echo "Copying new configuration..."
+	sudo cp /path/to/new/cron/config /etc/cron.d/your_cron_config
+	@echo "Starting cron service..."
+	sudo service cron start
+	@echo "Cron service restarted with new configuration."

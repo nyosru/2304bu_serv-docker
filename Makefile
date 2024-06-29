@@ -356,9 +356,11 @@ dev00:
 	# docker-compose exec ttt72_laravel php artisan migrate
 
 restart-cron:
-	@echo "Stopping cron service..."
+	#@echo "Stopping cron service..."
 	#sudo service cron stop
 	#docker exec cron-service service cron stop
+	@echo "удаляем конфиги"
+	docker exec cron-service rm -f /etc/cron.d/*
 	@echo "Copying new configuration..."
 	#sudo cp ./cron/my-crontab cron-service:/etc/cron.d/my-crontab
 	docker cp ./cron/my-crontab cron-service:/etc/cron.d/my-crontab

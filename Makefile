@@ -358,7 +358,7 @@ dev00:
 restart-cron:
 	@echo "Stopping cron service..."
 	#sudo service cron stop
-	docker exec cron-service service cron stop
+	#docker exec cron-service service cron stop
 	@echo "Copying new configuration..."
 	sudo cp ./cron/my-crontab cron-service:/etc/cron.d/my-crontab
 	@echo "Starting cron service..."

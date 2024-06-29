@@ -360,7 +360,7 @@ restart-cron:
 	#sudo service cron stop
 	docker exec cron-service service cron stop
 	@echo "Copying new configuration..."
-	sudo cp /cron/my-crontab cron-service:/etc/cron.d/my-crontab
+	sudo cp ./cron/my-crontab cron-service:/etc/cron.d/my-crontab
 	@echo "Starting cron service..."
 	#sudo service cron start
 	docker exec cron-service service cron start

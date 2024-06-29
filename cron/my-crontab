@@ -1,8 +1,5 @@
 # Выполняем задачу раз в час и перенаправляем вывод в лог файл
-#30 * * * * wget -q -O - "http://api.php-cat.com/telegram.php?msg=🍏🍏🍏 работа крон норм&s=1&domain=api.php-cat.com" >> /var/log/cron/cron.log 2>&1
-#39 * * * * wget -q -O - "http://api.php-cat.com/telegram.php?msg=🍏🍏🍏 работа крон норм&s=1&domain=api.php-cat.com" >> /var/log/cron/cron.log 2>&1
-*/15 * * * * wget -q -O - "http://api.php-cat.com/telegram.php?msg=🍏🍏🍏 работа крон норм&s=1&domain=api.php-cat.com" >> /var/log/cron/cron.log 2>&1
 
-# * * * * * echo "Running curl at $(date)" >> /var/log/cron/cron.log 2>&1
+*/15 * * * * wget -q -O - "http://api.php-cat.com/telegram.php?msg=111🍏🍏🍏 работа крон норм&s=1&domain=api.php-cat.com" >> /var/log/cron/cron.log 2>&1
 
 # Обязательно оставляем пустую строку в конце файла2233

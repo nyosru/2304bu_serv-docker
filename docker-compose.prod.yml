@@ -224,10 +224,10 @@ services:
 
   flask-api:
     build:
-      context: ./flask-api  # путь к директории с Dockerfile для Flask API
+      context: ./flask-api7  # путь к директории с Dockerfile для Flask API
     container_name: flask-api
     ports:
-      - "5001:5000"
+      - "5005:5000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped

@@ -19,6 +19,7 @@ networks:
 # #   bu72_front:
 
 volumes:
+  cron_volume:
   caddy_caddyfile:
     driver: bridge
 
@@ -30,6 +31,33 @@ volumes:
       o: bind
 
 services:
+
+
+  telegram_bot:
+    build:
+      context: .
+      dockerfile: communicator/Dockerfile
+    container_name: telegram_bot
+    volumes:
+      - ./communicator:/app
+    environment:
+      - API_ID=${TELEGRAM_BOT__your_api_id}
+      - API_HASH=${TELEGRAM_BOT__your_api_hash}
+      - PHONE_NUMBER=${TELEGRAM_BOT__your_phone_number}
+    tty: true
+
+  cron-service:
+    build:
+      context: .
+      dockerfile: cron/Dockerfile
+    container_name: cron-service
+    volumes:
+      - ./cron/logs:/var/log/cron
+      - cron_volume:/etc/cron.d
+    restart: unless-stopped
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
 
   caddy:
     container_name: caddy

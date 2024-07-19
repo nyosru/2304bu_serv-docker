@@ -29,7 +29,7 @@ conn.commit()
 cursor.execute('''
 	INSERT INTO messages (sender_id, message)
 	VALUES (?, ?)
-''', ('1', 'start'))
+''', ('111', '222start'))
 conn.commit()
 
 # Обработчик новых сообщений

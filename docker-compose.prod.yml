@@ -21,6 +21,21 @@ volumes:
 services:
 
 
+
+
+  telegram_bot:
+    build:
+      context: .
+      dockerfile: communicator/Dockerfile
+    container_name: telegram_bot
+    volumes:
+      - ./communicator:/app
+    environment:
+      - API_ID=${TELEGRAM_BOT__your_api_id}
+      - API_HASH=${TELEGRAM_BOT__your_api_hash}
+      - PHONE_NUMBER=${TELEGRAM_BOT__your_phone_number}
+    tty: true
+
   portainer:
     image: portainer/portainer-ce
     container_name: portainer

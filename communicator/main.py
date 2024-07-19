@@ -25,6 +25,13 @@ cursor.execute('''
 ''')
 conn.commit()
 
+# Записываем сообщение в базу данных
+cursor.execute('''
+	INSERT INTO messages (sender_id, message)
+	VALUES (?, ?)
+''', ('1', 'start'))
+conn.commit()
+
 # Обработчик новых сообщений
 @client.on(events.NewMessage)
 async def handler(event):

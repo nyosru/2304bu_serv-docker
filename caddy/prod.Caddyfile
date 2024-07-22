@@ -1,3 +1,17 @@
+самыетюменскиеновости.рф, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
+
+    # Формируем самоподписной сертификат для работы https
+    #tls internal
+    tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /home/2309livewire/public
+
+}
 
 # кпрф72.рф {
 #xn--72-1lcufy.xn--p1ai {
@@ -214,7 +228,7 @@ test2401laravel-vitrin.php-cat.com {
 
     #https://цпусво.рф/    # кпрф72.рф
 
-    цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
+цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
     # tls support@php-cat.com
     #tls internal
     #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"

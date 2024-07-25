@@ -545,37 +545,21 @@ services:
 
 
   ftp-server2:
-    container_name: ftp-server
-    build:
-      context: .
-      dockerfile: ftp-server2/Dockerfile
-    #    image: fauria/vsftpd
+    build: /ftp-server2
+    container_name: ftp-server2
     ports:
       - "20:20"
       - "21:21"
       - "21100-21110:21100-21110"
-      #- "30000-30009:30000-30009"
-      #- "60000-60099:60000-60099"
-    #    environment:
-    #      - FTP_USER=${AVTOAS_FTP_USER}
-    #      - FTP_PASS=${AVTOAS_FTP_PASS}
-    #      - PASV_ADDRESS=45.12.72.4
-    ##      - PASV_ENABLE=YES
     environment:
-      - FTP_USER=${AVTOAS_FTP_USER}
-      - FTP_PASS=${AVTOAS_FTP_PASS}
-      - PASV_ADDRESS=${SERVER_IP}
+      - PASV_ADDRESS=0.0.0.0
+      - PASV_MIN_PORT=21100
+      - PASV_MAX_PORT=21110
       - FILE_OPEN_MODE=0666
       - LOCAL_UMASK=022
-#      - REVERSE_LOOKUP_ENABLE=NO
-      - REVERSE_LOOKUP_ENABLE=FALSE
+      - REVERSE_LOOKUP_ENABLE=NO
     volumes:
-      - '/home_ftp:/home/vsftpd'
-    restart: always
-    networks:
-      - laravel
-
-
+      - ./ftp_data:/home/vsftpd
 
   api_php74:
     container_name: api_php74

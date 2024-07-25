@@ -548,7 +548,7 @@ services:
     container_name: ftp-server
     build:
       context: .
-      dockerfile: ./docker.php74_soap.Dockerfile
+      dockerfile: ./ftp-server2/docker.php74_soap.Dockerfile
     #    image: fauria/vsftpd
     ports:
       - "20:20"

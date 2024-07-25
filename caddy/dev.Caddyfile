@@ -1,3 +1,49 @@
+
+bitrix1.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi bitrix1:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/bitrix1/
+}
+
+stn.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/2309livewire/public
+}
+
+
+upr.local {
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    #tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi upr_serv:9000
+    root * /home/upr_serv/public
+}
+
 #xn--80aaaovlboecchebw6s7a.xn--p1ai, народноехозяйство.рус {
 base12narek.local {
     # Формируем самоподписной сертификат для работы https
@@ -144,8 +190,23 @@ api7.php-cat.local, api47.php-cat.local, api74.php-cat.local {
     root * /home/2401test_laravel/public
 }
 
-
 ar.php-cat.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/2309livewire/public
+}
+
+commutator.local {
     #аренда сервис
     # Формируем самоподписной сертификат для работы https
     tls internal

@@ -1,3 +1,62 @@
+
+bitrix1.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi bitrix1:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/bitrix1/
+}
+
+stn.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/2309livewire/public
+}
+
+
+upr.local {
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    #tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi upr_serv:9000
+    root * /home/upr_serv/public
+}
+
+#xn--80aaaovlboecchebw6s7a.xn--p1ai, народноехозяйство.рус {
+base12narek.local {
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    #tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi base12narek:9000
+    root * /home/base12narek/public
+}
+
 zem.local {
     #земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local {
 
@@ -13,6 +72,34 @@ zem.local {
     root * /home/2309livewire/public
 }
 
+
+as.php-cat.com.local {
+
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    #tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /home/2309livewire/public
+
+}
+
+кружки.сергейсб.рф, krugi.local {
+    # Формируем самоподписной сертификат для работы https
+    # tls internal
+    tls support@php-cat.com
+
+    file_server
+    encode gzip
+
+    php_fastcgi 2308beget:9000
+#    root * /home/base16/public
+    root * /home/2308beget/public
+    }
 
 xprivat.local {
     #приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, xprivat.local {
@@ -103,8 +190,23 @@ api7.php-cat.local, api47.php-cat.local, api74.php-cat.local {
     root * /home/2401test_laravel/public
 }
 
-
 ar.php-cat.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/2309livewire/public
+}
+
+commutator.local {
     #аренда сервис
     # Формируем самоподписной сертификат для работы https
     tls internal
@@ -160,7 +262,7 @@ test231116.local {
     root * /test231116php/public
 }
 
-krugi.local, phpcat.old.local, ttt72.local {
+phpcat.old.local, ttt72.local {
     # Формируем самоподписной сертификат для работы https
     tls internal
     # tls support@php-cat.com

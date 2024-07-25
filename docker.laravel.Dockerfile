@@ -23,6 +23,9 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
     libzip-dev \
     && docker-php-ext-install zip  && docker-php-ext-enable zip
 
+RUN chown -R www-data:www-data storage/app/cron2
+RUN chmod -R 775 storage/app/cron2 \
+
 #RUN #npm install -g npm
 
 # # # Get latest Composer

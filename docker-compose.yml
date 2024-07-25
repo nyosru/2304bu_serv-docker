@@ -19,6 +19,7 @@ networks:
 # #   bu72_front:
 
 volumes:
+  cron_volume:
   caddy_caddyfile:
     driver: bridge
 
@@ -30,6 +31,33 @@ volumes:
       o: bind
 
 services:
+
+
+  telegram_bot:
+    build:
+      context: .
+      dockerfile: communicator/Dockerfile
+    container_name: telegram_bot
+    volumes:
+      - ./communicator:/app
+    environment:
+      - API_ID=${TELEGRAM_BOT__your_api_id}
+      - API_HASH=${TELEGRAM_BOT__your_api_hash}
+      - PHONE_NUMBER=${TELEGRAM_BOT__your_phone_number}
+    tty: true
+
+  cron-service:
+    build:
+      context: .
+      dockerfile: cron/Dockerfile
+    container_name: cron-service
+    volumes:
+      - ./cron/logs:/var/log/cron
+      - cron_volume:/etc/cron.d
+    restart: unless-stopped
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
 
   caddy:
     container_name: caddy
@@ -72,6 +100,7 @@ services:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+      - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
 
     depends_on:
       - db_mysql
@@ -86,6 +115,7 @@ services:
 #      - 2401test
 #      - api_php74
 #      - 2302docker_papa
+      - bitrix1
     networks:
       - laravel
 
@@ -792,4 +822,65 @@ services:
     volumes:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
+
+
+
+
+
+
+
+
+  db_mysql_bitrix:
+    container_name: db_mysql_bitrix
+    image: mariadb:10.7.8
+    networks:
+      - laravel
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+    #    ports:
+    #      - 3306:3306
+    volumes:
+      - '${MYSQL_DB_BITRIX_FOLDER}:/var/lib/mysql'
+    restart: unless-stopped
+
+
+
+  phpmyadmin_bitrix:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql_bitrix:db
+    ports:
+      - 6070:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql_bitrix
+    networks:
+      - laravel
+
+
+  bitrix1:
+    container_name: bitrix1
+    depends_on:
+      - db_mysql_bitrix
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.bitrix1.Dockerfile
+    working_dir: ${FOLDER_BITRIX1_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_BITRIX1_SERV}
+    restart: unless-stopped
+    # tty: true
+#    expose:
+#      - 9000
+    links:
+      - db_mysql_bitrix:db
+    volumes:
+      - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
 

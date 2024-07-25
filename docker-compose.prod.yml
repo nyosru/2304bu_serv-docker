@@ -548,7 +548,7 @@ services:
     container_name: ftp-server
     build:
       context: .
-      dockerfile: ./ftp-server2/docker.php74_soap.Dockerfile
+      dockerfile: ftp-server2/Dockerfile
     #    image: fauria/vsftpd
     ports:
       - "20:20"
@@ -562,12 +562,12 @@ services:
     #      - PASV_ADDRESS=45.12.72.4
     ##      - PASV_ENABLE=YES
     environment:
-      FTP_USER: ${AVTOAS_FTP_USER}
-      FTP_PASS: ${AVTOAS_FTP_PASS}
-      PASV_ADDRESS: ${SERVER_IP}
-      FILE_OPEN_MODE: 0666
-      LOCAL_UMASK: 022
-      REVERSE_LOOKUP_ENABLE: NO
+      - FTP_USER=${AVTOAS_FTP_USER}
+      - FTP_PASS=${AVTOAS_FTP_PASS}
+      - PASV_ADDRESS=${SERVER_IP}
+      - FILE_OPEN_MODE=0666
+      - LOCAL_UMASK=022
+      - REVERSE_LOOKUP_ENABLE=NO
     volumes:
       - '/home_ftp:/home/vsftpd'
     restart: always

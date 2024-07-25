@@ -567,7 +567,8 @@ services:
       - PASV_ADDRESS=${SERVER_IP}
       - FILE_OPEN_MODE=0666
       - LOCAL_UMASK=022
-      - REVERSE_LOOKUP_ENABLE=NO
+#      - REVERSE_LOOKUP_ENABLE=NO
+      - REVERSE_LOOKUP_ENABLE=FALSE
     volumes:
       - '/home_ftp:/home/vsftpd'
     restart: always

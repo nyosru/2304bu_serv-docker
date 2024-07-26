@@ -13,6 +13,21 @@ api.bitrix.test.php-cat.com {
 
 }
 
+тюменскаяафиша.рф {
+
+    # Формируем самоподписной сертификат для работы https
+    #tls internal
+    tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /home/2309livewire/public
+
+}
+
 самыетюменскиеновости.рф, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
 
     # Формируем самоподписной сертификат для работы https

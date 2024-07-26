@@ -519,29 +519,29 @@ services:
   #
   #
 
-    ftp-server:
-      image: fauria/vsftpd
-      container_name: ftp-server
-      ports:
-        - "20:20"
-        - "21:21"
-        - "21100-21110:21100-21110"
-        #- "30000-30009:30000-30009"
-        #- "60000-60099:60000-60099"
-  #    environment:
-  #      - FTP_USER=${AVTOAS_FTP_USER}
-  #      - FTP_PASS=${AVTOAS_FTP_PASS}
-  #      - PASV_ADDRESS=45.12.72.4
-  ##      - PASV_ENABLE=YES
-      environment:
-        FTP_USER: ${AVTOAS_FTP_USER}
-        FTP_PASS: ${AVTOAS_FTP_PASS}
-        PASV_ADDRESS: ${SERVER_IP}
-      volumes:
-        - '/home_ftp:/home/vsftpd'
-      restart: always
-      networks:
-        - laravel
+  ftp-server:
+    image: fauria/vsftpd
+    container_name: ftp-server
+    ports:
+      - "20:20"
+      - "21:21"
+      - "21100-21110:21100-21110"
+      #- "30000-30009:30000-30009"
+      #- "60000-60099:60000-60099"
+#    environment:
+#      - FTP_USER=${AVTOAS_FTP_USER}
+#      - FTP_PASS=${AVTOAS_FTP_PASS}
+#      - PASV_ADDRESS=45.12.72.4
+##      - PASV_ENABLE=YES
+    environment:
+      FTP_USER: ${AVTOAS_FTP_USER}
+      FTP_PASS: ${AVTOAS_FTP_PASS}
+      PASV_ADDRESS: ${SERVER_IP}
+    volumes:
+      - '/home_ftp:/home/vsftpd'
+    restart: always
+    networks:
+      - laravel
 
 
 #  ftp-server2:

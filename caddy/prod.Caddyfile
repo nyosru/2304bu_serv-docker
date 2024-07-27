@@ -1,3 +1,20 @@
+
+# IDN: скидки.сергейсб.рф
+xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
+
+    # Формируем самоподписной сертификат для работы https
+    #tls internal
+    tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    root * /home/2309livewire/public
+
+}
+
 api.bitrix.test.php-cat.com {
 
     # Формируем самоподписной сертификат для работы https
@@ -18,6 +35,7 @@ xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
 
     # Формируем самоподписной сертификат для работы https
     #tls internal
+    # Формируем сертификат для работы https
     tls support@php-cat.com
 
     php_fastcgi 2309livewire:9000

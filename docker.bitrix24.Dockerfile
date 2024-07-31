@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 
 
 # Настройка прав доступа
-RUN chown -R ${PHPUSER}:${PHPGROUP} ${FOLDER}
+#RUN chown -R ${PHPUSER}:${PHPGROUP} ${FOLDER}
 
 
 #WORKDIR /var/www/html

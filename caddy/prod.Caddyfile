@@ -21,12 +21,12 @@ api.bitrix.test.php-cat.com {
     #tls internal
     tls support@php-cat.com
 
-    php_fastcgi 2309livewire:9000
+    php_fastcgi bitrix24_2407_01:9000
 
     file_server
     encode gzip
 
-    root * /home/2309livewire/public/bitrix-test
+    root * /home/bitrix24_2407_01
 
 }
 

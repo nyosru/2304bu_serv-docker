@@ -101,6 +101,7 @@ services:
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
       - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
+      - './../2407bitrix24:/home/bitrix24'
 
     depends_on:
       - db_mysql
@@ -860,7 +861,6 @@ services:
     networks:
       - laravel
 
-
   bitrix1:
     container_name: bitrix1
     depends_on:
@@ -884,3 +884,31 @@ services:
     volumes:
       - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
 
+  bitrix24:
+    container_name: bitrix24
+#    image: bitrixdock/php74
+    build:
+      context: .
+      dockerfile: docker.bitrix24.Dockerfile
+    volumes:
+      - ./../2407bitrix24:/var/www/html
+    environment:
+#      - BITRIX_DB_HOST=db
+      - BITRIX_DB_HOST=db_mysql_bitrix
+      - BITRIX_DB_NAME=bitrix24
+      #- BITRIX_DB_USER=bitrix
+      - BITRIX_DB_USER=root
+#      - BITRIX_DB_PASSWORD=bitrix
+      - BITRIX_DB_PASSWORD=${MYSQL_DB_ROOT_PASSWORD}
+    depends_on:
+      - db_mysql_bitrix
+
+#  db_bitrix24:
+#    image: mariadb:10.5
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: bitrix
+#      MYSQL_USER: bitrix
+#      MYSQL_PASSWORD: bitrix
+#    volumes:
+#      - db_data:/var/lib/mysql

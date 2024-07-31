@@ -1,4 +1,18 @@
 
+bitrix24.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi bitrix1:9000
+
+    file_server
+    encode gzip
+
+    root * /home/bitrix24/
+}
+
 bitrix1.local {
     #аренда сервис
     # Формируем самоподписной сертификат для работы https
@@ -13,6 +27,22 @@ bitrix1.local {
     #root /storage /base17/storage/public
     # root * /home/2309livewire/public
     root * /home/bitrix1/
+}
+
+api.bitrix.test.php-cat.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/2309livewire/public/bitrix-test/
 }
 
 stn.local {
@@ -116,7 +146,7 @@ xprivat.local {
     root * /home/2309livewire/public
 }
 
-livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
+livewire.php-cat.local, domainwaiter.lw, uprav.local, vk.files.php-cat.local {
     # Формируем самоподписной сертификат для работы https
     tls internal
     # tls support@php-cat.com
@@ -127,7 +157,6 @@ livewire.php-cat.local, php-cat.local, domainwaiter.lw, uprav.local, vk.files.ph
     encode gzip
 
     root * /home/2309livewire/public
-
 
     #земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai {
     #    tls internal
@@ -207,6 +236,22 @@ ar.php-cat.local {
 }
 
 commutator.local {
+    #аренда сервис
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    # tls support@php-cat.com
+
+    php_fastcgi 2309livewire:9000
+
+    file_server
+    encode gzip
+
+    #root /storage /base17/storage/public
+    # root * /home/2309livewire/public
+    root * /home/2309livewire/public
+}
+
+php-cat.local {
     #аренда сервис
     # Формируем самоподписной сертификат для работы https
     tls internal

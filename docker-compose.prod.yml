@@ -215,7 +215,7 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.bitrix1.Dockerfile
+      dockerfile: docker.bitrix24.Dockerfile
     working_dir: ${FOLDER_bitrix24_2407_01_SERV}
     environment:
       - PHPGROUP=www-data

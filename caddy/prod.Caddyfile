@@ -30,7 +30,7 @@ xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
 
 }
 
-api-bitrix2.php-cat.com {
+api-bitrix.php-cat.com, api-bitrix2.php-cat.com {
 
     # Формируем самоподписной сертификат для работы https
     #tls internal

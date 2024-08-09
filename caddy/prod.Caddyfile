@@ -30,6 +30,20 @@ xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
 
 }
 
+api-bitrix2.php-cat.com {
+
+    # Формируем самоподписной сертификат для работы https
+    #tls internal
+    tls support@php-cat.com
+
+    php_fastcgi bitrix24_2407_01:9000
+
+    file_server
+    encode gzip
+
+    root * /home/bitrix24_2407_01
+
+}
 api.bitrix.test.php-cat.com {
 
     # Формируем самоподписной сертификат для работы https

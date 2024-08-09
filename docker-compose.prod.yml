@@ -106,6 +106,7 @@ services:
       #      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
 
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
 
     depends_on:
       - 2308beget

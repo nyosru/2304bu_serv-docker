@@ -73,8 +73,8 @@ api.bitrix.test.php-cat.com {
 
 }
 
-#тюменскаяафиша.рф {
-xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
+# складдокументов.рф тюменскаяафиша.рф
+xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
 
     # Формируем самоподписной сертификат для работы https
     #tls internal

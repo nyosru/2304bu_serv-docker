@@ -6,32 +6,14 @@
     encode gzip
 }
 
-ar.php-cat.com {
+# таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
+ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }
 
-# таймер.сергейсб.рф
-xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
-    import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
-
-# IDN: скидки.сергейсб.рф
-xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-    import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
-
-api-bitrix.php-cat.com, api-bitrix2.php-cat.com {
-    import base
-    php_fastcgi bitrix24_2407_01:9000
-    root * /home/bitrix24_2407_01
-}
-api.bitrix.test.php-cat.com {
+api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
     import base
     php_fastcgi bitrix24_2407_01:9000
     root * /home/bitrix24_2407_01

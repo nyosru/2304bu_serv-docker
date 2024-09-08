@@ -1,109 +1,53 @@
-ar.php-cat.com {
-
+(base) {
     # Формируем самоподписной сертификат для работы https
     #tls internal
     tls support@php-cat.com
-
-    php_fastcgi 2309livewire:9000
-
     file_server
     encode gzip
+}
 
+ar.php-cat.com {
+    import base
+    php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
-
 }
 
 # таймер.сергейсб.рф
 xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
-
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
-
 }
 
 # IDN: скидки.сергейсб.рф
 xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
-
 }
 
 api-bitrix.php-cat.com, api-bitrix2.php-cat.com {
-
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi bitrix24_2407_01:9000
-
-    file_server
-    encode gzip
-
     root * /home/bitrix24_2407_01
-
 }
 api.bitrix.test.php-cat.com {
-
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi bitrix24_2407_01:9000
-
-    file_server
-    encode gzip
-
     root * /home/bitrix24_2407_01
-
 }
 
 # складдокументов.рф тюменскаяафиша.рф
 xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    # Формируем сертификат для работы https
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
-
 }
 
 самыетюменскиеновости.рф, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
-
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
-
 }
 
 # кпрф72.рф {
@@ -114,61 +58,32 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
 
 #xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
 xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
-    # Формируем самоподписной сертификат для работы https
-    # tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi base12narek:9000
     root * /home/base12narek/public
 }
 
 api.php-cat.com, api3.php-cat.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi site_api:9000
     root * /home/site_api
 }
 
 upr.php-cat.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi upr_serv:9000
     root * /home/upr_serv/public
 }
+
 vue3.php-cat.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi 2309livewire:9000
     root * /home/base17/public
 }
 
 #ттт72.рф, xn--72-qmcaa.xn--p1ai, ttt72.ru, кружки.сергейсб.рф, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai {
 ттт72.рф, ttt72.ru, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi 2308beget:9000
     root * /home/2308beget/public
 }
@@ -177,113 +92,54 @@ vue3.php-cat.com {
 # земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
 php-cat.com, приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
-
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
-
 }
 
 as.php-cat.com {
-
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
-
 }
 
 #livewire.php-cat.com,
 # управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
 
-
 #домены что пока пустые
 сноукайтинг.рф,  продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф, атрактор.рф {
-	# tls internal
-    tls support@php-cat.com
-    file_server
-    encode gzip
+    import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }
 
 
-
-
-
-
-
-
 # ------------- avto-as dev ----------
 
 dev.47.avto-as.ru {
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi 2312auto_as:9000
     root * /home_as/2312auto_as/public
 }
 
 # avs.php-cat.com - ihc docker24
 avs.php-cat.com, 47.avto-as.ru {
-    #dev as
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi 2312auto_as_prod:9000
     root * /home_as/2312auto_as_prod/public
 }
 
-
 # ------------- avto-as didrive dev ----------
 # avs.didrive.php-cat.com - ihc docker24
 avs.didrive.php-cat.com, d47.avto-as.ru {
-    #dev as didrive
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi 2312didrive_auto:9000
     root * /home_as/2312auto_as_didrive/public
 }
 
-
-
 #api7.php-cat.local, api47.php-cat.local {
-
 api74.php-cat.com {
-
-	# Формируем самоподписной сертификат для работы https
-	#tls internal
-    tls support@php-cat.com
-
-    file_server
-    encode gzip
-
+    import base
     php_fastcgi api_php74:9000
     root * /home_as/base-php7-api/public
 }
@@ -292,62 +148,22 @@ api74.php-cat.com {
 
 
 
-
-
-
-
-
-
-
-
-
 test2401laravel-vitrin.php-cat.com {
-
-    # 2401test_lara.php-cat.local {
-
-	# Формируем самоподписной сертификат для работы https
-	# tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2401test:9000
-
-    file_server
-    encode gzip
-
     root * /home/2401test_laravel/public
-
 }
-
 
 #  сергейсб.рф https://цпусво.рф/    # кпрф72.рф
 xn--90adfbu3bff.xn--p1ai, цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
-    # tls support@php-cat.com
-    #tls internal
-    #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
 }
 
 *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
-    # tls support@php-cat.com
-    #tls internal
-    #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"
-    # Формируем самоподписной сертификат для работы https
-    tls internal
-    #tls support@php-cat.com
-
+    import base
     php_fastcgi 2309livewire:9000
-
-    file_server
-    encode gzip
-
     root * /home/2309livewire/public
+}
 }

@@ -12,8 +12,9 @@ ar.php-cat.com {
     root * /home/2309livewire/public
 
 }
-#            таймер.сергейсб.рф
-xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
+
+# сергейсб.рф / таймер.сергейсб.рф
+xn--90adfbu3bff.xn--p1ai, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
 
     # Формируем самоподписной сертификат для работы https
     #tls internal

@@ -128,8 +128,8 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2401test_laravel/public
 }
 
-#  сергейсб.рф https://цпусво.рф/    # кпрф72.рф
-xn--90adfbu3bff.xn--p1ai, цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
+# https://цпусво.рф/    # кпрф72.рф
+сергейсб.рф, цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
     import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public

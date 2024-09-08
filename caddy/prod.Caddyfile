@@ -1,3 +1,4 @@
+
 (base) {
     # Формируем самоподписной сертификат для работы https
     #tls internal
@@ -31,12 +32,6 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }
-
-# кпрф72.рф {
-#xn--72-1lcufy.xn--p1ai {
-#    tls support@php-cat.com
-#    redir https://kprf72.ru{uri} 301
-#}
 
 #xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
 xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
@@ -84,9 +79,6 @@ as.php-cat.com {
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }
-
-#livewire.php-cat.com,
-# управлятор.рф, xn--80ae1ambgeod9j.xn--p1ai {
 
 #домены что пока пустые
 сноукайтинг.рф,  продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф, атрактор.рф {
@@ -147,5 +139,4 @@ xn--90adfbu3bff.xn--p1ai, цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, x
     import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
-}
 }

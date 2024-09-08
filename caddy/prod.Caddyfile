@@ -68,7 +68,13 @@ vue3.php-cat.com {
 # 11продукты72.рф, 11xn--72-jlcysfhth6f.xn--p1ai, product.local  {
 # земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
-php-cat.com, приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
+приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
+    import base
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
+}
+
+php-cat.com {
     import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
@@ -118,18 +124,13 @@ api74.php-cat.com {
     root * /home_as/base-php7-api/public
 }
 
-
-
-
-
 test2401laravel-vitrin.php-cat.com {
     import base
     php_fastcgi 2401test:9000
     root * /home/2401test_laravel/public
 }
 
-# https://цпусво.рф/    # кпрф72.рф
-сергейсб.рф, цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
+сергейсб.рф, цпусво.рф, kprf72.ru, кпрф72.рф {
     import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public

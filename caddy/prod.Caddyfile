@@ -7,7 +7,14 @@
     encode gzip
 }
 
-# таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
+
+php-cat.com {
+    import base
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
+}
+
+    # таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
 ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import base
     php_fastcgi 2309livewire:9000
@@ -69,12 +76,6 @@ vue3.php-cat.com {
 # земельныйкадастр.рф, xn--80aalcakqihin5bmo2koa.xn--p1ai, zem.local,
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
 приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
-    import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
-}
-
-php-cat.com {
     import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public

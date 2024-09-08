@@ -13,8 +13,8 @@ ar.php-cat.com {
 
 }
 
-# сергейсб.рф / таймер.сергейсб.рф
-xn--90adfbu3bff.xn--p1ai, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
+# таймер.сергейсб.рф
+xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
 
     # Формируем самоподписной сертификат для работы https
     #tls internal
@@ -319,9 +319,8 @@ test2401laravel-vitrin.php-cat.com {
 }
 
 
-    #https://цпусво.рф/    # кпрф72.рф
-
-цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
+#  сергейсб.рф https://цпусво.рф/    # кпрф72.рф
+xn--90adfbu3bff.xn--p1ai, цпусво.рф, XN--B1AYBIJQ.XN--P1AI, kprf72.ru, xn--72-1lcufy.xn--p1ai {
     # tls support@php-cat.com
     #tls internal
     #respond "ещё чуть чуть и вот вот, а пока идите сюда > <a href='https://php-cat.com' target='_blank' >php-cat.com</a>"

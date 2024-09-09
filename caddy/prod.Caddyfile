@@ -136,6 +136,6 @@ test2401laravel-vitrin.php-cat.com {
 }
 
 *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
-#    import base
+    import base
     import 2309livewire
 }

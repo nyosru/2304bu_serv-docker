@@ -1,9 +1,17 @@
 
+(temp) {
+    # Формируем самоподписной сертификат для работы https
+    tls internal
+    file_server
+    #tls support@php-cat.com
+    encode gzip
+}
+
 (base) {
     # Формируем самоподписной сертификат для работы https
     #tls internal
-    tls support@php-cat.com
     file_server
+    tls support@php-cat.com
     encode gzip
 }
 

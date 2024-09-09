@@ -14,7 +14,8 @@
 
 php-cat.com {
     tls support@php-cat.com
-    import base
+    file_server
+    encode gzip
     import 2309livewire
 }
 

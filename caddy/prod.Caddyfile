@@ -12,6 +12,8 @@
     encode gzip
 }
 
+
+
 (base2) {
     # Формируем самоподписной сертификат для работы https
     #tls internal

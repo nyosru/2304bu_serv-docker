@@ -12,7 +12,7 @@
     encode gzip
 }
 
-php-cat.com {
+xxphp-cat.com {
     tls support@php-cat.com
     file_server
     encode gzip

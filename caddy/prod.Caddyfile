@@ -1,10 +1,7 @@
 
-(temp) {
-    # Формируем самоподписной сертификат для работы https
-    tls internal
-    file_server
-    #tls support@php-cat.com
-    encode gzip
+(2309livewire) {
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
 }
 
 (base) {
@@ -18,16 +15,13 @@
 
 php-cat.com {
     import base
-    tls support@php-cat.com
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
     # таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
 ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
 api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
@@ -37,16 +31,15 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
 }
 
 # складдокументов.рф тюменскаяафиша.рф
-xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
+# xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
+складдокументов.рф тюменскаяафиша.рф {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
-самыетюменскиеновости.рф, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
+самыетюменскиеновости.рф {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
 #xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
@@ -70,7 +63,7 @@ upr.php-cat.com {
 
 vue3.php-cat.com {
     import base
-    php_fastcgi 2309livewire:9000
+    php_fastcgi base17:9000
     root * /home/base17/public
 }
 

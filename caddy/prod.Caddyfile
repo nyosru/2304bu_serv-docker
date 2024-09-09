@@ -12,17 +12,18 @@
     encode gzip
 }
 
+php-cat.com {
+    import base
+    import 2309livewire
+}
+
+
     # таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
 ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import base
     import 2309livewire
 }
 
-
-php-cat.com {
-    import base
-    import 2309livewire
-}
 
 api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
     import base

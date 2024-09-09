@@ -7,8 +7,8 @@
 (base) {
     # Формируем самоподписной сертификат для работы https
     #tls internal
-    file_server
     tls support@php-cat.com
+    file_server
     encode gzip
 }
 
@@ -79,21 +79,18 @@ vue3.php-cat.com {
 # приватизациягаража.рф, xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai, privat.local {
 приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
 as.php-cat.com {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
 #домены что пока пустые
 сноукайтинг.рф,  продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф, атрактор.рф {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
 
@@ -135,12 +132,10 @@ test2401laravel-vitrin.php-cat.com {
 
 сергейсб.рф, цпусво.рф, kprf72.ru, кпрф72.рф {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }
 
 *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public
+    import 2309livewire
 }

@@ -12,13 +12,14 @@
     encode gzip
 }
 
-1php-cat.com {
+    # таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
+ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import base
     import 2309livewire
 }
 
-    # таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
-ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
+
+php-cat.com {
     import base
     import 2309livewire
 }
@@ -135,6 +136,6 @@ test2401laravel-vitrin.php-cat.com {
 }
 
 *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
-    import base
+#    import base
     import 2309livewire
 }

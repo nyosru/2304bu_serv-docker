@@ -12,8 +12,7 @@
     encode gzip
 }
 
-
-php-cat.com {
+1php-cat.com {
     import base
     import 2309livewire
 }
@@ -32,7 +31,7 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
 
 # складдокументов.рф тюменскаяафиша.рф
 # xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-складдокументов.рф тюменскаяафиша.рф {
+складдокументов.рф, тюменскаяафиша.рф {
     import base
     import 2309livewire
 }

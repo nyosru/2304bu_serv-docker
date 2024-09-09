@@ -13,10 +13,8 @@
     encode gzip
     }
 
-php-cat.com {
-    tls support@php-cat.com
-    file_server
-    encode gzip
+1.php-cat.com, php-cat.com {
+    import base
     import 2309livewire
 }
 

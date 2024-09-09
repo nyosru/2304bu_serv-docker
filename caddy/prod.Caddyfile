@@ -18,6 +18,7 @@
 
 php-cat.com {
     import base
+    tls support@php-cat.com
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }

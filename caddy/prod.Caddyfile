@@ -8,15 +8,20 @@
     # Формируем самоподписной сертификат для работы https
     #tls internal
     tls support@php-cat.com
+    file_server
+    encode gzip
+}
 
+(base2) {
+    # Формируем самоподписной сертификат для работы https
+    #tls internal
+    tls 1@php-cat.com
     file_server
     encode gzip
 }
 
 php-cat.com {
-    tls support@php-cat.com
-    file_server
-    encode gzip
+    import base2
     import 2309livewire
 }
 

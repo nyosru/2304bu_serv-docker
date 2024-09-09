@@ -13,6 +13,12 @@
     encode gzip
     }
 
+php-cat.com {
+    tls support@php-cat.com
+    file_server
+    encode gzip
+    import 2309livewire
+}
 
     # таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
 ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
@@ -122,7 +128,7 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2401test_laravel/public
 }
 
-php-cat.com, сергейсб.рф, цпусво.рф, kprf72.ru, кпрф72.рф {
+сергейсб.рф, цпусво.рф, kprf72.ru, кпрф72.рф {
     import base
     import 2309livewire
 }

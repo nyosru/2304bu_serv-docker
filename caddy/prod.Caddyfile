@@ -12,22 +12,12 @@
     encode gzip
 }
 
-
-
-(base2) {
-    # Формируем самоподписной сертификат для работы https
-    #tls internal
-    tls 1@php-cat.com
-    file_server
-    encode gzip
-}
-
 php-cat.com {
-    import base2
+    import base
     import 2309livewire
 }
 
-    # таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
+# таймер.сергейсб.рф # IDN: скидки.сергейсб.рф
 ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import base
     import 2309livewire

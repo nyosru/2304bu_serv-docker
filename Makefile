@@ -23,67 +23,75 @@ ca:
 	#make caddy_refresh_cfd
 	#docker-compose up -d
 
-
+d:
+	docker-compose up -d --build --force-recreate web_scraper2
+	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
 
 dev:
 	cp caddy/dev.Caddyfile caddy/Caddyfile
-	# cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml
-	# cp docker-compose.prod.yml docker-compose.yml	
+	docker-compose up -d --remove-orphans
 
-	#docker-compose up -d --build
-	docker-compose up -d --force-recreate
+	# использовать другой файл докер композ
+	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
+
+	#docker-compose up -d --force-recreate web_scraper --remove-orphans
+	make start_2309livewire
+	make caddy_refresh_cfd
+
+# cp caddy/prod.Caddyfile caddy/Caddyfile
+# cp docker-compose.prod.yml docker-compose.yml
+#docker-compose up -d --build
 
 #	make start_2309livewire
 #	make start_2308beget_dev
 #	make start_base17
 
-
 #	make start_test231012
 #	make start_2302didrive
 # make start_2401test
 
-	#make start_as_didrive
-	#make start_as
+#make start_as_didrive
+#make start_as
 
 #	make start_avtoas
 #	#make start_avtoas_prod
 #	make start_avtoas_didrive
 #	#make start_avtoas_didrive_prod
 
-	make caddy_refresh_cfd
 
 #	make start_2308beget_dev
 #	make start_base17
 # make start_base16sites
 
-	# docker exec 2309larawire composer i
-	# docker exec 2309larawire php artisan migrate
+# docker exec 2309larawire composer i
+# docker exec 2309larawire php artisan migrate
 
-	# docker exec ttt72 composer i
-	# docker exec ttt72 php artisan migrate
+# docker exec ttt72 composer i
+# docker exec ttt72 php artisan migrate
 
-	# docker exec base17 composer i
-	# docker exec base17 php artisan migrate
-	# # docker exec base17_node npm i
-	# # docker exec base17 npm i
+# docker exec base17 composer i
+# docker exec base17 php artisan migrate
+# # docker exec base17_node npm i
+# # docker exec base17 npm i
 
-	# docker exec sym_test composer i
-	# docker exec sym_test symfony -h
-	# docker exec sym_test php composer i
+# docker exec sym_test composer i
+# docker exec sym_test symfony -h
+# docker exec sym_test php composer i
 
 
 
 prod:
-
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
-	# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
-	docker-compose up -d --build
+	docker-compose up -d --build --remove-orphans
+	make start_2309livewire
+	make caddy_refresh_cfd
+	docker system prune --force
 
-	#	make start
-# 	make start_2309livewire
-	#make start_2309livewire_prod
+# cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
+#	make start
+#make start_2309livewire_prod
 #	make start_test231012_prod
 
 # рабочие
@@ -100,9 +108,6 @@ prod:
 
 #	make start_base12narek
 #	make start_site_api
-
-	make caddy_refresh_cfd
-	docker system prune --force
 
 
 
@@ -121,7 +126,7 @@ start:
 
 #	docker exec base17 composer i --no-dev
 #	docker exec base17 php artisan migrate
-	# docker exec base17 npm i
+# docker exec base17 npm i
 
 start_base12narek:
 	#docker exec 2308beget composer update

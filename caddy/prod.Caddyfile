@@ -13,7 +13,11 @@
 }
 
 php-cat.com {
-    import base
+    #import base
+    tls internal
+    #tls support@php-cat.com
+    file_server
+    encode gzip2
     import 2309livewire
 }
 

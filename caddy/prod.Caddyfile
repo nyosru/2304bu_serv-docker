@@ -12,7 +12,7 @@
     encode gzip
 }
 
-77php-cat.com {
+php-cat.com {
     import base
     import 2309livewire
 }

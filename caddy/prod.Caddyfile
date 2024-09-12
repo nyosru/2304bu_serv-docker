@@ -31,8 +31,10 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
     import 2309livewire
 }
 
-#xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
-цпусво.рф, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
+
+# вячеслав
+# цпусво.рф, народноехозяйство.рус
+xn--b1aybijq.xn--p1ai, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     import base
     php_fastcgi base12narek:9000
     root * /home/base12narek/public

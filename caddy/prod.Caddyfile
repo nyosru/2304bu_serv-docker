@@ -24,16 +24,13 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
     root * /home/bitrix24_2407_01
 }
 
-# складдокументов.рф тюменскаяафиша.рф
-# xn--80aefaf0adenlhe2ayl.xn--p1ai, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-складдокументов.рф, тюменскаяафиша.рф, самыетюменскиеновости.рф {
+складдокументов.рф, xn--80aefaf0adenlhe2ayl.xn--p1ai, тюменскаяафиша.рф, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai, самыетюменскиеновости.рф, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
     import base
     import 2309livewire
 }
 
 
 # вячеслав
-# цпусво.рф, народноехозяйство.рус
 цпусво.рф, xn--b1aybijq.xn--p1ai, народноехозяйство.рус, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     import base
     php_fastcgi base12narek:9000

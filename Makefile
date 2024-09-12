@@ -139,7 +139,7 @@ start_base12narek:
 #	docker exec 2308beget composer i
 	docker exec base12narek php artisan migrate
 	docker exec base12narek chown -R www-data:www-data storage
-	docker exec 2308beget npm i && npm run build
+	docker exec 2308beget npm run prod
 
 start_base12narek_dev:
 	#docker exec 2308beget composer update

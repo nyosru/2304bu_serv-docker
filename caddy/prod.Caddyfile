@@ -18,7 +18,6 @@ ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu
     import 2309livewire
 }
 
-
 api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
     import base
     php_fastcgi bitrix24_2407_01:9000
@@ -33,7 +32,7 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
 }
 
 #xn--80aefekmxchcbdqwp7b3l.xn--p1acf, народноехозяйство.рус {
-xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
+цпусво.рф, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     import base
     php_fastcgi base12narek:9000
     root * /home/base12narek/public
@@ -120,7 +119,7 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2401test_laravel/public
 }
 
-сергейсб.рф, цпусво.рф, kprf72.ru, кпрф72.рф {
+сергейсб.рф, kprf72.ru, кпрф72.рф {
     import base
     import 2309livewire
 }

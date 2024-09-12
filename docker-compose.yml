@@ -55,7 +55,7 @@ services:
 #      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
 #      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 #      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-#      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
 #      - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
 #      - './../2407bitrix24:/home/bitrix24'
 
@@ -64,7 +64,7 @@ services:
 #      - 2308beget
 #      - 2309livewire
 #      - base17
-#      - base12narek
+      - base12narek
 ##      - test231012
 ##      - 2302didrive
 ##      - test231116php
@@ -231,3 +231,27 @@ services:
 #    #restart: unless-stopped
 ##    ports:
 ##      - "5022:5022"
+
+
+  base12narek:
+    container_name: base12narek
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.laravel_vue.Dockerfile
+    working_dir: ${FOLDER_BASE12NAREK_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_BASE12NAREK_SERV}
+    restart: unless-stopped
+    # tty: true
+    expose:
+      - 9000
+    links:
+      - db_mysql:db
+    volumes:
+      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'

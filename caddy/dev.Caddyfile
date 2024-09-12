@@ -4,6 +4,17 @@
     encode gzip
 }
 
+
+
+# вячеслав
+#цпусво.рф, xn--b1aybijq.xn--p1ai, народноехозяйство.рус, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
+svo.local {
+    import base
+    php_fastcgi base12narek:9000
+    root * /home/base12narek/public
+}
+
+
 ar.php-cat.local {
     import base
     php_fastcgi 2309livewire:9000

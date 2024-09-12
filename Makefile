@@ -37,6 +37,8 @@ dev:
 
 	#docker-compose up -d --force-recreate web_scraper --remove-orphans
 	make start_2309livewire
+	make start_base12narek_dev
+
 	make caddy_refresh_cfd
 
 # cp caddy/prod.Caddyfile caddy/Caddyfile
@@ -86,6 +88,9 @@ prod:
 	cp docker-compose.prod.yml docker-compose.yml
 	docker-compose up -d --build --remove-orphans
 	make start_2309livewire
+
+	make start_base12narek
+
 	make caddy_refresh_cfd
 	docker system prune --force
 
@@ -133,8 +138,16 @@ start_base12narek:
 	docker exec base12narek composer i --no-dev
 #	docker exec 2308beget composer i
 	docker exec base12narek php artisan migrate
-	#docker exec 2308beget npm run build
 	docker exec base12narek chown -R www-data:www-data storage
+	docker exec 2308beget npm run build
+
+start_base12narek_dev:
+	#docker exec 2308beget composer update
+	docker exec base12narek composer i
+#	docker exec 2308beget composer i
+	docker exec base12narek php artisan migrate
+	#docker exec 2308beget npm run build
+	#docker exec base12narek chown -R www-data:www-data storage
 
 start_site_api:
 	docker exec site_api composer i --no-dev

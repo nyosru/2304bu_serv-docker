@@ -259,16 +259,36 @@ services:
   #      - '/var/run/docker.sock:/var/run/docker.sock'
   #      - ''
 
+#
+#  flask-api:
+#    build:
+#      context: ./flask-api7  # путь к директории с Dockerfile для Flask API
+#    container_name: flask-api
+#    ports:
+#      - "5005:5000"
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    restart: unless-stopped
+#    networks:
+#      - laravel
 
-  flask-api:
+
+  web_scraper2:
     build:
-      context: ./flask-api7  # путь к директории с Dockerfile для Flask API
-    container_name: flask-api
+      context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
+    container_name: web_scraper2
+    links:
+      - db_mysql:db_mysql
+    depends_on:
+      - db_mysql
     ports:
-      - "5005:5000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
+      - "5017:5047"
+    #    expose:
+    #      - 5047
+    environment:
+      - xFLASK_ENV=production
+      - xxFLASK_ENV=develop
+      - DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
     networks:
       - laravel
 

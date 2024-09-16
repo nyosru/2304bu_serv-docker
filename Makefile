@@ -31,15 +31,15 @@ dev:
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml
 	docker-compose up -d --remove-orphans
-
 	# использовать другой файл докер композ
 	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
-
 	#docker-compose up -d --force-recreate web_scraper --remove-orphans
 	make start_2309livewire
-	make start_base12narek_dev
+	#make start_base12narek_dev
 
 	make caddy_refresh_cfd
+
+
 
 # cp caddy/prod.Caddyfile caddy/Caddyfile
 # cp docker-compose.prod.yml docker-compose.yml
@@ -146,7 +146,7 @@ start_base12narek_dev:
 	docker exec base12narek composer i
 #	docker exec 2308beget composer i
 	docker exec base12narek php artisan migrate
-	#docker exec 2308beget npm run build
+	docker exec base12narek npm run dev
 	#docker exec base12narek chown -R www-data:www-data storage
 
 start_site_api:

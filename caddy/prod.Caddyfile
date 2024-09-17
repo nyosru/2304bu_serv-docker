@@ -123,7 +123,7 @@ test2401laravel-vitrin.php-cat.com {
     import 2309livewire
 }
 
-1.hp-cat.com {
+1.php-cat.com {
     import base
     import 2309livewire
 }

@@ -133,6 +133,7 @@ php-cat.com {
     import 2309livewire
     tls {
          issuer 1@php-cat.com
+        resolvers 8.8.8.8 8.8.4.4
          }
 }
 

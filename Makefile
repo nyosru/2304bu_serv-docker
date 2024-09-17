@@ -86,13 +86,14 @@ dev:
 prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
-	docker-compose up -d --build --remove-orphans
+	#docker-compose up -d --build --remove-orphans
+	docker-compose up -d --build
 	make start_2309livewire
 
 	make start_base12narek
 
 	make caddy_refresh_cfd
-	docker system prune --force
+	#docker system prune --force
 
 # cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 #	make start
@@ -139,7 +140,8 @@ start_base12narek:
 #	docker exec 2308beget composer i
 	docker exec base12narek php artisan migrate
 	docker exec base12narek chown -R www-data:www-data storage
-	docker exec base12narek npm run prod
+	#docker exec base12narek npm run prod
+	docker exec base12narek npm run dev
 
 start_base12narek_dev:
 	#docker exec 2308beget composer update

@@ -145,6 +145,8 @@ start_base12narek:
 	#docker exec base12narek npm run prod -- --no-clean
 	docker exec base12narek npm run dev
 
+
+
 start_base12narek_dev:
 	#docker exec 2308beget composer update
 	docker exec base12narek composer i

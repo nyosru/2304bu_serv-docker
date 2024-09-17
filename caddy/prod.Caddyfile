@@ -124,7 +124,9 @@ test2401laravel-vitrin.php-cat.com {
 }
 
 php-cat.com {
-    redir http://1.php-cat.com{uri}
+#    redir http://1.php-cat.com{uri}
+    import base
+    import 2309livewire
 }
 
 1.php-cat.com {

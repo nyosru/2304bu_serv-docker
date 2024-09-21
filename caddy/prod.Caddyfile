@@ -125,14 +125,8 @@ test2401laravel-vitrin.php-cat.com {
 
 php-cat.com {
 #    redir http://1.php-cat.com{uri}
-    #import base
-
-    tls 1@php-cat.com
-    file_server
-    encode gzip
-
+    import base
     import 2309livewire
-
 }
 
 1.php-cat.com {

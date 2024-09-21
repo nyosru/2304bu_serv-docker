@@ -313,7 +313,8 @@ start_avtoas_didrive_prod:
 
 caddy_refresh_cfd:
 	#docker exec -w /etc/caddy caddy caddy fmt
-	docker exec -w /etc/caddy caddy caddy reload
+	#docker exec -w /etc/caddy caddy caddy reload
+	docker exec -w /etc/caddy caddy2 caddy reload
 
 
 

@@ -57,8 +57,80 @@ services:
       - 8.8.8.8
       - 8.8.4.4
 
-  caddy:
-    container_name: caddy
+#  caddy:
+#    container_name: caddy
+#    image: caddy:2.6
+#    restart: unless-stopped
+#    # restart: always
+#
+#    # build:
+#    #   context: .
+#    #   dockerfile: caddy/Dockerfile
+#
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      - "443:443/udp"
+#
+#    volumes:
+#      - './caddy/Caddyfile:/etc/caddy/Caddyfile'
+#      - './caddy/config:/config/caddy/'
+#      - './caddy/certs:/data/caddy/locks/'
+#      - './caddy/certs3:/data/caddy/certificates/'
+#
+#      #avto-as
+#      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+#      #avto-as-dev
+#      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+#      #avto-as-didrive
+#      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+#
+#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+#      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+#      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+#      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
+#      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+#      - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
+#
+#      ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+#      ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
+#      ##      - '${FOLDER_2309LARAWIRE}:/2309livewire'
+#      ##      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      ##      - '${FOLDER_2309LARAWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      #      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+#      #      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
+#
+#      - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+#      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
+#
+#    depends_on:
+#      - 2308beget
+#      - 2309livewire
+#
+#      - 2312didrive_auto
+#      - 2312auto_as_prod
+#      - 2312auto_as
+#
+#      - 2401test
+#      - test231116php
+#      - base17
+#      - base16sites
+#      - site_api
+#      - upr_serv
+#    #      - test231116php
+#    ##      - 2312didrive_auto_prod
+#
+#    networks:
+#      - laravel
+
+
+  caddy2:
+    container_name: caddy2
     image: caddy:2.6
     restart: unless-stopped
     # restart: always
@@ -73,10 +145,12 @@ services:
       - "443:443/udp"
 
     volumes:
-      - './caddy/Caddyfile:/etc/caddy/Caddyfile'
-      - './caddy/config:/config/caddy/'
-      - './caddy/certs:/data/caddy/locks/'
-      - './caddy/certs3:/data/caddy/certificates/'
+      - './caddy2/Caddyfile:/etc/caddy/Caddyfile'
+#      - './caddy/config:/config/caddy/'
+      - './caddy2/config:/config/caddy/'
+      #- './caddy/certs:/data/caddy/locks/'
+      - './caddy2/certs:/data/caddy/'
+#      - './caddy/certs3:/data/caddy/certificates/'
 
       #avto-as
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'

@@ -84,7 +84,8 @@ dev:
 
 
 prod:
-	cp caddy/prod.Caddyfile caddy/Caddyfile
+	#cp caddy/prod.Caddyfile caddy/Caddyfile
+	cp caddy/prod.Caddyfile caddy2/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 	docker-compose up -d --build --remove-orphans
 	#docker-compose up -d --build

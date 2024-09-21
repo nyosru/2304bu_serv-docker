@@ -93,3 +93,19 @@ jobs:
             🍀🍀🍀 ${{ github.repository }} 
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
             👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
+
+
+  # Шаг для отправки сообщения об ошибке
+  sms_error:
+    runs-on: ubuntu-latest
+    if: failure()  # Отправляем сообщение только в случае ошибки
+    steps:
+      - name: send error telega
+        uses: appleboy/telegram-action@master
+        with:
+          to: 360209578, phpcat,
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ❌❌❌ Ошибка в ${{ github.repository }} 
+            Действие: ${{ github.event_name }} > ${{ github.event.head_commit.message }}
+            Ошибку вызвал: 👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})

@@ -144,7 +144,7 @@ start_base12narek:
 	#docker exec base12narek npm run prod
 	#docker exec base12narek npm run prod -- --skip-errors
 	#docker exec base12narek npm run prod -- --no-clean
-	docker exec base12narek npm run dev
+	#docker exec base12narek npm run dev
 
 
 

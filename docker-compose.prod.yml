@@ -357,8 +357,6 @@ services:
       - db_mysql
     ports:
       - "5017:5047"
-    #    expose:
-    #      - 5047
     environment:
       - xFLASK_ENV=production
       - xxFLASK_ENV=develop

@@ -145,3 +145,8 @@ php-cat.com {
     import base
     import 2309livewire
 }
+
+{
+# Использовать Let's Encrypt
+acme_ca https://acme-v02.api.letsencrypt.org/directory
+}

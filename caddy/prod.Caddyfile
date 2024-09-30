@@ -21,6 +21,39 @@ ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
     import 2309livewire
 }
 
+
+# приватизациягаража.рф
+xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
+    # Домен, использующий ZeroSSL
+    #tls {
+    #   issuer acme {
+    #       dir https://acme.zerossl.com/v2/DV90
+    #       email support@php-cat.com
+    #   }
+    #}
+    #file_server
+    #encode gzip
+    import base
+    import 2309livewire
+}
+
+# самыетюменскиеновости.рф
+# самыетюменскиеновости.рф {
+xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
+    # Домен, использующий ZeroSSL
+    #tls {
+    #   issuer acme {
+    #       dir https://acme.zerossl.com/v2/DV90
+    #       email support@php-cat.com
+    #   }
+    #}
+    #file_server
+    #encode gzip
+    import base
+    import 2309livewire
+}
+
+
 # скидки.сергейсб.рф
 xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import base
@@ -31,22 +64,6 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
     import base
     php_fastcgi bitrix24_2407_01:9000
     root * /home/bitrix24_2407_01
-}
-
-# самыетюменскиеновости.рф
-# самыетюменскиеновости.рф {
-xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
-     # Домен, использующий ZeroSSL
-     #tls {
-     #   issuer acme {
-     #       dir https://acme.zerossl.com/v2/DV90
-     #       email support@php-cat.com
-     #   }
-     #}
-    #file_server
-    #encode gzip
-    import base
-    import 2309livewire
 }
 
 # складдокументов.рф
@@ -91,21 +108,6 @@ vue3.php-cat.com {
     import base
     php_fastcgi 2308beget:9000
     root * /home/2308beget/public
-}
-
-# приватизациягаража.рф
-xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
-    # Домен, использующий ZeroSSL
-    #tls {
-    #   issuer acme {
-    #       dir https://acme.zerossl.com/v2/DV90
-    #       email support@php-cat.com
-    #   }
-    #}
-    #file_server
-    #encode gzip
-    import base
-    import 2309livewire
 }
 
 # управлятор.рф, vk.files.php-cat.com {

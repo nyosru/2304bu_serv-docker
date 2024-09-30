@@ -130,8 +130,8 @@ php-cat.com {
 }
 
 # Этот блок выглядит неправильно, возможно, его следует удалить или исправить
-;*.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
-*.ru, *.xn--p1ai, *.com, *.info, *.local {
-    import base
-    import 2309livewire
-}
+# *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
+# *.ru, *.xn--p1ai, *.com, *.info, *.local {
+#    import base
+#    import 2309livewire
+# }

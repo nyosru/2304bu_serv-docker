@@ -40,13 +40,21 @@ xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
     import 2309livewire
 }
 
-складдокументов.рф, тюменскаяафиша.рф {
+# складдокументов.рф
+xn--80aefaf0adenlhe2ayl.xn--p1ai {
+    import base
+    import 2309livewire
+}
+
+# тюменскаяафиша.рф {
+xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
     import base
     import 2309livewire
 }
 
 # вячеслав
-цпусво.рф, народноехозяйство.рус {
+# цпусво.рф, народноехозяйство.рус {
+xn--b1aybijq.xn--p1ai, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     import base
     php_fastcgi base12narek:9000
     root * /home/base12narek/public
@@ -78,6 +86,12 @@ vue3.php-cat.com {
 
 # приватизациягаража.рф
 xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
+    tls {
+        issuer acme {
+            dir https://acme.zerossl.com/v2/DV90
+            email support@php-cat.com
+        }
+    }
     import base
     import 2309livewire
 }

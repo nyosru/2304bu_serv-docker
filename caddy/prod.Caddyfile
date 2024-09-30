@@ -43,7 +43,9 @@ xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
             email support@php-cat.com
         }
      }
-    import base
+    #import base
+    file_server
+    encode gzip
     import 2309livewire
 }
 

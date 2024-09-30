@@ -27,11 +27,20 @@ php-cat.com {
 }
 
 # таймер.сергейсб.рф
-ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
+xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
     import base
     import 2309livewire
 }
 
+ar.php-cat.com {
+    # Отключаем HTTPS
+    tls off
+
+    # Включаем файловый сервер
+    file_server
+
+    import 2309livewire
+}
 
 # приватизациягаража.рф
 xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {

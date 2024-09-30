@@ -15,6 +15,17 @@
     encode gzip
 }
 
+
+php-cat.com {
+    import base
+    import 2309livewire
+}
+
+1.php-cat.com {
+    import base
+    import 2309livewire
+}
+
 # таймер.сергейсб.рф
 ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
     import base
@@ -162,15 +173,6 @@ test2401laravel-vitrin.php-cat.com {
     import 2309livewire
 }
 
-php-cat.com {
-    import base
-    import 2309livewire
-}
-
-1.php-cat.com {
-    import base
-    import 2309livewire
-}
 
 # Этот блок выглядит неправильно, возможно, его следует удалить или исправить
 # *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {

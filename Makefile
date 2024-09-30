@@ -29,6 +29,7 @@ d:
 
 dev:
 	cp caddy/dev.Caddyfile caddy/Caddyfile
+	#cp caddy/dev.Caddyfile caddy2/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml
 	docker-compose up -d --remove-orphans
 	# использовать другой файл докер композ
@@ -84,8 +85,8 @@ dev:
 
 
 prod:
-	#cp caddy/prod.Caddyfile caddy/Caddyfile
-	cp caddy/prod.Caddyfile caddy2/Caddyfile
+	cp caddy/prod.Caddyfile caddy/Caddyfile
+	#cp caddy/prod.Caddyfile caddy2/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 	docker-compose up -d --build --remove-orphans
 	#docker-compose up -d --build
@@ -309,8 +310,8 @@ start_avtoas_didrive_prod:
 
 caddy_refresh_cfd:
 	#docker exec -w /etc/caddy caddy caddy fmt
-	#docker exec -w /etc/caddy caddy caddy reload
-	docker exec -w /etc/caddy caddy2 caddy reload
+	docker exec -w /etc/caddy caddy caddy reload
+	#docker exec -w /etc/caddy caddy2 caddy reload
 
 
 

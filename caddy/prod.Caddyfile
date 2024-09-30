@@ -37,15 +37,15 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
 # самыетюменскиеновости.рф {
 xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
      # Домен, использующий ZeroSSL
-     tls {
-        issuer acme {
-            dir https://acme.zerossl.com/v2/DV90
-            email support@php-cat.com
-        }
-     }
-    #import base
-    file_server
-    encode gzip
+     #tls {
+     #   issuer acme {
+     #       dir https://acme.zerossl.com/v2/DV90
+     #       email support@php-cat.com
+     #   }
+     #}
+    #file_server
+    #encode gzip
+    import base
     import 2309livewire
 }
 
@@ -97,11 +97,13 @@ vue3.php-cat.com {
 xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
     # Домен, использующий ZeroSSL
     #tls {
-    #    issuer acme {
-    #        dir https://acme.zerossl.com/v2/DV90
-    #        email support@php-cat.com
-    #    }
+    #   issuer acme {
+    #       dir https://acme.zerossl.com/v2/DV90
+    #       email support@php-cat.com
+    #   }
     #}
+    #file_server
+    #encode gzip
     import base
     import 2309livewire
 }

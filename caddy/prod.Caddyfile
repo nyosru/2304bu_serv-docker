@@ -15,6 +15,14 @@
     encode gzip
 }
 
+(base_tls_off) {
+    # Отключаем HTTPS
+    tls off
+    # Включаем файловый сервер
+    file_server
+    encode gzip
+}
+
 
 php-cat.com {
     import base
@@ -33,12 +41,7 @@ xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
 }
 
 ar.php-cat.com {
-    # Отключаем HTTPS
-    tls off
-
-    # Включаем файловый сервер
-    file_server
-
+    import base_tls_off
     import 2309livewire
 }
 
@@ -76,19 +79,19 @@ xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
 
 # скидки.сергейсб.рф
 xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-    import base
+	import base_tls_off
     import 2309livewire
 }
 
-api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
-    import base
-    php_fastcgi bitrix24_2407_01:9000
-    root * /home/bitrix24_2407_01
-}
+#api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
+#    import base
+#    php_fastcgi bitrix24_2407_01:9000
+#    root * /home/bitrix24_2407_01
+#}
 
 # складдокументов.рф
 xn--80aefaf0adenlhe2ayl.xn--p1ai {
-    import base
+	import base_tls_off
     import 2309livewire
 }
 
@@ -113,7 +116,8 @@ api.php-cat.com, api3.php-cat.com {
 }
 
 upr.php-cat.com {
-    import base
+	import base_tls_off
+    #import base
     php_fastcgi upr_serv:9000
     root * /home/upr_serv/public
 }

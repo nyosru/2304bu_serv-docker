@@ -17,7 +17,7 @@
 
 (base_tls_off) {
     # Отключаем HTTPS
-    # tls off
+    tls internal
     # Включаем файловый сервер
     file_server
     encode gzip

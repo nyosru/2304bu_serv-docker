@@ -74,9 +74,9 @@ services:
 
     volumes:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
-      - './caddy/config:/config/caddy/'
-      - './caddy/certs:/data/caddy/locks/'
-      #- './caddy/certs3:/data/caddy/certificates/'
+      - './caddy/config/:/config/caddy/'
+      - './caddy/certs/:/data/caddy/locks/'
+      #- './caddy/certs3/:/data/caddy/certificates/'
 
       #avto-as
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
@@ -98,6 +98,7 @@ services:
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
       - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
+      -
       ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
       ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
       ##      - '${FOLDER_2309LARAWIRE}:/2309livewire'

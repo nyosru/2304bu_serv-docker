@@ -1,137 +1,137 @@
 {
-# Использовать Let's Encrypt
-acme_ca https://acme-v02.api.letsencrypt.org/directory
+    # Использовать Let's Encrypt
+    acme_ca https://acme-v02.api.letsencrypt.org/directory
 }
 
 (2309livewire) {
-php_fastcgi 2309livewire:9000
-root * /home/2309livewire/public
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
 }
 
 (base) {
-# Формируем самоподписной сертификат для работы https
-tls support@php-cat.com
-file_server
-encode gzip
+    # Формируем самоподписной сертификат для работы https
+    tls support@php-cat.com
+    file_server
+    encode gzip
 }
 
 # таймер.сергейсб.рф
 ar.php-cat.com, xn--80aklmvh.xn--90adfbu3bff.xn--p1ai, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
-import base
-php_fastcgi bitrix24_2407_01:9000
-root * /home/bitrix24_2407_01
+    import base
+    php_fastcgi bitrix24_2407_01:9000
+    root * /home/bitrix24_2407_01
 }
 
 # самыетюменскиеновости.рф
 самыетюменскиеновости.рф {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 складдокументов.рф, тюменскаяафиша.рф {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 # вячеслав
 цпусво.рф, народноехозяйство.рус {
-import base
-php_fastcgi base12narek:9000
-root * /home/base12narek/public
+    import base
+    php_fastcgi base12narek:9000
+    root * /home/base12narek/public
 }
 
 api.php-cat.com, api3.php-cat.com {
-import base
-php_fastcgi site_api:9000
-root * /home/site_api
+    import base
+    php_fastcgi site_api:9000
+    root * /home/site_api
 }
 
 upr.php-cat.com {
-import base
-php_fastcgi upr_serv:9000
-root * /home/upr_serv/public
+    import base
+    php_fastcgi upr_serv:9000
+    root * /home/upr_serv/public
 }
 
 vue3.php-cat.com {
-import base
-php_fastcgi base17:9000
-root * /home/base17/public
+    import base
+    php_fastcgi base17:9000
+    root * /home/base17/public
 }
 
 ттт72.рф, ttt72.ru, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
-import base
-php_fastcgi 2308beget:9000
-root * /home/2308beget/public
+    import base
+    php_fastcgi 2308beget:9000
+    root * /home/2308beget/public
 }
 
 приватизациягаража.рф, управлятор.рф, vk.files.php-cat.com {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 as.php-cat.com {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 сноукайтинг.рф, продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф, атрактор.рф {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 dev.47.avto-as.ru {
-import base
-php_fastcgi 2312auto_as:9000
-root * /home_as/2312auto_as/public
+    import base
+    php_fastcgi 2312auto_as:9000
+    root * /home_as/2312auto_as/public
 }
 
 avs.php-cat.com, 47.avto-as.ru {
-import base
-php_fastcgi 2312auto_as_prod:9000
-root * /home_as/2312auto_as_prod/public
+    import base
+    php_fastcgi 2312auto_as_prod:9000
+    root * /home_as/2312auto_as_prod/public
 }
 
 avs.didrive.php-cat.com, d47.avto-as.ru {
-import base
-php_fastcgi 2312didrive_auto:9000
-root * /home_as/2312auto_as_didrive/public
+    import base
+    php_fastcgi 2312didrive_auto:9000
+    root * /home_as/2312auto_as_didrive/public
 }
 
 api74.php-cat.com {
-import base
-php_fastcgi api_php74:9000
-root * /home_as/base-php7-api/public
+    import base
+    php_fastcgi api_php74:9000
+    root * /home_as/base-php7-api/public
 }
 
 test2401laravel-vitrin.php-cat.com {
-import base
-php_fastcgi 2401test:9000
-root * /home/2401test_laravel/public
+    import base
+    php_fastcgi 2401test:9000
+    root * /home/2401test_laravel/public
 }
 
 сергейсб.рф, kprf72.ru, кпрф72.рф {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 php-cat.com {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 1.php-cat.com {
-import base
-import 2309livewire
+    import base
+    import 2309livewire
 }
 
 # Этот блок выглядит неправильно, возможно, его следует удалить или исправить
 ;*.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
-:433, :80 {
-import base
-import 2309livewire
+*.ru, *.xn--p1ai, *.com, *.info, *.local {
+    import base
+    import 2309livewire
 }

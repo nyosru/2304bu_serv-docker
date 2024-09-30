@@ -48,15 +48,15 @@ ar.php-cat.com {
 # приватизациягаража.рф
 xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
     # Домен, использующий ZeroSSL
-    #tls {
-    #   issuer acme {
-    #       dir https://acme.zerossl.com/v2/DV90
-    #       email support@php-cat.com
-    #   }
-    #}
-    #file_server
-    #encode gzip
-    import base
+    tls {
+       issuer acme {
+           dir https://acme.zerossl.com/v2/DV90
+           email support@php-cat.com
+       }
+    }
+    file_server
+    encode gzip
+    #import base
     import 2309livewire
 }
 

@@ -75,8 +75,8 @@ services:
     volumes:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
       - './caddy/config/:/config/caddy/'
-      #- './caddy/certs/:/data/caddy/locks/'
-      - './caddy/data-caddy:/data/caddy/'
+      - './caddy/certs/:/data/caddy/locks/'
+      #- './caddy/data-caddy:/data/caddy/'
       #- './caddy/certs3/:/data/caddy/certificates/'
 
       #avto-as

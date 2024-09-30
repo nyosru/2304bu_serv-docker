@@ -34,15 +34,15 @@ api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
 }
 
 # самыетюменскиеновости.рф
-самыетюменскиеновости.рф {
-#xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
+# самыетюменскиеновости.рф {
+xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
     # Домен, использующий ZeroSSL
-    tls {
-        issuer acme {
-            dir https://acme.zerossl.com/v2/DV90
-            email support@php-cat.com
-        }
-    }
+    # tls {
+    #    issuer acme {
+    #        dir https://acme.zerossl.com/v2/DV90
+    #        email support@php-cat.com
+    #    }
+    # }
     import base
     import 2309livewire
 }

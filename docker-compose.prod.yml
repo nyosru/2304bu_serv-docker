@@ -74,11 +74,10 @@ services:
 
     volumes:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
-      - './caddy/config/:/config/caddy/'
-      - './caddy/certs/:/data/caddy/locks/'
+      - './caddy/config:/config/caddy/'
+      - './caddy/certs:/data/caddy/locks/'
       #- './caddy/data-caddy:/data/caddy/'
       #- './caddy/certs3/:/data/caddy/certificates/'
-
       #avto-as
       - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
       - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'

@@ -29,6 +29,6 @@ RUN apt-get update -y && docker-php-ext-install pdo_mysql \
 #RUN #npm install -g npm
 
 # # # Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
 
 #RUN cd /2309livewire && chmod -R 0777 storage

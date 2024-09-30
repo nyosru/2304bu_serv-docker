@@ -24,6 +24,7 @@ ca:
 	#docker-compose up -d
 
 d:
+	# пересборка питон парсера web_scraper2
 	docker-compose up -d --build --force-recreate web_scraper2
 	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
 

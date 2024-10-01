@@ -10,7 +10,7 @@
 
 (base) {
     # Формируем самоподписной сертификат для работы https
-    tls support@php-cat.com
+    tls 1@php-cat.com
     file_server
     encode gzip
 }

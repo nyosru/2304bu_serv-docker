@@ -285,7 +285,9 @@ services:
     #   - db_mysql:db
     volumes:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-      - shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
+      #- shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
+      - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
+      - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
 
 
 

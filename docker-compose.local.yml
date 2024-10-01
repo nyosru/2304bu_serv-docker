@@ -7,171 +7,255 @@ networks:
 volumes:
   cron_volume:
   caddy_caddyfile:
-    driver: bridge
+  #shared_caddyfile:   # Добавляем том для общего использования файла Caddyfile
 
 services:
 
-  caddy:
-    container_name: caddy
-    image: caddy:2.6
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-      - ./caddy/config:/config/caddy
-      - caddy_caddyfile:/etc/caddy
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-
-      #- ./caddy/log:/var/log/caddy
-
-#      #      - ${FOLDER_UPR_SERV}/storage/app/caddy:/etc/caddy
-##      - caddy_caddyfile:/caddy/Caddyfile
-##      - caddy_caddyfile:/caddy
-##      - caddy_caddyfile:/etc/caddy
-##      - caddy_caddyfile:./caddy
-##      - caddy_caddyfile:/etc/caddy/Caddyfile
-##      - caddy_caddyfile:/caddy
-##      - caddyfile:/caddy/Caddyfile
-##      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:/etc/caddy/Caddyfile'
-###      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
-###      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
-##      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
-##      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
-##      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
-##      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
-##      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
-##      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
-#
-#
-#      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-#      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
-#
-#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-#      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
-#      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
-#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
-#      - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
-#      - './../2407bitrix24:/home/bitrix24'
-
-    depends_on:
-      - db_mysql
-#      - 2308beget
-#      - 2309livewire
-#      - base17
-      - base12narek
-##      - test231012
-##      - 2302didrive
-##      - test231116php
-##      - upr_serv
-##      - 2401test
-##      - api_php74
-##      - 2302docker_papa
-#      - bitrix1
-    networks:
-      - laravel
-
-  db_mysql:
-    container_name: db_mysql
-    image: mariadb:10.7.8
-    networks:
-      - laravel
-    environment:
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+#  caddy2:
+#    container_name: caddy2
+#    image: caddy:2.6
+#    restart: unless-stopped
 #    ports:
-#      - 3306:3306
-    volumes:
-      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
-    restart: unless-stopped
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db_mysql:db
-    ports:
-      - 6060:80
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
+#      - "80:80"
+#      - "443:443"
+#      - "443:443/udp"
+#    volumes:
+#      - ./caddy2/Caddyfile:/etc/caddy/Caddyfile
+#      - ./caddy2/config:/config/caddy
+#      - caddy_caddyfile:/etc/caddy
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+#
+#      #      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+#      #      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
 #
 #
-### ------------ дальше контейнеры в работе ------------------
+#      #- ./caddy/log:/var/log/caddy
 #
+#    #      #      - ${FOLDER_UPR_SERV}/storage/app/caddy:/etc/caddy
+#    ##      - caddy_caddyfile:/caddy/Caddyfile
+#    ##      - caddy_caddyfile:/caddy
+#    ##      - caddy_caddyfile:/etc/caddy
+#    ##      - caddy_caddyfile:./caddy
+#    ##      - caddy_caddyfile:/etc/caddy/Caddyfile
+#    ##      - caddy_caddyfile:/caddy
+#    ##      - caddyfile:/caddy/Caddyfile
+#    ##      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:/etc/caddy/Caddyfile'
+#    ###      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
+#    ###      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+#    ##      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
+#    ##      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+#    ##      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
+#    ##      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+#    ##      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+#    ##      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+#    #
+#    #
+#    #      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+#    #      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+#    #      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+#    #      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+#    #
+#    #      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#    #      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
+#    #      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+#    #      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+#    #      - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
+#    #      - './../2407bitrix24:/home/bitrix24'
 #
-
-#  web_scraper:
-#    build:
-#      #context: ./scrapper7711  # Указываем путь к директории с Dockerfile
-#      context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
-#    container_name: web_scraper
-#    links:
-#      - db_mysql:db_mysql
 #    depends_on:
 #      - db_mysql
-#    ports:
-#      - "5017:5007"
-##    expose:
-##      - 5055
-#    environment:
-#      - xFLASK_ENV=production
-#      - xxFLASK_ENV=develop
-#      - DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
+#      #      - 2308beget
+#      - 2309livewire
+#    #      - base17
+#    #      - base12narek
+#    ##      - test231012
+#    ##      - 2302didrive
+#    ##      - test231116php
+#    ##      - upr_serv
+#    ##      - 2401test
+#    ##      - api_php74
+#    ##      - 2302docker_papa
+#    #      - bitrix1
 #    networks:
 #      - laravel
 
-  web_scraper2:
-    build:
-      context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
-    container_name: web_scraper2
-    links:
-      - db_mysql:db_mysql
-    depends_on:
-      - db_mysql
-    ports:
-      - "5017:5047"
-#    expose:
-#      - 5047
-    environment:
-      - xFLASK_ENV=production
-      - xxFLASK_ENV=develop
-      - DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
-    networks:
-      - laravel
+    caddy:
+      container_name: caddy
+      image: caddy:2.6
+      restart: unless-stopped
+      ports:
+        - "80:80"
+        - "443:443"
+        - "443:443/udp"
+      volumes:
+        - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+        - ./caddy/config:/config/caddy
+        - caddy_caddyfile:/etc/caddy
+        - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+        - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+        #- shared_caddyfile:/shared/caddyfile  # Монтируем том для общего использования файла
+        #- shared_caddyfile:/etc/caddy
+        #- shared_caddyfile:/etc/caddy/Caddyfile
 
-  2309livewire:
-    container_name: 2309livewire
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      #      dockerfile: docker.2308beget.Dockerfile
-      dockerfile: docker.2309livewire.Dockerfile
-    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
-    restart: unless-stopped
-    links:
-      - web_scraper2:parser_service
-#    expose:
-#      - 9000
-    volumes:
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-      - './caddy/Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/Caddyfile'
-      - './caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy_prod/Caddyfile'
+
+          #- ./caddy/log:/var/log/caddy
+  #      #      - ${FOLDER_UPR_SERV}/storage/app/caddy:/etc/caddy
+  ##      - caddy_caddyfile:/caddy/Caddyfile
+  ##      - caddy_caddyfile:/caddy
+  ##      - caddy_caddyfile:/etc/caddy
+  ##      - caddy_caddyfile:./caddy
+  ##      - caddy_caddyfile:/etc/caddy/Caddyfile
+  ##      - caddy_caddyfile:/caddy
+  ##      - caddyfile:/caddy/Caddyfile
+  ##      - '${FOLDER_UPR_SERV}/storage/app/caddyfile33/:/etc/caddy/Caddyfile'
+  ###      - '${FOLDER_2309LIVEWIRE}:/2309livewire'
+  ###      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+  ##      - '${FOLDER_2302DIDRIVE}:${FOLDER_2302DIDRIVE_CADDY}'
+  ##      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+  ##      - '${FOLDER_UPR_SERV}:${FOLDER_UPR_SERV_SERV}'
+  ##      -  '/etc/caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+  ##      -  './caddy/Caddyfile:${FOLDER_UPR_SERV_SERV}/storage/app/caddyfile2'
+  ##      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+  #
+  #
+  #      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+  #      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+  #      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+  #      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+  #
+  #      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+  #      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
+  #      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+  #      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+ #       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+  #      - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
+  #      - './../2407bitrix24:/home/bitrix24'
+
+      depends_on:
+        - db_mysql
+  #      - 2308beget
+  #      - 2309livewire
+  #      - base17
+        #- base12narek
+  ##      - test231012
+  ##      - 2302didrive
+  ##      - test231116php
+  ##      - upr_serv
+  ##      - 2401test
+  ##      - api_php74
+  ##      - 2302docker_papa
+  #      - bitrix1
+      networks:
+        - laravel
+
+    db_mysql:
+      container_name: db_mysql
+      image: mariadb:10.7.8
+      networks:
+        - laravel
+      environment:
+        MYSQL_ROOT_HOST: "%"
+        MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+      #    ports:
+      #      - 3306:3306
+      volumes:
+        - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
+      restart: unless-stopped
+
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      links:
+        - db_mysql:db
+      ports:
+        - 6060:80
+      environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+        UPLOAD_LIMIT: 300M
+      depends_on:
+        - db_mysql
+      networks:
+        - laravel
+    #
+    #
+    ### ------------ дальше контейнеры в работе ------------------
+    #
+    #
+
+    #  web_scraper:
+    #    build:
+    #      #context: ./scrapper7711  # Указываем путь к директории с Dockerfile
+    #      context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
+    #    container_name: web_scraper
+    #    links:
+    #      - db_mysql:db_mysql
+    #    depends_on:
+    #      - db_mysql
+    #    ports:
+    #      - "5017:5007"
+    ##    expose:
+    ##      - 5055
+    #    environment:
+    #      - xFLASK_ENV=production
+    #      - xxFLASK_ENV=develop
+    #      - DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
+    #    networks:
+    #      - laravel
+
+    web_scraper2:
+      build:
+        context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
+      container_name: web_scraper2
+      #platform: linux/amd64  # Добавляем этот флаг для принудительного использования amd64
+      #platform: linux/arm64  # Добавляем этот флаг для принудительного использования amd64
+      links:
+        - db_mysql:db_mysql
+      depends_on:
+        - db_mysql
+      ports:
+        - "5017:5047"
+      environment:
+        - xFLASK_ENV=production
+        - xxFLASK_ENV=develop
+        - DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
+      networks:
+        - laravel
+
+      volumes:
+        - ${FOLDER_2409PARSER}/logs:/var/log/web_scraper2
+
+
+
+
+    2309livewire:
+      container_name: 2309livewire
+      depends_on:
+        - db_mysql
+      networks:
+        - laravel
+      build:
+        context: .
+        #      dockerfile: docker.2308beget.Dockerfile
+        dockerfile: docker.2309livewire.Dockerfile
+      working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+      environment:
+        - PHPGROUP=www-data
+        - PHPUSER=www-data
+        - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+      restart: unless-stopped
+      links:
+        - web_scraper2:parser_service
+      #    expose:
+      #      - 9000
+      volumes:
+        - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+        #- './caddy/Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/Caddyfile'
+        #- './caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy_prod/Caddyfile'
+        #- shared_caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy-cfg
+        - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
+        - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
+        #- shared_caddyfile:/storage/caddy  # Монтируем том для доступа к Caddyfile в контейнере
+
 #    healthcheck:
 #      test: ["CMD", "curl", "-k", "-f", "https://stn.local"]
 #      interval: 30s
@@ -233,25 +317,73 @@ services:
 ##      - "5022:5022"
 
 
-  base12narek:
-    container_name: base12narek
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.laravel_vue.Dockerfile
-    working_dir: ${FOLDER_BASE12NAREK_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_BASE12NAREK_SERV}
-    restart: unless-stopped
-    # tty: true
-    expose:
-      - 9000
-    links:
-      - db_mysql:db
-    volumes:
-      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+#  base12narek:
+#    container_name: base12narek
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.laravel_vue.Dockerfile
+#    working_dir: ${FOLDER_BASE12NAREK_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_BASE12NAREK_SERV}
+#    restart: unless-stopped
+#    # tty: true
+#    expose:
+#      - 9000
+#    links:
+#      - db_mysql:db
+#    volumes:
+#      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+
+
+#  2308beget:
+#    container_name: 2308beget
+#
+#    build:
+#      context: .
+#      dockerfile: docker.2308beget.Dockerfile
+#    working_dir: ${FOLDER_2308BEGET_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2308BEGET_SERV}
+#    restart: unless-stopped
+#    expose:
+#      - 9000
+#    volumes:
+#      #      - '${FOLDER_2308BEGET}:/2308beget'
+#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+#
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#
+
+    site_api:
+      container_name: site_api
+      depends_on:
+        - db_mysql
+      networks:
+        - laravel
+      build:
+        context: .
+        dockerfile: docker.php74_soap.Dockerfile
+      working_dir: ${FOLDER_SITE_API_SERV}
+      environment:
+        - PHPGROUP=www-data
+        - PHPUSER=www-data
+        - FOLDER=${FOLDER_SITE_API_SERV}
+      restart: unless-stopped
+      # tty: true
+      expose:
+        - 9000
+      # links:
+      #   - db_mysql:db
+      volumes:
+        - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'

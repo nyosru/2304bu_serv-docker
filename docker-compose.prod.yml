@@ -8,6 +8,8 @@ networks:
 volumes:
   cron_volume:
   portainer_data:
+  shared_caddyfile:   # Добавляем том для общего использования файла Caddyfile
+
 ##  caddy_caddyfile:
 ##    driver: bridge
 ##
@@ -100,6 +102,8 @@ services:
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
       - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
+      - shared_caddyfile:/shared/caddyfile  # Монтируем том для общего использования файла
+
 
       ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
       ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
@@ -281,6 +285,8 @@ services:
     #   - db_mysql:db
     volumes:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      - shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
+
 
 
   bitrix24_2407_01:

@@ -1,6 +1,6 @@
 {
     # Использовать Let's Encrypt
-    # acme_ca https://acme-v02.api.letsencrypt.org/directory
+    acme_ca https://acme-v02.api.letsencrypt.org/directory
 }
 
 (2309livewire) {

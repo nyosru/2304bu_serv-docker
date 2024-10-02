@@ -10,13 +10,13 @@
 
 (base) {
     # Формируем самоподписной сертификат для работы https
-    #tls support@php-cat.com
-    tls internal
+    tls support@php-cat.com
+    #tls internal
     file_server
     encode gzip
 }
 
-(base_on) {
+(base2) {
     # Формируем самоподписной сертификат для работы https
     tls support@php-cat.com
     #tls internal
@@ -34,12 +34,12 @@
 
 
 php-cat.com {
-    import base_on
+    import base
     import 2309livewire
 }
 
 1.php-cat.com {
-    import base_on
+    import base
     import 2309livewire
 }
 
@@ -65,7 +65,7 @@ xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
     #}
     #file_server
     #encode gzip
-    import base_on
+    import base
     import 2309livewire
 }
 
@@ -81,7 +81,7 @@ stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
     #}
     #file_server
     #encode gzip
-    import base_on
+    import base
     import 2309livewire
 }
 
@@ -105,7 +105,7 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai {
 
 # тюменскаяафиша.рф {
 xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-    import base_on
+    import base
     import 2309livewire
 }
 
@@ -178,7 +178,7 @@ avs.didrive.php-cat.com, d47.avto-as.ru {
 }
 
 api74.php-cat.com {
-    import base_on
+    import base
     php_fastcgi api_php74:9000
     root * /home_as/base-php7-api/public
 }
@@ -190,7 +190,7 @@ test2401laravel-vitrin.php-cat.com {
 }
 
 сергейсб.рф, kprf72.ru, кпрф72.рф {
-    import base_on
+    import base
     import 2309livewire
 }
 

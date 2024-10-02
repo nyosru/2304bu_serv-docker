@@ -93,7 +93,7 @@ prod:
 	#docker-compose up -d --build
 	make start_2309livewire
 
-	make start_base12narek
+	#make start_base12narek
 
 	make caddy_refresh_cfd
 	#docker system prune --force

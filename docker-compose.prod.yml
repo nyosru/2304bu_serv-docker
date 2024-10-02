@@ -8,6 +8,7 @@ networks:
 volumes:
   cron_volume:
   portainer_data:
+
   #shared_caddyfile:   # Добавляем том для общего использования файла Caddyfile
 
 ##  caddy_caddyfile:

@@ -89,8 +89,8 @@ prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	#cp caddy/prod.Caddyfile caddy2/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
-	#docker-compose up -d --build --remove-orphans
-	docker-compose up -d --build
+	docker-compose up -d --build --remove-orphans --no-recreate caddy
+	#docker-compose up -d --build
 	make start_2309livewire
 
 	make start_base12narek

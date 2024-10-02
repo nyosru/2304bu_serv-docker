@@ -24,7 +24,7 @@
     encode gzip
 }
 
-(base_tls_off) {
+(base_off) {
     # Отключаем HTTPS
     tls internal
     # Включаем файловый сервер
@@ -50,7 +50,7 @@ xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
 }
 
 ar.php-cat.com {
-    import base_tls_off
+    import base_off
     import 2309livewire
 }
 
@@ -87,7 +87,7 @@ stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
 
 # скидки.сергейсб.рф
 skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-	import base_tls_off
+	import base_off
     import 2309livewire
 }
 
@@ -99,13 +99,13 @@ skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
 
 # складдокументов.рф
 xn--80aefaf0adenlhe2ayl.xn--p1ai {
-	import base_tls_off
+	import base_off
     import 2309livewire
 }
 
 # тюменскаяафиша.рф {
 xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-    import base
+    import base_on
     import 2309livewire
 }
 
@@ -124,7 +124,7 @@ api.php-cat.com, api3.php-cat.com {
 }
 
 upr.php-cat.com {
-	import base_tls_off
+	import base_off
     #import base
     php_fastcgi upr_serv:9000
     root * /home/upr_serv/public
@@ -178,7 +178,7 @@ avs.didrive.php-cat.com, d47.avto-as.ru {
 }
 
 api74.php-cat.com {
-    import base
+    import base_on
     php_fastcgi api_php74:9000
     root * /home_as/base-php7-api/public
 }
@@ -190,7 +190,7 @@ test2401laravel-vitrin.php-cat.com {
 }
 
 сергейсб.рф, kprf72.ru, кпрф72.рф {
-    import base
+    import base_on
     import 2309livewire
 }
 

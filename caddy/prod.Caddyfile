@@ -1,12 +1,13 @@
-{
-    # Использовать Let's Encrypt
-    # acme_ca https://acme-v02.api.letsencrypt.org/directory
-}
 
 (2309livewire) {
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public
 }
+
+    #{
+    # Использовать Let's Encrypt
+    # acme_ca https://acme-v02.api.letsencrypt.org/directory
+    #}
 
 (base) {
     # Формируем самоподписной сертификат для работы https
@@ -22,6 +23,17 @@
             dir https://acme-v02.api.letsencrypt.org/directory
             email support@php-cat.com
         }
+    }
+}
+
+(tls11) {
+    tls {
+        issuer acme {
+            dir https://acme-v02.api.letsencrypt.org/directory
+            email support@php-cat.com
+        }
+    # Отключение OCSP stapling
+    ocsp_stapling off
     }
 }
 
@@ -56,7 +68,7 @@
 
 
 php-cat.com {
-    import tls2
+    import tls11
     import base
     import 2309livewire
 }

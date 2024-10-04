@@ -39,6 +39,7 @@ php-cat.com {
             dir https://acme.zerossl.com/v2/DV90
             email support@php-cat.com
         }
+        ocsp_stapling
     }
     import base
     import 2309livewire

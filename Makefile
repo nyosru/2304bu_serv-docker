@@ -28,6 +28,9 @@ d:
 	docker-compose up -d --build --force-recreate web_scraper2
 	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
 
+web:
+	docker network create shared_network
+
 dev:
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	#cp caddy/dev.Caddyfile caddy2/Caddyfile

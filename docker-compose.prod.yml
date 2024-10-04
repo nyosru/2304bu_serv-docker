@@ -282,23 +282,23 @@ services:
 #    networks:
 #      - laravel
 
-
-  web_scraper2:
-    build:
-      context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
-    container_name: web_scraper2
-#    links:
-#      - db_mysql:db_mysql
-#    depends_on:
-#      - db_mysql
-    ports:
-      - "5017:5047"
-    #environment:
-      #- xFLASK_ENV=production
-      #- xxFLASK_ENV=develop
-      #- DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
-    networks:
-      - laravel
+#
+#  web_scraper2:
+#    build:
+#      context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
+#    container_name: web_scraper2
+##    links:
+##      - db_mysql:db_mysql
+##    depends_on:
+##      - db_mysql
+#    ports:
+#      - "5017:5047"
+#    #environment:
+#      #- xFLASK_ENV=production
+#      #- xxFLASK_ENV=develop
+#      #- DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
+#    networks:
+#      - laravel
 
   site_api:
     container_name: site_api

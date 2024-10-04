@@ -68,7 +68,7 @@
 
 
 php-cat.com {
-    import tls11
+    import tls2
     import base
     import 2309livewire
 }

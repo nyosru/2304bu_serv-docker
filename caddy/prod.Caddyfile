@@ -22,7 +22,6 @@
             dir https://acme-v02.api.letsencrypt.org/directory
             email support@php-cat.com
         }
-    ocsp_stapling
     }
 }
 
@@ -36,7 +35,6 @@
             dir https://acme.zerossl.com/v2/DV90
             email 2@php-cat.com
         }
-    ocsp_stapling
     }
 }
 

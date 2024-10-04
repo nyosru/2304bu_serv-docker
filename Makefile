@@ -95,10 +95,10 @@ prod:
 	#docker-compose up -d --build --remove-orphans --no-recreate caddy
 	docker-compose up -d --build --remove-orphans
 	#docker-compose up -d --build
-	#make start_2309livewire
+	make start_2309livewire
 	#make start_base12narek
 	make caddy_refresh_cfd
-	#docker system prune --force
+	docker system prune --force
 
 # cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 #	make start

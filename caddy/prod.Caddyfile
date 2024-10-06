@@ -66,13 +66,6 @@
     encode gzip
 }
 
-
-php-cat.com {
-    import tls2
-    import base
-    import 2309livewire
-}
-
 1.php-cat.com {
     import tls1
     import base
@@ -89,13 +82,6 @@ xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
 ar.php-cat.com {
     import tls_off
     import base_off
-    import 2309livewire
-}
-
-# приватизациягаража.рф
-xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
-    import tls1
-    import base
     import 2309livewire
 }
 

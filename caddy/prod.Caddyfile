@@ -87,7 +87,8 @@ ar.php-cat.com {
 
 # самыетюменскиеновости.рф
 # самыетюменскиеновости.рф {
-php-cat.com, stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
+# php-cat.com, stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
+php-cat.com, stn.dev.php-cat.com, самыетюменскиеновости.рф {
     import tls2
     import base
     import 2309livewire

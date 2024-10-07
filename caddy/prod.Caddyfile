@@ -88,8 +88,14 @@ ar.php-cat.com {
 # самыетюменскиеновости.рф
 # самыетюменскиеновости.рф {
 # php-cat.com, stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
-php-cat.com, stn.dev.php-cat.com, самыетюменскиеновости.рф, приватизациягаража.рф {
+stn.dev.php-cat.com, самыетюменскиеновости.рф, приватизациягаража.рф {
     import tls2
+    import base
+    import 2309livewire
+}
+
+php-cat.com {
+    import tls1
     import base
     import 2309livewire
 }

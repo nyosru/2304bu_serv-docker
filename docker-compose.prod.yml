@@ -50,11 +50,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
 
-  cron-service:
+  cron:
     build:
       context: ${FOLDER_2410CRON}
       dockerfile: Dockerfile
-    container_name: cron-service
+    container_name: cron
     volumes:
       - ${FOLDER_2410CRON}/logs:/var/log/cron
       - cron_volume:/etc/cron.d

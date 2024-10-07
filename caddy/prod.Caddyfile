@@ -50,6 +50,7 @@
     }
 }
 
+# какая то ошибка с eab
 (tls_zero_support) {
     tls {
         issuer acme {
@@ -108,7 +109,7 @@ ar.php-cat.com {
 }
 
 stn.dev.php-cat.com {
-    import tls2
+    import tls1
     import base
     import 2309livewire
 }

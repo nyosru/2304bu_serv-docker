@@ -52,11 +52,11 @@ services:
 
   cron-service:
     build:
-      context: .
+      context: ${FOLDER_2410CRON}
       dockerfile: cron/Dockerfile
     container_name: cron-service
     volumes:
-      - ./cron/logs:/var/log/cron
+      - ${FOLDER_2410CRON}/logs:/var/log/cron
       - cron_volume:/etc/cron.d
     restart: unless-stopped
     dns:

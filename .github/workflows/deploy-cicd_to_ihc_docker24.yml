@@ -62,8 +62,7 @@ jobs:
 
           script: |
             cd ${{ env.DIR }}
-            make restart_caddy
-            # make prod
+            make prod
 
   sms_start:
     runs-on: ubuntu-latest

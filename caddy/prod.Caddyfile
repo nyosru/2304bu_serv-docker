@@ -50,6 +50,19 @@
     }
 }
 
+(tls_zero_support) {
+    tls {
+        issuer acme {
+            dir https://acme.zerossl.com/v2/DV90
+            email support@php-cat.com
+            eab {
+                 key_id _JFx-xwZYuJX5eq2PLkOUg
+                 mac_key Fg37_optaeGnL4Y7IuqsybuXC1skC0v78IyGl-1WPgOQCzMVpSbxy5tq7faVWBJf_O_qoMahjK5FQ5FHg-yCOA
+            }
+        }
+    }
+}
+
 (base2) {
     # Формируем самоподписной сертификат для работы https
     #tls support@php-cat.com
@@ -88,7 +101,12 @@ ar.php-cat.com {
 # самыетюменскиеновости.рф
 # самыетюменскиеновости.рф {
 # php-cat.com, stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
-stn.dev.php-cat.com, самыетюменскиеновости.рф, приватизациягаража.рф {
+самыетюменскиеновости.рф, приватизациягаража.рф {
+    import tls_zero_support
+    import base
+    import 2309livewire
+}
+stn.dev.php-cat.com{
     import tls2
     import base
     import 2309livewire

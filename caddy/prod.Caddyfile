@@ -102,7 +102,7 @@ ar.php-cat.com {
 # самыетюменскиеновости.рф {
 # php-cat.com, stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
 самыетюменскиеновости.рф, приватизациягаража.рф {
-    import tls_zero_support
+    import tls1
     import base
     import 2309livewire
 }

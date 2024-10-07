@@ -54,7 +54,7 @@
     tls {
         issuer acme {
             dir https://acme.zerossl.com/v2/DV90
-            email support@php-cat.com
+            email 1@php-cat.com
             eab {
                  key_id _JFx-xwZYuJX5eq2PLkOUg
                  mac_key Fg37_optaeGnL4Y7IuqsybuXC1skC0v78IyGl-1WPgOQCzMVpSbxy5tq7faVWBJf_O_qoMahjK5FQ5FHg-yCOA

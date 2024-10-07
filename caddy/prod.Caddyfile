@@ -106,7 +106,7 @@ ar.php-cat.com {
     import base
     import 2309livewire
 }
-stn.dev.php-cat.com{
+stn.dev.php-cat.com {
     import tls2
     import base
     import 2309livewire

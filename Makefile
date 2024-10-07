@@ -88,6 +88,12 @@ dev:
 
 
 
+restart_caddy:
+	cp caddy/prod.Caddyfile caddy/Caddyfile
+	cp docker-compose.prod.yml docker-compose.yml
+	docker-compose up -d --remove-orphans
+	docker restart caddy
+
 prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	#cp caddy/prod.Caddyfile caddy2/Caddyfile

@@ -53,7 +53,7 @@ services:
   cron-service:
     build:
       context: ${FOLDER_2410CRON}
-      dockerfile: cron/Dockerfile
+      dockerfile: Dockerfile
     container_name: cron-service
     volumes:
       - ${FOLDER_2410CRON}/logs:/var/log/cron

@@ -80,6 +80,14 @@
     encode gzip
 }
 
+
+bu72.ru, бу72.рф {
+    tls 1@php-cat.com
+    import base
+    import 2309livewire
+}
+
+
 1.php-cat.com {
     import tls1
     import base
@@ -199,7 +207,7 @@ as.php-cat.com {
 }
 
 # атрактор.рф {
-сноукайтинг.рф, продукты72.рф, bu72.ru, бу72.рф, земельныйкадастр.рф {
+сноукайтинг.рф, продукты72.рф, земельныйкадастр.рф {
     import tls1
     import base
     import 2309livewire

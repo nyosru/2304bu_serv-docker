@@ -260,8 +260,8 @@ test2401laravel-vitrin.php-cat.com {
 # *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
 :433, :80 {
 	# *.ru, *.xn--p1ai, *.com, *.info, *.local {
-    # import tls1
-    tls support@php-cat.com
+    import tls1
+    # tls support@php-cat.com
     import base
     import 2309livewire
 }

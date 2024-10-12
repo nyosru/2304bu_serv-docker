@@ -149,7 +149,7 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai {
 }
 
 # тюменскаяафиша.рф {
-xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
+ттт72.рф, ttt72.ru, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
     import tls1
     import base
     import 2309livewire
@@ -186,7 +186,7 @@ vue3.php-cat.com {
     root * /home/base17/public
 }
 
-ттт72.рф, ttt72.ru, xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
+xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
     import tls1
     import base
     php_fastcgi 2308beget:9000

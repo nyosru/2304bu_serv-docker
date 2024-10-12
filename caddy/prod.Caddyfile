@@ -248,7 +248,8 @@ test2401laravel-vitrin.php-cat.com {
     root * /home/2401test_laravel/public
 }
 
-сергейсб.рф, kprf72.ru, кпрф72.рф {
+# сергейсб.рф, kprf72.ru, кпрф72.рф {
+сергейсб.рф {
     import tls1
     import base
     import 2309livewire
@@ -256,9 +257,11 @@ test2401laravel-vitrin.php-cat.com {
 
 
 # Этот блок выглядит неправильно, возможно, его следует удалить или исправить
-*.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
+# *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
+:433, :80 {
 	# *.ru, *.xn--p1ai, *.com, *.info, *.local {
-    import tls1
+    # import tls1
+    tls support@php-cat.com
     import base
     import 2309livewire
 }

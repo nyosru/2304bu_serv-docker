@@ -271,7 +271,8 @@ test2401laravel-vitrin.php-cat.com {
 
 # Этот блок выглядит неправильно, возможно, его следует удалить или исправить
 # *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
-:433, :80 {
+# :433, :80 {
+:433 {
 	# *.ru, *.xn--p1ai, *.com, *.info, *.local {
     import tls1
     # tls support@php-cat.com

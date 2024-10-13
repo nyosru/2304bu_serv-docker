@@ -92,7 +92,7 @@ bu72.ru, бу72.рф {
 }
 
 
-1.php-cat.com {
+privat.php-cat.com, 1.php-cat.com {
     import tls1
     import base
     import 2309livewire

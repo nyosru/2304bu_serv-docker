@@ -82,11 +82,17 @@
 
 
 самыетюменскиеновости.рф {
-    redir https://stn.dev.php-cat.com{uri} 301
+    # redir https://stn.dev.php-cat.com{uri} 301
+    tls 1@php-cat.com
+    import base
+    import 2309livewire
 }
 
 приватизациягаража.рф {
-    redir https://privat.php-cat.com{uri} 301
+#    redir https://privat.php-cat.com{uri} 301
+    tls 1@php-cat.com
+    import base
+    import 2309livewire
 }
 
 

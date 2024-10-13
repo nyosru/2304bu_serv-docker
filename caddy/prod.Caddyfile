@@ -123,6 +123,11 @@ ar.php-cat.com {
     reverse_proxy http://2309livewire:9000
 }
 
+https://приватизациягаража.рф {
+    reverse_proxy 2309livewire:9000
+}
+
+
 stn.dev.php-cat.com {
     import tls1
     import base

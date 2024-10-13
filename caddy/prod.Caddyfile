@@ -81,7 +81,13 @@
 
 
 
+самыетюменскиеновости.рф {
+    redir https://stn.dev.php-cat.com{uri} 301
+}
 
+приватизациягаража.рф {
+    redir https://privat.php-cat.com{uri} 301
+}
 
 
 
@@ -108,23 +114,6 @@ xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
 ar.php-cat.com {
     import base
     import 2309livewire
-}
-
-# самыетюменскиеновости.рф
-# самыетюменскиеновости.рф {
-# php-cat.com, stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
-самыетюменскиеновости.рф {
-    import tls1
-    import base
-    import 2309livewire
-}
-
-приватизациягаража.рф {
-    import tls1
-    import base
-#    import 2309livewire
-    #reverse_proxy http://2309livewire:80
-    reverse_proxy http://2309livewire:9000
 }
 
 

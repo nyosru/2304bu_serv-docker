@@ -73,13 +73,16 @@
     encode gzip
 }
 
-(base_off) {
-    # Отключаем HTTPS
-    #tls internal
-    # Включаем файловый сервер
-    file_server
-    encode gzip
-}
+
+
+
+
+
+
+
+
+
+
 
 
 bu72.ru, бу72.рф {
@@ -103,8 +106,7 @@ xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
 }
 
 ar.php-cat.com {
-    import tls_off
-    import base_off
+    import base
     import 2309livewire
 }
 
@@ -141,7 +143,7 @@ php-cat.com {
 # скидки.сергейсб.рф
 skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import tls1
-	import base_off
+	import base
     import 2309livewire
 }
 
@@ -154,7 +156,7 @@ skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
 # складдокументов.рф
 xn--80aefaf0adenlhe2ayl.xn--p1ai {
     import tls1
-	import base_off
+	import base
     import 2309livewire
 }
 
@@ -182,8 +184,8 @@ api.php-cat.com, api3.php-cat.com {
 }
 
 upr.php-cat.com {
-    import tls_off
-	import base_off
+    #import tls_off
+	import base
     #import base
     php_fastcgi upr_serv:9000
     root * /home/upr_serv/public

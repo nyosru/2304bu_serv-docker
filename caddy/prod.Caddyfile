@@ -110,10 +110,17 @@ ar.php-cat.com {
 # самыетюменскиеновости.рф
 # самыетюменскиеновости.рф {
 # php-cat.com, stn.dev.php-cat.com, xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
-самыетюменскиеновости.рф, приватизациягаража.рф {
+самыетюменскиеновости.рф {
     import tls1
     import base
     import 2309livewire
+}
+приватизациягаража.рф {
+    import tls1
+    import base
+#    import 2309livewire
+    #reverse_proxy http://2309livewire:80
+    reverse_proxy http://2309livewire:9000
 }
 
 stn.dev.php-cat.com {

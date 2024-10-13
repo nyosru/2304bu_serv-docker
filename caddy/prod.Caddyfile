@@ -122,9 +122,11 @@ ar.php-cat.com {
 #    import 2309livewire
     #reverse_proxy http://2309livewire:80
     #reverse_proxy http://2309livewire:9000
-    reverse_proxy 2309livewire:9000
+    #reverse_proxy 2309livewire:9000
+    reverse_proxy 2309livewire:9000 {
+        header_up X-Forwarded-Proto {scheme}
+    }
 }
-
 
 
 stn.dev.php-cat.com {

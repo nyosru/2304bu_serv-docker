@@ -83,6 +83,8 @@ services:
       - './caddy/config:/config/'
       - './caddy/data-caddy:/data/'
 
+      - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
+
       #- './caddy/certs:/data/caddy/locks/'
       #- './caddy/data-caddy:/data/caddy/'
       #- './caddy/certs3/:/data/caddy/certificates/'
@@ -107,9 +109,8 @@ services:
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
       - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
+
       #- shared_caddyfile:/shared/caddyfile  # Монтируем том для общего использования файла
-
-
       ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
       ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
       ##      - '${FOLDER_2309LARAWIRE}:/2309livewire'
@@ -121,6 +122,7 @@ services:
     depends_on:
       - 2308beget
       - 2309livewire
+      - 2410svo
 
       - 2312didrive_auto
       - 2312auto_as_prod
@@ -158,6 +160,33 @@ services:
   #
   #
   #
+
+
+
+
+  2410svo:
+    container_name: 2410svo
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+      #- shared_network
+    build:
+      context: .
+      dockerfile: docker.2410svo.Dockerfile
+    working_dir: ${FOLDER_2410SVO_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2410SVO_SERV}
+    restart: unless-stopped
+    volumes:
+      - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
+    #      links:
+    #        - web_scraper2:parser_service
+    #    expose:
+    #      - 9000
+
   2308beget:
     container_name: 2308beget
     build:
@@ -697,27 +726,3 @@ services:
     volumes:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
-
-
-  2410svo:
-    container_name: 2410svo
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-      - shared_network
-    build:
-      context: .
-      dockerfile: docker.2410svo.Dockerfile
-    working_dir: ${FOLDER_2410SVO_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2410SVO_SERV}
-    restart: unless-stopped
-    #      links:
-    #        - web_scraper2:parser_service
-    #    expose:
-    #      - 9000
-    volumes:
-      - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'

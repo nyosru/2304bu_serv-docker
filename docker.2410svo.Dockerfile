@@ -24,7 +24,7 @@ RUN apt-get update -y \
     && docker-php-ext-enable zip
 
 # Установка расширения SOAP
-RUN docker-php-ext-install soap
+# RUN docker-php-ext-install soap
 
 # Install GD extension
 RUN apt-get update \

@@ -171,6 +171,16 @@ xn--b1aybijq.xn--p1ai, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     root * /home/base12narek/public
 }
 
+svo.php-cat.com {
+    import base
+    #php_fastcgi base12narek:9000
+    php_fastcgi 2410svo:9000
+    #root * /home/base12narek/public
+    root * /home/2410svo/public
+}
+
+
+
 api.php-cat.com, api3.php-cat.com {
     import tls1
     import base

@@ -214,7 +214,8 @@ services:
     # tty: true
     expose:
       - 9000
-    # links:
+#    links:
+#      - web_scraper2
     #   - db_mysql:db
     volumes:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
@@ -697,3 +698,26 @@ services:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
 
+
+  2410svo:
+    container_name: 2410svo
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+      - shared_network
+    build:
+      context: .
+      dockerfile: docker.2410svo.Dockerfile
+    working_dir: ${FOLDER_2410SVO_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2410SVO_SERV}
+    restart: unless-stopped
+    #      links:
+    #        - web_scraper2:parser_service
+    #    expose:
+    #      - 9000
+    volumes:
+      - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'

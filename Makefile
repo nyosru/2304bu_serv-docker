@@ -40,10 +40,24 @@ dev:
 	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
 	#docker-compose up -d --force-recreate web_scraper --remove-orphans
 	make start_2309livewire
+	make start_2410svo_dev
 	#make start_base12narek_dev
 
 	make caddy_refresh_cfd
 
+
+prod:
+	cp caddy/prod.Caddyfile caddy/Caddyfile
+	#cp caddy/prod.Caddyfile caddy2/Caddyfile
+	cp docker-compose.prod.yml docker-compose.yml
+	#docker-compose up -d --build --remove-orphans --no-recreate caddy
+	docker-compose up -d --build --remove-orphans
+	#docker-compose up -d --build
+	make start_2309livewire
+	make start_2410svo
+	#make start_base12narek
+	make caddy_refresh_cfd
+	docker system prune --force
 
 
 # cp caddy/prod.Caddyfile caddy/Caddyfile
@@ -93,18 +107,6 @@ restart_caddy:
 	cp docker-compose.prod.yml docker-compose.yml
 	docker-compose up -d --remove-orphans
 	docker restart caddy
-
-prod:
-	cp caddy/prod.Caddyfile caddy/Caddyfile
-	#cp caddy/prod.Caddyfile caddy2/Caddyfile
-	cp docker-compose.prod.yml docker-compose.yml
-	#docker-compose up -d --build --remove-orphans --no-recreate caddy
-	docker-compose up -d --build --remove-orphans
-	#docker-compose up -d --build
-	make start_2309livewire
-	#make start_base12narek
-	make caddy_refresh_cfd
-	docker system prune --force
 
 # cp bu72_front/code/nuxt.config.prod.ts bu72_front/code/nuxt.config.ts
 #	make start
@@ -208,6 +210,16 @@ start_2309livewire:
 	docker exec 2309livewire composer i
 	docker exec 2309livewire php artisan migrate
 	docker exec 2309livewire chown -R www-data:www-data storage
+
+start_2410svo:
+	docker exec 2410svo composer i --no-dev
+	docker exec 2410svo php artisan migrate
+	docker exec 2410svo chown -R www-data:www-data storage
+
+start_2410svo_dev:
+	docker exec 2410svo composer i
+	docker exec 2410svo php artisan migrate
+	docker exec 2410svo chown -R www-data:www-data storage
 
 start_test231012:
 	docker exec test231012 composer i

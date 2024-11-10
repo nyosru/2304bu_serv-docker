@@ -631,7 +631,7 @@ services:
       FTP_PASS_2: user2
       PASV_ADDRESS: ${SERVER_IP}
     volumes:
-#      - '/home_ftp3:/home/vsftpd'
+      - '/home_ftp3:/home/vsftpd'
       - '/home_ftp4:/home/vsftpd/user1'
       - '/home_ftp2:/home/vsftpd/user2'
     restart: always

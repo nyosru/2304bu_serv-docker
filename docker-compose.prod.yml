@@ -623,8 +623,8 @@ services:
 #      - PASV_ADDRESS=45.12.72.4
 ##      - PASV_ENABLE=YES
     environment:
-      FTP_USER: ${AVTOAS_FTP_USER}
-      FTP_PASS: ${AVTOAS_FTP_PASS}
+      FTP_USER: ${AVTOAS_FTP_USER},user2
+      FTP_PASS: ${AVTOAS_FTP_PASS},pass2
 #      FTP_USER_1: ${AVTOAS_FTP_USER}
 #      FTP_PASS_1: ${AVTOAS_FTP_PASS}
 #      FTP_USER_2: user2

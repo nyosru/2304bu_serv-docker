@@ -1,0 +1,3 @@
+docker run --rm -v $(pwd)/ftp/passwd:/etc/pure-ftpd/passwd -v $(pwd)/ftp/user1:/home/ftpusers/user1 stilliard/pure-ftpd pure-pw useradd user1 -u ftpuser -d /home/ftpusers/user1 -m
+docker run --rm -v $(pwd)/ftp/passwd:/etc/pure-ftpd/passwd -v $(pwd)/ftp/user2:/home/ftpusers/user2 stilliard/pure-ftpd pure-pw useradd user2 -u ftpuser -d /home/ftpusers/user2 -m
+docker run --rm -v $(pwd)/ftp/passwd:/etc/pure-ftpd/passwd -v $(pwd)/ftp/user3:/home/ftpusers/user3 stilliard/pure-ftpd pure-pw useradd user3 -u ftpuser -d /home/ftpusers/user3 -m

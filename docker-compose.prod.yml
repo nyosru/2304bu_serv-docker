@@ -623,11 +623,17 @@ services:
 #      - PASV_ADDRESS=45.12.72.4
 ##      - PASV_ENABLE=YES
     environment:
-      FTP_USER: ${AVTOAS_FTP_USER}
-      FTP_PASS: ${AVTOAS_FTP_PASS}
+#      FTP_USER: ${AVTOAS_FTP_USER}
+#      FTP_PASS: ${AVTOAS_FTP_PASS}
+      FTP_USER_1: ${AVTOAS_FTP_USER}
+      FTP_PASS_1: ${AVTOAS_FTP_PASS}
+      FTP_USER_2: user2
+      FTP_PASS_2: user2
       PASV_ADDRESS: ${SERVER_IP}
     volumes:
-      - '/home_ftp:/home/vsftpd'
+      - '/home_ftp3:/home/vsftpd'
+      - '/home_ftp:/home/vsftpd/user1'
+      - '/home_ftp2:/home/vsftpd/user2'
     restart: always
     networks:
       - laravel

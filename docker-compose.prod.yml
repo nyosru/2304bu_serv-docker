@@ -608,62 +608,62 @@ services:
   #
   #
 
-#  ftp-server:
-#    image: fauria/vsftpd
-#    container_name: ftp-server
-#    ports:
-#      - "20:20"
-#      - "21:21"
-#      - "21100-21110:21100-21110"
-#      #- "30000-30009:30000-30009"
-#      #- "60000-60099:60000-60099"
-##    environment:
-##      - FTP_USER=${AVTOAS_FTP_USER}
-##      - FTP_PASS=${AVTOAS_FTP_PASS}
-##      - PASV_ADDRESS=45.12.72.4
-###      - PASV_ENABLE=YES
+  ftp-server:
+    image: fauria/vsftpd
+    container_name: ftp-server
+    ports:
+      - "20:20"
+      - "21:21"
+      - "21100-21110:21100-21110"
+      #- "30000-30009:30000-30009"
+      #- "60000-60099:60000-60099"
 #    environment:
-##      FTP_USER: ${AVTOAS_FTP_USER}
-##      FTP_PASS: ${AVTOAS_FTP_PASS}
+#      - FTP_USER=${AVTOAS_FTP_USER}
+#      - FTP_PASS=${AVTOAS_FTP_PASS}
+#      - PASV_ADDRESS=45.12.72.4
+##      - PASV_ENABLE=YES
+    environment:
+      FTP_USER: ${AVTOAS_FTP_USER}
+      FTP_PASS: ${AVTOAS_FTP_PASS}
 #      FTP_USER_1: ${AVTOAS_FTP_USER}
 #      FTP_PASS_1: ${AVTOAS_FTP_PASS}
 #      FTP_USER_2: user2
 #      FTP_PASS_2: user2
-#      PASV_ADDRESS: ${SERVER_IP}
-#    volumes:
-#      - '/home_ftp3:/home/vsftpd'
-#      - '/home_ftp4:/home/vsftpd/user1'
-#      - '/home_ftp2:/home/vsftpd/user2'
-#    restart: always
-#    networks:
-#      - laravel
-
-
-
-  ftp_server:
-    image: stilliard/pure-ftpd
-    container_name: ftp_server
-    restart: always
-    ports:
-      - "21:21"              # Порт FTP
-      - "30000-30009:30000-30009"  # Диапазон портов для пассивного режима
-    environment:
-      PUBLICHOST: ${SERVER_IP} # Внешний IP-адрес сервера
-      FTP_PASSIVE_PORTS: "30000:30009" # Порты для пассивного режима
-      FTP_MAX_CLIENTS: 5
-      FTP_MAX_CONNECTIONS: 5
-      FTP_TLS: "1"  # Включаем поддержку TLS
-      FTP_TLS_CACERT: "/etc/ssl/certs/ca-certificates.crt"  # Указываем путь к сертификату
-      FTP_TLS_CERTFILE: "/etc/ssl/certs/pure-ftpd.pem"  # Указываем путь к сертификату
-      FTP_TLS_KEYFILE: "/etc/ssl/private/pure-ftpd.key"  # Указываем путь к приватному ключу
-
+      PASV_ADDRESS: ${SERVER_IP}
     volumes:
-      - /ftp/user1:/home/ftpusers/user1  # Папка для пользователя user1
-      - /ftp/user2:/home/ftpusers/user2  # Папка для пользователя user2
-      - /ftp/user3:/home/ftpusers/user3  # Папка для пользователя user3
-      - ./ftp_passwd:/etc/pure-ftpd/passwd  # Файл для хранения данных пользователей
-      - ./ssl:/etc/ssl/private  # Папка с сертификатами
-    command: /bin/bash -c "pure-ftpd /etc/pure-ftpd/passwd"
+      - '/home_ftp3:/home/vsftpd'
+      - '/home_ftp4:/home/vsftpd/user1'
+      - '/home_ftp2:/home/vsftpd/user2'
+    restart: always
+    networks:
+      - laravel
+
+
+
+#  ftp_server:
+#    image: stilliard/pure-ftpd
+#    container_name: ftp_server
+#    restart: always
+#    ports:
+#      - "21:21"              # Порт FTP
+#      - "30000-30009:30000-30009"  # Диапазон портов для пассивного режима
+#    environment:
+#      PUBLICHOST: ${SERVER_IP} # Внешний IP-адрес сервера
+#      FTP_PASSIVE_PORTS: "30000:30009" # Порты для пассивного режима
+#      FTP_MAX_CLIENTS: 5
+#      FTP_MAX_CONNECTIONS: 5
+#      FTP_TLS: "1"  # Включаем поддержку TLS
+#      FTP_TLS_CACERT: "/etc/ssl/certs/ca-certificates.crt"  # Указываем путь к сертификату
+#      FTP_TLS_CERTFILE: "/etc/ssl/certs/pure-ftpd.pem"  # Указываем путь к сертификату
+#      FTP_TLS_KEYFILE: "/etc/ssl/private/pure-ftpd.key"  # Указываем путь к приватному ключу
+#
+#    volumes:
+#      - /ftp/user1:/home/ftpusers/user1  # Папка для пользователя user1
+#      - /ftp/user2:/home/ftpusers/user2  # Папка для пользователя user2
+#      - /ftp/user3:/home/ftpusers/user3  # Папка для пользователя user3
+#      - ./ftp_passwd:/etc/pure-ftpd/passwd  # Файл для хранения данных пользователей
+#      - ./ssl:/etc/ssl/private  # Папка с сертификатами
+#    command: /bin/bash -c "pure-ftpd /etc/pure-ftpd/passwd"
 
 
 

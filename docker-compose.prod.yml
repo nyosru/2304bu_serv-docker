@@ -652,11 +652,17 @@ services:
       FTP_PASSIVE_PORTS: "30000:30009" # Порты для пассивного режима
       FTP_MAX_CLIENTS: 5
       FTP_MAX_CONNECTIONS: 5
+      FTP_TLS: "1"  # Включаем поддержку TLS
+      FTP_TLS_CACERT: "/etc/ssl/certs/ca-certificates.crt"  # Указываем путь к сертификату
+      FTP_TLS_CERTFILE: "/etc/ssl/certs/pure-ftpd.pem"  # Указываем путь к сертификату
+      FTP_TLS_KEYFILE: "/etc/ssl/private/pure-ftpd.key"  # Указываем путь к приватному ключу
+
     volumes:
       - /ftp/user1:/home/ftpusers/user1  # Папка для пользователя user1
       - /ftp/user2:/home/ftpusers/user2  # Папка для пользователя user2
       - /ftp/user3:/home/ftpusers/user3  # Папка для пользователя user3
       - ./ftp_passwd:/etc/pure-ftpd/passwd  # Файл для хранения данных пользователей
+      - ./ssl:/etc/ssl/private  # Папка с сертификатами
     command: /bin/bash -c "pure-ftpd /etc/pure-ftpd/passwd"
 
 

@@ -631,11 +631,12 @@ services:
     build:
         context: .
         dockerfile: ftp.Dockerfile
-    image: fauria/vsftpd
+#    image: fauria/vsftpd
     container_name: ftp-server
+    privileged: true
     ports:
       - "21:21"
-      - "21100-21110:21100-21110"  # Порты для пассивного режима
+#      - "21100-21110:21100-21110"  # Порты для пассивного режима
       - "40000-40100:40000-40100"  # Порты для пассивного режима
     environment:
 #      - FTP_USER1=user1

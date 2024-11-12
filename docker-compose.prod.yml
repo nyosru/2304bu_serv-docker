@@ -616,13 +616,13 @@ services:
       - "60000-60099:60000-60099"
 #      - 0.0.0.0:20:20
 #      - 0.0.0.0:21:21
-    hostname: ftp
-    privileged: true
-    user: root
+#    hostname: ftp
+#    privileged: true
+#    user: root
     volumes:
       - ./vsftpd_user1.conf:/etc/vsftpd/users/user1
       - ./vsftpd_user2.conf:/etc/vsftpd/users/user2
-      - /home_ftp3:/home
+#      - /home_ftp3:/home
     environment:
       - FTP_USER_1=user1:password1
       - FTP_USER_2=user2:password2

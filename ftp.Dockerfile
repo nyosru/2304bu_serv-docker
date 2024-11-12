@@ -1,6 +1,6 @@
 FROM fauria/vsftpd
 
-USER 1000
+USER root
 
 COPY ftp.vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY ftp.virtual_users.txt /tmp/virtual_users.txt

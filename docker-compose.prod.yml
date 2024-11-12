@@ -608,10 +608,17 @@ services:
   #
   #
 
-  vsftpd:
+  ftp-server:
     image: fauria/vsftpd
+    container_name: ftp-server
     ports:
       - "21:21"
+      - "60000-60099:60000-60099"
+#      - 0.0.0.0:20:20
+#      - 0.0.0.0:21:21
+    hostname: ftp
+    privileged: true
+    user: root
     volumes:
       - ./vsftpd_user1.conf:/etc/vsftpd/users/user1
       - ./vsftpd_user2.conf:/etc/vsftpd/users/user2
@@ -619,7 +626,14 @@ services:
     environment:
       - FTP_USER_1=user1:password1
       - FTP_USER_2=user2:password2
-      - PASV_ADDRESS: ${SERVER_IP}
+      - PASV_ADDRESS:${SERVER_IP}
+      - PASV_ADDR_RESOLVE:NO
+      - PASV_ENABLE:YES
+      - PASV_MIN_PORT:60000
+      - PASV_MAX_PORT:60099
+      - REVERSE_LOOKUP_ENABLE:YES
+      - PASV_PROMISCUOUS:NO
+      - PORT_PROMISCUOUS:NO
 
 #
 #  ftp-server:

@@ -609,6 +609,19 @@ services:
   #
 
 
+  vsftpd:
+    image: fauria/vsftpd
+    ports:
+      - "21:21"
+    volumes:
+      - ./vsftpd_user1.conf:/etc/vsftpd/users/user1
+      - ./vsftpd_user2.conf:/etc/vsftpd/users/user2
+      - ./vsftpd_user3.conf:/etc/vsftpd/users/user3
+      - /home_ftp3:/home
+    environment:
+      - FTP_USER_1=user1:password1
+      - FTP_USER_2=user2:password2
+      - FTP_USER_3=user3:password3
 
 
 #

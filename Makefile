@@ -39,8 +39,8 @@ dev:
 	# использовать другой файл докер композ
 	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
 	#docker-compose up -d --force-recreate web_scraper --remove-orphans
-	make start_2309livewire
-	make start_2410svo_dev
+	#make start_2309livewire
+	#make start_2410svo_dev
 	#make start_base12narek_dev
 
 	make caddy_refresh_cfd
@@ -51,10 +51,15 @@ prod:
 	#cp caddy/prod.Caddyfile caddy2/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 	#docker-compose up -d --build --remove-orphans --no-recreate caddy
+
+	#docker-compose up -d --build --remove-orphans
+
+	docker-compose down --rmi all -v
 	docker-compose up -d --build --remove-orphans
+
 	#docker-compose up -d --build
-	make start_2309livewire
-	make start_2410svo
+	#make start_2309livewire
+	#make start_2410svo
 	#make start_base12narek
 	make caddy_refresh_cfd
 	docker system prune --force

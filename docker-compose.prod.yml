@@ -627,7 +627,7 @@ services:
       FTP_USER_1: user1:password1
       FTP_USER_2: user2:password2
       PASV_ADDRESS: ${SERVER_IP}
-      PASV_ADDR_RESOLVE: NO
+#      PASV_ADDR_RESOLVE: NO
       PASV_ENABLE: YES
       PASV_MIN_PORT: 60000
       PASV_MAX_PORT: 60099

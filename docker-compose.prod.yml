@@ -628,12 +628,12 @@ services:
       FTP_USER_2: user2:password2
       PASV_ADDRESS: ${SERVER_IP}
 #      PASV_ADDR_RESOLVE: NO
-      PASV_ENABLE: YES
+      PASV_ENABLE: True
       PASV_MIN_PORT: 60000
       PASV_MAX_PORT: 60099
-      REVERSE_LOOKUP_ENABLE: YES
-      PASV_PROMISCUOUS: NO
-      PORT_PROMISCUOUS: NO
+      REVERSE_LOOKUP_ENABLE: True
+      PASV_PROMISCUOUS: False
+      PORT_PROMISCUOUS: False
     restart: always
     networks:
       - laravel

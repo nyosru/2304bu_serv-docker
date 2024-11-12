@@ -627,51 +627,71 @@ services:
 
 
 
+#  ftp-server:
+#    build:
+#        context: .
+#        dockerfile: ftp.Dockerfile
+##    image: fauria/vsftpd
+#    container_name: ftp-server
+#    privileged: true
+#    ports:
+#      - "21:21"
+##      - "21100-21110:21100-21110"  # Порты для пассивного режима
+#      - "40000-40100:40000-40100"  # Порты для пассивного режима
+#    environment:
+##      - FTP_USER1=user1
+##      - FTP_PASS1=password1
+##      - FTP_USER=user2
+##      - FTP_PASS=password2
+##      - FTP_USER2=user2
+##      - FTP_PASS2=password2
+##      - FTP_USER3=username3
+##      - FTP_PASS3=password3
+#      - PASV_ADDRESS=${SERVER_IP}
+##      - PASV_ADDRESS=127.0.0.1  # Замените на IP вашего сервера
+##      - PASV_MIN_PORT=21100
+##      - PASV_MAX_PORT=21110
+#      - PASV_MIN_PORT=40000
+#      - PASV_MAX_PORT=40100
+##      - guest_enable=YES
+##      - use_localtime=YES
+##      - И разрешаем локальных (и виртуальных) пользователей:
+##      - local_enable=YES
+#    volumes:
+##      - ./ftp.virtual_users.txt:/etc/vsftpd/virtual_users.txt
+##      - /home_ftp3:/home/vsftpd  # Локальная папка для хранения данных
+#      - /home_ftp3:/home  # Локальная папка для хранения данных
+##      - /home_ftp2:/home  # Локальная папка для хранения данных
+##      - /home_ftp3/user1:/home/vsftpd/user1  # Локальная папка для хранения данных
+#
+#      - ./ftp.vsftpd.conf:/etc/vsftpd/vsftpd.conf
+#      - ./ftp.virtual_users.txt:/tmp/virtual_users.txt
+#      - ./ftp.add_virtual_users.sh:/usr/local/bin/add_virtual_users.sh
+##    command: ["sh", "-c", "/usr/local/bin/add_virtual_users.sh && /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
+#
+#    # Настройки перезапуска
+#    restart: unless-stopped
+#
+
   ftp-server:
     build:
-        context: .
-        dockerfile: ftp.Dockerfile
-#    image: fauria/vsftpd
+      context: .
+      dockerfile: ftp.Dockerfile
     container_name: ftp-server
-    privileged: true
     ports:
       - "21:21"
-#      - "21100-21110:21100-21110"  # Порты для пассивного режима
-      - "40000-40100:40000-40100"  # Порты для пассивного режима
+      - "40000-40100:40000-40100"
     environment:
-#      - FTP_USER1=user1
-#      - FTP_PASS1=password1
-#      - FTP_USER=user2
-#      - FTP_PASS=password2
-#      - FTP_USER2=user2
-#      - FTP_PASS2=password2
-#      - FTP_USER3=username3
-#      - FTP_PASS3=password3
       - PASV_ADDRESS=${SERVER_IP}
-#      - PASV_ADDRESS=127.0.0.1  # Замените на IP вашего сервера
-#      - PASV_MIN_PORT=21100
-#      - PASV_MAX_PORT=21110
       - PASV_MIN_PORT=40000
       - PASV_MAX_PORT=40100
-#      - guest_enable=YES
-#      - use_localtime=YES
-#      - И разрешаем локальных (и виртуальных) пользователей:
-#      - local_enable=YES
     volumes:
-#      - ./ftp.virtual_users.txt:/etc/vsftpd/virtual_users.txt
-#      - /home_ftp3:/home/vsftpd  # Локальная папка для хранения данных
       - /home_ftp3:/home  # Локальная папка для хранения данных
-#      - /home_ftp2:/home  # Локальная папка для хранения данных
-#      - /home_ftp3/user1:/home/vsftpd/user1  # Локальная папка для хранения данных
-
       - ./ftp.vsftpd.conf:/etc/vsftpd/vsftpd.conf
       - ./ftp.virtual_users.txt:/tmp/virtual_users.txt
       - ./ftp.add_virtual_users.sh:/usr/local/bin/add_virtual_users.sh
-#    command: ["sh", "-c", "/usr/local/bin/add_virtual_users.sh && /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
-
-    # Настройки перезапуска
+    command: ["bash", "-c", "chmod +x /usr/local/bin/add_virtual_users.sh && /usr/local/bin/add_virtual_users.sh && /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
     restart: unless-stopped
-
 
 #
 #  vsftpd:

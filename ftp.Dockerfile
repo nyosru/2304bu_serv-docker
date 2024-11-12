@@ -1,9 +1,7 @@
 FROM fauria/vsftpd
 
-
 # Установка openssl
-RUN apt-get update && apt-get install -y openssl
-
+RUN apk update && apk add --no-cache openssl
 
 # Копируем конфигурационные файлы
 COPY ftp.vsftpd.conf /etc/vsftpd/vsftpd.conf
@@ -13,5 +11,5 @@ COPY ftp.add_virtual_users.sh /usr/local/bin/add_virtual_users.sh
 # Назначаем права на выполнение скрипта
 RUN chmod +x /usr/local/bin/add_virtual_users.sh
 
-# Используем ENTRYPOINT для запуска скрипта один раз и затем запускаем FTP-сервер
+# Используем ENTRYPOINT для запуска скрипта и затем запускаем FTP-сервер
 ENTRYPOINT ["/bin/bash", "-c", "/usr/local/bin/add_virtual_users.sh && /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]

@@ -667,7 +667,7 @@ services:
       - ./ftp.vsftpd.conf:/etc/vsftpd/vsftpd.conf
       - ./ftp.virtual_users.txt:/tmp/virtual_users.txt
       - ./ftp.add_virtual_users.sh:/usr/local/bin/add_virtual_users.sh
-    command: ["sh", "-c", "/usr/local/bin/add_virtual_users.sh && /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
+#    command: ["sh", "-c", "/usr/local/bin/add_virtual_users.sh && /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
 
     # Настройки перезапуска
     restart: unless-stopped

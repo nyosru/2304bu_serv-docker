@@ -646,6 +646,10 @@ services:
 #      - PASV_ADDRESS=127.0.0.1  # Замените на IP вашего сервера
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
+      - guest_enable=YES
+      - use_localtime=YES
+#      - И разрешаем локальных (и виртуальных) пользователей:
+      - local_enable=YES
     volumes:
       - ./ftp.virtual_users.txt:/etc/vsftpd/virtual_users.txt
       - /home_ftp3:/home/vsftpd  # Локальная папка для хранения данных

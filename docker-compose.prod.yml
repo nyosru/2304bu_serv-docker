@@ -631,9 +631,9 @@ services:
       PASV_ENABLE: 1
       PASV_MIN_PORT: 60000
       PASV_MAX_PORT: 60099
-      REVERSE_LOOKUP_ENABLE: 1
-      PASV_PROMISCUOUS: 0
-      PORT_PROMISCUOUS: 0
+#      REVERSE_LOOKUP_ENABLE: 1
+#      PASV_PROMISCUOUS: 0
+#      PORT_PROMISCUOUS: 0
     restart: always
     networks:
       - laravel

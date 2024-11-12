@@ -608,35 +608,64 @@ services:
   #
   #
 
-  ftp-server:
-    image: fauria/vsftpd
-    container_name: ftp-server
-    ports:
-      - "21:21"
-      - "60000-60099:60000-60099"
+
+
+
+#
+#  vsftpd:
+#    build:
+#      context: .
+#      dockerfile: /ftp.Dockerfile
+#      args:
+#        USER_ID: 1000
+#        GROUP_ID: 1000
+#    restart: always
+#    ports:
 #      - 0.0.0.0:20:20
 #      - 0.0.0.0:21:21
-#    hostname: ftp
-#    privileged: true
-#    user: root
-    volumes:
-      - ./vsftpd_user1.conf:/etc/vsftpd/users/user1
-      - ./vsftpd_user2.conf:/etc/vsftpd/users/user2
-#      - /home_ftp3:/home
-    environment:
-      FTP_USER_1: user1:password1
-      FTP_USER_2: user2:password2
-      PASV_ADDRESS: ${SERVER_IP}
-      PASV_MIN_PORT: 60000
-      PASV_MAX_PORT: 60099
-      PASV_ENABLE: 1
-#      PASV_ADDR_RESOLVE: NO
-#      REVERSE_LOOKUP_ENABLE: 1
-#      PASV_PROMISCUOUS: 0
-#      PORT_PROMISCUOUS: 0
-    restart: always
-    networks:
-      - laravel
+#      - 21100-21110:21100-21110
+#    volumes:
+#      - ./home:/home/vsftpd
+#      - ./logs:/var/log/vsftpd
+#
+#  ftp-server:
+#    image: fauria/vsftpd
+#    container_name: ftp-server
+#    ports:
+#      - "21:21"
+#      - "60000-60099:60000-60099"
+##      - 0.0.0.0:20:20
+##      - 0.0.0.0:21:21
+##    hostname: ftp
+##    privileged: true
+##    user: root
+#    volumes:
+#      - ./vsftpd_user1.conf:/etc/vsftpd/users/user1
+#      - ./vsftpd_user2.conf:/etc/vsftpd/users/user2
+##      - /home_ftp3:/home
+#    environment:
+#      FTP_USER_1: user1:password1
+#      FTP_USER_2: user2:password2
+#      PASV_ADDRESS: ${SERVER_IP}
+#      PASV_MIN_PORT: 60000
+#      PASV_MAX_PORT: 60099
+#      PASV_ENABLE: 1
+##      PASV_ADDR_RESOLVE: NO
+##      REVERSE_LOOKUP_ENABLE: 1
+##      PASV_PROMISCUOUS: 0
+##      PORT_PROMISCUOUS: 0
+#    restart: always
+#    networks:
+#      - laravel
+
+
+
+
+
+
+
+
+
 #
 #  ftp-server:
 #    image: fauria/vsftpd

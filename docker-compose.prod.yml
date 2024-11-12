@@ -619,6 +619,8 @@ services:
     environment:
       - FTP_USER_1=user1:password1
       - FTP_USER_2=user2:password2
+      - PASV_ADDRESS: ${SERVER_IP}
+
 #
 #  ftp-server:
 #    image: fauria/vsftpd

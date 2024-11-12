@@ -634,8 +634,8 @@ services:
       - "21:21"
       - "21100-21110:21100-21110"  # Порты для пассивного режима
     environment:
-      - FTP_USER1=user1
-      - FTP_PASS1=password1
+      - FTP_USER_1=user1
+      - FTP_PASS_1=password1
       - FTP_USER2=user2
       - FTP_PASS2=password2
       - FTP_USER3=username3

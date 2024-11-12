@@ -8,11 +8,13 @@ do
     username=$(echo "$line" | cut -d':' -f1)
     password=$(echo "$line" | cut -d':' -f2)
 
-    echo "Adding user: $username with password: $password"
-
-    # Добавление пользователя (замените команду на нужную)
-    # Например, создание виртуального пользователя и установка пароля
-    useradd -m "$username" -p "$(openssl passwd -1 "$password")"
+    # Проверяем, существует ли пользователь, чтобы избежать дублирования
+    if id "$username" &>/dev/null; then
+        echo "User $username already exists, skipping..."
+    else
+        echo "Adding user: $username with password: $password"
+        useradd -m "$username" -p "$(openssl passwd -1 "$password")"
+    fi
 done < /tmp/virtual_users.txt
 
 echo "Finished adding virtual users."

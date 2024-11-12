@@ -1,5 +1,10 @@
 FROM fauria/vsftpd
 
+
+# Установка openssl
+RUN apt-get update && apt-get install -y openssl
+
+
 # Копируем конфигурационные файлы
 COPY ftp.vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY ftp.virtual_users.txt /tmp/virtual_users.txt

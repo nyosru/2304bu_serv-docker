@@ -628,6 +628,9 @@ services:
 
 
   ftp-server:
+    build:
+        context: .
+        dockerfile: ftp.Dockerfile
     image: fauria/vsftpd
     container_name: ftp-server
     ports:
@@ -655,7 +658,9 @@ services:
 #      - local_enable=YES
     volumes:
 #      - ./ftp.virtual_users.txt:/etc/vsftpd/virtual_users.txt
-      - /home_ftp3:/home/vsftpd  # Локальная папка для хранения данных
+#      - /home_ftp3:/home/vsftpd  # Локальная папка для хранения данных
+      - /home_ftp3:/home  # Локальная папка для хранения данных
+#      - /home_ftp2:/home  # Локальная папка для хранения данных
 #      - /home_ftp3/user1:/home/vsftpd/user1  # Локальная папка для хранения данных
 
       - ./ftp.vsftpd.conf:/etc/vsftpd/vsftpd.conf

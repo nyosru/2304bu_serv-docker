@@ -689,7 +689,7 @@ services:
       - /home_ftp3:/home  # Локальная папка для хранения данных
       - ./ftp.vsftpd.conf:/etc/vsftpd/vsftpd.conf
       - ./ftp.virtual_users.txt:/tmp/virtual_users.txt
-      - ./ftp.add_virtual_users.sh:/usr/local/bin/add_virtual_users.sh
+#      - ./ftp.add_virtual_users.sh:/usr/local/bin/add_virtual_users.sh
 #    command: ["sh", "-c", "chmod +x /usr/local/bin/add_virtual_users.sh && /usr/local/bin/add_virtual_users.sh && /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf"]
     command: []
     restart: unless-stopped

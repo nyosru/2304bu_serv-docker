@@ -634,19 +634,20 @@ services:
       - "21:21"
       - "21100-21110:21100-21110"  # Порты для пассивного режима
     environment:
-      - FTP_USER1=user1
-      - FTP_PASS1=password1
-      - FTP_USER=user2
-      - FTP_PASS=password2
-      - FTP_USER2=user2
-      - FTP_PASS2=password2
-      - FTP_USER3=username3
-      - FTP_PASS3=password3
+#      - FTP_USER1=user1
+#      - FTP_PASS1=password1
+#      - FTP_USER=user2
+#      - FTP_PASS=password2
+#      - FTP_USER2=user2
+#      - FTP_PASS2=password2
+#      - FTP_USER3=username3
+#      - FTP_PASS3=password3
       - PASV_ADDRESS=${SERVER_IP}
 #      - PASV_ADDRESS=127.0.0.1  # Замените на IP вашего сервера
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
     volumes:
+      - ./ftp.virtual_users.txt:/etc/vsftpd/virtual_users.txt
       - /home_ftp3:/home/vsftpd  # Локальная папка для хранения данных
       - /home_ftp3/user1:/home/vsftpd/user1  # Локальная папка для хранения данных
 

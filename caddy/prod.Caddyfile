@@ -163,7 +163,7 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai {
 }
 
 # вячеслав
-# цпусво.рф, народноехозяйство.рус {
+#, народноехозяйство.рус {
 xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     import tls1
     import base
@@ -171,7 +171,8 @@ xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     root * /home/base12narek/public
 }
 
-цпусво.рф, svo.php-cat.com {
+# цпусво.рф
+xn--b1aybijq.xn--p1ai, svo.php-cat.com {
     import base
     #php_fastcgi base12narek:9000
     php_fastcgi 2410svo:9000

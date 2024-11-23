@@ -164,14 +164,14 @@ xn--80aefaf0adenlhe2ayl.xn--p1ai {
 
 # вячеслав
 # цпусво.рф, народноехозяйство.рус {
-xn--b1aybijq.xn--p1ai, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
+xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
     import tls1
     import base
     php_fastcgi base12narek:9000
     root * /home/base12narek/public
 }
 
-svo.php-cat.com {
+цпусво.рф, svo.php-cat.com {
     import base
     #php_fastcgi base12narek:9000
     php_fastcgi 2410svo:9000

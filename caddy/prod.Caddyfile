@@ -136,7 +136,7 @@ php-cat.com, php-cat.ru {
 }
 
 # скидки.сергейсб.рф
-skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
+kprf72.ru, skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
     import tls1
 	import base
     import 2309livewire

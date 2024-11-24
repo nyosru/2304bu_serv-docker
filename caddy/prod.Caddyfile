@@ -129,7 +129,7 @@ stn.dev.php-cat.com {
     import 2309livewire
 }
 
-php-cat.com {
+php-cat.com, php-cat.ru {
     import tls1
     import base
     import 2309livewire

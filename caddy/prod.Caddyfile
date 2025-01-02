@@ -274,6 +274,16 @@ test2401laravel-vitrin.php-cat.com {
 }
 
 
+vt.php-cat.ru {
+    import base
+    #    php_fastcgi vt2412:9000
+    php_fastcgi vt2:9000
+    root * /home/vt2412/public/
+    #reverse_proxy / 2412job_site1:9000
+}
+
+
+
 # Этот блок выглядит неправильно, возможно, его следует удалить или исправить
 # *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
 # :433, :80 {

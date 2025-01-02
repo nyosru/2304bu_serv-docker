@@ -942,3 +942,31 @@ services:
     volumes:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
+
+  vt2:
+    container_name: vt2
+    depends_on:
+      #        - db_mysql2412
+      - db_mysql
+    networks:
+      - laravel
+      #        - shared_network
+    #        - web2412
+    build:
+      context: .
+      #        dockerfile: docker.2412job.site1.Dockerfile
+      #        dockerfile: docker.2309livewire.Dockerfile
+      dockerfile: docker.2412livewire.Dockerfile
+    #        dockerfile: docker.2412-2-livewire.Dockerfile
+    working_dir: ${FOLDER_VT2412_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_VT2412_SERV}
+    restart: unless-stopped
+    links:
+      - db_mysql:db
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'

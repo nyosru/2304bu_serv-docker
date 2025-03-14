@@ -45,6 +45,24 @@ dev:
 
 	make caddy_refresh_cfd
 
+devuber:
+	cp caddy/dev.uber.Caddyfile caddy/Caddyfile
+	cp docker-compose.local.uber.yml docker-compose.yml
+	docker-compose up -d --remove-orphans
+	make caddy_refresh_cfd
+
+dev23:
+	cp caddy/dev.23.Caddyfile caddy/Caddyfile
+	cp docker-compose.local.23.yml docker-compose.yml
+	docker-compose up -d --remove-orphans
+	make caddy_refresh_cfd
+
+
+devv:
+	#cp caddy/dev.м.Caddyfile caddy/Caddyfile
+	cp docker-compose.local.v.yml docker-compose.yml
+	docker-compose up -d --remove-orphans
+	#make caddy_refresh_cfd
 
 prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile

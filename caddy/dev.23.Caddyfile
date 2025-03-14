@@ -1,0 +1,49 @@
+(base) {
+    tls internal
+    file_server
+    encode gzip
+}
+
+
+
+#tfmf
+
+tfmf.local {
+    import base
+    php_fastcgi mf__tfmf_ru:9000
+    root * /home/tfmf_ru/
+    #reverse_proxy / 2412job_site1:9000
+}
+
+cms23.tf.dev.local {
+    import base
+    php_fastcgi cms23_dev:9000
+    root * /home/cms23_dev/public/
+    #reverse_proxy / 2412job_site1:9000
+}
+
+
+jobsite1.local {
+    import base
+    php_fastcgi 2412job_site1:9000
+    root * /home/2412job_site1/
+    #reverse_proxy / 2412job_site1:9000
+}
+
+tf.cms2.dev.local {
+    import base
+    php_fastcgi cms22_dev:9000
+    root * /home/cms2_dev/public/
+    #reverse_proxy / 2412job_site1:9000
+}
+
+jobsite2.local {
+    import base
+    php_fastcgi 2412job_site2:9000
+    root * /home/2412job_site2/
+}
+
+*.ru, *.xn--p1ai, *.com, *.info, *.local {
+    import base
+    respond "Нет домена" 404
+}

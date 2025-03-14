@@ -5,13 +5,20 @@
 }
 
 
+krugi.local {
+    import base
+    php_fastcgi 2308beget:9000
+    root * /home/2308beget/public
+}
 
 # вячеслав
 #цпусво.рф, xn--b1aybijq.xn--p1ai, народноехозяйство.рус, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
 svo.local {
     import base
-    php_fastcgi base12narek:9000
-    root * /home/base12narek/public
+    #php_fastcgi base12narek:9000
+    php_fastcgi 2410svo:9000
+    #root * /home/base12narek/public
+    root * /home/2410svo/public
 }
 
 
@@ -36,6 +43,22 @@ stn.local {
 }
 
 
+# vitius
+
+
+vt2412.dev.local {
+    import base
+    #    php_fastcgi vt2412:9000
+    php_fastcgi vt2:9000
+    root * /home/vt2412/public/
+    #reverse_proxy / 2412job_site1:9000
+}
+
+
+
+
+
+
 x-parser2.local {
     tls internal
     #reverse_proxy python-parser:5001
@@ -50,7 +73,13 @@ parser22.local {
     #log /home/access.log
 }
 
-
+telega.php-cat.com {
+    tls internal
+    reverse_proxy 2501tele:8080  # Укажите порт, на котором работает ваш бот
+    log {
+        output file /var/log/caddy/access.log
+    }
+}
 
 *.ru, *.xn--p1ai, *.com, *.info, *.local {
     import base

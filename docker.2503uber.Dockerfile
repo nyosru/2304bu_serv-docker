@@ -1,5 +1,5 @@
 FROM node:latest AS node
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node

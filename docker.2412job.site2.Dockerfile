@@ -1,10 +1,10 @@
-FROM node:latest AS node
+#FROM node:latest AS node
 FROM php:8.2-fpm
 
 # Копирование Node.js и npm
-COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=node /usr/local/bin/node /usr/local/bin/node
-RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+#COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+#COPY --from=node /usr/local/bin/node /usr/local/bin/node
+#RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 # Установка аргументов и переменных окружения
 ARG PHPGROUP

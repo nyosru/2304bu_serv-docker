@@ -197,6 +197,7 @@ upr.php-cat.com {
     root * /home/upr_serv/public
 }
 
+
 vue3.php-cat.com {
     import tls1
     import base
@@ -282,6 +283,15 @@ vt.php-cat.ru {
     #reverse_proxy / 2412job_site1:9000
 }
 
+
+#uber
+u.php-cat.com {
+    #import tls_off
+    import base
+    #import base
+    php_fastcgi uber:9000
+    root * /home_uber/uber-tele/public
+}
 
 
 # Этот блок выглядит неправильно, возможно, его следует удалить или исправить

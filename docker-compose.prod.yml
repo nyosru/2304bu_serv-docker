@@ -160,6 +160,21 @@ services:
       - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
     restart: unless-stopped
 
+  #++
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql:db
+    ports:
+      - 6060:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+
   #
   #
   #
@@ -240,20 +255,6 @@ services:
       - laravel
     depends_on:
       - db_mysql
-  #++
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db_mysql:db
-    ports:
-      - 6060:80
-    environment:
-      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
 
   2309livewire:
     container_name: 2309livewire

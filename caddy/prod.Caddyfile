@@ -285,6 +285,15 @@ vt.php-cat.ru {
 
 
 #uber
+test-sensor.php-cat.com {
+    #import tls_off
+    import base
+    #import base
+    php_fastcgi 2503sensor:9000
+    root * /home/2503sensor/public
+}
+
+#uber
 u.php-cat.com {
     #import tls_off
     import base

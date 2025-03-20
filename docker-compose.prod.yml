@@ -12,7 +12,7 @@ volumes:
   cron_volume:
   portainer_data:
 
-  #shared_caddyfile:   # Добавляем том для общего использования файла Caddyfile
+#  shared_caddyfile:   # Добавляем том для общего использования файла Caddyfile
 
 ##  caddy_caddyfile:
 ##    driver: bridge
@@ -103,15 +103,15 @@ services:
       #- './caddy/data-caddy:/data/caddy/'
       #- './caddy/certs3/:/data/caddy/certificates/'
 
-      #avto-as
-      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-      #avto-as-dev
-      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
-      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
-      #avto-as-didrive
-      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+#      #avto-as
+#      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+#      #avto-as-dev
+#      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+#      #avto-as-didrive
+#      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
@@ -122,8 +122,8 @@ services:
       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
-      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
-      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
+#      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
+#      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
 
       #- shared_caddyfile:/shared/caddyfile  # Монтируем том для общего использования файла
       ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
@@ -295,56 +295,56 @@ services:
       - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
       - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
 
-  bitrix24_2407_01:
-    container_name: bitrix24_2407_01
+#  bitrix24_2407_01:
+#    container_name: bitrix24_2407_01
+##    depends_on:
+##      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.bitrix24.Dockerfile
+#    working_dir: ${FOLDER_bitrix24_2407_01_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_bitrix24_2407_01_SERV}
+#    restart: unless-stopped
+#    # tty: true
+#    expose:
+#      - 9000
+#    # links:
+#    #   - db_mysql:db
+#    volumes:
+#      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
+
+
+#  upr_serv:
+#    container_name: upr_serv
 #    depends_on:
 #      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.bitrix24.Dockerfile
-    working_dir: ${FOLDER_bitrix24_2407_01_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_bitrix24_2407_01_SERV}
-    restart: unless-stopped
-    # tty: true
-    expose:
-      - 9000
-    # links:
-    #   - db_mysql:db
-    volumes:
-      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
-
-
-  upr_serv:
-    container_name: upr_serv
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.laravel.Dockerfile
-    working_dir: ${FOLDER_UPRSERV_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_UPRSERV_SERV}
-    restart: unless-stopped
-    # tty: true
-    expose:
-      - 9000
-    # links:
-    #   - db_mysql:db
-    volumes:
-      - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
-      - './cron:${FOLDER_UPRSERV_SERV}/storage/app/cron'
-      - 'cron_volume:${FOLDER_UPRSERV_SERV}/storage/app/cron2'
-  #      - '/var/run/docker.sock:/var/run/docker.sock'
-  #      - ''
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.laravel.Dockerfile
+#    working_dir: ${FOLDER_UPRSERV_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_UPRSERV_SERV}
+#    restart: unless-stopped
+#    # tty: true
+#    expose:
+#      - 9000
+#    # links:
+#    #   - db_mysql:db
+#    volumes:
+#      - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
+#      - './cron:${FOLDER_UPRSERV_SERV}/storage/app/cron'
+#      - 'cron_volume:${FOLDER_UPRSERV_SERV}/storage/app/cron2'
+#  #      - '/var/run/docker.sock:/var/run/docker.sock'
+#  #      - ''
 
 #
 #  flask-api:
@@ -903,28 +903,28 @@ services:
 #    volumes:
 #      - ./ftp_data:/home/vsftpd
 
-  api_php74:
-    container_name: api_php74
-    build:
-      context: .
-      dockerfile: ./docker.php74_soap.Dockerfile
-    working_dir: ${FOLDER_API_PHP74_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_API_PHP74_SERV}
-    restart: unless-stopped
-    tty: true
-    expose:
-      - 9000
-    networks:
-      - laravel
-    #    links:
-    #      - db_mysql_as:db
-    #    depends_on:
-    #      - db_mysql_as
-    volumes:
-      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+#  api_php74:
+#    container_name: api_php74
+#    build:
+#      context: .
+#      dockerfile: ./docker.php74_soap.Dockerfile
+#    working_dir: ${FOLDER_API_PHP74_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_API_PHP74_SERV}
+#    restart: unless-stopped
+#    tty: true
+#    expose:
+#      - 9000
+#    networks:
+#      - laravel
+#    #    links:
+#    #      - db_mysql_as:db
+#    #    depends_on:
+#    #      - db_mysql_as
+#    volumes:
+#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
   #
   #
@@ -982,33 +982,33 @@ services:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
 
-  vt2:
-    container_name: vt2
-    depends_on:
-      #        - db_mysql2412
-      - db_mysql
-    networks:
-      - laravel
-      #        - shared_network
-    #        - web2412
-    build:
-      context: .
-      #        dockerfile: docker.2412job.site1.Dockerfile
-      #        dockerfile: docker.2309livewire.Dockerfile
-      dockerfile: docker.2412livewire.Dockerfile
-    #        dockerfile: docker.2412-2-livewire.Dockerfile
-    working_dir: ${FOLDER_VT2412_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_VT2412_SERV}
-    restart: unless-stopped
-    links:
-      - db_mysql:db
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
+#  vt2:
+#    container_name: vt2
+#    depends_on:
+#      #        - db_mysql2412
+#      - db_mysql
+#    networks:
+#      - laravel
+#      #        - shared_network
+#    #        - web2412
+#    build:
+#      context: .
+#      #        dockerfile: docker.2412job.site1.Dockerfile
+#      #        dockerfile: docker.2309livewire.Dockerfile
+#      dockerfile: docker.2412livewire.Dockerfile
+#    #        dockerfile: docker.2412-2-livewire.Dockerfile
+#    working_dir: ${FOLDER_VT2412_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_VT2412_SERV}
+#    restart: unless-stopped
+#    links:
+#      - db_mysql:db
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
 
 
 

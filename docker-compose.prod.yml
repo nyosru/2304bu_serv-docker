@@ -138,6 +138,7 @@ services:
       - 2308beget
       - 2309livewire
       - 2410svo
+      - 2503sensor
 
 #      - 2312didrive_auto
 #      - 2312auto_as_prod
@@ -148,8 +149,8 @@ services:
       - base17
       - base16sites
       - site_api
-      - upr_serv
-      - vt2
+#      - upr_serv
+#      - vt2
     #      - test231116php
     ##      - 2312didrive_auto_prod
 

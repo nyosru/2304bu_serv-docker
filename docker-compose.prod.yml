@@ -54,7 +54,7 @@ services:
     container_name: dozzle
     restart: always
     ports:
-      - "8080:8080"
+      - "8007:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
@@ -98,6 +98,8 @@ services:
       - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
 
       - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
+#proc-master
+      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
 
       #- './caddy/certs:/data/caddy/locks/'
       #- './caddy/data-caddy:/data/caddy/'

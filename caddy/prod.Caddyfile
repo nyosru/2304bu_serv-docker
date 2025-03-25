@@ -285,7 +285,7 @@ vt.php-cat.ru {
 
 
 #uber
-процессмастер.рф {
+процессмастер.рф, *.процессмастер.рф {
     #import tls_off
     import base
     #import base

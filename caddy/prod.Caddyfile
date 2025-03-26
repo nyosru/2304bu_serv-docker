@@ -283,10 +283,11 @@ vt.php-cat.ru {
     #reverse_proxy / 2412job_site1:9000
 }
 
-xn--80ajb0aifhffacm9b.xn--p1ai, p.php-cat.com {
+#xn--80ajb0aifhffacm9b.xn--p1ai, p.php-cat.com {
+процессмастер.рф, p.php-cat.com {
     #import tls_off
+    import tls1
     import base
-    #import base
     php_fastcgi 2503master:9000
     root * /home/proc-master/public
 

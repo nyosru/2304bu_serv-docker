@@ -288,7 +288,7 @@ xn--80ajb0aifhffacm9b.xn--p1ai, p.php-cat.com {
     import base
     #import base
     php_fastcgi 2503master:9000
-    root * /home/proc-master/public
+    root * /home/proc-master/public/
 
 
     #процессмастер.рф, *.процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai

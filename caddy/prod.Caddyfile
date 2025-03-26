@@ -277,6 +277,7 @@ test2401laravel-vitrin.php-cat.com {
 
 vt.php-cat.ru {
     import base
+    tls 1@php-cat.com
     #    php_fastcgi vt2412:9000
     php_fastcgi vt2:9000
     root * /home/vt2412/public
@@ -301,7 +302,7 @@ xn--80ajb0aifhffacm9b.xn--p1ai, процессмастер.рф, p.php-cat.com {
 #uber
 test-sensor.php-cat.com {
     #import tls_off
-    import tls1
+    tls 1@php-cat.com
     import base
     #import base
     php_fastcgi 2503sensor:9000

@@ -284,9 +284,9 @@ vt.php-cat.ru {
 }
 
 #процессмастер.рф, *.процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
-;xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
+#;xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
+#;процессмастер.рф {
 xn--80ajb0aifhffacm9b.xn--p1ai {
-;процессмастер.рф {
     #import tls_off
     import base
     #import base
@@ -319,7 +319,8 @@ u.php-cat.com {
 # *.ru, *.xn--p1ai, *.com, *.info, :433 {
 # :433 {
 
-*.ru, *.xn--p1ai, *.com, *.info {
+;*.ru, *.xn--p1ai, *.com, *.info {
+:433, :80 {
     import tls1
     # tls support@php-cat.com
     import base

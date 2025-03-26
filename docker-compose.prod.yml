@@ -1040,8 +1040,6 @@ services:
     volumes:
       - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'
 
-
-
   2503master:
     container_name: 2503master
     depends_on:

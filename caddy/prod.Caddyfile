@@ -283,8 +283,6 @@ vt.php-cat.ru {
     #reverse_proxy / 2412job_site1:9000
 }
 
-
-
 #процессмастер.рф, *.процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
 xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
     #import tls_off

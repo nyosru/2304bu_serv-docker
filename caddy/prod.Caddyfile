@@ -284,7 +284,9 @@ vt.php-cat.ru {
 }
 
 #процессмастер.рф, *.процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
-xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
+;xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai {
+;xn--80ajb0aifhffacm9b.xn--p1ai {
+процессмастер.рф {
     #import tls_off
     import base
     #import base

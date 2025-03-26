@@ -323,7 +323,7 @@ u.php-cat.com {
 # *.ru, *.xn--p1ai, *.com, *.info, :433 {
 # :433 {
 
-;*.ru, *.xn--p1ai, *.com, *.info {
+#*.ru, *.xn--p1ai, *.com, *.info {
 :433, :80 {
     import tls1
     # tls support@php-cat.com

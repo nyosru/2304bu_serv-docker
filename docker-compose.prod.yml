@@ -40,15 +40,15 @@ services:
 #      - PHONE_NUMBER=${TELEGRAM_BOT__your_phone_number}
 #    tty: true
 
-#  portainer:
-#    image: portainer/portainer-ce
-#    container_name: portainer
-#    restart: always
-#    ports:
-#      - "9008:9000"
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock
-#      - portainer_data:/data
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    restart: always
+    ports:
+      - "9008:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
   dozzle:
     image: amir20/dozzle
     container_name: dozzle

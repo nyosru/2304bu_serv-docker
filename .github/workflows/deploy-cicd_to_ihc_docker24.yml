@@ -78,13 +78,14 @@ jobs:
             
             #$#{{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
             
-            #$#{{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
             if [[ needs.deploy.outputs.rebuildCaddy == 'true' ]]; then
               echo "rebuildCaddy +"
               make caddy_refresh_cfd
             else            
               echo "rebuildCaddy -"
             fi            
+
+            #$#{{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
 
   sms_end:
     runs-on: ubuntu-latest
@@ -98,9 +99,9 @@ jobs:
           message: |
             🍀🍀🍀 Deployment Report
             Repo: ${{ github.repository }}
-            Commit: ${{ github.event.head_commit.message }}
+            Commit: ${{ github.event.head_commit.message || '-' }}
             By: ${{ github.actor }} (Run ID: ${{ github.run_id }})
             
-            🔧 Rebuild Needed: ${{ needs.deploy.outputs.rebuild_needed }}
-            🖥️ 2503master Rebuild: ${{ needs.deploy.outputs.rebuild2305master }}
-            🔐 Caddy Update: ${{ needs.deploy.outputs.rebuildCaddy }}
+            🔧 Rebuild Needed: ${{ needs.deploy.outputs.rebuild_needed || '-'  }}
+            🖥️ 2503master Rebuild: ${{ needs.deploy.outputs.rebuild2503master || '-'  }}
+            🔐 Caddy Update: ${{ needs.deploy.outputs.rebuildCaddy || '-'  }}

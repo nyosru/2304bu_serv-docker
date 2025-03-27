@@ -300,10 +300,12 @@ vt.php-cat.ru {
 }
 
 process.php-cat.com {
-    import tls1
     import base
     php_fastcgi 2503master:9000
     root * /home/proc-master/public
+
+    @showtext path /info
+    respond @showtext "домен траля ля ля"
 }
 
 #uber

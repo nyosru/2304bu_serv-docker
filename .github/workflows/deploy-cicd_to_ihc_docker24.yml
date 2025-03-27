@@ -88,7 +88,8 @@ jobs:
             fi
 
             if [ "${{ matrix.rebuildCaddy }}" = "true" ]; then
-              # Обновление конфигурации Caddy
+              echo "Обновление конфигурации Caddy"
+              docker-compose up
               docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile
               docker exec caddy caddy reload --config /etc/caddy/Caddyfile
             fi

@@ -57,6 +57,10 @@ jobs:
           script: |
             cd ${{ env.DIR }}
             
+            echo ${{needs.deploy.outputs.rebuild_needed}}
+            echo ${{needs.deploy.outputs.rebuild2503master}}
+            echo ${{needs.deploy.outputs.rebuildCaddy}}
+            
             if [[ needs.deploy.outputs.rebuild2503master == 'true' ]]; then            
               echo "Rebuilding 2503master"
             fi

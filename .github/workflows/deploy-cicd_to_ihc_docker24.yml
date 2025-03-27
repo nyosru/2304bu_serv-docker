@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       rebuild_needed: ${{ steps.check_commit.outputs.rebuild }}
-      rebuild2305master: ${{ steps.check_commit.outputs.rebuild2305master }}
+      rebuild2503master: ${{ steps.check_commit.outputs.rebuild2503master }}
       rebuildCaddy: ${{ steps.check_commit.outputs.rebuildCaddy }}
 
     steps:
@@ -29,7 +29,7 @@ jobs:
           }
           
           echo "rebuild_needed=$(check_rebuild 'rebuild')" >> $GITHUB_OUTPUT
-          echo "rebuild2305master=$(check_rebuild 're2305master')" >> $GITHUB_OUTPUT
+          echo "rebuild2503master=$(check_rebuild 're2503master')" >> $GITHUB_OUTPUT
           echo "rebuildCaddy=$(check_rebuild 'reCaddy')" >> $GITHUB_OUTPUT
 
       - name: "Refresh git & base config"
@@ -57,11 +57,11 @@ jobs:
           script: |
             cd ${{ env.DIR }}
             
-            if [[ needs.deploy.outputs.rebuild2305master == 'true' ]]; then            
+            if [[ needs.deploy.outputs.rebuild2503master == 'true' ]]; then            
               echo "Rebuilding 2503master"
             fi
             
-            ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'echo "Rebuilding 2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
+            ${{ needs.deploy.outputs.rebuild2503master == 'true' && 'echo "Rebuilding rebuild2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
 
             if [[ needs.deploy.outputs.rebuild_needed == 'true' ]]; then
               echo "Rebuilding"

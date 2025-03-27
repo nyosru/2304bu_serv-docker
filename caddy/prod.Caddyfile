@@ -286,6 +286,23 @@ vt.php-cat.ru {
 
 
 
+#uber
+u.php-cat.com {
+    #import tls_off
+    import tls1
+    import base
+    #import base
+    php_fastcgi uber:9000
+    root * /home_uber/uber-tele/public
+}
+
+
+
+
+
+
+
+
 #процессмастер.рф, *.процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai
 #;xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai
 #;процессмастер.рф
@@ -295,8 +312,11 @@ vt.php-cat.ru {
 процессмастер.рф {
     tls 1@php-cat.com
     import base
-    php_fastcgi docker_2503master:9000
+    php_fastcgi 2503master:9000
     root * /home/2503master/public
+
+    @showtext path /info
+    respond @showtext "домен траля ля ля22"
 }
 
 process.php-cat.com {
@@ -319,15 +339,11 @@ test-sensor.php-cat.com {
     root * /home/2503sensor/public
 }
 
-#uber
-u.php-cat.com {
-    #import tls_off
-    import tls1
-    import base
-    #import base
-    php_fastcgi uber:9000
-    root * /home_uber/uber-tele/public
-}
+
+
+
+
+
 
 
 

@@ -121,9 +121,9 @@ jobs:
           to: 360209578, phpcat,
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🍀🍀🍀 ${{ needs.deploy.outputs.rebuild_needed == 'true' && '🛠️🛠️🛠️ rebuild' || 'обновление caddy cfg' }} 
-            ${{ github.repository }} 
+            🍀🍀🍀 ${{ github.repository }} 
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
-            👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
-            ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'rebuild2305master' || '' }}
-            ${{ needs.deploy.outputs.rebuildCaddy == 'true' && 'rebuildCaddy' || '' }}
+            👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})            
+            rebuild_needed ${{ needs.deploy.outputs.rebuild_needed == 'true' && '🛠+' || '-' }} 
+            rebuild2305master ${{ needs.deploy.outputs.rebuild2305master == 'true' && '+' || '-' }}
+            rebuildCaddy ${{ needs.deploy.outputs.rebuildCaddy == 'true' && '+' || '-' }}

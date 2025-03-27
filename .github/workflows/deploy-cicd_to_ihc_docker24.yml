@@ -38,6 +38,12 @@ jobs:
             echo "rebuild2305master=false" >> $GITHUB_OUTPUT
           fi
 
+          if [[ "${{ github.event.head_commit.message }}" == *"[reCaddy]"* ]]; then
+            echo "rebuildCaddy=true" >> $GITHUB_OUTPUT
+          else
+            echo "rebuildCaddy=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: "refresh git & restart docker"
         uses: appleboy/ssh-action@master
         with:
@@ -49,10 +55,6 @@ jobs:
             git fetch --all
             git reset --hard ${{ env.GIT_BRANCH }}
 
-            # Обновление конфигурации Caddy
-            docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile
-            docker exec caddy caddy reload --config /etc/caddy/Caddyfile
-
   deploy_composer:
     runs-on: ubuntu-latest
     needs: deploy
@@ -61,6 +63,7 @@ jobs:
         include:
           - rebuild: ${{ needs.deploy.outputs.rebuild_needed }}
           - rebuild2305master: ${{ needs.deploy.outputs.rebuild2305master }}
+          - rebuildCaddy: ${{ needs.deploy.outputs.rebuildCaddy }}
     steps:
       - uses: appleboy/ssh-action@master
         with:
@@ -82,9 +85,12 @@ jobs:
               make prod
               #docker-compose down
               #docker-compose up -d --build
-            else
-              echo "Normal update"            
-              make restart_caddy_prod
+            fi
+
+            if [ "${{ matrix.rebuildCaddy }}" = "true" ]; then
+              # Обновление конфигурации Caddy
+              docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile
+              docker exec caddy caddy reload --config /etc/caddy/Caddyfile
             fi
 
   sms_start:
@@ -119,3 +125,4 @@ jobs:
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
             👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
             ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'rebuild2305master' || '' }}
+            ${{ needs.deploy.outputs.rebuildCaddy == 'true' && 'rebuildCaddy' || '' }}

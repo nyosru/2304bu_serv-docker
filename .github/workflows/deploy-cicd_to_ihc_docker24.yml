@@ -102,7 +102,7 @@ jobs:
           to: 360209578, phpcat,
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🍀🍀🍀 ${{ needs.deploy.outputs.rebuild_needed == 'true' && '🛠️🛠️🛠️ rebuild' || 'Обычное обновление' }} 
+            🍀🍀🍀 ${{ needs.deploy.outputs.rebuild_needed == 'true' && '🛠️🛠️🛠️ rebuild' || 'обновление caddy cfg' }} 
             ${{ github.repository }} 
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
             👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})

@@ -299,6 +299,13 @@ xn--80ajb0aifhffacm9b.xn--p1ai, процессмастер.рф, p.php-cat.com {
     root * /home/proc-master/public
 }
 
+process.php-cat.com {
+    tls 1@php-cat.com
+    import base
+    php_fastcgi 2503master:9000
+    root * /home/proc-master/public
+}
+
 #uber
 test-sensor.php-cat.com {
     #import tls_off

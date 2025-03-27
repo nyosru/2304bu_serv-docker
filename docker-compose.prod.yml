@@ -10,7 +10,14 @@ networks:
 #
 volumes:
   cron_volume:
+    driver: local
   portainer_data:
+#  caddy_logs:
+
+#  caddy_data:
+#    driver: local
+#  caddy_config:
+#    driver: local
 
 #  shared_caddyfile:   # Добавляем том для общего использования файла Caddyfile
 
@@ -90,6 +97,7 @@ services:
       - './caddy/Caddyfile:/etc/caddy/Caddyfile'
       - './caddy/config:/config/'
       - './caddy/data-caddy:/data/'
+#      - 'caddy_logs:/var/log/caddy'
 
       #test 2503sensor
       - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'

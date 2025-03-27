@@ -19,7 +19,18 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      rebuild_needed: ${{ steps.check_commit.outputs.rebuild }}
     steps:
+
+      - name: Check commit message
+        id: check_commit
+        run: |
+          if [[ "${{ github.event.head_commit.message }}" == *"[rebuild]"* ]]; then
+            echo "rebuild_needed=true" >> $GITHUB_OUTPUT
+          else
+            echo "rebuild_needed=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: "refresh git & restart docker"
         uses: appleboy/ssh-action@master
@@ -32,26 +43,17 @@ jobs:
             git fetch --all
             git reset --hard ${{ env.GIT_BRANCH }}
 
-#  deploy_composer_stop:
-#    runs-on: ubuntu-latest
-#    needs: deploy
-#    steps:
-#      - uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ env.VPS_IP }}
-#          username: ${{ env.VPS_USERNAME }}
-#          key: ${{ secrets.DEPLOY_KEY_DOCKER24 }}
-#          script: |
-#            cd ${{ env.DIR }}
-#            docker-compose down --remove-orphans
-
-
-
+            # Обновление конфигурации Caddy
+            docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile
+            docker exec caddy caddy reload --config /etc/caddy/Caddyfile
 
   deploy_composer:
     runs-on: ubuntu-latest
-#    needs: deploy_composer_stop
     needs: deploy
+    strategy:
+      matrix:
+        include:
+          - rebuild: ${{ needs.deploy.outputs.rebuild_needed }}
     steps:
       - uses: appleboy/ssh-action@master
         with:
@@ -62,7 +64,17 @@ jobs:
 
           script: |
             cd ${{ env.DIR }}
-            make prod
+            
+            if [ "${{ matrix.rebuild }}" = "true" ]; then
+              echo "Full rebuild started"
+              make prod
+              #docker-compose down
+              #docker-compose up -d --build
+            else
+              echo "Normal update"
+              #make prod
+              docker-compose restart caddy
+            fi
 
   sms_start:
     runs-on: ubuntu-latest
@@ -82,6 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     # needs: [deploy_composer, deploy_npm]
     needs: deploy_composer
+
     steps:
       - name: send telega
         uses: appleboy/telegram-action@master
@@ -93,19 +106,4 @@ jobs:
             🍀🍀🍀 ${{ github.repository }} 
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
             👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
-
-
-  # Шаг для отправки сообщения об ошибке
-  sms_error:
-    runs-on: ubuntu-latest
-    if: failure()  # Отправляем сообщение только в случае ошибки
-    steps:
-      - name: send error telega
-        uses: appleboy/telegram-action@master
-        with:
-          to: 360209578, phpcat,
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ❌❌❌ Ошибка в ${{ github.repository }} 
-            Действие: ${{ github.event_name }} > ${{ github.event.head_commit.message }}
-            Ошибку вызвал: 👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
+            🛠️ Режим: ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'Rebuild' || 'Обычное обновление' }}

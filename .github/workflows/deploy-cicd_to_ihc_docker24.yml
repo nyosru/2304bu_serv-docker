@@ -16,7 +16,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     outputs:
-      rebuild_needed: ${{ steps.check_commit.outputs.rebuild }}
+      rebuild_needed: ${{ steps.check_commit.outputs.rebuild_needed }}
       rebuild2503master: ${{ steps.check_commit.outputs.rebuild2503master }}
       rebuildCaddy: ${{ steps.check_commit.outputs.rebuildCaddy }}
 

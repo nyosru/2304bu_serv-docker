@@ -19,6 +19,7 @@ jobs:
       rebuild_needed: ${{ steps.check_commit.outputs.rebuild }}
       rebuild2305master: ${{ steps.check_commit.outputs.rebuild2305master }}
       rebuildCaddy: ${{ steps.check_commit.outputs.rebuildCaddy }}
+
     steps:
       - name: Check commit message
         id: check_commit
@@ -57,10 +58,14 @@ jobs:
             cd ${{ env.DIR }}
             
             if [[ needs.deploy.outputs.rebuild2305master == 'true' ]]; then            
-            echo "Rebuilding 2503master"
+              echo "Rebuilding 2503master"
             fi
             
             ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'echo "Rebuilding 2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
+
+            if [[ needs.deploy.outputs.rebuild_needed == 'true' ]]; then
+              echo "Rebuilding"
+            fi            
             
             ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
             

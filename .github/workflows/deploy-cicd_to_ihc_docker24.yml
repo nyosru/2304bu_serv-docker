@@ -57,9 +57,9 @@ jobs:
           script: |
             cd ${{ env.DIR }}
             
-            echo ${{needs.deploy.outputs.rebuild_needed}}
-            echo ${{needs.deploy.outputs.rebuild2503master}}
-            echo ${{needs.deploy.outputs.rebuildCaddy}}
+            echo ${{needs.deploy.outputs.rebuild_needed || 'x' }}
+            echo ${{needs.deploy.outputs.rebuild2503master || 'x' }}
+            echo ${{needs.deploy.outputs.rebuildCaddy || 'x' }}
             
             if [[ needs.deploy.outputs.rebuild2503master == 'true' ]]; then            
               echo "Rebuilding 2503master"
@@ -67,8 +67,9 @@ jobs:
             
             ${{ needs.deploy.outputs.rebuild2503master == 'true' && 'echo "Rebuilding rebuild2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
 
-            if [[ needs.deploy.outputs.rebuild_needed == 'true' ]]; then
+            if [[ ${{needs.deploy.outputs.rebuild_needed}} == 'true' ]]; then
               echo "Rebuilding"
+              make prod
             fi            
             
             ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}

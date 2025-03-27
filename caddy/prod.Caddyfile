@@ -319,11 +319,12 @@ u.php-cat.com {
     respond @showtext "домен траля ля ля22"
 }
 
+
 process.php-cat.com {
     import tls1
     import base
-    php_fastcgi docker_2503master:9000
-    root * /home/proc-master/public
+    php_fastcgi 2503master:9000
+    root * /home/2503master/public
 
     @showtext path /info
     respond @showtext "домен траля ля ля"

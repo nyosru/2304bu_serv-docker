@@ -25,7 +25,7 @@ jobs:
         id: check_commit
         run: |
           check_rebuild() {
-            [[ "${{ github.event.head_commit.message }}" == *"[$1]"* ]] && echo "true" || echo "false"
+            [[ "${{ github.event.head_commit.message }}" == *"[$1+"* ]] && echo "true" || echo "false"
           }
           
           echo "rebuild_needed=$(check_rebuild 'rebuild')" >> $GITHUB_OUTPUT

@@ -105,3 +105,4 @@ jobs:
             🔧 Rebuild Needed: ${{ needs.deploy.outputs.rebuild_needed || '-'  }}
             🖥️ 2503master Rebuild: ${{ needs.deploy.outputs.rebuild2503master || '-'  }}
             🔐 Caddy Update: ${{ needs.deploy.outputs.rebuildCaddy || '-'  }}
+            🔐 Caddy Update: ${{ needs.deploy.outputs.rebuild2503master == 'true' || 'xx' }}

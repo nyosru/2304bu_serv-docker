@@ -80,10 +80,10 @@ jobs:
                               
             if [ "${{ needs.deploy.outputs.rebuildCaddy }}" == 'true' ]; then
               echo "rebuildCaddy +"
-              make caddy_refresh_cfd
-            else            
+              make caddy_refresh_cfd_prod
+            else
               echo "rebuildCaddy -"
-            fi            
+            fi
 
             #$#{{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
 
@@ -102,7 +102,6 @@ jobs:
             Commit: ${{ github.event.head_commit.message || '-' }}
             By: ${{ github.actor }} (Run ID: ${{ github.run_id }})
             
-            🔧 Rebuild Needed: ${{ needs.deploy.outputs.rebuild_needed || '-'  }}
-            🖥️ 2503master Rebuild: ${{ needs.deploy.outputs.rebuild2503master || '-'  }}
-            🔐 Caddy Update: ${{ needs.deploy.outputs.rebuildCaddy || '-'  }}
+            🔧 Rebuild Needed: ${{ needs.deploy.outputs.rebuild_needed }}
+            🖥️ 2503master Rebuild: ${{ needs.deploy.outputs.rebuild2503master }}            
             🔐 Caddy Update: ${{ needs.deploy.outputs.rebuildCaddy }}

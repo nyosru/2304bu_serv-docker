@@ -29,8 +29,8 @@ jobs:
           }
           
           echo "rebuild_needed=$(check_rebuild 'rebuild')" >> $GITHUB_OUTPUT
-          echo "rebuild2503master=$(check_rebuild 're2503master')" >> $GITHUB_OUTPUT
-          echo "rebuildCaddy=$(check_rebuild 'reCaddy')" >> $GITHUB_OUTPUT
+          echo "rebuild2503master=$(check_rebuild 'rebuild2503master')" >> $GITHUB_OUTPUT
+          echo "rebuildCaddy=$(check_rebuild 'rebuildCaddy')" >> $GITHUB_OUTPUT
 
       - name: "Refresh git & base config"
         if: ${{ always() }}

@@ -21,11 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       rebuild_needed: ${{ steps.check_commit.outputs.rebuild }}
+      rebuild2305master: ${{ steps.check_commit.outputs.rebuild2305master }}
+      rebuildCaddy: ${{ steps.check_commit.outputs.rebuildCaddy }}
     steps:
 
       - name: Check commit message
         id: check_commit
         run: |
+          
           if [[ "${{ github.event.head_commit.message }}" == *"[rebuild]"* ]]; then
             echo "rebuild_needed=true" >> $GITHUB_OUTPUT
           else
@@ -42,7 +45,7 @@ jobs:
             echo "rebuildCaddy=true" >> $GITHUB_OUTPUT
           else
             echo "rebuildCaddy=false" >> $GITHUB_OUTPUT
-          fi
+          fis
 
       - name: "refresh git & restart docker"
         uses: appleboy/ssh-action@master
@@ -58,12 +61,12 @@ jobs:
   deploy_composer:
     runs-on: ubuntu-latest
     needs: deploy
-    strategy:
-      matrix:
-        include:
-          - rebuild: ${{ needs.deploy.outputs.rebuild_needed }}
-          - rebuild2305master: ${{ needs.deploy.outputs.rebuild2305master }}
-          - rebuildCaddy: ${{ needs.deploy.outputs.rebuildCaddy }}
+#    strategy:
+#      matrix:
+#        include:
+#          - rebuild: ${{ needs.deploy.outputs.rebuild_needed }}
+#          - rebuild2305master: ${{ needs.deploy.outputs.rebuild2305master }}
+#          - rebuildCaddy: ${{ needs.deploy.outputs.rebuildCaddy }}
     steps:
       - name: Conditional steps
         uses: appleboy/ssh-action@master
@@ -76,28 +79,28 @@ jobs:
           script: |
             cd ${{ env.DIR }}
 
-#            ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'echo "Rebuilding 2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
-#            ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
-#            ${{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
+            ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'echo "Rebuilding 2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
+            ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
+            ${{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
 
-            if [ "${{ matrix.rebuild2305master }}" = "true" ]; then
-              echo "re2305master"
-              make d-rebuild-2503master
-            fi
-
-            if [ "${{ matrix.rebuild }}" = "true" ]; then
-              echo "Full rebuild started"
-              make prod
-              #docker-compose down
-              #docker-compose up -d --build
-            fi
-
-            if [ "${{ matrix.rebuildCaddy }}" = "true" ]; then
-              echo "Обновление конфигурации Caddy"
-              docker-compose up
-              docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile
-              docker exec caddy caddy reload --config /etc/caddy/Caddyfile
-            fi
+#            if [ "${{ matrix.rebuild2305master }}" = "true" ]; then
+#              echo "re2305master"
+#              make d-rebuild-2503master
+#            fi
+#
+#            if [ "${{ matrix.rebuild }}" = "true" ]; then
+#              echo "Full rebuild started"
+#              make prod
+#              #docker-compose down
+#              #docker-compose up -d --build
+#            fi
+#
+#            if [ "${{ matrix.rebuildCaddy }}" = "true" ]; then
+#              echo "Обновление конфигурации Caddy"
+#              docker-compose up
+#              docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile
+#              docker exec caddy caddy reload --config /etc/caddy/Caddyfile
+#            fi
 
 
   sms_start:

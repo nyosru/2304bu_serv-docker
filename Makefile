@@ -125,7 +125,7 @@ prod:
 
 
 
-restart_caddy:
+restart_caddy_prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 	docker-compose up -d --remove-orphans

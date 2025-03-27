@@ -72,8 +72,7 @@ jobs:
               #docker-compose up -d --build
             else
               echo "Normal update"
-              #make prod
-              docker-compose restart caddy
+              make restart_caddy_prod
             fi
 
   sms_start:
@@ -103,7 +102,7 @@ jobs:
           to: 360209578, phpcat,
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            🍀🍀🍀 ${{ github.repository }} 
+            🍀🍀🍀 ${{ needs.deploy.outputs.rebuild_needed == 'true' && '🛠️🛠️🛠️ rebuild' || 'Обычное обновление' }} 
+            ${{ github.repository }} 
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
             👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
-            🛠️ Режим: ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'Rebuild' || 'Обычное обновление' }}

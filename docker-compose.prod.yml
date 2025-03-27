@@ -250,8 +250,8 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2503MASTER_SERV}
     restart: unless-stopped
-    expose:
-      - 9000
+#    expose:
+#      - 9000
     volumes:
       - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
 

@@ -77,8 +77,8 @@ jobs:
             fi            
             
             #$#{{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
-            
-            if [[ needs.deploy.outputs.rebuildCaddy == 'true' ]]; then
+                              
+            if [[ ${{ needs.deploy.outputs.rebuildCaddy }} == 'true' ]]; then
               echo "rebuildCaddy +"
               make caddy_refresh_cfd
             else            

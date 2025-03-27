@@ -55,6 +55,10 @@ jobs:
           script: |
             cd ${{ env.DIR }}
             
+            if [[ needs.deploy.outputs.rebuild2305master == 'true' ]]; then            
+            echo "Rebuilding 2503master"
+            fi
+            
             ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'echo "Rebuilding 2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
             
             ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}

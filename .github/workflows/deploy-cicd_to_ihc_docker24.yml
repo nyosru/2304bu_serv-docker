@@ -76,9 +76,15 @@ jobs:
               echo "Rebuilding -"
             fi            
             
-            ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
+            #$#{{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
             
-            ${{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
+            #$#{{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
+            if [[ needs.deploy.outputs.rebuildCaddy == 'true' ]]; then
+              echo "rebuildCaddy +"
+              make caddy_refresh_cfd
+            else            
+              echo "rebuildCaddy -"
+            fi            
 
   sms_end:
     runs-on: ubuntu-latest

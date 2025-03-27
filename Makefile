@@ -357,7 +357,10 @@ caddy_refresh_cfd:
 	#docker exec -w /etc/caddy caddy caddy fmt
 	#docker exec -w /etc/caddy caddy2 caddy reload
 	#docker exec -w /etc/caddy caddy caddy reload
-	docker restart caddy
+	#docker restart caddy
+	cp caddy/prod.Caddyfile caddy/Caddyfile
+	docker exec caddy caddy reload --config /etc/caddy/Caddyfile
+
 
 
 

@@ -300,7 +300,7 @@ vt.php-cat.ru {
 }
 
 process.php-cat.com {
-    tls 1@php-cat.com
+    import tls1
     import base
     php_fastcgi 2503master:9000
     root * /home/proc-master/public

@@ -65,7 +65,8 @@ jobs:
           - rebuild2305master: ${{ needs.deploy.outputs.rebuild2305master }}
           - rebuildCaddy: ${{ needs.deploy.outputs.rebuildCaddy }}
     steps:
-      - uses: appleboy/ssh-action@master
+      - name: Conditional steps
+        uses: appleboy/ssh-action@master
         with:
 
           host: ${{ env.VPS_IP }}
@@ -74,12 +75,16 @@ jobs:
 
           script: |
             cd ${{ env.DIR }}
-            
+
+#            ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'echo "Rebuilding 2503master" && make d-rebuild-2503master' || 'echo "Skipping 2503master rebuild"' }}
+#            ${{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
+#            ${{ needs.deploy.outputs.rebuildCaddy == 'true' && 'echo "Updating Caddy config" && docker-compose up -d caddy && docker cp ./caddy/Caddyfile caddy:/etc/caddy/Caddyfile && docker exec caddy caddy reload --config /etc/caddy/Caddyfile' || 'echo "Skipping Caddy update"' }}
+
             if [ "${{ matrix.rebuild2305master }}" = "true" ]; then
               echo "re2305master"
               make d-rebuild-2503master
             fi
-            
+
             if [ "${{ matrix.rebuild }}" = "true" ]; then
               echo "Full rebuild started"
               make prod
@@ -123,7 +128,8 @@ jobs:
           message: |
             🍀🍀🍀 ${{ github.repository }} 
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
-            👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})            
-            rebuild_needed ${{ needs.deploy.outputs.rebuild_needed == 'true' && '🛠+' || '-' }} 
-            rebuild2305master ${{ needs.deploy.outputs.rebuild2305master == 'true' && '+' || '-' }}
-            rebuildCaddy ${{ needs.deploy.outputs.rebuildCaddy == 'true' && '+' || '-' }}
+            👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
+            ----
+            🔧 Rebuild Needed: ${{ needs.deploy.outputs.rebuild_needed }}
+            🖥️ 2503master Rebuild: ${{ needs.deploy.outputs.rebuild2305master }}
+            🔐 Caddy Update: ${{ needs.deploy.outputs.rebuildCaddy }}

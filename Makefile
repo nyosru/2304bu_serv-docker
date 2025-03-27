@@ -431,3 +431,6 @@ restart-cron:
 	#docker exec cron-service service cron start
 	docker exec cron-service service cron reload
 	@echo "Cron service restarted with new configuration."
+
+d-rebuild-2503master:
+	docker-compose up -d --force-recreate --build 2503master

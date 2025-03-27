@@ -99,6 +99,9 @@ services:
       - './caddy/data-caddy:/data/'
 #      - 'caddy_logs:/var/log/caddy'
 
+
+      #proc-master
+      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
       #test 2503sensor
       - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'
 
@@ -106,8 +109,6 @@ services:
       - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
 
       - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
-#proc-master
-      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
 
       #- './caddy/certs:/data/caddy/locks/'
       #- './caddy/data-caddy:/data/caddy/'
@@ -125,6 +126,7 @@ services:
 
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+
       - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
       - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
@@ -132,6 +134,7 @@ services:
       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
       - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+
 #      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
 #      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
 
@@ -1056,22 +1059,16 @@ services:
       - db_mysql:db
     networks:
       - laravel
-    #        - shared_network
     build:
       context: .
       dockerfile: docker.2503master.Dockerfile
-    #        dockerfile: docker.2309livewire.Dockerfile
     working_dir: ${FOLDER_2503MASTER_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2503MASTER_SERV}
     restart: unless-stopped
-    #      links:
-    #        - web_scraper2:parser_service
-    #    expose:
-    #      - 9000
+    expose:
+      - 9000
     volumes:
       - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
-
-

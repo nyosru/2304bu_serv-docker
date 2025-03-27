@@ -32,6 +32,12 @@ jobs:
             echo "rebuild_needed=false" >> $GITHUB_OUTPUT
           fi
 
+          if [[ "${{ github.event.head_commit.message }}" == *"[rebuild2305master]"* ]]; then
+            echo "rebuild2305master=true" >> $GITHUB_OUTPUT
+          else
+            echo "rebuild2305master=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: "refresh git & restart docker"
         uses: appleboy/ssh-action@master
         with:
@@ -54,6 +60,7 @@ jobs:
       matrix:
         include:
           - rebuild: ${{ needs.deploy.outputs.rebuild_needed }}
+          - rebuild2305master: ${{ needs.deploy.outputs.rebuild2305master }}
     steps:
       - uses: appleboy/ssh-action@master
         with:
@@ -71,7 +78,13 @@ jobs:
               #docker-compose down
               #docker-compose up -d --build
             else
-              echo "Normal update"
+              echo "Normal update"            
+            
+              if [ "${{ matrix.rebuild2305master }}" = "true" ]; then
+                echo "re2305master"
+                make d-rebuild-2503master
+              fi
+            
               make restart_caddy_prod
             fi
 
@@ -106,3 +119,4 @@ jobs:
             ${{ github.repository }} 
             ${{ github.event_name }} > ${{ github.event.head_commit.message }}
             👨🏻‍💻 ${{github.actor}} (${{ github.run_id }})
+            ${{ needs.deploy.outputs.rebuild2305master == 'true' && 'rebuild2305master' || '' }}

@@ -307,7 +307,16 @@ u.php-cat.com {
 
 
 #процессмастер.рф, process.php-cat.com {
-xn--80ajb0aifhffacm9b.xn--p1ai, process.php-cat.com {
+процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai {
+    import tls1
+    import base
+    php_fastcgi proc_master:9000
+    root * /home/2503master/public
+
+    @showtext path /info
+    respond @showtext "домен траля ля ля"
+}
+process.php-cat.com {
     import tls1
     import base
     php_fastcgi proc_master:9000

@@ -311,12 +311,15 @@ u.php-cat.com {
 
 процессмастер.рф {
     tls 1@php-cat.com
-    import base
-    php_fastcgi 2503master:9000
-    root * /home/2503master/public
+#    import base
+    reverse_proxy 2503master:80
 
-    @showtext path /info
-    respond @showtext "домен траля ля ля22"
+#    php_fastcgi 2503master:9000
+#    root * /home/2503master/public
+#
+#    @showtext path /info
+#    respond @showtext "домен траля ля ля22"
+
 }
 
 

@@ -303,21 +303,23 @@ u.php-cat.com {
 
 
 
-#процессмастер.рф, *.процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai
-#;xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai
-#;процессмастер.рф
-#
-#p.php-cat.com {
 
 процессмастер.рф {
     tls 1@php-cat.com
-#    import base
-#    reverse_proxy 2503master:9000
-
-    php_fastcgi 2503master:9000
+    import base
+    php_fastcgi proc_master:9000
     root * /home/2503master/public
-#
-    @showtext path /info
+
+    #
+    #    reverse_proxy 2503master:9000
+
+    #процессмастер.рф, *.процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai
+    #;xn--80ajb0aifhffacm9b.xn--p1ai, *.xn--80ajb0aifhffacm9b.xn--p1ai
+    #;процессмастер.рф
+    #
+    #p.php-cat.com {
+
+    @showtext path /ii
     respond @showtext "домен траля ля ля22"
 
 }

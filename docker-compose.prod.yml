@@ -1,7 +1,8 @@
 version: '3.8'
 
 networks:
-  docker_laravel:
+  laravel:
+    driver: bridge
 
 volumes:
   cron_volume:
@@ -120,14 +121,14 @@ services:
     ##      - 2312didrive_auto_prod
 
     networks:
-      - docker_laravel
+      - laravel
 
 
   db_mysql:
     container_name: db_mysql
     image: mariadb:10.7.8
     networks:
-      - docker_laravel
+      - laravel
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
@@ -150,7 +151,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
 
   #
   #
@@ -162,7 +163,7 @@ services:
   2503sensor:
     container_name: 2503sensor
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.2503sensor.Dockerfile
@@ -181,14 +182,14 @@ services:
     #    expose:
     #      - 9000
 
-  2503master:
-    container_name: 2503master
+  proc_master:
+    container_name: proc_master
     depends_on:
       - db_mysql
     links:
       - db_mysql:db
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.2503master.Dockerfile
@@ -198,8 +199,8 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2503MASTER_SERV}
     restart: unless-stopped
-#    expose:
-#      - 9000
+    expose:
+      - 9000
     volumes:
       - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
 
@@ -209,7 +210,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.2503uber.Dockerfile
@@ -234,7 +235,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
       #- shared_network
     build:
       context: .
@@ -273,7 +274,7 @@ services:
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 
     networks:
-      - docker_laravel
+      - laravel
     depends_on:
       - db_mysql
 
@@ -282,7 +283,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
 #      - shared_network
     build:
       context: .
@@ -313,7 +314,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.php74_soap.Dockerfile
@@ -336,7 +337,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.laravel_vue.Dockerfile
@@ -361,7 +362,7 @@ services:
     #    depends_on:
     #      - db_mysql
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.test231116php.Dockerfile
@@ -381,7 +382,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.laravel.Dockerfile
@@ -402,7 +403,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.laravel_vue.Dockerfile
@@ -426,7 +427,7 @@ services:
     depends_on:
       - db_mysql
     networks:
-      - docker_laravel
+      - laravel
     build:
       context: .
       dockerfile: docker.laravel-php74.Dockerfile
@@ -451,7 +452,7 @@ services:
 ##    depends_on:
 ##      - db_mysql
 #    networks:
-#      - docker_laravel
+#      - laravel
 #    build:
 #      context: .
 #      dockerfile: docker.bitrix24.Dockerfile
@@ -475,7 +476,7 @@ services:
 #    depends_on:
 #      - db_mysql
 #    networks:
-#      - docker_laravel
+#      - laravel
 #    build:
 #      context: .
 #      dockerfile: docker.laravel.Dockerfile
@@ -508,7 +509,7 @@ services:
 #      - /var/run/docker.sock:/var/run/docker.sock
 #    restart: unless-stopped
 #    networks:
-#      - docker_laravel
+#      - laravel
 
 
 #  web_scraper2:
@@ -526,7 +527,7 @@ services:
 #      #- xxFLASK_ENV=develop
 #      #- DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
 #    networks:
-#      - docker_laravel
+#      - laravel
 
 
   #
@@ -535,7 +536,7 @@ services:
   #    depends_on:
   #      - db_mysql
   #    networks:
-  #      - docker_laravel
+  #      - laravel
   #    build:
   #      context: .
   #      dockerfile: ${TEST231012_DOCKERFILE}
@@ -554,7 +555,7 @@ services:
   #    depends_on:
   #      - db_mysql
   #    networks:
-  #      - docker_laravel
+  #      - laravel
   #    links:
   #      - db_mysql:ss_db
   #    build:
@@ -589,7 +590,7 @@ services:
 #    volumes:
 #      - '${AS_MYSQL_DB_FOLDER}:/var/lib/mysql'
 #    networks:
-#      - docker_laravel
+#      - laravel
 #
 #  #++
 #  phpmyadmin_as:
@@ -605,7 +606,7 @@ services:
 #    depends_on:
 #      - db_mysql_as
 #    networks:
-#      - docker_laravel
+#      - laravel
 #
 #
 #
@@ -627,7 +628,7 @@ services:
 #    expose:
 #      - 9000
 #    networks:
-#      - docker_laravel
+#      - laravel
 #    links:
 #      - db_mysql_as:db
 #    depends_on:
@@ -652,7 +653,7 @@ services:
 #    expose:
 #      - 9000
 #    networks:
-#      - docker_laravel
+#      - laravel
 #    links:
 #      - db_mysql_as:db
 #    depends_on:
@@ -682,7 +683,7 @@ services:
 #    links:
 #      - db_mysql_as:db
 #    networks:
-#      - docker_laravel
+#      - laravel
 #    depends_on:
 #      - db_mysql_as
 #  #
@@ -706,7 +707,7 @@ services:
 #  #  #    links:
 #  #  #      - db_mysql_as:db
 #  #  #    networks:
-#  #  #      - docker_laravel
+#  #  #      - laravel
 #  #  #    depends_on:
 #  #  #      - db_mysql_as
 #  #
@@ -847,7 +848,7 @@ services:
 ##      PORT_PROMISCUOUS: 0
 #    restart: always
 #    networks:
-#      - docker_laravel
+#      - laravel
 
 
 
@@ -888,7 +889,7 @@ services:
 #      - '/home_ftp2:/home/vsftpd/user2'
 #    restart: always
 #    networks:
-#      - docker_laravel
+#      - laravel
 #
 #  ftp-server:
 #    image: fauria/vsftpd
@@ -920,7 +921,7 @@ services:
 #      - '/home_ftp2:/home/vsftpd/user2'
 #    restart: always
 #    networks:
-#      - docker_laravel
+#      - laravel
 #
 
 
@@ -983,7 +984,7 @@ services:
 #    expose:
 #      - 9000
 #    networks:
-#      - docker_laravel
+#      - laravel
 #    #    links:
 #    #      - db_mysql_as:db
 #    #    depends_on:
@@ -1005,7 +1006,7 @@ services:
 #      #        - db_mysql2412
 #      - db_mysql
 #    networks:
-#      - docker_laravel
+#      - laravel
 #      #        - shared_network
 #    #        - web2412
 #    build:

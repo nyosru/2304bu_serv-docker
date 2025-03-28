@@ -27,15 +27,15 @@ RUN apt-get update -y \
     && docker-php-ext-enable zip
 
 # Установка расширения SOAP
-#RUN docker-php-ext-install soap
+RUN docker-php-ext-install soap
 
 # Install GD extension
-#RUN apt-get update \
-#    && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
-#    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-#    && docker-php-ext-install -j$(nproc) gd
+RUN apt-get update \
+    && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
-#RUN docker-php-ext-enable gd
+RUN docker-php-ext-enable gd
 
 # # # Get latest Composer
 COPY --from=dockerhub.timeweb.cloud/library/composer:latest /usr/bin/composer /usr/bin/composer

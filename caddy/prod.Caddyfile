@@ -317,8 +317,8 @@ u.php-cat.com {
 #    php_fastcgi 2503master:9000
 #    root * /home/2503master/public
 #
-#    @showtext path /info
-#    respond @showtext "домен траля ля ля22"
+    @showtext path /info
+    respond @showtext "домен траля ля ля22"
 
 }
 

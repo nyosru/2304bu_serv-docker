@@ -81,19 +81,19 @@
 
 
 
-#самыетюменскиеновости.рф {
-#    # redir https://stn.dev.php-cat.com{uri} 301
-#    tls 1@php-cat.com
-#    import base
-#    import 2309livewire
-#}
+самыетюменскиеновости.рф {
+    # redir https://stn.dev.php-cat.com{uri} 301
+    tls 1@php-cat.com
+    import base
+    import 2309livewire
+}
 #
-#приватизациягаража.рф {
-#    #    redir https://privat.php-cat.com{uri} 301
-#    tls 1@php-cat.com
-#    import base
-#    import 2309livewire
-#}
+приватизациягаража.рф {
+    #    redir https://privat.php-cat.com{uri} 301
+    tls 1@php-cat.com
+    import base
+    import 2309livewire
+}
 
 
 
@@ -112,10 +112,11 @@
 
 # таймер.сергейсб.рф
 #xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
+таймер.сергейсб.рф {
+    import tls1
+    import base
+    import 2309livewire
+}
 
 #ar.php-cat.com {
 #    import base
@@ -129,18 +130,19 @@
 #    import 2309livewire
 #}
 
-#php-cat.com, php-cat.ru {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
+php-cat.com, php-cat.ru {
+    import tls1
+    import base
+    import 2309livewire
+}
 
 # скидки.сергейсб.рф
 #kprf72.ru, skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
+kprf72.ru, скидки.сергейсб.рф {
+    import tls1
+    import base
+    import 2309livewire
+}
 
 #api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
 #    import base
@@ -150,17 +152,19 @@
 
 # складдокументов.рф
 #xn--80aefaf0adenlhe2ayl.xn--p1ai {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
+складдокументов.рф {
+    import tls1
+    import base
+    import 2309livewire
+}
 
 # тюменскаяафиша.рф {
 #ттт72.рф, ttt72.ru, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
+тюменскаяафиша.рф {
+    import tls1
+    import base
+    import 2309livewire
+}
 
 # вячеслав
 #, народноехозяйство.рус {
@@ -212,12 +216,12 @@ xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
     root * /home/2308beget/public
 }
 
-# управлятор.рф, vk.files.php-cat.com {
-#xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
+управлятор.рф, vk.files.php-cat.com {
+    #xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
+    import tls1
+    import base
+    import 2309livewire
+}
 
 #as.php-cat.com {
 #    import tls1

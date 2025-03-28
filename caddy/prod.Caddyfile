@@ -312,10 +312,10 @@ u.php-cat.com {
     tls 1@php-cat.com
     import base
 
-    reverse_proxy proc_master:80
+#    reverse_proxy proc_master:80
 
-#    php_fastcgi proc_master:9000
-#    root * /home/2503master/public
+    php_fastcgi proc_master:9000
+    root * /home/2503master/public
 
     #
     #    reverse_proxy 2503master:9000

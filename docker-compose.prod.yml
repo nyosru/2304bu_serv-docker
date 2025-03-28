@@ -103,7 +103,7 @@ services:
       - 2309livewire
       - 2410svo
       - 2503sensor
-      - 2503master
+      - proc_master
 
       - 2401test
       - test231116php

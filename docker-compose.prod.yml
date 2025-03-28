@@ -7,19 +7,19 @@ networks:
 volumes:
   cron_volume:
     driver: local
-  portainer_data:
+#  portainer_data:
 
 services:
 
-  portainer:
-    image: portainer/portainer-ce
-    container_name: portainer
-    restart: always
-    ports:
-      - "9008:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+#  portainer:
+#    image: portainer/portainer-ce
+#    container_name: portainer
+#    restart: always
+#    ports:
+#      - "9008:9000"
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - portainer_data:/data
 
   cron:
     build:
@@ -52,6 +52,7 @@ services:
 
       #proc-master
       - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+
       #test 2503sensor
       - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'
 
@@ -199,6 +200,8 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2503MASTER_SERV}
     restart: unless-stopped
+#    ports:
+#      - "9000:9001"
     expose:
       - 9000
     volumes:

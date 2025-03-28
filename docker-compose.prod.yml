@@ -3,8 +3,8 @@ version: '3.8'
 networks:
   laravel:
 #    driver: bridge
-  shared_network:
-    external: true
+#  shared_network:
+#    external: true
 
 
 #
@@ -335,7 +335,7 @@ services:
       - db_mysql
     networks:
       - laravel
-      - shared_network
+#      - shared_network
     build:
       context: .
       dockerfile: docker.2309livewire.Dockerfile

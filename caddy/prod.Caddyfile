@@ -151,8 +151,8 @@ kprf72.ru, скидки.сергейсб.рф {
 #}
 
 # складдокументов.рф
-#xn--80aefaf0adenlhe2ayl.xn--p1ai {
-складдокументов.рф {
+xn--80aefaf0adenlhe2ayl.xn--p1ai {
+
     import tls1
     import base
     import 2309livewire
@@ -160,7 +160,7 @@ kprf72.ru, скидки.сергейсб.рф {
 
 # тюменскаяафиша.рф {
 #ттт72.рф, ttt72.ru, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-тюменскаяафиша.рф {
+xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
     import tls1
     import base
     import 2309livewire
@@ -216,8 +216,8 @@ xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
     root * /home/2308beget/public
 }
 
-управлятор.рф, vk.files.php-cat.com {
-    #xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
+#управлятор.рф, vk.files.php-cat.com {
+xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
     import tls1
     import base
     import 2309livewire

@@ -112,9 +112,8 @@ xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
 #    import 2309livewire
 #}
 
-# таймер.сергейсб.рф
-#xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
-таймер.сергейсб.рф {
+# таймер.сергейсб.рф {
+xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
     import tls1
     import base
     import 2309livewire

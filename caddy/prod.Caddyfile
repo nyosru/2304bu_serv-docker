@@ -305,7 +305,8 @@ u.php-cat.com {
 
 
 
-процессмастер.рф, process.php-cat.com {
+#процессмастер.рф, process.php-cat.com {
+xn--80ajb0aifhffacm9b.xn--p1ai, process.php-cat.com {
     import tls1
     import base
     php_fastcgi proc_master:9000

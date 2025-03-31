@@ -350,14 +350,16 @@ start_avtoas_didrive_prod:
 	docker exec 2312didrive_auto_prod php artisan storage:link
 
 
-
-
-
 caddy_refresh_cfd_prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	docker exec caddy caddy fmt --overwrite /etc/caddy/Caddyfile
 	docker exec caddy caddy reload --config /etc/caddy/Caddyfile
 
+
+caddy_refresh_cfd:
+	cp caddy/dev.Caddyfile caddy/Caddyfile
+	docker exec caddy caddy fmt --overwrite /etc/caddy/Caddyfile
+	docker exec caddy caddy reload --config /etc/caddy/Caddyfile
 
 
 start0:

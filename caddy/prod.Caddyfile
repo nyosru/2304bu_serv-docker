@@ -337,7 +337,6 @@ test-sensor.php-cat.com {
     root * /home/2503sensor/public
 }
 
-
 testapi2503.php-cat.com {
     tls 1@php-cat.com
     import base

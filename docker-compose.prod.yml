@@ -165,8 +165,6 @@ services:
 
   2503testapi:
     container_name: 2503testapi
-    networks:
-      - laravel
     build:
       context: .
       dockerfile: docker.2503testapi.Dockerfile
@@ -178,6 +176,8 @@ services:
     restart: unless-stopped
     volumes:
       - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
+    networks:
+      - laravel
 
 
 

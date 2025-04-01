@@ -64,64 +64,18 @@ devv:
 	docker-compose up -d --remove-orphans
 	#make caddy_refresh_cfd
 
+
 prod:
 	cp caddy/prod.Caddyfile caddy/Caddyfile
-	#cp caddy/prod.Caddyfile caddy2/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
-	#docker-compose up -d --build --remove-orphans --no-recreate caddy
-
-	#docker-compose up -d --build --remove-orphans
 
 	docker-compose down --rmi all -v
-	docker-compose up -d --build --remove-orphans
 
-	#docker-compose up -d --build
-	#make start_2309livewire
-	#make start_2410svo
-	#make start_base12narek
-	make caddy_refresh_cfd
+	docker-compose up -d --build
+
+	make caddy_refresh_cfd_prod
 	#docker system prune --force
 
-
-# cp caddy/prod.Caddyfile caddy/Caddyfile
-# cp docker-compose.prod.yml docker-compose.yml
-#docker-compose up -d --build
-
-#	make start_2309livewire
-#	make start_2308beget_dev
-#	make start_base17
-
-#	make start_test231012
-#	make start_2302didrive
-# make start_2401test
-
-#make start_as_didrive
-#make start_as
-
-#	make start_avtoas
-#	#make start_avtoas_prod
-#	make start_avtoas_didrive
-#	#make start_avtoas_didrive_prod
-
-
-#	make start_2308beget_dev
-#	make start_base17
-# make start_base16sites
-
-# docker exec 2309larawire composer i
-# docker exec 2309larawire php artisan migrate
-
-# docker exec ttt72 composer i
-# docker exec ttt72 php artisan migrate
-
-# docker exec base17 composer i
-# docker exec base17 php artisan migrate
-# # docker exec base17_node npm i
-# # docker exec base17 npm i
-
-# docker exec sym_test composer i
-# docker exec sym_test symfony -h
-# docker exec sym_test php composer i
 
 
 

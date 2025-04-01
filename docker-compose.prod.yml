@@ -163,14 +163,12 @@ services:
   #
   #
 
-
-
   2503testapi:
     container_name: 2503testapi
-    depends_on:
-      - db_mysql
-    links:
-      - db_mysql:db
+#    depends_on:
+#      - db_mysql
+#    links:
+#      - db_mysql:db
     networks:
       - laravel
     #        - shared_network

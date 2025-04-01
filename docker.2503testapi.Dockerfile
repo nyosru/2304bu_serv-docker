@@ -40,4 +40,4 @@ RUN docker-php-ext-enable gd
 # # # Get latest Composer
 COPY --from=dockerhub.timeweb.cloud/library/composer:latest /usr/bin/composer /usr/bin/composer
 
-#RUN cd /2309livewire && chmod -R 0777 storage
+RUN cd ${FOLDER} && chmod -R 0777 storage

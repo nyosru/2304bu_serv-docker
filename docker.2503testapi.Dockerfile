@@ -29,6 +29,7 @@ RUN apt-get update -y \
 # Установка расширения SOAP
 RUN docker-php-ext-install soap
 
+
 # Install GD extension
 RUN apt-get update \
     && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \

@@ -338,7 +338,7 @@ test-sensor.php-cat.com {
 }
 
 testapi2503.php-cat.com {
-    tls 1@php-cat.com
+    import tls1
     import base
     php_fastcgi 2503testapi:9000
     root * /home/2503testapi/public

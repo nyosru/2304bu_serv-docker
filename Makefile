@@ -80,7 +80,7 @@ prod:
 	#make start_2410svo
 	#make start_base12narek
 	make caddy_refresh_cfd
-	docker system prune --force
+	#docker system prune --force
 
 
 # cp caddy/prod.Caddyfile caddy/Caddyfile

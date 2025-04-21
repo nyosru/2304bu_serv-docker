@@ -310,6 +310,11 @@ u.php-cat.com {
 
 #процессмастер.рф, process.php-cat.com {
 процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai {
+
+    request_body {
+        max_size 100MB
+    }
+
     import tls1
     import base
     php_fastcgi proc_master:9000

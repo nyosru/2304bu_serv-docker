@@ -37,6 +37,9 @@ RUN apt-get update \
 
 RUN docker-php-ext-enable gd
 
+# Увеличиваем лимиты загрузки файлов
+RUN echo "upload_max_filesize = 100M\npost_max_size = 100M" > /usr/local/etc/php/conf.d/uploads.ini
+
 # # # Get latest Composer
 COPY --from=dockerhub.timeweb.cloud/library/composer:latest /usr/bin/composer /usr/bin/composer
 

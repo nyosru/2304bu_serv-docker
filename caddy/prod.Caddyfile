@@ -219,6 +219,14 @@ xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai, domainwaiter.com {
     root * /home/2308beget/public
 }
 
+# юраманник
+xn--80aayihhat9j.xn--p1ai {
+    import tls1
+    import base
+    import 2309livewire
+}
+
+
 #управлятор.рф, vk.files.php-cat.com {
 xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
     import tls1

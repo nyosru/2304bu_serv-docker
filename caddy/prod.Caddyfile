@@ -226,7 +226,6 @@ xn--80aayihhat9j.xn--p1ai {
     import 2309livewire
 }
 
-
 #управлятор.рф, vk.files.php-cat.com {
 xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
     import tls1
@@ -339,8 +338,17 @@ process.php-cat.com {
     root * /home/2503master/public
 
     @showtext path /info
-    respond @showtext "домен траля ля ля"
+    respond @showtext "домен траля ля ляы"
 }
+
+
+# время для победы
+time.dev.php-cat.com {
+    import base
+    php_fastcgi 2505timefv:9000
+    root * /home/2505timefv/public
+}
+
 
 #uber
 test-sensor.php-cat.com {

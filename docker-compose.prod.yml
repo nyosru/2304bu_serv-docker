@@ -90,6 +90,8 @@ services:
 
       - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
 
+      - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
+
 #      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
 #      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
 
@@ -116,6 +118,8 @@ services:
       - base17
       - base16sites
       - site_api
+
+      - 2505timefv
 
 #      - 2312didrive_auto
 #      - 2312auto_as_prod
@@ -229,6 +233,32 @@ services:
     volumes:
       - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
 
+
+  2505timefv:
+    container_name: 2505timefv
+    depends_on:
+      - db_mysql
+    links:
+      - db_mysql:db
+    networks:
+      - laravel
+    #        - shared_network
+    build:
+      context: .
+      dockerfile: docker.2505timefv.Dockerfile
+    #        dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2505TIMEFV_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2505TIMEFV_SERV}
+    restart: unless-stopped
+    #      links:
+    #        - web_scraper2:parser_service
+    #    expose:
+    #      - 9000
+    volumes:
+      - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
 
   uber:
     container_name: uber

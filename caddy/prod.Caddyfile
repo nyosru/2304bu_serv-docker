@@ -349,6 +349,12 @@ time.dev.php-cat.com {
     root * /home/2505timefv/public
 }
 
+time.php-cat.com {
+    import base
+    php_fastcgi 2505timefv_prod:9000
+    root * /home/2505timefv_prod/public
+}
+
 
 #uber
 test-sensor.php-cat.com {

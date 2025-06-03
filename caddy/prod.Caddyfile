@@ -341,7 +341,7 @@ process.php-cat.com {
     respond @showtext "домен траля ля ляы"
 }
 
-
+# dev
 # время для победы
 time.dev.php-cat.com {
     import base
@@ -349,7 +349,9 @@ time.dev.php-cat.com {
     root * /home/2505timefv/public
 }
 
-time.php-cat.com {
+# prod
+# времяпобед.рус
+xn--90abhcb4bohg6m.xn--p1acf, time.php-cat.com {
     import base
     php_fastcgi 2505timefv_prod:9000
     root * /home/2505timefv_prod/public

@@ -27,10 +27,18 @@ services:
         - ./caddy/Caddyfile:/etc/caddy/Caddyfile
         - ./caddy/config:/config/caddy
         - caddy_caddyfile:/etc/caddy
-
+        # 2506 test api resource
+        - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
+        #timefv
+        - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
+        #livewire
         - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
         #proc-master
         - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+
+#        #2503 testapi
+#        - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
+
 # vitius
 #        - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
 #        - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
@@ -40,7 +48,7 @@ services:
           #        - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
           #        - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
 #svo
-        - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
+#        - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
 
         #- shared_caddyfile:/shared/caddyfile  # Монтируем том для общего использования файла
         #- shared_caddyfile:/etc/caddy
@@ -80,8 +88,10 @@ services:
       depends_on:
         - db_mysql
   #      - 2308beget
+        - 2506test
         - 2309livewire
         - 2503master
+#        - 2503testapi
   #      - base17
 #        - base12narek
   ##      - test231012
@@ -129,8 +139,6 @@ services:
     #
     #
 
-
-
     2503master:
       container_name: 2503master
       depends_on:
@@ -156,6 +164,58 @@ services:
       #      - 9000
       volumes:
         - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+
+    2505timefv:
+      container_name: 2505timefv
+      depends_on:
+        - db_mysql
+      links:
+        - db_mysql:db
+      networks:
+        - laravel
+      #        - shared_network
+      build:
+        context: .
+        dockerfile: docker.2505timefv.Dockerfile
+      #        dockerfile: docker.2309livewire.Dockerfile
+      working_dir: ${FOLDER_2505TIMEFV_SERV}
+      environment:
+        - PHPGROUP=www-data
+        - PHPUSER=www-data
+        - FOLDER=${FOLDER_2505TIMEFV_SERV}
+      restart: unless-stopped
+      #      links:
+      #        - web_scraper2:parser_service
+      #    expose:
+      #      - 9000
+      volumes:
+        - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
+
+
+#    2503testapi:
+#      container_name: 2503testapi
+#      depends_on:
+#        - db_mysql
+#      links:
+#        - db_mysql:db
+#      networks:
+#        - laravel
+#      #        - shared_network
+#      build:
+#        context: .
+#        dockerfile: docker.2503testapi.Dockerfile
+#      working_dir: ${FOLDER_2503TEST_API_SERV}
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_2503TEST_API_SERV}
+#      restart: unless-stopped
+#      #      links:
+#      #        - web_scraper2:parser_service
+#      #    expose:
+#      #      - 9000
+#      volumes:
+#        - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
 
 
 
@@ -205,28 +265,28 @@ services:
 
 
 
-    2410svo:
-      container_name: 2410svo
-      depends_on:
-        - db_mysql
-      networks:
-        - laravel
-#        - shared_network
-      build:
-        context: .
-        dockerfile: docker.2410svo.Dockerfile
-      working_dir: ${FOLDER_2410SVO_SERV}
-      environment:
-        - PHPGROUP=www-data
-        - PHPUSER=www-data
-        - FOLDER=${FOLDER_2410SVO_SERV}
-      restart: unless-stopped
-#      links:
-#        - web_scraper2:parser_service
-      #    expose:
-      #      - 9000
-      volumes:
-        - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
+#    2410svo:
+#      container_name: 2410svo
+#      depends_on:
+#        - db_mysql
+#      networks:
+#        - laravel
+##        - shared_network
+#      build:
+#        context: .
+#        dockerfile: docker.2410svo.Dockerfile
+#      working_dir: ${FOLDER_2410SVO_SERV}
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_2410SVO_SERV}
+#      restart: unless-stopped
+##      links:
+##        - web_scraper2:parser_service
+#      #    expose:
+#      #      - 9000
+#      volumes:
+#        - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
 
 
 
@@ -260,6 +320,25 @@ services:
 #        - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
 #        #- shared_caddyfile:/storage/caddy  # Монтируем том для доступа к Caddyfile в контейнере
 #        - /var/run/docker.sock:/var/run/docker.sock
+
+
+
+
+    2506test:
+      container_name: 2506test
+      networks:
+        - laravel
+      build:
+        context: .
+        dockerfile: docker.2506test_resource_api.Dockerfile
+      working_dir: ${FOLDER_2506TESTAPI_SERV}
+      environment:
+        - PHPGROUP=www-data
+        - PHPUSER=www-data
+        - FOLDER=${FOLDER_2506TESTAPI_SERV}
+      restart: unless-stopped
+      volumes:
+        - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
 
 #    healthcheck:
 #      test: ["CMD", "curl", "-k", "-f", "https://stn.local"]

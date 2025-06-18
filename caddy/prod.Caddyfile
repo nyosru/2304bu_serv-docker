@@ -377,7 +377,12 @@ testapi2503.php-cat.com {
 
 
 
-
+test2506.php-cat.com {
+    import tls1
+    import base
+    php_fastcgi 2506test:9000
+    root * /home/2506test_resource_api/public/
+}
 
 
 

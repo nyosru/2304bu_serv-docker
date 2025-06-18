@@ -52,12 +52,12 @@ services:
       - './caddy/data-caddy:/data/'
 #      - 'caddy_logs:/var/log/caddy'
 
+      # test api 2506
+      - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
       #proc-master
       - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
-
       #test 2503sensor
       - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'
-
       #uber
       - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
 
@@ -532,6 +532,21 @@ services:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
 
+  2506test:
+    container_name: 2506test
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2506test_resource_api.Dockerfile
+    working_dir: ${FOLDER_2506TESTAPI_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2506TESTAPI_SERV}
+    restart: unless-stopped
+    volumes:
+      - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
 
   #  bitrix24_2407_01:
 #    container_name: bitrix24_2407_01

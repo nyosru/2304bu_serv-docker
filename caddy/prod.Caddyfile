@@ -227,11 +227,11 @@ xn--80aayihhat9j.xn--p1ai {
 }
 
 #управлятор.рф, vk.files.php-cat.com {
-xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
-    import tls1
-    import base
-    import 2309livewire
-}
+#xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
+#    import tls1
+#    import base
+#    import 2309livewire
+#}
 
 #as.php-cat.com {
 #    import tls1
@@ -314,9 +314,9 @@ u.php-cat.com {
 
 
 
-
 #процессмастер.рф, process.php-cat.com {
-процессмастер.рф, xn--80ajb0aifhffacm9b.xn--p1ai {
+#процессмастер.рф, управлятор.рф
+xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai, processmaster.php-cat.ru {
 
     request_body {
         max_size 100MB
@@ -327,19 +327,18 @@ u.php-cat.com {
     php_fastcgi proc_master:9000
     root * /home/2503master/public
 
-    @showtext path /info
-    respond @showtext "домен траля ля ля"
+    @showtext path /phpcat
+    respond @showtext "домены xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai, processmaster.php-cat.ru "
 }
 
-process.php-cat.com {
-    import tls1
-    import base
-    php_fastcgi proc_master:9000
-    root * /home/2503master/public
-
-    @showtext path /info
-    respond @showtext "домен траля ля ляы"
-}
+#process.php-cat.com {
+#    import tls1
+#    import base
+#    php_fastcgi proc_master:9000
+#    root * /home/2503master/public
+#    @showtext path /info
+#    respond @showtext "домен траля ля ляы"
+#}
 
 # dev
 # время для победы

@@ -27,6 +27,8 @@ services:
         - ./caddy/Caddyfile:/etc/caddy/Caddyfile
         - ./caddy/config:/config/caddy
         - caddy_caddyfile:/etc/caddy
+        # api_vk
+        - '${FOLDER_2506API_VK}:${FOLDER_2506API_VK_SERV}'
         # 2506 test api resource
         - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
         #timefv
@@ -35,6 +37,8 @@ services:
         - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
         #proc-master
         - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+        #base16
+        - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
 #        #2503 testapi
 #        - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
@@ -80,7 +84,7 @@ services:
   #      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
   #
   #      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
-  #      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+
   #      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
   #      - '${FOLDER_BITRIX1}:${FOLDER_BITRIX1_SERV}'
   #      - './../2407bitrix24:/home/bitrix24'
@@ -133,11 +137,79 @@ services:
         - db_mysql
       networks:
         - laravel
+
+
+#    clickhouse-server:
+#      image: clickhouse/clickhouse-server
+#      ports:
+#        - "8123:8123"
+#        - "9000:9000"
+#      volumes:
+#        - ./data:/var/lib/clickhouse
+#      networks:
+#        - laravel
+#
+#    clickhouse-client:
+#      image: clickhouse/clickhouse-client
+#      entrypoint: /bin/sh
+#      tty: true
+#      depends_on:
+#        - clickhouse-server
+#      networks:
+#        - laravel
+
+
     #
     #
     ### ------------ дальше контейнеры в работе ------------------
     #
     #
+
+
+
+
+    base16sites:
+      container_name: base16sites
+      depends_on:
+        - db_mysql
+      networks:
+        - laravel
+      build:
+        context: .
+        dockerfile: docker.laravel-php74.Dockerfile
+      working_dir: ${FOLDER_BASE16_SERV}
+      environment:
+        - PHPGROUP=www-data
+        - PHPUSER=www-data
+        - FOLDER=${FOLDER_BASE16_SERV}
+      restart: unless-stopped
+      # tty: true
+      #    expose:
+      #      - 9000
+      links:
+        - db_mysql:db
+      volumes:
+        - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+
+
+#    wordpress_app:
+#      image: wordpress:latest
+#      container_name: wordpress_app
+#      depends_on:
+#        - db_mysql
+##      ports:
+##        - "8000:80"
+#      restart: always
+#      environment:
+#        WORDPRESS_DB_HOST: db_mysql:3306
+#        WORDPRESS_DB_USER: root
+#        WORDPRESS_DB_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+#        WORDPRESS_DB_NAME: wordpress1
+#      volumes:
+#        - ${FOLDER_WP1}:/var/www/html
+
+
+
 
     2503master:
       container_name: 2503master
@@ -339,6 +411,22 @@ services:
       restart: unless-stopped
       volumes:
         - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
+
+    2506api_vk:
+      container_name: 2506api_vk
+      networks:
+        - laravel
+      build:
+        context: .
+        dockerfile: docker.2506api_vk.Dockerfile
+      working_dir: ${FOLDER_2506API_VK_SERV}
+      environment:
+        - PHPGROUP=www-data
+        - PHPUSER=www-data
+        - FOLDER=${FOLDER_2506API_VK_SERV}
+      restart: unless-stopped
+      volumes:
+        - '${FOLDER_2506API_VK}:${FOLDER_2506API_VK_SERV}'
 
 #    healthcheck:
 #      test: ["CMD", "curl", "-k", "-f", "https://stn.local"]

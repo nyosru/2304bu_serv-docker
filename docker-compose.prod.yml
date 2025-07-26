@@ -553,28 +553,28 @@ services:
 
 
 
-  2507yii2_test:
-    container_name: 2507yii2_test
-    depends_on:
-      - db_mysql
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.2507yii2_test.Dockerfile
-    working_dir: ${FOLDER_2507YII2_TEST_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2507YII2_TEST_SERV}
-    restart: unless-stopped
-    # tty: true
-    #    expose:
-    #      - 9000
-    links:
-      - db_mysql:db
-    volumes:
-      - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
+#  2507yii2_test:
+#    container_name: 2507yii2_test
+#    depends_on:
+#      - db_mysql
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.2507yii2_test.Dockerfile
+#    working_dir: ${FOLDER_2507YII2_TEST_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2507YII2_TEST_SERV}
+#    restart: unless-stopped
+#    # tty: true
+#    #    expose:
+#    #      - 9000
+#    links:
+#      - db_mysql:db
+#    volumes:
+#      - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
 
 
 

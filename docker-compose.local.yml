@@ -27,18 +27,20 @@ services:
         - ./caddy/Caddyfile:/etc/caddy/Caddyfile
         - ./caddy/config:/config/caddy
         - caddy_caddyfile:/etc/caddy
-        # api_vk
-        - '${FOLDER_2506API_VK}:${FOLDER_2506API_VK_SERV}'
-        # 2506 test api resource
-        - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
-        #timefv
-        - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
-        #livewire
-        - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#        # api_vk
+#        - '${FOLDER_2506API_VK}:${FOLDER_2506API_VK_SERV}'
+#        # 2506 test api resource
+#        - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
+#        #timefv
+#        - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
+#        #livewire
+#        - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
         #proc-master
         - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
-        #base16
-        - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+#        #base16
+#        - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+        #2507yii2_test
+        - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
 
 #        #2503 testapi
 #        - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
@@ -91,10 +93,11 @@ services:
 
       depends_on:
         - db_mysql
+        - 2507yii2_test
   #      - 2308beget
-        - 2506test
-        - 2309livewire
-        - 2503master
+#        - 2506test
+#        - 2309livewire
+#        - 2503master
 #        - 2503testapi
   #      - base17
 #        - base12narek
@@ -168,20 +171,20 @@ services:
 
 
 
-    base16sites:
-      container_name: base16sites
+    2507yii2_test:
+      container_name: 2507yii2_test
       depends_on:
         - db_mysql
       networks:
         - laravel
       build:
         context: .
-        dockerfile: docker.laravel-php74.Dockerfile
-      working_dir: ${FOLDER_BASE16_SERV}
+        dockerfile: docker.2507yii2_test.Dockerfile
+      working_dir: ${FOLDER_2507YII2_TEST_SERV}
       environment:
         - PHPGROUP=www-data
         - PHPUSER=www-data
-        - FOLDER=${FOLDER_BASE16_SERV}
+        - FOLDER=${FOLDER_2507YII2_TEST_SERV}
       restart: unless-stopped
       # tty: true
       #    expose:
@@ -189,7 +192,31 @@ services:
       links:
         - db_mysql:db
       volumes:
-        - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+        - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
+
+
+#    base16sites:
+#      container_name: base16sites
+#      depends_on:
+#        - db_mysql
+#      networks:
+#        - laravel
+#      build:
+#        context: .
+#        dockerfile: docker.laravel-php74.Dockerfile
+#      working_dir: ${FOLDER_BASE16_SERV}
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_BASE16_SERV}
+#      restart: unless-stopped
+#      # tty: true
+#      #    expose:
+#      #      - 9000
+#      links:
+#        - db_mysql:db
+#      volumes:
+#        - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
 
 #    wordpress_app:
@@ -362,71 +389,71 @@ services:
 
 
 
-    2309livewire:
-      container_name: 2309livewire
-      depends_on:
-        - db_mysql
-      networks:
-        - laravel
-#        - shared_network
-      build:
-        context: .
-        #      dockerfile: docker.2308beget.Dockerfile
-        dockerfile: docker.2309livewire.Dockerfile
-      working_dir: ${FOLDER_2309LIVEWIRE_SERV}
-      environment:
-        - PHPGROUP=www-data
-        - PHPUSER=www-data
-        - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
-      restart: unless-stopped
-#      links:
-#        - web_scraper2:parser_service
-      #    expose:
-      #      - 9000
-      volumes:
-        - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-#        #- './caddy/Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/Caddyfile'
-#        #- './caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy_prod/Caddyfile'
-#        #- shared_caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy-cfg
-#        - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
-#        - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
-#        #- shared_caddyfile:/storage/caddy  # Монтируем том для доступа к Caddyfile в контейнере
-#        - /var/run/docker.sock:/var/run/docker.sock
-
-
-
-
-    2506test:
-      container_name: 2506test
-      networks:
-        - laravel
-      build:
-        context: .
-        dockerfile: docker.2506test_resource_api.Dockerfile
-      working_dir: ${FOLDER_2506TESTAPI_SERV}
-      environment:
-        - PHPGROUP=www-data
-        - PHPUSER=www-data
-        - FOLDER=${FOLDER_2506TESTAPI_SERV}
-      restart: unless-stopped
-      volumes:
-        - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
-
-    2506api_vk:
-      container_name: 2506api_vk
-      networks:
-        - laravel
-      build:
-        context: .
-        dockerfile: docker.2506api_vk.Dockerfile
-      working_dir: ${FOLDER_2506API_VK_SERV}
-      environment:
-        - PHPGROUP=www-data
-        - PHPUSER=www-data
-        - FOLDER=${FOLDER_2506API_VK_SERV}
-      restart: unless-stopped
-      volumes:
-        - '${FOLDER_2506API_VK}:${FOLDER_2506API_VK_SERV}'
+#    2309livewire:
+#      container_name: 2309livewire
+#      depends_on:
+#        - db_mysql
+#      networks:
+#        - laravel
+##        - shared_network
+#      build:
+#        context: .
+#        #      dockerfile: docker.2308beget.Dockerfile
+#        dockerfile: docker.2309livewire.Dockerfile
+#      working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+#      restart: unless-stopped
+##      links:
+##        - web_scraper2:parser_service
+#      #    expose:
+#      #      - 9000
+#      volumes:
+#        - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+##        #- './caddy/Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/Caddyfile'
+##        #- './caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy_prod/Caddyfile'
+##        #- shared_caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy-cfg
+##        - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
+##        - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
+##        #- shared_caddyfile:/storage/caddy  # Монтируем том для доступа к Caddyfile в контейнере
+##        - /var/run/docker.sock:/var/run/docker.sock
+#
+#
+#
+#
+#    2506test:
+#      container_name: 2506test
+#      networks:
+#        - laravel
+#      build:
+#        context: .
+#        dockerfile: docker.2506test_resource_api.Dockerfile
+#      working_dir: ${FOLDER_2506TESTAPI_SERV}
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_2506TESTAPI_SERV}
+#      restart: unless-stopped
+#      volumes:
+#        - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
+#
+#    2506api_vk:
+#      container_name: 2506api_vk
+#      networks:
+#        - laravel
+#      build:
+#        context: .
+#        dockerfile: docker.2506api_vk.Dockerfile
+#      working_dir: ${FOLDER_2506API_VK_SERV}
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_2506API_VK_SERV}
+#      restart: unless-stopped
+#      volumes:
+#        - '${FOLDER_2506API_VK}:${FOLDER_2506API_VK_SERV}'
 
 #    healthcheck:
 #      test: ["CMD", "curl", "-k", "-f", "https://stn.local"]

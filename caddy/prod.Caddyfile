@@ -324,7 +324,7 @@ xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai, processmaster.php-c
 
     import tls1
     import base
-    php_fastcgi proc_master:9000
+    php_fastcgi 2503master:9000
     root * /home/2503master/public
 
     @showtext path /phpcat
@@ -383,6 +383,13 @@ test2506.php-cat.com {
     root * /home/2506test_resource_api/public/
 }
 
+
+yii2.php-cat.com {
+    import tls1
+    import base
+    php_fastcgi 2507yii2_test:9000
+    root * /home/2507yii2_test/web/
+}
 
 
 :433, :80 {

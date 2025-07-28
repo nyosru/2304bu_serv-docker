@@ -1,3 +1,13 @@
+
+create_web_laravel:
+	@if ! docker network ls --format '{{.Name}}' | grep -w laravel > /dev/null; then \
+		echo "Creating Docker network laravel"; \
+		docker network create laravel; \
+	else \
+		echo "Docker network laravel already exists"; \
+	fi
+
+
 #
 #creat: creat_caddyfile
 #
@@ -31,7 +41,19 @@ d:
 web:
 	docker network create shared_network
 
+create_web_laravel:
+	@if ! docker network ls --format '{{.Name}}' | grep -w laravel > /dev/null; then \
+		echo "Creating Docker network laravel"; \
+		docker network create laravel; \
+	else \
+		echo "Docker network laravel already exists"; \
+	fi
+
 dev:
+	@echo "Development environment started"
+	make create_web_laravel
+	#docker-compose down
+	#docker network rm laravel
 	cp caddy/dev.Caddyfile caddy/Caddyfile
 	#cp caddy/dev.Caddyfile caddy2/Caddyfile
 	cp docker-compose.local.yml docker-compose.yml
@@ -44,6 +66,26 @@ dev:
 	#make start_base12narek_dev
 
 	make caddy_refresh_cfd
+
+dev2:
+	@echo "Development environment started"
+	make create_web_laravel
+	#docker-compose down
+	#docker network rm laravel
+	#docker network create laravel
+	cp caddy/dev.Caddyfile caddy/Caddyfile
+	#cp caddy/dev.Caddyfile caddy2/Caddyfile
+	cp docker-compose.local.yml docker-compose.yml
+	docker-compose up -d --build --remove-orphans
+	# использовать другой файл докер композ
+	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
+	#docker-compose up -d --force-recreate web_scraper --remove-orphans
+	#make start_2309livewire
+	#make start_2410svo_dev
+	#make start_base12narek_dev
+
+	make caddy_refresh_cfd
+	#docker-compose up -d --build --remove-orphans
 
 devuber:
 	cp caddy/dev.uber.Caddyfile caddy/Caddyfile
@@ -66,6 +108,9 @@ devv:
 
 
 prod:
+	@echo "+++ prod environment started"
+	make create_web_laravel
+	@echo "+++2 prod environment started"
 	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 

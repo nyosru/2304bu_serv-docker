@@ -120,8 +120,8 @@ services:
       - base16sites
       - site_api
 
-      - 2505timefv
-      - 2505timefv_prod
+      #- 2505timefv
+      #- 2505timefv_prod
 
 #      - 2312didrive_auto
 #      - 2312auto_as_prod

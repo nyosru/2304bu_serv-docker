@@ -236,59 +236,59 @@ services:
 #      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
 
 
-#  2505timefv:
-#    container_name: 2505timefv
-#    depends_on:
-#      - db_mysql
-#    links:
-#      - db_mysql:db
-#    networks:
-#      - laravel
-#    #        - shared_network
-#    build:
-#      context: .
-#      dockerfile: docker.2505timefv.Dockerfile
-#    #        dockerfile: docker.2309livewire.Dockerfile
-#    working_dir: ${FOLDER_2505TIMEFV_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2505TIMEFV_SERV}
-#    restart: unless-stopped
-#    #      links:
-#    #        - web_scraper2:parser_service
-#    #    expose:
-#    #      - 9000
-#    volumes:
-#      - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
+  2505timefv:
+    container_name: 2505timefv
+    depends_on:
+      - db_mysql
+    links:
+      - db_mysql:db
+    networks:
+      - laravel
+    #        - shared_network
+    build:
+      context: .
+      dockerfile: docker.2505timefv.Dockerfile
+    #        dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2505TIMEFV_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2505TIMEFV_SERV}
+    restart: unless-stopped
+    #      links:
+    #        - web_scraper2:parser_service
+    #    expose:
+    #      - 9000
+    volumes:
+      - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
 
 
-#
-#  2505timefv_prod:
-#    container_name: 2505timefv_prod
-#    depends_on:
-#      - db_mysql
-#    links:
-#      - db_mysql:db
-#    networks:
-#      - laravel
-#    #        - shared_network
-#    build:
-#      context: .
-#      dockerfile: docker.2505timefv_prod.Dockerfile
-#    #        dockerfile: docker.2309livewire.Dockerfile
-#    working_dir: ${FOLDER_2505TIMEFV_PROD_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2505TIMEFV_PROD_SERV}
-#    restart: unless-stopped
-#    #      links:
-#    #        - web_scraper2:parser_service
-#    #    expose:
-#    #      - 9000
-#    volumes:
-#      - '${FOLDER_2505TIMEFV_PROD}:${FOLDER_2505TIMEFV_PROD_SERV}'
+
+  2505timefv_prod:
+    container_name: 2505timefv_prod
+    depends_on:
+      - db_mysql
+    links:
+      - db_mysql:db
+    networks:
+      - laravel
+    #        - shared_network
+    build:
+      context: .
+      dockerfile: docker.2505timefv_prod.Dockerfile
+    #        dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2505TIMEFV_PROD_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2505TIMEFV_PROD_SERV}
+    restart: unless-stopped
+    #      links:
+    #        - web_scraper2:parser_service
+    #    expose:
+    #      - 9000
+    volumes:
+      - '${FOLDER_2505TIMEFV_PROD}:${FOLDER_2505TIMEFV_PROD_SERV}'
 
 
   uber:
@@ -341,56 +341,56 @@ services:
 
 
 
-#  2308beget:
-#    container_name: 2308beget
-#    build:
-#      context: .
-#      dockerfile: docker.2308beget.Dockerfile
-#    #      dockerfile: docker.2309livewire.Dockerfile
-#    working_dir: ${FOLDER_2308BEGET_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2308BEGET_SERV}
-#    restart: unless-stopped
-#    # tty: true
-##    expose:
-##      - 9000
-#    volumes:
-#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-#
-#    networks:
-#      - laravel
-#    depends_on:
-#      - db_mysql
+  2308beget:
+    container_name: 2308beget
+    build:
+      context: .
+      dockerfile: docker.2308beget.Dockerfile
+    #      dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2308BEGET_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
+    restart: unless-stopped
+    # tty: true
+#    expose:
+#      - 9000
+    volumes:
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
 
-#  2309livewire:
-#    container_name: 2309livewire
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
-##      - shared_network
-#    build:
-#      context: .
-#      dockerfile: docker.2309livewire.Dockerfile
-#    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
-#    restart: unless-stopped
-#    # tty: true
-##    expose:
-##      - 9000
-##    links:
-##      - web_scraper2
-#    #   - db_mysql:db
-#    volumes:
-#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-#      #- shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
-#      - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
-#      - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
+    networks:
+      - laravel
+    depends_on:
+      - db_mysql
+
+  2309livewire:
+    container_name: 2309livewire
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+#      - shared_network
+    build:
+      context: .
+      dockerfile: docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+    restart: unless-stopped
+    # tty: true
+#    expose:
+#      - 9000
+#    links:
+#      - web_scraper2
+    #   - db_mysql:db
+    volumes:
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+      #- shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
+      - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
+      - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
 
 
 
@@ -553,28 +553,28 @@ services:
 
 
 
-#  2507yii2_test:
-#    container_name: 2507yii2_test
-#    depends_on:
-#      - db_mysql
-#    networks:
-#      - laravel
-#    build:
-#      context: .
-#      dockerfile: docker.2507yii2_test.Dockerfile
-#    working_dir: ${FOLDER_2507YII2_TEST_SERV}
-#    environment:
-#      - PHPGROUP=www-data
-#      - PHPUSER=www-data
-#      - FOLDER=${FOLDER_2507YII2_TEST_SERV}
-#    restart: unless-stopped
-#    # tty: true
-#    #    expose:
-#    #      - 9000
-#    links:
-#      - db_mysql:db
-#    volumes:
-#      - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
+  2507yii2_test:
+    container_name: 2507yii2_test
+    depends_on:
+      - db_mysql
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2507yii2_test.Dockerfile
+    working_dir: ${FOLDER_2507YII2_TEST_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2507YII2_TEST_SERV}
+    restart: unless-stopped
+    # tty: true
+    #    expose:
+    #      - 9000
+    links:
+      - db_mysql:db
+    volumes:
+      - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
 
 
 

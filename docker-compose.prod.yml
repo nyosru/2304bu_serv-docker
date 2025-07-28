@@ -107,11 +107,11 @@ services:
 
 
     depends_on:
-      - 2308beget
-      - 2309livewire
+      #- 2308beget
+      #- 2309livewire
       - 2410svo
       - 2503sensor
-      - proc_master
+      #- proc_master
       - 2503testapi
 
       - 2401test

@@ -263,32 +263,32 @@ services:
 #      - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
 
 
-
-  2505timefv_prod:
-    container_name: 2505timefv_prod
-    depends_on:
-      - db_mysql
-    links:
-      - db_mysql:db
-    networks:
-      - laravel
-    #        - shared_network
-    build:
-      context: .
-      dockerfile: docker.2505timefv_prod.Dockerfile
-    #        dockerfile: docker.2309livewire.Dockerfile
-    working_dir: ${FOLDER_2505TIMEFV_PROD_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2505TIMEFV_PROD_SERV}
-    restart: unless-stopped
-    #      links:
-    #        - web_scraper2:parser_service
-    #    expose:
-    #      - 9000
-    volumes:
-      - '${FOLDER_2505TIMEFV_PROD}:${FOLDER_2505TIMEFV_PROD_SERV}'
+#
+#  2505timefv_prod:
+#    container_name: 2505timefv_prod
+#    depends_on:
+#      - db_mysql
+#    links:
+#      - db_mysql:db
+#    networks:
+#      - laravel
+#    #        - shared_network
+#    build:
+#      context: .
+#      dockerfile: docker.2505timefv_prod.Dockerfile
+#    #        dockerfile: docker.2309livewire.Dockerfile
+#    working_dir: ${FOLDER_2505TIMEFV_PROD_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2505TIMEFV_PROD_SERV}
+#    restart: unless-stopped
+#    #      links:
+#    #        - web_scraper2:parser_service
+#    #    expose:
+#    #      - 9000
+#    volumes:
+#      - '${FOLDER_2505TIMEFV_PROD}:${FOLDER_2505TIMEFV_PROD_SERV}'
 
 
   uber:

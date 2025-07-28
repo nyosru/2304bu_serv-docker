@@ -1,3 +1,5 @@
+remove-laravel-network:
+	docker network rm laravel_network || echo "Network laravel_network does not exist"
 
 create_web_laravel:
 	@if ! docker network ls --format '{{.Name}}' | grep -w laravel > /dev/null; then \
@@ -108,6 +110,8 @@ devv:
 
 
 prod:
+	@echo "+++0 удалить сеть laravel"
+	make remove-laravel-network
 	@echo "+++ prod environment started"
 	make create_web_laravel
 	@echo "+++2 prod environment started"

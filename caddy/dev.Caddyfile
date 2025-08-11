@@ -1,87 +1,41 @@
+
 (base) {
     tls internal
     file_server
     encode gzip
 }
 
-
-krugi.local {
+time.local {
     import base
-    php_fastcgi 2308beget:9000
-    root * /home/2308beget/public
+    root * /home/2505timefv/public
+    php_fastcgi 2505timefv:9000
 }
 
-# вячеслав
-#цпусво.рф, xn--b1aybijq.xn--p1ai, народноехозяйство.рус, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
-svo.local {
+yii2.local {
     import base
-    #php_fastcgi base12narek:9000
-    php_fastcgi 2410svo:9000
-    #root * /home/base12narek/public
-    root * /home/2410svo/public
+    root * /home/2507yii2_test/web
+    php_fastcgi 2507yii2_test:9000
 }
 
-
-ar.php-cat.local {
+master.local {
     import base
-    php_fastcgi 2309livewire:9000
+    root * /home/2503master/public
+    php_fastcgi 2503master:9000
+}
+
+livewire.local {
+    import base
     root * /home/2309livewire/public
-}
-
-
-afisha.local {
-    import base
-    #reverse_proxy 2309livewire:9000
     php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public/
 }
 
-stn.local {
+cup.local {
     import base
-    php_fastcgi 2309livewire:9000
-    root * /home/2309livewire/public/
+    root * /home/2308beget/public
+    php_fastcgi 2308beget:9000
 }
 
-
-# vitius
-
-
-vt2412.dev.local {
-    import base
-    #    php_fastcgi vt2412:9000
-    php_fastcgi vt2:9000
-    root * /home/vt2412/public/
-    #reverse_proxy / 2412job_site1:9000
-}
-
-
-
-
-
-
-x-parser2.local {
-    tls internal
-    #reverse_proxy python-parser:5001
-    #log /home/access.log
-}
-
-parser22.local {
-    tls internal
-    #auto_https off
-    #reverse_proxy / python-parser23:5033
-    reverse_proxy / web_scraper:5003
-    #log /home/access.log
-}
-
-telega.php-cat.com {
-    tls internal
-    reverse_proxy 2501tele:8080  # Укажите порт, на котором работает ваш бот
-    log {
-        output file /var/log/caddy/access.log
-    }
-}
-
-*.ru, *.xn--p1ai, *.com, *.info, *.local {
+:80, :433 {
     import base
     php_fastcgi 2309livewire:9000
     root * /home/2309livewire/public

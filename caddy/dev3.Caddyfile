@@ -1,0 +1,17 @@
+(base) {
+    tls internal
+    file_server
+    encode gzip
+}
+
+uber.local {
+    import base
+    php_fastcgi uber:9000
+    root * /home/uber-tele/public
+    #reverse_proxy / 2412job_site1:9000
+}
+
+*.ru, *.xn--p1ai, *.com, *.info, *.local {
+    import base
+    respond "Нет домена" 404
+}

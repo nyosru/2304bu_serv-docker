@@ -1,5 +1,5 @@
 remove-laravel-network:
-	docker network rm laravel_network || echo "Network laravel_network does not exist"
+	docker network rm laravel || echo "Network laravel_network does not exist"
 
 create_web_laravel:
 	@if ! docker network ls --format '{{.Name}}' | grep -w laravel > /dev/null; then \
@@ -9,6 +9,9 @@ create_web_laravel:
 		echo "Docker network laravel already exists"; \
 	fi
 
+
+#docker network create laravel
+#docker network create --driver bridge laravel
 
 #
 #creat: creat_caddyfile

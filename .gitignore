@@ -5,3 +5,5 @@ temp
 /caddy/certs3/*
 /caddy/certs/*
 /caddy/data-caddy/*
+/data/store
+/data

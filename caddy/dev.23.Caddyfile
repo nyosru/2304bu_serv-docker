@@ -5,6 +5,30 @@
 }
 
 
+x-11-time.local {
+    reverse_proxy grafana:9000
+    }
+
+time2.local {
+    import base
+    reverse_proxy 2505timefv:9000
+        log {
+            output file /var-log-caddy-access.log
+            format json
+        }
+}
+
+
+yii2.local {
+    #reverse_proxy 2507yii2_test:9000
+    reverse_proxy e1:9000
+    #php_fastcgi 2507yii2_test:9000
+    log {
+        output file /var-log-caddy-access.log
+        format json
+    }
+    tls internal
+}
 
 #tfmf
 
@@ -46,4 +70,52 @@ jobsite2.local {
 *.ru, *.xn--p1ai, *.com, *.info, *.local {
     import base
     respond "Нет домена" 404
+}
+
+
+
+
+11time.local {
+    import base
+    php_fastcgi 2505timefv:9000
+    root * /home/2505timefv/public
+}
+
+time.local {
+    import base
+    reverse_proxy 2505timefv:9000
+        log {
+            output file /var-log-caddy-access.log
+            format json
+        }
+}
+
+master.local, 2.master.local {
+    import base
+    php_fastcgi 2503master:9000
+    root * /home/2503master/public
+}
+
+cup.local {
+    import base
+    php_fastcgi base16sites:9000
+    root * /home/base16/public/
+}
+
+test2506.local {
+    import base
+    php_fastcgi 2506test:9000
+    root * /home/2506test_resource_api/public/
+}
+
+2506api_vk.local {
+    import base
+    php_fastcgi 2506api_vk:9000
+    root * /home/2506api_vk/public/
+}
+
+xx-yii2.test {
+    import base
+    php_fastcgi 2507yii2_test:9000
+    root * /home/2507yii2_test/web/
 }

@@ -1,0 +1,148 @@
+(base) {
+    tls internal
+    file_server
+    encode gzip
+}
+
+#2503testapi.local {
+#    import base
+#    php_fastcgi 2503testapi:9000
+#    root * /home/2503testapi/public
+#}
+
+wp1.local {
+    import base
+
+    root * /usr/share/caddy/wordpress
+
+    php_fastcgi wordpress_app:9000
+
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 10mb
+            roll_keep 5
+            roll_keep_for 48h
+        }
+    }
+
+    @notStatic {
+        path_regexp wp ^/(wp-admin|wp-login\.php|wp-cron\.php|wp-json|wp-content|wp-includes|wp-admin/.*|wp-content/.*|wp-includes/.*)
+        not path @notStatic
+    }
+
+    rewrite {
+        to {path} {path}/ /index.php?{query}
+    }
+}
+
+time.local {
+    import base
+    php_fastcgi 2505timefv:9000
+    root * /home/2505timefv/public
+}
+
+master.local {
+    import base
+    php_fastcgi 2503master:9000
+    root * /home/2503master/public
+}
+
+#krugi.local {
+#    import base
+#    php_fastcgi 2308beget:9000
+#    root * /home/2308beget/public
+#}
+#
+## вячеслав
+##цпусво.рф, xn--b1aybijq.xn--p1ai, народноехозяйство.рус, xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
+#svo.local {
+#    import base
+#    #php_fastcgi base12narek:9000
+#    php_fastcgi 2410svo:9000
+#    #root * /home/base12narek/public
+#    root * /home/2410svo/public
+#}
+#
+#
+#ar.php-cat.local {
+#    import base
+#    php_fastcgi 2309livewire:9000
+#    root * /home/2309livewire/public
+#}
+#
+#
+#afisha.local {
+#    import base
+#    #reverse_proxy 2309livewire:9000
+#    php_fastcgi 2309livewire:9000
+#    root * /home/2309livewire/public/
+#}
+#
+#stn.local {
+#    import base
+#    php_fastcgi 2309livewire:9000
+#    root * /home/2309livewire/public/
+#}
+#
+#
+## vitius
+#
+#
+#vt2412.dev.local {
+#    import base
+#    #    php_fastcgi vt2412:9000
+#    php_fastcgi vt2:9000
+#    root * /home/vt2412/public/
+#    #reverse_proxy / 2412job_site1:9000
+#}
+#
+#
+#
+#
+#
+#
+#x-parser2.local {
+#    tls internal
+#    #reverse_proxy python-parser:5001
+#    #log /home/access.log
+#}
+#
+#parser22.local {
+#    tls internal
+#    #auto_https off
+#    #reverse_proxy / python-parser23:5033
+#    reverse_proxy / web_scraper:5003
+#    #log /home/access.log
+#}
+#
+#telega.php-cat.com {
+#    tls internal
+#    reverse_proxy 2501tele:8080  # Укажите порт, на котором работает ваш бот
+#    log {
+#        output file /var/log/caddy/access.log
+#    }
+#}
+
+cup.local {
+    import base
+    php_fastcgi base16sites:9000
+    root * /home/base16/public/
+}
+
+test2506.local {
+    import base
+    php_fastcgi 2506test:9000
+    root * /home/2506test_resource_api/public/
+}
+
+2506api_vk.local {
+    import base
+    php_fastcgi 2506api_vk:9000
+    root * /home/2506api_vk/public/
+}
+
+*.ru, *.xn--p1ai, *.com, *.info, *.local {
+    import base
+    php_fastcgi 2309livewire:9000
+    root * /home/2309livewire/public
+}

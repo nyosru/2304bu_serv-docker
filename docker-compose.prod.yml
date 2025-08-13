@@ -2,7 +2,8 @@ version: '3.8'
 
 networks:
   laravel:
-    driver: external
+#    driver: external
+    external: true
 
 volumes:
 #  cron_volume:

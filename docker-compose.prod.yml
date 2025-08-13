@@ -35,104 +35,104 @@ services:
 #      - 8.8.8.8
 #      - 8.8.4.4
 
-  caddy:
-    container_name: caddy
-    image: caddy:2.6
-    restart: unless-stopped
-
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-
-    volumes:
-      - './caddy/Caddyfile:/etc/caddy/Caddyfile'
-      - './caddy/config:/config/'
-      - './caddy/data-caddy:/data/'
-#      - 'caddy_logs:/var/log/caddy'
-
-      # test api 2506
-      - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
-      #proc-master
-      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
-      #test 2503sensor
-      - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'
-      #uber
-      - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
-
-      - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
-
-      #- './caddy/certs:/data/caddy/locks/'
-      #- './caddy/data-caddy:/data/caddy/'
-      #- './caddy/certs3/:/data/caddy/certificates/'
-
-#      #avto-as
-#      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
-#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-#      #avto-as-dev
-#      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
-#      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
-#      #avto-as-didrive
-#      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
-#      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
-
-      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
-      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-
-      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
-      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
-      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
-      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
-      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
-      - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
-      - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
-
-      - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
-
-      - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
-      - '${FOLDER_2505TIMEFV_PROD}:${FOLDER_2505TIMEFV_PROD_SERV}'
-
-#      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
-#      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
-
-      #- shared_caddyfile:/shared/caddyfile  # Монтируем том для общего использования файла
-      ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
-      ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
-      ##      - '${FOLDER_2309LARAWIRE}:/2309livewire'
-      ##      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-      ##      - '${FOLDER_2309LARAWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
-      #      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
-      #      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
-
-
-    depends_on:
-      #- 2308beget
-      #- 2309livewire
-      - 2410svo
-      - 2503sensor
-      #- proc_master
-      - 2503testapi
-
-      - 2401test
-      - test231116php
-      - base17
-      - base16sites
-      - site_api
-
-      #- 2505timefv
-      #- 2505timefv_prod
-
-#      - 2312didrive_auto
-#      - 2312auto_as_prod
-#      - 2312auto_as
-
-#      - upr_serv
-#      - vt2
-    #      - test231116php
-    ##      - 2312didrive_auto_prod
-
-    networks:
-      - laravel
+#  caddy:
+#    container_name: caddy
+#    image: caddy:2.6
+#    restart: unless-stopped
+#
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      - "443:443/udp"
+#
+#    volumes:
+#      - './caddy/Caddyfile:/etc/caddy/Caddyfile'
+#      - './caddy/config:/config/'
+#      - './caddy/data-caddy:/data/'
+##      - 'caddy_logs:/var/log/caddy'
+#
+#      # test api 2506
+#      - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
+#      #proc-master
+#      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+#      #test 2503sensor
+#      - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'
+#      #uber
+#      - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
+#
+#      - '${FOLDER_2410SVO}:${FOLDER_2410SVO_SERV}'
+#
+#      #- './caddy/certs:/data/caddy/locks/'
+#      #- './caddy/data-caddy:/data/caddy/'
+#      #- './caddy/certs3/:/data/caddy/certificates/'
+#
+##      #avto-as
+##      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
+##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+##      #avto-as-dev
+##      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
+##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
+##      #avto-as-didrive
+##      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
+##      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
+#
+#      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+#      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#
+#      - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
+#      - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
+#      - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
+#      - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
+#      - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
+#      - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
+#      - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+#
+#      - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
+#
+#      - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
+#      - '${FOLDER_2505TIMEFV_PROD}:${FOLDER_2505TIMEFV_PROD_SERV}'
+#
+##      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
+##      - '${FOLDER_VT2412_DEV}:${FOLDER_VT2412_SERV}'
+#
+#      #- shared_caddyfile:/shared/caddyfile  # Монтируем том для общего использования файла
+#      ##      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
+#      ##      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
+#      ##      - '${FOLDER_2309LARAWIRE}:/2309livewire'
+#      ##      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      ##      - '${FOLDER_2309LARAWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+#      #      - '${FOLDER_TEST231012}:${FOLDER_TEST231012_SERV}'
+#      #      - '${FOLDER_2311TEST}:${FOLDER_2311TEST_SERV}'
+#
+#
+#    depends_on:
+#      #- 2308beget
+#      #- 2309livewire
+#      - 2410svo
+#      - 2503sensor
+#      #- proc_master
+#      - 2503testapi
+#
+#      - 2401test
+#      - test231116php
+#      - base17
+#      - base16sites
+#      - site_api
+#
+#      #- 2505timefv
+#      #- 2505timefv_prod
+#
+##      - 2312didrive_auto
+##      - 2312auto_as_prod
+##      - 2312auto_as
+#
+##      - upr_serv
+##      - vt2
+#    #      - test231116php
+#    ##      - 2312didrive_auto_prod
+#
+#    networks:
+#      - laravel
 
 
   db_mysql:

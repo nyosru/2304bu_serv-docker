@@ -5,22 +5,22 @@ networks:
 #    driver: external
     external: true
 
-volumes:
+#volumes:
 #  cron_volume:
 #    driver: local
-  portainer_data:
+#  portainer_data:
 
 services:
-
-  portainer:
-    image: portainer/portainer-ce
-    container_name: portainer
-    restart: always
-    ports:
-      - "9008:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+#
+#  portainer:
+#    image: portainer/portainer-ce
+#    container_name: portainer
+#    restart: always
+#    ports:
+#      - "9008:9000"
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - portainer_data:/data
 
 #  cron:
 #    build:

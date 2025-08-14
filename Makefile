@@ -10,6 +10,24 @@ create_web_laravel:
 	fi
 
 
+
+
+
+
+prod:
+	@echo "+++ prod environment started"
+	make create_web_laravel
+	@echo "+++2 prod environment started"
+	cp caddy/prod.Caddyfile caddy/Caddyfile
+	docker-compose down --rmi all -v
+	cp docker-compose.prod.yml docker-compose.yml
+	docker-compose up -d --build
+	make caddy_refresh_cfd_prod
+
+
+
+
+
 #docker network create laravel
 #docker network create --driver bridge laravel
 
@@ -110,23 +128,6 @@ devv:
 	cp docker-compose.local.v.yml docker-compose.yml
 	docker-compose up -d --remove-orphans
 	#make caddy_refresh_cfd
-
-
-prod:
-	@echo "+++0 удалить сеть laravel"
-	make remove-laravel-network
-	@echo "+++ prod environment started"
-	make create_web_laravel
-	@echo "+++2 prod environment started"
-	cp caddy/prod.Caddyfile caddy/Caddyfile
-	cp docker-compose.prod.yml docker-compose.yml
-
-	docker-compose down --rmi all -v
-
-	docker-compose up -d --build
-
-	make caddy_refresh_cfd_prod
-	#docker system prune --force
 
 
 

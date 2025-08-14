@@ -179,6 +179,21 @@ services:
       - laravel
 
   #
+  phpmyadmin2:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_mysql2:db
+    ports:
+      - 6062:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db_mysql2
+    networks:
+      - laravel
+
+  #
   #
   #
   #

@@ -160,7 +160,7 @@ services:
 #    ports:
 #      - 3306:3306
     volumes:
-      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
+      - '${MYSQL_DB_FOLDER2}:/var/lib/mysql'
     restart: unless-stopped
 
   #++

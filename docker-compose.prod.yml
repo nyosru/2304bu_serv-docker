@@ -2,7 +2,6 @@ version: '3.8'
 
 networks:
   laravel:
-#    driver: external
     external: true
 
 #volumes:
@@ -149,6 +148,25 @@ services:
 #      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
 #    restart: unless-stopped
 
+
+
+  #++
+  #  phpmyadmin:
+  #    image: phpmyadmin/phpmyadmin
+  #    links:
+  #      - db_mysql2:db
+  #    ports:
+  #      - 6060:80
+  #    environment:
+  #      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
+  #      UPLOAD_LIMIT: 300M
+  #    depends_on:
+  #      - db_mysql2
+  #    networks:
+  #      - laravel
+
+
+
   db_mysql2:
     container_name: db_mysql2
     image: mariadb:10.7.8
@@ -163,20 +181,6 @@ services:
       - '${MYSQL_DB_FOLDER2}:/var/lib/mysql'
     restart: unless-stopped
 
-  #++
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - db_mysql2:db
-    ports:
-      - 6060:80
-    environment:
-      MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
-      UPLOAD_LIMIT: 300M
-    depends_on:
-      - db_mysql2
-    networks:
-      - laravel
 
   #
   phpmyadmin2:
@@ -193,11 +197,7 @@ services:
     networks:
       - laravel
 
-  #
-  #
-  #
-  #
-  #
+
 
 
   2503testapi:
@@ -292,27 +292,23 @@ services:
 
 
 
-  2505timefv_prod:
-    container_name: 2505timefv_prod
+  2505timefv_prod2:
+    container_name: 2505timefv_prod2
     depends_on:
       - db_mysql2
     links:
       - db_mysql2:db
     networks:
       - laravel
-    #        - shared_network
     build:
       context: .
       dockerfile: docker.2505timefv_prod.Dockerfile
-    #        dockerfile: docker.2309livewire.Dockerfile
     working_dir: ${FOLDER_2505TIMEFV_PROD_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2505TIMEFV_PROD_SERV}
     restart: unless-stopped
-    #      links:
-    #        - web_scraper2:parser_service
     #    expose:
     #      - 9000
     volumes:

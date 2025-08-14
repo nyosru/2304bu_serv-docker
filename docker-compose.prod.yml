@@ -135,16 +135,30 @@ services:
 #      - laravel
 
 
-  db_mysql:
-    container_name: db_mysql
+#  db_mysql2:
+#    container_name: db_mysql2
+#    image: mariadb:10.7.8
+#    networks:
+#      - laravel
+#    environment:
+#      MYSQL_ROOT_HOST: "%"
+#      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
+##    ports:
+##      - 3306:3306
+#    volumes:
+#      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
+#    restart: unless-stopped
+
+  db_mysql22:
+    container_name: db_mysql22
     image: mariadb:10.7.8
     networks:
       - laravel
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: ${MYSQL_DB_ROOT_PASSWORD}
-    ports:
-      - 3306:3306
+#    ports:
+#      - 3306:3306
     volumes:
       - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
     restart: unless-stopped
@@ -153,14 +167,14 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
-      - db_mysql:db
+      - db_mysql22:db
     ports:
       - 6060:80
     environment:
       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
       UPLOAD_LIMIT: 300M
     depends_on:
-      - db_mysql
+      - db_mysql22
     networks:
       - laravel
 
@@ -204,7 +218,7 @@ services:
     volumes:
       - '${FOLDER_2503SENSOR}:${FOLDER_2503SENSOR_SERV}'
     #      depends_on:
-    #        - db_mysql
+    #        - db_mysql2
     #      links:
     #        - web_scraper2:parser_service
     #    expose:
@@ -213,9 +227,9 @@ services:
   2503master:
     container_name: 2503master
     depends_on:
-      - db_mysql
+      - db_mysql22
     links:
-      - db_mysql:db
+      - db_mysql22:db
     networks:
       - laravel
     build:
@@ -238,9 +252,9 @@ services:
   2505timefv:
     container_name: 2505timefv
     depends_on:
-      - db_mysql
+      - db_mysql22
     links:
-      - db_mysql:db
+      - db_mysql22:db
     networks:
       - laravel
     #        - shared_network
@@ -266,9 +280,9 @@ services:
   2505timefv_prod:
     container_name: 2505timefv_prod
     depends_on:
-      - db_mysql
+      - db_mysql2
     links:
-      - db_mysql:db
+      - db_mysql2:db
     networks:
       - laravel
     #        - shared_network
@@ -293,7 +307,7 @@ services:
   uber:
     container_name: uber
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
     build:
@@ -306,7 +320,7 @@ services:
       - FOLDER=${FOLDER_UBER_DEV_SERV}
     restart: unless-stopped
     links:
-      - db_mysql:db
+      - db_mysql2:db
 #    expose:
 #      - 9000
     volumes:
@@ -318,7 +332,7 @@ services:
   2410svo:
     container_name: 2410svo
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
       #- shared_network
@@ -361,12 +375,12 @@ services:
     networks:
       - laravel
     depends_on:
-      - db_mysql
+      - db_mysql2
 
   2309livewire:
     container_name: 2309livewire
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
 #      - shared_network
@@ -384,7 +398,7 @@ services:
 #      - 9000
 #    links:
 #      - web_scraper2
-    #   - db_mysql:db
+    #   - db_mysql2:db
     volumes:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
       #- shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
@@ -397,7 +411,7 @@ services:
   site_api:
     container_name: site_api
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
     build:
@@ -413,14 +427,14 @@ services:
     #    expose:
     #      - 9000
     # links:
-    #   - db_mysql:db
+    #   - db_mysql2:db
     volumes:
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
 
   base12narek:
     container_name: base12narek
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
     build:
@@ -436,7 +450,7 @@ services:
     #    expose:
     #      - 9000
     links:
-      - db_mysql:db
+      - db_mysql2:db
     volumes:
       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
 
@@ -445,7 +459,7 @@ services:
   test231116php:
     container_name: test231116php
     #    depends_on:
-    #      - db_mysql
+    #      - db_mysql2
     networks:
       - laravel
     build:
@@ -465,7 +479,7 @@ services:
   2401test:
     container_name: 2401test
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
     build:
@@ -486,7 +500,7 @@ services:
   base17:
     container_name: base17
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
     build:
@@ -502,7 +516,7 @@ services:
 #    expose:
 #      - 9000
     # links:
-    #   - db_mysql:db
+    #   - db_mysql2:db
     volumes:
       - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
 
@@ -510,7 +524,7 @@ services:
   base16sites:
     container_name: base16sites
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
     build:
@@ -526,7 +540,7 @@ services:
 #    expose:
 #      - 9000
     links:
-      - db_mysql:db
+      - db_mysql2:db
     volumes:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
 
@@ -555,7 +569,7 @@ services:
   2507yii2_test:
     container_name: 2507yii2_test
     depends_on:
-      - db_mysql
+      - db_mysql2
     networks:
       - laravel
     build:
@@ -571,7 +585,7 @@ services:
     #    expose:
     #      - 9000
     links:
-      - db_mysql:db
+      - db_mysql2:db
     volumes:
       - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
 
@@ -583,7 +597,7 @@ services:
   #  bitrix24_2407_01:
 #    container_name: bitrix24_2407_01
 ##    depends_on:
-##      - db_mysql
+##      - db_mysql2
 #    networks:
 #      - laravel
 #    build:
@@ -599,7 +613,7 @@ services:
 #    expose:
 #      - 9000
 #    # links:
-#    #   - db_mysql:db
+#    #   - db_mysql2:db
 #    volumes:
 #      - '${FOLDER_bitrix24_2407_01}:${FOLDER_bitrix24_2407_01_SERV}'
 
@@ -607,7 +621,7 @@ services:
 #  upr_serv:
 #    container_name: upr_serv
 #    depends_on:
-#      - db_mysql
+#      - db_mysql2
 #    networks:
 #      - laravel
 #    build:
@@ -623,7 +637,7 @@ services:
 #    expose:
 #      - 9000
 #    # links:
-#    #   - db_mysql:db
+#    #   - db_mysql2:db
 #    volumes:
 #      - '${FOLDER_UPRSERV}:${FOLDER_UPRSERV_SERV}'
 #      - './cron:${FOLDER_UPRSERV_SERV}/storage/app/cron'
@@ -650,15 +664,15 @@ services:
 #      context: ${FOLDER_2409PARSER}  # Указываем путь к директории с Dockerfile
 #    container_name: web_scraper2
 ##    links:
-##      - db_mysql:db_mysql
+##      - db_mysql2:db_mysql2
 ##    depends_on:
-##      - db_mysql
+##      - db_mysql2
 #    ports:
 #      - "5017:5047"
 #    #environment:
 #      #- xFLASK_ENV=production
 #      #- xxFLASK_ENV=develop
-#      #- DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql:3306/2309livewire
+#      #- DATABASE_URI=mysql+pymysql://root:${MYSQL_DB_ROOT_PASSWORD}@db_mysql2:3306/2309livewire
 #    networks:
 #      - laravel
 
@@ -667,7 +681,7 @@ services:
   #  test231012:
   #    container_name: test231012
   #    depends_on:
-  #      - db_mysql
+  #      - db_mysql2
   #    networks:
   #      - laravel
   #    build:
@@ -686,11 +700,11 @@ services:
   #  2311test:
   #    container_name: 2311test
   #    depends_on:
-  #      - db_mysql
+  #      - db_mysql2
   #    networks:
   #      - laravel
   #    links:
-  #      - db_mysql:ss_db
+  #      - db_mysql2:ss_db
   #    build:
   #      context: .
   #      dockerfile: docker.2311test.Dockerfile
@@ -713,8 +727,8 @@ services:
 #  #
 #
 #
-#  db_mysql_as:
-#    container_name: db_mysql_as
+#  db_mysql2_as:
+#    container_name: db_mysql2_as
 #    image: mariadb:10.7.8
 #    environment:
 #      MYSQL_ROOT_HOST: "%"
@@ -730,14 +744,14 @@ services:
 #    container_name: phpmyadmin_as
 #    image: phpmyadmin/phpmyadmin
 #    links:
-#      - db_mysql_as:db
+#      - db_mysql2_as:db
 #    ports:
 #      - 6061:80
 #    environment:
 #      MYSQL_ROOT_PASSWORD: ${AS_MYSQL_DB_ROOT_PASSWORD}
 #      UPLOAD_LIMIT: 300M
 #    depends_on:
-#      - db_mysql_as
+#      - db_mysql2_as
 #    networks:
 #      - laravel
 #
@@ -763,9 +777,9 @@ services:
 #    networks:
 #      - laravel
 #    links:
-#      - db_mysql_as:db
+#      - db_mysql2_as:db
 #    depends_on:
-#      - db_mysql_as
+#      - db_mysql2_as
 #    volumes:
 #      - '${FOLDER_2312AUTO_AS}:${FOLDER_2312AUTO_AS_SERV}'
 #      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_SERV}/storage/app/public/photo'
@@ -788,9 +802,9 @@ services:
 #    networks:
 #      - laravel
 #    links:
-#      - db_mysql_as:db
+#      - db_mysql2_as:db
 #    depends_on:
-#      - db_mysql_as
+#      - db_mysql2_as
 #    volumes:
 #      - '${FOLDER_2312AUTO_AS_PROD}:${FOLDER_2312AUTO_AS_PROD_SERV}'
 #      - '${FOLDER_2312AUTO_AS__DIR_PHOTO}:${FOLDER_2312AUTO_AS_PROD_SERV}/storage/app/public/photo'
@@ -814,11 +828,11 @@ services:
 #    volumes:
 #      - '${FOLDER_2312AUTO_AS_DIDRIVE}:${FOLDER_2312AUTO_AS_DIDRIVE_SERV}'
 #    links:
-#      - db_mysql_as:db
+#      - db_mysql2_as:db
 #    networks:
 #      - laravel
 #    depends_on:
-#      - db_mysql_as
+#      - db_mysql2_as
 #  #
 #  #  #  2312didrive_auto_prod:
 #  #  #    #prod
@@ -838,11 +852,11 @@ services:
 #  #  #    volumes:
 #  #  #      - '${FOLDER_2312AUTO_AS_DIDRIVE_PROD}:${FOLDER_2312AUTO_AS_DIDRIVE_PROD_SERV}'
 #  #  #    links:
-#  #  #      - db_mysql_as:db
+#  #  #      - db_mysql2_as:db
 #  #  #    networks:
 #  #  #      - laravel
 #  #  #    depends_on:
-#  #  #      - db_mysql_as
+#  #  #      - db_mysql2_as
 #  #
 
 
@@ -1119,9 +1133,9 @@ services:
 #    networks:
 #      - laravel
 #    #    links:
-#    #      - db_mysql_as:db
+#    #      - db_mysql2_as:db
 #    #    depends_on:
-#    #      - db_mysql_as
+#    #      - db_mysql2_as
 #    volumes:
 #      - '${FOLDER_API_PHP74}:${FOLDER_API_PHP74_SERV}'
 
@@ -1136,8 +1150,8 @@ services:
 #  vt2:
 #    container_name: vt2
 #    depends_on:
-#      #        - db_mysql2412
-#      - db_mysql
+#      #        - db_mysql22412
+#      - db_mysql2
 #    networks:
 #      - laravel
 #      #        - shared_network
@@ -1155,7 +1169,7 @@ services:
 #      - FOLDER=${FOLDER_VT2412_SERV}
 #    restart: unless-stopped
 #    links:
-#      - db_mysql:db
+#      - db_mysql2:db
 #    expose:
 #      - 9000
 #    volumes:

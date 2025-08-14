@@ -149,8 +149,8 @@ services:
 #      - '${MYSQL_DB_FOLDER}:/var/lib/mysql'
 #    restart: unless-stopped
 
-  db_mysql22:
-    container_name: db_mysql22
+  db_mysql2:
+    container_name: db_mysql2
     image: mariadb:10.7.8
     networks:
       - laravel
@@ -167,14 +167,14 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
-      - db_mysql22:db
+      - db_mysql2:db
     ports:
       - 6060:80
     environment:
       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
       UPLOAD_LIMIT: 300M
     depends_on:
-      - db_mysql22
+      - db_mysql2
     networks:
       - laravel
 
@@ -227,9 +227,9 @@ services:
   2503master:
     container_name: 2503master
     depends_on:
-      - db_mysql22
+      - db_mysql2
     links:
-      - db_mysql22:db
+      - db_mysql2:db
     networks:
       - laravel
     build:
@@ -252,9 +252,9 @@ services:
   2505timefv:
     container_name: 2505timefv
     depends_on:
-      - db_mysql22
+      - db_mysql2
     links:
-      - db_mysql22:db
+      - db_mysql2:db
     networks:
       - laravel
     #        - shared_network
@@ -1150,7 +1150,7 @@ services:
 #  vt2:
 #    container_name: vt2
 #    depends_on:
-#      #        - db_mysql22412
+#      #        - db_mysql2412
 #      - db_mysql2
 #    networks:
 #      - laravel

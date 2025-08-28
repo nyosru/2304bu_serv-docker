@@ -2,6 +2,7 @@ remove-laravel-network:
 	docker network rm laravel || echo "Network laravel_network does not exist"
 
 create_web_laravel:
+
 	@if ! docker network ls --format '{{.Name}}' | grep -w laravel > /dev/null; then \
 		echo "Creating Docker network laravel"; \
 		docker network create laravel; \
@@ -73,8 +74,8 @@ create_web_laravel:
 	fi
 
 dev:
-	@echo "Development environment started"
-	make create_web_laravel
+	#@echo "Development environment started"
+	#make create_web_laravel
 	#docker-compose down
 	#docker network rm laravel
 	cp caddy/dev.Caddyfile caddy/Caddyfile

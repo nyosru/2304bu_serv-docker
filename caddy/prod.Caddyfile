@@ -76,6 +76,12 @@
 
 
 
+vue-prod.local {
+    import base
+    root * /home/test-vue-mobile-2508/dist
+    file_server
+    try_files {path} {path}/ /index.html
+}
 
 
 # юраманник.рф {
@@ -209,7 +215,7 @@ xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
 #    root * /home/bitrix24_2407_01
 #}
 
-#ттт72.рф, ttt72.ru, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
+# ттт72.рф, ttt72.ru, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
 
 ### ????
 # цпусво.рф
@@ -271,18 +277,27 @@ xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai {
 
 # dev
 # время для победы
-time.dev.php-cat.com {
-    import base
-    php_fastcgi 2505timefv:9000
-    root * /home/2505timefv/public
-}
+# time.dev.php-cat.com {
+#    import tls1
+#    import base
+#    php_fastcgi 2505timefv:9000
+#    root * /home/2505timefv/public
+# }
 
 # prod
-# времяпобед.рус
-xn--90abhcb4bohg6m.xn--p1acf, time.php-cat.com {
+
+time.php-cat.com {
+    import tls1
     import base
-    php_fastcgi 2505timefv_prod:9000
-    root * /home/2505timefv_prod/public
+    php_fastcgi 2505time_prod3:9000
+    root * /home/2505time_prod3/public
+}
+
+# времяпобед.рус
+xn--90abhcb4bohg6m.xn--p1acf {
+    import base
+    php_fastcgi 2505time_prod3:9000
+    root * /home/2505time_prod3/public
 }
 
 

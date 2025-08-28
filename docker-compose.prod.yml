@@ -315,8 +315,31 @@ services:
   #FOLDER_2505TIMEFV_PROD3=/home/2505timefv_prod
   #FOLDER_2505TIMEFV_PROD3_SERV=/home/2505time_prod3
 
-  2505timefv_prod3:
-    container_name: 2505timefv_prod3
+#  2505timefv_prod3:
+#    container_name: 2505timefv_prod3
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.2505timefv_prod.Dockerfile
+#    working_dir: ${FOLDER_2505TIMEFV_PROD3_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2505TIMEFV_PROD3_SERV}
+#    restart: unless-stopped
+#    #    expose:
+#    #      - 9000
+#    volumes:
+#      - '${FOLDER_2505TIMEFV_PROD3}:${FOLDER_2505TIMEFV_PROD3_SERV}'
+
+
+  2505time_prod3:
+    container_name: 2505time_prod3
     depends_on:
       - db_mysql2
     links:
@@ -325,7 +348,7 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.2505timefv_prod.Dockerfile
+      dockerfile: docker.2505time_prod3.Dockerfile
     working_dir: ${FOLDER_2505TIMEFV_PROD3_SERV}
     environment:
       - PHPGROUP=www-data

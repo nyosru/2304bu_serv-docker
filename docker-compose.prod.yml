@@ -356,8 +356,8 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2505TIMEFV_PROD3_SERV}
     restart: unless-stopped
-    #    expose:
-    #      - 9000
+    expose:
+      - 9000
     volumes:
       - '${FOLDER_2505TIMEFV_PROD3}:${FOLDER_2505TIMEFV_PROD3_SERV}'
 

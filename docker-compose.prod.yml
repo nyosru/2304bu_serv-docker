@@ -348,7 +348,8 @@ services:
       - laravel
     build:
       context: .
-      dockerfile: docker.2505time_prod3.Dockerfile
+      #dockerfile: docker.2505time_prod3.Dockerfile
+      dockerfile: docker.25time.Dockerfile
     working_dir: ${FOLDER_2505TIMEFV_PROD3_SERV}
     environment:
       - PHPGROUP=www-data
@@ -378,8 +379,8 @@ services:
     restart: unless-stopped
     links:
       - db_mysql2:db
-#    expose:
-#      - 9000
+    expose:
+      - 9000
     volumes:
       - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
 

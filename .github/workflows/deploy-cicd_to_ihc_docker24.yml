@@ -62,10 +62,11 @@ jobs:
 
             if [ "${{ needs.deploy.outputs.rebuild_needed }}" == 'true' ]; then
               echo "Rebuilding+"
-              make prod
             else            
               echo "Rebuilding-"
             fi            
+
+            make prod
             
             #$#{{ needs.deploy.outputs.rebuild_needed == 'true' && 'echo "Full rebuild started" && make prod' || 'echo "Skipping full rebuild"' }}
                               

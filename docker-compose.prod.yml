@@ -180,6 +180,11 @@ services:
     volumes:
       - '${MYSQL_DB_FOLDER2}:/var/lib/mysql'
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
   #
@@ -336,7 +341,6 @@ services:
 #    #      - 9000
 #    volumes:
 #      - '${FOLDER_2505TIMEFV_PROD3}:${FOLDER_2505TIMEFV_PROD3_SERV}'
-
 
   2505time_prod3:
     container_name: 2505time_prod3

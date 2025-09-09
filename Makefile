@@ -1,3 +1,6 @@
+clear_docker_cache:
+	docker builder prune -f
+
 remove-laravel-network:
 	docker network rm laravel || echo "Network laravel_network does not exist"
 
@@ -16,15 +19,46 @@ create_web_laravel:
 
 
 prod:
+	@echo "- - -"
+	@echo "- - -"
 	@echo "+++ prod environment started"
 	make create_web_laravel
-	@echo "+++2 prod environment started"
-	cp caddy/prod.Caddyfile caddy/Caddyfile
+#	@echo "- - -"
+#	@echo "+++2 prod environment started"
+#	cp caddy/prod.Caddyfile caddy/Caddyfile
 	cp docker-compose.prod.yml docker-compose.yml
 	docker-compose down --rmi all -v
 	docker-compose up -d --build
 	make caddy_refresh_cfd_prod
+	@echo "- - -"
+	@echo "чистим кещ докера"
+	make clear_docker_cache
 
+
+dev:
+	@echo "- - -"
+	@echo "Development environment started"
+	@echo "- - -"
+	cp caddy/dev.Caddyfile caddy/Caddyfile
+	@echo "- - -"
+	@echo "- - -"
+	cp docker-compose.local.yml docker-compose.yml
+	docker-compose up -d --remove-orphans
+	@echo "- - -"
+	@echo "обновляем кадди"
+	make caddy_refresh_cfd
+
+	#@echo "Development environment started"
+	#make create_web_laravel
+	#docker-compose down
+	#docker network rm laravel
+	#cp caddy/dev.Caddyfile caddy2/Caddyfile
+	# использовать другой файл докер композ
+	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
+	#docker-compose up -d --force-recreate web_scraper --remove-orphans
+	#make start_2309livewire
+	#make start_2410svo_dev
+	#make start_base12narek_dev
 
 
 
@@ -73,23 +107,6 @@ create_web_laravel:
 		echo "Docker network laravel already exists"; \
 	fi
 
-dev:
-	#@echo "Development environment started"
-	#make create_web_laravel
-	#docker-compose down
-	#docker network rm laravel
-	cp caddy/dev.Caddyfile caddy/Caddyfile
-	#cp caddy/dev.Caddyfile caddy2/Caddyfile
-	cp docker-compose.local.yml docker-compose.yml
-	docker-compose up -d --remove-orphans
-	# использовать другой файл докер композ
-	#docker-compose -f ./docker-compose.local.yml up -d --remove-orphans
-	#docker-compose up -d --force-recreate web_scraper --remove-orphans
-	#make start_2309livewire
-	#make start_2410svo_dev
-	#make start_base12narek_dev
-
-	make caddy_refresh_cfd
 
 dev2:
 	@echo "Development environment started"

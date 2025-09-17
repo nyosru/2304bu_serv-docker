@@ -230,9 +230,9 @@ services:
   2509cfa:
     container_name: 2509cfa
     depends_on:
-      - db_mysql
+      - db_mysql2
     links:
-      - db_mysql:db
+      - db_mysql2:db
     networks:
       - laravel
     #        - shared_network

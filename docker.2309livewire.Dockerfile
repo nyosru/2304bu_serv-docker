@@ -1,5 +1,5 @@
-FROM node:latest AS node
-FROM php:8.2-fpm
+FROM dockerhub.timeweb.cloud/library/node:latest AS node
+FROM dockerhub.timeweb.cloud/library/php:8.2-fpm
 
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -35,6 +35,6 @@ RUN apt-get update \
 RUN docker-php-ext-enable gd
 
 # # # Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=dockerhub.timeweb.cloud/library/composer:latest /usr/bin/composer /usr/bin/composer
 
 #RUN cd /2309livewire && chmod -R 0777 storage

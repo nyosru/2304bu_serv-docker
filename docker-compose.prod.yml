@@ -201,7 +201,11 @@ services:
       - db_mysql2
     networks:
       - laravel
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
 
@@ -221,7 +225,11 @@ services:
     restart: unless-stopped
     volumes:
       - '${FOLDER_TEST29}:${FOLDER_TEST29_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
 
@@ -241,7 +249,11 @@ services:
       - '${FOLDER_2503TEST_API}:${FOLDER_2503TEST_API_SERV}'
     networks:
       - laravel
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   2503sensor:
     container_name: 2503sensor
@@ -264,6 +276,11 @@ services:
     #        - web_scraper2:parser_service
     #    expose:
     #      - 9000
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   2503master:
     container_name: 2503master
@@ -288,7 +305,11 @@ services:
       - 9000
     volumes:
       - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 #  2505timefv:
 #    container_name: 2505timefv
@@ -364,30 +385,38 @@ services:
       - 9000
     volumes:
       - '${FOLDER_2505TIMEFV_PROD3}:${FOLDER_2505TIMEFV_PROD3_SERV}'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
-
-  uber:
-    container_name: uber
-    depends_on:
-      - db_mysql2
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.2503uber.Dockerfile
-    working_dir: ${FOLDER_UBER_DEV_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_UBER_DEV_SERV}
-    restart: unless-stopped
-    links:
-      - db_mysql2:db
-    expose:
-      - 9000
-    volumes:
-      - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
-
+#  uber:
+#    container_name: uber
+#    depends_on:
+#      - db_mysql2
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.2503uber.Dockerfile
+#    working_dir: ${FOLDER_UBER_DEV_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_UBER_DEV_SERV}
+#    restart: unless-stopped
+#    links:
+#      - db_mysql2:db
+#    expose:
+#      - 9000
+#    volumes:
+#      - '${FOLDER_UBER_DEV}:${FOLDER_UBER_DEV_SERV}'
+#    logging:
+#      driver: "json-file"
+#      options:
+#        max-size: "10m"
+#        max-file: "3"
 
 
 
@@ -413,7 +442,11 @@ services:
     #        - web_scraper2:parser_service
     #    expose:
     #      - 9000
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
   2308beget:
@@ -439,6 +472,11 @@ services:
       - db_mysql2
     links:
       - db_mysql2:db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   2309livewire:
     container_name: 2309livewire
@@ -466,7 +504,11 @@ services:
       #- shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
       - ./caddy/dev.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/dev.Caddyfile
       - ./caddy/prod.Caddyfile:${FOLDER_2309LIVEWIRE_SERV}/storage/app/caddy/prod.Caddyfile
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
 
@@ -492,6 +534,11 @@ services:
     #   - db_mysql2:db
     volumes:
       - '${FOLDER_SITE_API}:${FOLDER_SITE_API_SERV}'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   base12narek:
     container_name: base12narek
@@ -515,7 +562,11 @@ services:
       - db_mysql2:db
     volumes:
       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
   test231116php:
@@ -537,7 +588,12 @@ services:
     #      - 9000
     volumes:
       - '${FOLDER_TEST23116PHP}:${FOLDER_TEST23116PHP_SERV}'
-  #
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
   2401test:
     container_name: 2401test
     depends_on:
@@ -557,7 +613,11 @@ services:
     #      - 9000
     volumes:
       - '${FOLDER_2401TEST}:${FOLDER_2401TEST_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   base17:
     container_name: base17
@@ -581,7 +641,11 @@ services:
     #   - db_mysql2:db
     volumes:
       - '${FOLDER_BASE17}:${FOLDER_BASE17_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   base16sites:
     container_name: base16sites
@@ -605,7 +669,11 @@ services:
       - db_mysql2:db
     volumes:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   2506test:
     container_name: 2506test
@@ -622,7 +690,11 @@ services:
     restart: unless-stopped
     volumes:
       - '${FOLDER_2506TESTAPI}:${FOLDER_2506TESTAPI_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
 
@@ -650,7 +722,11 @@ services:
       - db_mysql2:db
     volumes:
       - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
 

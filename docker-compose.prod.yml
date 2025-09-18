@@ -227,8 +227,8 @@ services:
 
 
 
-  2509cfa:
-    container_name: 2509cfa
+  2509web_cfa:
+    container_name: 2509web_cfa
     depends_on:
       - db_mysql2
     links:

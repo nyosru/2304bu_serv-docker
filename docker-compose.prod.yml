@@ -235,42 +235,62 @@ services:
       - db_mysql2:db
     networks:
       - laravel
+    expose:
+      - 9000
     build:
       context: .
-      dockerfile: docker.2509cfa.Dockerfile
-    working_dir: ${FOLDER_2509CFA_SERV}
+      dockerfile: docker.2509web_cfa.Dockerfile
+    working_dir: ${FOLDER_2509WEB_CFA_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
-      - FOLDER=${FOLDER_2509CFA_SERV}
-    restart: unless-stopped
-    #      links:
-    #        - web_scraper2:parser_service
-    #    expose:
-    #      - 9000
-    volumes:
-      - '${FOLDER_2509CFA}:${FOLDER_2509CFA_SERV}'
-
-
-
-  2509cfa2:
-    container_name: 2509cfa2
-    depends_on:
-      - db_mysql2
-    links:
-      - db_mysql2:db
-    networks:
-      - laravel
-    build:
-      context: .
-      dockerfile: docker.2509cfa2.Dockerfile
-    working_dir: ${FOLDER_2509CFA2_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2509WEB_CFA_SERV}
     restart: unless-stopped
     volumes:
-      - '${FOLDER_2509CFA2}:${FOLDER_2509CFA2_SERV}'
+      - '${FOLDER_2509WEB_CFA}:${FOLDER_2509WEB_CFA_SERV}'
+#
+#  2509cfa:
+#    container_name: 2509cfa
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
+#    networks:
+#      - laravel
+#    expose:
+#      - 9000
+#    build:
+#      context: .
+#      dockerfile: docker.2509cfa.Dockerfile
+#    working_dir: ${FOLDER_2509CFA_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2509CFA_SERV}
+#    restart: unless-stopped
+#    volumes:
+#      - '${FOLDER_2509CFA}:${FOLDER_2509CFA_SERV}'
+
+
+#
+#  2509cfa2:
+#    container_name: 2509cfa2
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
+#    networks:
+#      - laravel
+#    build:
+#      context: .
+#      dockerfile: docker.2509cfa2.Dockerfile
+#    working_dir: ${FOLDER_2509CFA2_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#    restart: unless-stopped
+#    volumes:
+#      - '${FOLDER_2509CFA2}:${FOLDER_2509CFA2_SERV}'
 
 
 

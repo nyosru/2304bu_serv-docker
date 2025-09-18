@@ -1,6 +1,5 @@
 FROM dockerhub.timeweb.cloud/library/node:latest AS node
-#FROM dockerhub.timeweb.cloud/library/php:8.2-fpm
-FROM php:8.2-fpm
+FROM dockerhub.timeweb.cloud/library/php:8.2-fpm
 
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -17,11 +16,18 @@ ENV PHPGROUP=${PHPGROUP}
 ENV PHPUSER=${PHPUSER}
 ENV FOLDER=${FOLDER}
 
-#WORKDIR ${FOLDER}
+WORKDIR ${FOLDER}
 
 USER ${PHPUSER}
 
 # Установка необходимых пакетов и расширений PHP
+RUN apt-get update -y \
+    && apt-get install -y git libzip-dev libxml2-dev \
+    && docker-php-ext-install pdo_mysql zip \
+    && docker-php-ext-enable zip
+
+# Установка расширения SOAP
+# RUN docker-php-ext-install soap
 
 # Install GD extension
 RUN apt-get update \
@@ -29,12 +35,7 @@ RUN apt-get update \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
-RUN apt-get update -y \
-    && apt-get install -y git libzip-dev libxml2-dev \
-    && docker-php-ext-install pdo_mysql zip \
-    && docker-php-ext-enable zip \
-    && docker-php-ext-install soap \
-    && docker-php-ext-enable gd
+RUN docker-php-ext-enable gd
 
 # Увеличиваем лимиты загрузки файлов
 RUN echo "upload_max_filesize = 100M\npost_max_size = 100M" > /usr/local/etc/php/conf.d/uploads.ini
@@ -43,12 +44,6 @@ RUN echo "upload_max_filesize = 100M\npost_max_size = 100M" > /usr/local/etc/php
 COPY --from=dockerhub.timeweb.cloud/library/composer:latest /usr/bin/composer /usr/bin/composer
 
 # Очистка кеша apt для уменьшения размера образа
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*  \
-#    \
-#    && chown -R www-data:www-data storage bootstrap/cache \
-#    && chmod -R 775 storage bootstrap/cache
-
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #RUN cd /2309livewire && chmod -R 0777 storage
-# Expose port
-#EXPOSE 9000

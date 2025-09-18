@@ -50,3 +50,5 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*  \
 
 
 #RUN cd /2309livewire && chmod -R 0777 storage
+# Expose port
+EXPOSE 9000

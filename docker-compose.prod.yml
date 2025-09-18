@@ -253,6 +253,27 @@ services:
 
 
 
+  2509cfa2:
+    container_name: 2509cfa2
+    depends_on:
+      - db_mysql2
+    links:
+      - db_mysql2:db
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2509cfa2.Dockerfile
+    working_dir: ${FOLDER_2509CFA2_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+    restart: unless-stopped
+    volumes:
+      - '${FOLDER_2509CFA2}:${FOLDER_2509CFA2_SERV}'
+
+
+
 
   test29:
     container_name: test29

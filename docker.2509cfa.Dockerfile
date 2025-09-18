@@ -43,9 +43,10 @@ RUN echo "upload_max_filesize = 100M\npost_max_size = 100M" > /usr/local/etc/php
 COPY --from=dockerhub.timeweb.cloud/library/composer:latest /usr/bin/composer /usr/bin/composer
 
 # Очистка кеша apt для уменьшения размера образа
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* \
-    && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+#RUN #apt-get clean && rm -rf /var/lib/apt/lists/* \
+#    && chown -R www-data:www-data storage bootstrap/cache \
+#    && chmod -R 775 storage bootstrap/cache
 
 
 #RUN cd /2309livewire && chmod -R 0777 storage

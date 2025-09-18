@@ -235,11 +235,9 @@ services:
       - db_mysql2:db
     networks:
       - laravel
-    #        - shared_network
     build:
       context: .
       dockerfile: docker.2509cfa.Dockerfile
-    #        dockerfile: docker.2309livewire.Dockerfile
     working_dir: ${FOLDER_2509CFA_SERV}
     environment:
       - PHPGROUP=www-data
@@ -252,6 +250,7 @@ services:
     #      - 9000
     volumes:
       - '${FOLDER_2509CFA}:${FOLDER_2509CFA_SERV}'
+
 
 
 

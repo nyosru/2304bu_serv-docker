@@ -227,27 +227,27 @@ services:
 
 
 
-  2509web_cfa:
-    container_name: 2509web_cfa
-    depends_on:
-      - db_mysql2
-    links:
-      - db_mysql2:db
-    networks:
-      - laravel
-    expose:
-      - 9000
-    build:
-      context: .
-      dockerfile: docker.2509web_cfa.Dockerfile
-    working_dir: ${FOLDER_2509WEB_CFA_SERV}
-    environment:
-      - PHPGROUP=www-data
-      - PHPUSER=www-data
-      - FOLDER=${FOLDER_2509WEB_CFA_SERV}
-    restart: unless-stopped
-    volumes:
-      - '${FOLDER_2509WEB_CFA}:${FOLDER_2509WEB_CFA_SERV}'
+#  2509web_cfa:
+#    container_name: 2509web_cfa
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
+#    networks:
+#      - laravel
+#    expose:
+#      - 9000
+#    build:
+#      context: .
+#      dockerfile: docker.2509web_cfa.Dockerfile
+#    working_dir: ${FOLDER_2509WEB_CFA_SERV}
+#    environment:
+#      - PHPGROUP=www-data
+#      - PHPUSER=www-data
+#      - FOLDER=${FOLDER_2509WEB_CFA_SERV}
+#    restart: unless-stopped
+#    volumes:
+#      - '${FOLDER_2509WEB_CFA}:${FOLDER_2509WEB_CFA_SERV}'
 #
 #  2509cfa:
 #    container_name: 2509cfa
@@ -395,6 +395,15 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "https://процессмастер.рф/health"]
+      interval: 300s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+
+
 
 #  2505timefv:
 #    container_name: 2505timefv

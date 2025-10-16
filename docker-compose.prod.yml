@@ -294,6 +294,26 @@ services:
 
 
 
+  2510vue32:
+    container_name: 2510vue32
+    depends_on:
+      - db_mysql2
+    links:
+      - db_mysql2:db
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2510vue32.Dockerfile
+    working_dir: ${FOLDER_2510VUE32_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2510VUE32_SERV}
+    restart: unless-stopped
+    volumes:
+      - '${FOLDER_2510VUE32}:${FOLDER_2510VUE32_SERV}'
+
 
   test29:
     container_name: test29
@@ -795,20 +815,20 @@ services:
 
 
 
-  2507yii2_test:
-    container_name: 2507yii2_test
+  2509yii2_test:
+    container_name: 2509yii2_test
     depends_on:
       - db_mysql2
     networks:
       - laravel
     build:
       context: .
-      dockerfile: docker.2507yii2_test.Dockerfile
-    working_dir: ${FOLDER_2507YII2_TEST_SERV}
+      dockerfile: docker.2509yii2_test.Dockerfile
+    working_dir: ${FOLDER_2509YII2_TEST_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data
-      - FOLDER=${FOLDER_2507YII2_TEST_SERV}
+      - FOLDER=${FOLDER_2509YII2_TEST_SERV}
     restart: unless-stopped
     # tty: true
     #    expose:
@@ -816,7 +836,7 @@ services:
     links:
       - db_mysql2:db
     volumes:
-      - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
+      - '${FOLDER_2509YII2_TEST}:${FOLDER_2509YII2_TEST_SERV}'
     logging:
       driver: "json-file"
       options:

@@ -429,6 +429,8 @@ services:
     depends_on:
       - db_mysql2
       - 2503master
+    links:
+      - db_mysql2:db
     networks:
       - laravel
     build:
@@ -455,6 +457,8 @@ services:
     depends_on:
       - db_mysql2
       - 2503master
+    links:
+      - db_mysql2:db
     networks:
       - laravel
     build:

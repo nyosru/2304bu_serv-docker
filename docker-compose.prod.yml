@@ -424,9 +424,61 @@ services:
       start_period: 10s
 
 
+  2503master-queue:
+    container_name: 2503master-queue
+    depends_on:
+      - db_mysql2
+      - 2503master
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2503master.Dockerfile
+    working_dir: ${FOLDER_2503MASTER_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2503MASTER_SERV}
+    #    restart: unless-stopped
+    restart: always
+    volumes:
+      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+    command: >
+      sh -c "
+        cd ${FOLDER_2503MASTER_SERV} &&
+        php artisan queue:work --queue="default,notifications" --sleep=1 --tries=3
+      "
 
 
-#  2505timefv:
+  2503master-scheduler:
+    container_name: 2503master-scheduler
+    depends_on:
+      - db_mysql2
+      - 2503master
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker.2503master.Dockerfile
+    working_dir: ${FOLDER_2503MASTER_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2503MASTER_SERV}
+    #    restart: unless-stopped
+    restart: always
+    volumes:
+      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+    command: >
+      sh -c "
+        cd ${FOLDER_2503MASTER_SERV} &&
+        while true; do php artisan schedule:run; sleep 60; done
+      "
+  
+  
+  
+
+  #  2505timefv:
 #    container_name: 2505timefv
 #    depends_on:
 #      - db_mysql2
@@ -824,7 +876,7 @@ services:
     build:
       context: .
       dockerfile: docker.2509yii2_test.Dockerfile
-    working_dir: ${FOLDER_2509YII2_TEST_SERV}
+    working_dir: ${FOLDER_2509YII2_TEST_S+ERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data

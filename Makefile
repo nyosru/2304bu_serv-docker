@@ -40,10 +40,13 @@ dev:
 	@echo "Development environment started"
 	@echo "- - -"
 	cp caddy/dev.Caddyfile caddy/Caddyfile
-	@echo "- - -"
-	@echo "- - -"
 	cp docker-compose.local.yml docker-compose.yml
+	@echo "- - -"
+	@echo "- - -"
 	docker-compose up -d --remove-orphans
+#	@echo "- - -"
+#	docker-compose build --no-cache caddy
+#	docker-compose build --no-cache 2509yii2_test
 	@echo "- - -"
 	@echo "обновляем кадди"
 	make caddy_refresh_cfd

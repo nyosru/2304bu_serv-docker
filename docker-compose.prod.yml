@@ -876,7 +876,7 @@ services:
     build:
       context: .
       dockerfile: docker.2509yii2_test.Dockerfile
-    working_dir: ${FOLDER_2509YII2_TEST_S+ERV}
+    working_dir: ${FOLDER_2509YII2_TEST_SERV}
     environment:
       - PHPGROUP=www-data
       - PHPUSER=www-data

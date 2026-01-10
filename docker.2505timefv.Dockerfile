@@ -1,5 +1,7 @@
-FROM dockerhub.timeweb.cloud/library/node:latest AS node
-FROM dockerhub.timeweb.cloud/library/php:8.2-fpm
+#FROM dockerhub.timeweb.cloud/library/node:latest AS node
+FROM node:latest AS node
+#FROM dockerhub.timeweb.cloud/library/php:8.2-fpm
+FROM php:8.2-fpm
 
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node

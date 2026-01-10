@@ -77,6 +77,10 @@
 
 
 vue-prod.local {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import base
     root * /home/test-vue-mobile-2508/dist
     file_server
@@ -86,6 +90,10 @@ vue-prod.local {
 
 # юраманник.рф {
 xn--80aayihhat9j.xn--p1ai {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     tls 1@php-cat.com
     import base
     import 2309livewire
@@ -93,6 +101,10 @@ xn--80aayihhat9j.xn--p1ai {
 
 #самыетюменскиеновости.рф {
 xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     # redir https://stn.dev.php-cat.com{uri} 301
     tls 1@php-cat.com
     import base
@@ -101,6 +113,10 @@ xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
 
 #приватизациягаража.рф {
 xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     #    redir https://privat.php-cat.com{uri} 301
     tls 1@php-cat.com
     import base
@@ -109,12 +125,20 @@ xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
 
 # таймер.сергейсб.рф
 xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     import 2309livewire
 }
 
 php-cat.com, php-cat.ru {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     import 2309livewire
@@ -122,6 +146,10 @@ php-cat.com, php-cat.ru {
 
 # тюменскаяафиша.рф {
 xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     import 2309livewire
@@ -139,6 +167,10 @@ xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
 # вячеслав
 #, народноехозяйство.рус {
 xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi base12narek:9000
@@ -220,6 +252,10 @@ xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
 ### ????
 # цпусво.рф
 xn--b1aybijq.xn--p1ai, svo.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     #php_fastcgi base12narek:9000
@@ -229,6 +265,10 @@ xn--b1aybijq.xn--p1ai, svo.php-cat.com {
 }
 
 api.php-cat.com, api3.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi site_api:9000
@@ -237,6 +277,10 @@ api.php-cat.com, api3.php-cat.com {
 
 
 domainwaiter.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi 2308beget:9000
@@ -248,6 +292,10 @@ domainwaiter.com {
 # не работает
 #uber
 u.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     #import tls_off
     import tls1
     import base
@@ -260,6 +308,10 @@ u.php-cat.com {
 # процессмастер.рф, управлятор.рф
 # xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai, processmaster.php-cat.ru {
 xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
 
     request_body {
         max_size 100MB
@@ -287,6 +339,10 @@ xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai {
 # prod
 
 time.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi 2505time_prod3:9000
@@ -297,6 +353,10 @@ time.php-cat.com {
 
 # времяпобед.рус
 xn--90abhcb4bohg6m.xn--p1acf {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import base
     php_fastcgi 2505time_prod3:9000
     root * /home/2505time_prod3/public
@@ -340,6 +400,10 @@ xn--90abhcb4bohg6m.xn--p1acf {
 
 ##--- не работает
 upr.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     #import tls_off
     import base
     #import base
@@ -356,6 +420,10 @@ upr.php-cat.com {
 #}
 
 xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi 2308beget:9000
@@ -364,6 +432,10 @@ xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai {
 
 
 test2401laravel-vitrin.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi 2401test:9000
@@ -463,6 +535,10 @@ test2401laravel-vitrin.php-cat.com {
 
 #uber
 test-sensor.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     #import tls_off
     tls 1@php-cat.com
     import base
@@ -472,6 +548,10 @@ test-sensor.php-cat.com {
 }
 
 testapi2503.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi 2503testapi:9000
@@ -481,6 +561,10 @@ testapi2503.php-cat.com {
 
 
 test2506.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi 2506test:9000
@@ -489,6 +573,10 @@ test2506.php-cat.com {
 
 
 yii2.php-cat.com {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     import base
     php_fastcgi 2507yii2_test:9000
@@ -497,6 +585,10 @@ yii2.php-cat.com {
 
 
 :433, :80 {
+
+    @storage path_regexp ^/storage/.*/index\.php$
+        respond @storage 403 "Forbidden probe path"
+
     import tls1
     # tls support@php-cat.com
     import base

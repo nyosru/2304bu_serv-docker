@@ -3,6 +3,7 @@ version: '3.8'
 networks:
   laravel:
     external: true
+    name: laravel
 
 #volumes:
 #  cron_volume:

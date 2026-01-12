@@ -470,10 +470,11 @@ services:
         max-file: "3"
     healthcheck:
 #      test: ["CMD", "curl", "-f", "https://процессмастер.рф/health"]
-      test: ["CMD", "curl", "-f", "https://xn--80ajb0aifhffacm9b.xn--p1ai/health"]
-      interval: 30s
+#      test: ["CMD", "curl", "-f", "https://xn--80ajb0aifhffacm9b.xn--p1ai/health"]
+      test: ["CMD", "php", "artisan", "--version"]
+      interval: 60s
       timeout: 10s
-      retries: 3
+      retries: 2
       start_period: 10s
     deploy:
       resources:

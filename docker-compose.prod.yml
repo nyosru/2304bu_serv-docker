@@ -181,25 +181,41 @@ services:
     volumes:
       - '${MYSQL_DB_FOLDER2}:/var/lib/mysql'
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
 
   #
   phpmyadmin2:
     image: phpmyadmin/phpmyadmin
-    links:
-      - db_mysql2:db
+
+#    links:
+#      - db_mysql2:db
+
+    depends_on:
+      db_mysql2:
+        condition: service_healthy
     ports:
       - 6062:80
     environment:
       MYSQL_ROOT_PASSWORD: ${BU_DB_ROOT_PASSWORD}
       UPLOAD_LIMIT: 300M
-    depends_on:
-      - db_mysql2
+#    depends_on:
+#      - db_mysql2
     networks:
       - laravel
     logging:
@@ -297,10 +313,15 @@ services:
 
   2510vue32:
     container_name: 2510vue32
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
+
     depends_on:
-      - db_mysql2
-    links:
-      - db_mysql2:db
+      db_mysql2:
+        condition: service_healthy
+
     networks:
       - laravel
     build:
@@ -314,7 +335,13 @@ services:
     restart: unless-stopped
     volumes:
       - '${FOLDER_2510VUE32}:${FOLDER_2510VUE32_SERV}'
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.10"
+          memory: 512M
+        reservations:
+          memory: 256M
 
   test29:
     container_name: test29
@@ -336,7 +363,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.10"
+          memory: 512M
+        reservations:
+          memory: 256M
 
 
 
@@ -360,6 +393,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.10"
+          memory: 512M
+        reservations:
+          memory: 256M
+
 
   2503sensor:
     container_name: 2503sensor
@@ -387,13 +428,24 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.30"
+          memory: 512M
+        reservations:
+          memory: 256M
+
 
   2503master:
     container_name: 2503master
     depends_on:
-      - db_mysql2
-    links:
-      - db_mysql2:db
+      db_mysql2:
+        condition: service_healthy
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
     networks:
       - laravel
     build:
@@ -423,15 +475,21 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
 
   2503master-queue:
     container_name: 2503master-queue
     depends_on:
       - db_mysql2
       - 2503master
-    links:
-      - db_mysql2:db
+#    links:
+#      - db_mysql2:db
     networks:
       - laravel
     build:
@@ -451,15 +509,24 @@ services:
         cd ${FOLDER_2503MASTER_SERV} &&
         php artisan queue:work --queue="default,notifications" --sleep=1 --tries=3
       "
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.30"
+          memory: 512M
+        reservations:
+          memory: 256M
 
   2503master-scheduler:
     container_name: 2503master-scheduler
     depends_on:
-      - db_mysql2
-      - 2503master
-    links:
-      - db_mysql2:db
+      db_mysql2:
+        condition: service_healthy
+#    depends_on:
+#      - db_mysql2
+#      - 2503master
+#    links:
+#      - db_mysql2:db
     networks:
       - laravel
     build:
@@ -479,7 +546,13 @@ services:
         cd ${FOLDER_2503MASTER_SERV} &&
         while true; do php artisan schedule:run; sleep 60; done
       "
-  
+    deploy:
+      resources:
+        limits:
+          cpus: "0.30"
+          memory: 512M
+        reservations:
+          memory: 256M
   
   
 
@@ -537,10 +610,10 @@ services:
 
   2505time_prod3:
     container_name: 2505time_prod3
-    depends_on:
-      - db_mysql2
-    links:
-      - db_mysql2:db
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
     networks:
       - laravel
     build:
@@ -562,6 +635,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
+
 
 #  uber:
 #    container_name: uber
@@ -594,8 +675,8 @@ services:
 
   2410svo:
     container_name: 2410svo
-    depends_on:
-      - db_mysql2
+#    depends_on:
+#      - db_mysql2
     networks:
       - laravel
       #- shared_network
@@ -619,7 +700,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
 
   2308beget:
     container_name: 2308beget
@@ -640,15 +727,23 @@ services:
       - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
     networks:
       - laravel
-    depends_on:
-      - db_mysql2
-    links:
-      - db_mysql2:db
+#    depends_on:
+#      - db_mysql2
+#    links:
+#      - db_mysql2:db
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
+
 
   2309livewire:
     container_name: 2309livewire
@@ -666,11 +761,11 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
     restart: unless-stopped
-    # tty: true
-#    expose:
-#      - 9000
-    links:
-      - db_mysql2:db
+#    # tty: true
+##    expose:
+##      - 9000
+#    links:
+#      - db_mysql2:db
     volumes:
       - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
       #- shared_caddyfile:/storage/caddyfile  # Монтируем том для доступа к Caddyfile в контейнере
@@ -681,7 +776,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
 
 
   site_api:
@@ -711,6 +812,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
+
 
   base12narek:
     container_name: base12narek
@@ -727,11 +836,11 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_BASE12NAREK_SERV}
     restart: unless-stopped
-    # tty: true
-    #    expose:
-    #      - 9000
-    links:
-      - db_mysql2:db
+#    # tty: true
+#    #    expose:
+#    #      - 9000
+#    links:
+#      - db_mysql2:db
     volumes:
       - '${FOLDER_BASE12NAREK}:${FOLDER_BASE12NAREK_SERV}'
     logging:
@@ -739,7 +848,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 256M
 
   test231116php:
     container_name: test231116php
@@ -765,6 +880,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.20"
+          memory: 512M
+        reservations:
+          memory: 56M
+
 
   2401test:
     container_name: 2401test
@@ -790,6 +913,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.20"
+          memory: 512M
+        reservations:
+          memory: 56M
+
 
   base17:
     container_name: base17
@@ -818,6 +949,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 56M
+
 
   base16sites:
     container_name: base16sites
@@ -834,11 +973,11 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_BASE16_SERV}
     restart: unless-stopped
-    # tty: true
-#    expose:
-#      - 9000
-    links:
-      - db_mysql2:db
+#    # tty: true
+##    expose:
+##      - 9000
+#    links:
+#      - db_mysql2:db
     volumes:
       - '${FOLDER_BASE16}:${FOLDER_BASE16_SERV}'
     logging:
@@ -846,6 +985,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+        reservations:
+          memory: 128M
 
   2506test:
     container_name: 2506test
@@ -867,7 +1013,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.20"
+          memory: 512M
+        reservations:
+          memory: 56M
 
 
 
@@ -887,11 +1039,11 @@ services:
       - PHPUSER=www-data
       - FOLDER=${FOLDER_2509YII2_TEST_SERV}
     restart: unless-stopped
-    # tty: true
-    #    expose:
-    #      - 9000
-    links:
-      - db_mysql2:db
+#    # tty: true
+#    #    expose:
+#    #      - 9000
+#    links:
+#      - db_mysql2:db
     volumes:
       - '${FOLDER_2509YII2_TEST}:${FOLDER_2509YII2_TEST_SERV}'
     logging:
@@ -899,7 +1051,13 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
+    deploy:
+      resources:
+        limits:
+          cpus: "0.20"
+          memory: 512M
+        reservations:
+          memory: 56M
 
 
 

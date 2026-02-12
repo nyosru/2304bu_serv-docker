@@ -4,15 +4,12 @@
     root * /home/2309livewire/public
 }
 
-#{
-# Использовать Let's Encrypt
-# acme_ca https://acme-v02.api.letsencrypt.org/directory
-#}
-
 (base) {
+
+    @storage path_regexp ^/storage/.*\.php$
+        respond @storage 403 "Forbidden probe path"
+
     # Формируем самоподписной сертификат для работы https
-    # tls support@php-cat.com
-    #tls internal
     file_server
     encode gzip
 }
@@ -78,9 +75,6 @@
 
 vue-prod.local {
 
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import base
     root * /home/test-vue-mobile-2508/dist
     file_server
@@ -91,9 +85,6 @@ vue-prod.local {
 # юраманник.рф {
 xn--80aayihhat9j.xn--p1ai {
 
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     tls 1@php-cat.com
     import base
     import 2309livewire
@@ -101,9 +92,6 @@ xn--80aayihhat9j.xn--p1ai {
 
 #самыетюменскиеновости.рф {
 xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
 
     # redir https://stn.dev.php-cat.com{uri} 301
     tls 1@php-cat.com
@@ -114,10 +102,7 @@ xn--80aeiaarcmpbmdnb6aghgm9nrc.xn--p1ai {
 #приватизациягаража.рф {
 xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
 
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
 
-    #    redir https://privat.php-cat.com{uri} 301
     tls 1@php-cat.com
     import base
     import 2309livewire
@@ -125,20 +110,12 @@ xn--80aaaaahj0aehcc8fojz5e1i.xn--p1ai {
 
 # таймер.сергейсб.рф
 xn--80aklmvh.xn--90adfbu3bff.xn--p1ai {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     import 2309livewire
 }
 
 php-cat.com, php-cat.ru {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     import 2309livewire
@@ -146,10 +123,6 @@ php-cat.com, php-cat.ru {
 
 # тюменскаяафиша.рф {
 xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     import 2309livewire
@@ -160,17 +133,9 @@ xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
 #   import 2309livewire
 
 
-
-
-
-
 # вячеслав
 #, народноехозяйство.рус {
 xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi base12narek:9000
@@ -206,100 +171,33 @@ xn--80aefekmxchcbdqwp7b3l.xn--p1acf {
 
 
 
-
-
-#bu72.ru, бу72.рф {
-#    tls 1@php-cat.com
-#    import base
-#    import 2309livewire
-#}
-
-#privat.php-cat.com, 1.php-cat.com {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
-
-#ar.php-cat.com {
-#    import base
-#    import 2309livewire
-#}
-
-#stn.dev.php-cat.com {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
-
-
-# скидки.сергейсб.рф
-# prf72.ru, skidki.dev.php-cat.com, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-# kprf72.ru, скидки.сергейсб.рф {
-# kprf72.ru, xn--d1ahbfc2b.xn--90adfbu3bff.xn--p1ai {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
-
-#api-bitrix.php-cat.com, api-bitrix2.php-cat.com, api.bitrix.test.php-cat.com {
-#    import base
-#    php_fastcgi bitrix24_2407_01:9000
-#    root * /home/bitrix24_2407_01
-#}
-
-# ттт72.рф, ttt72.ru, xn--80aaarrjmj0bg3a3c0dua.xn--p1ai {
-
-### ????
 # цпусво.рф
 xn--b1aybijq.xn--p1ai, svo.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
-    #php_fastcgi base12narek:9000
     php_fastcgi 2410svo:9000
-    #root * /home/base12narek/public
     root * /home/2410svo/public
 }
 
 api.php-cat.com, api3.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi site_api:9000
     root * /home/site_api
 }
 
-
 domainwaiter.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi 2308beget:9000
     root * /home/2308beget/public
 }
 
-
-
 # не работает
 #uber
 u.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
-    #import tls_off
     import tls1
     import base
-    #import base
     php_fastcgi uber:9000
     root * /home_uber/uber-tele/public
 }
@@ -308,10 +206,6 @@ u.php-cat.com {
 # процессмастер.рф, управлятор.рф
 # xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai, processmaster.php-cat.ru {
 xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
 
     request_body {
         max_size 100MB
@@ -326,23 +220,9 @@ xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai {
     respond @showtext "домены xn--80ajb0aifhffacm9b.xn--p1ai, xn--80ae1ambgeod9j.xn--p1ai, processmaster.php-cat.ru "
 }
 
-
-# dev
-# время для победы
-# time.dev.php-cat.com {
-#    import tls1
-#    import base
-#    php_fastcgi 2505timefv:9000
-#    root * /home/2505timefv/public
-# }
-
 # prod
 
 time.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi 2505time_prod3:9000
@@ -353,10 +233,6 @@ time.php-cat.com {
 
 # времяпобед.рус
 xn--90abhcb4bohg6m.xn--p1acf {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import base
     php_fastcgi 2505time_prod3:9000
     root * /home/2505time_prod3/public
@@ -400,158 +276,35 @@ xn--90abhcb4bohg6m.xn--p1acf {
 
 ##--- не работает
 upr.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
-    #import tls_off
     import base
-    #import base
     php_fastcgi upr_serv:9000
     root * /home/upr_serv/public
 }
 
 
-#vue3.php-cat.com {
-#    import tls1
-#    import base
-#    php_fastcgi base17:9000
-#    root * /home/base17/public
-#}
-
 xn--f1aeeb2as.xn--90adfbu3bff.xn--p1ai {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi 2308beget:9000
     root * /home/2308beget/public
 }
 
-
 test2401laravel-vitrin.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi 2401test:9000
     root * /home/2401test_laravel/public
 }
 
-
-
-
-#управлятор.рф, vk.files.php-cat.com {
-#xn--80ae1ambgeod9j.xn--p1ai, vk.files.php-cat.com {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
-
-#as.php-cat.com {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
-
-# атрактор.рф {
-#сноукайтинг.рф, продукты72.рф, земельныйкадастр.рф {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
-
-#dev.47.avto-as.ru {
-#    import tls1
-#    import base
-#    php_fastcgi 2312auto_as:9000
-#    root * /home_as/2312auto_as/public
-#}
-#
-#avs.php-cat.com, 47.avto-as.ru {
-#    import tls1
-#    import base
-#    php_fastcgi 2312auto_as_prod:9000
-#    root * /home_as/2312auto_as_prod/public
-#}
-#
-#avs.didrive.php-cat.com, d47.avto-as.ru {
-#    import tls1
-#    import base
-#    php_fastcgi 2312didrive_auto:9000
-#    root * /home_as/2312auto_as_didrive/public
-#}
-
-#api74.php-cat.com {
-#    import tls1
-#    import base
-#    php_fastcgi api_php74:9000
-#    root * /home_as/base-php7-api/public
-#}
-
-
-
-
-
-
-
-# сергейсб.рф, kprf72.ru, кпрф72.рф {
-#сергейсб.рф {
-#    import tls1
-#    import base
-#    import 2309livewire
-#}
-
-
-
-#vt.php-cat.ru {
-#    import base
-#    tls 1@php-cat.com
-#    #    php_fastcgi vt2412:9000
-#    php_fastcgi vt2:9000
-#    root * /home/vt2412/public
-#    #reverse_proxy / 2412job_site1:9000
-#}
-
-
-
-
-
-
-
-#process.php-cat.com {
-#    import tls1
-#    import base
-#    php_fastcgi proc_master:9000
-#    root * /home/2503master/public
-#    @showtext path /info
-#    respond @showtext "домен траля ля ляы"
-#}
-
-
 #uber
 test-sensor.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
-    #import tls_off
     tls 1@php-cat.com
     import base
-    #import base
     php_fastcgi 2503sensor:9000
     root * /home/2503sensor/public
 }
 
 testapi2503.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi 2503testapi:9000
@@ -561,44 +314,21 @@ testapi2503.php-cat.com {
 
 
 test2506.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi 2506test:9000
     root * /home/2506test_resource_api/public/
 }
 
-
 yii2.php-cat.com {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
     import base
     php_fastcgi 2507yii2_test:9000
     root * /home/2507yii2_test/web/
 }
 
-
 :433, :80 {
-
-    @storage path_regexp ^/storage/.*/index\.php$
-        respond @storage 403 "Forbidden probe path"
-
     import tls1
-    # tls support@php-cat.com
     import base
     import 2309livewire
-
-    # Этот блок выглядит неправильно, возможно, его следует удалить или исправить
-    # *.ru, *.xn--p1ai, *.com, *.info, *.local, :433, :80 {
-    # :433, :80 {
-    # *.ru, *.xn--p1ai, *.com, *.info, :433 {
-    # :433 {
-
-    #*.ru, *.xn--p1ai, *.com, *.info {
 }

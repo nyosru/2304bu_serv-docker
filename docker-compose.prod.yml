@@ -50,12 +50,12 @@ services:
   phpmyadmin2:
     image: phpmyadmin/phpmyadmin
 
-    #    links:
-    #      - db_mysql2:db
-
+    links:
+      - db_mysql2:db
     depends_on:
       db_mysql2:
         condition: service_healthy
+
     ports:
       - 6062:80
     environment:

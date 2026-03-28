@@ -675,13 +675,14 @@ services:
 
   site_api:
     container_name: site_api
-    depends_on:
-      - db_mysql2
+#    depends_on:
+#      - db_mysql2
     networks:
       - laravel
     build:
       context: .
-      dockerfile: docker.php74_soap.Dockerfile
+      #dockerfile: docker.php74_soap.Dockerfile
+      dockerfile: docker.2603api.laravel.Dockerfile
     working_dir: ${FOLDER_SITE_API_SERV}
     environment:
       - PHPGROUP=www-data
